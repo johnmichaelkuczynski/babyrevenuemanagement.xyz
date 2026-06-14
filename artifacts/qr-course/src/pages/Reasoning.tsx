@@ -5,14 +5,31 @@ import { Layout } from "@/components/layout/Layout";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Link } from "wouter";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Compass, Brain } from "lucide-react";
+import { Scale, Brain } from "lucide-react";
+
+type Instrument = "subject" | "general";
 
 const PHASE_LABELS: Record<string, string> = {
-  baseline: "Baseline — before the course",
-  unit1: "After the unit: Criminal Psychology for Everyone",
+  before: "Before the course",
+  third: "One-third of the way through",
+  twothirds: "Two-thirds of the way through",
+  after: "After the course",
 };
 
-const PHASE_ORDER = ["baseline", "unit1"];
+const PHASE_ORDER = ["before", "third", "twothirds", "after"];
+
+const INSTRUMENT_ORDER: Instrument[] = ["subject", "general"];
+
+const INSTRUMENT_LABELS: Record<Instrument, string> = {
+  subject: "Criminal Psychology",
+  general: "General Reasoning",
+};
+
+const INSTRUMENT_BLURBS: Record<Instrument, string> = {
+  subject: "Reason through realistic short cases about the course material.",
+  general:
+    "Reason across analysis, inference, evaluation, deduction, and induction.",
+};
 
 type Format = "mcq" | "hybrid" | "written";
 
@@ -39,11 +56,10 @@ const LENGTH_LABELS: Record<TestLength, string> = {
 };
 // Question count per length, per instrument. Mirrors LENGTH_COUNTS in
 // api-server/src/lib/reasoning.ts and ReasoningRunner.tsx — keep in lockstep.
-const LENGTH_COUNTS: Record<"ethical" | "critical", Record<TestLength, number>> =
-  {
-    critical: { short: 5, medium: 10, long: 15 },
-    ethical: { short: 3, medium: 6, long: 10 },
-  };
+const LENGTH_COUNTS: Record<Instrument, Record<TestLength, number>> = {
+  subject: { short: 4, medium: 8, long: 12 },
+  general: { short: 4, medium: 8, long: 12 },
+};
 
 function statusBadge(status: string) {
   const cls =
@@ -53,7 +69,11 @@ function statusBadge(status: string) {
       ? "bg-chart-4/20 text-chart-4"
       : "bg-secondary text-secondary-foreground";
   const label =
-    status === "passed" ? "passed" : status === "in_progress" ? "in progress" : "not started";
+    status === "passed"
+      ? "completed"
+      : status === "in_progress"
+      ? "in progress"
+      : "not taken";
   return (
     <span className={`text-xs px-2 py-0.5 rounded-full ${cls}`}>{label}</span>
   );
@@ -63,11 +83,10 @@ function InstrumentCard({
   instrument,
   versions,
 }: {
-  instrument: "ethical" | "critical";
+  instrument: Instrument;
   versions: ReasoningAssessmentSummary[];
 }) {
-  const isEthical = instrument === "ethical";
-  const Icon = isEthical ? Compass : Brain;
+  const Icon = instrument === "subject" ? Scale : Brain;
   const byFormat = new Map<Format, ReasoningAssessmentSummary>();
   for (const v of versions) byFormat.set(v.format as Format, v);
 
@@ -76,17 +95,15 @@ function InstrumentCard({
       <CardHeader>
         <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2">
           <Icon className="w-3.5 h-3.5" />
-          {isEthical ? "Professional Judgment" : "Critical Reasoning"}
+          {INSTRUMENT_LABELS[instrument]}
         </span>
         <CardTitle className="text-base leading-snug">
-          {isEthical
-            ? "A realistic everyday-judgment scenario"
-            : "Reasoning across analysis, inference, evaluation, deduction, and induction"}
+          {INSTRUMENT_BLURBS[instrument]}
         </CardTitle>
       </CardHeader>
       <CardContent className="flex flex-col gap-3">
         <p className="text-sm text-muted-foreground">
-          Choose how you'd like to answer this assessment:
+          Choose a format and a length — every attempt has fresh questions:
         </p>
         <div className="flex flex-col gap-3">
           {FORMAT_ORDER.map((fmt) => {
@@ -151,7 +168,8 @@ function InstrumentCard({
                             {LENGTH_LABELS[len]}
                           </span>
                           <span className="block text-[11px] text-muted-foreground">
-                            {counts[len]} {counts[len] === 1 ? "question" : "questions"}
+                            {counts[len]}{" "}
+                            {counts[len] === 1 ? "question" : "questions"}
                           </span>
                         </button>
                       </Link>
@@ -177,21 +195,22 @@ export default function Reasoning() {
     return acc;
   }, {} as Record<string, Record<string, ReasoningAssessmentSummary[]>>);
 
-  const instrumentOrder: ("ethical" | "critical")[] = ["ethical", "critical"];
-
   return (
     <Layout>
       <div className="p-8 max-w-4xl mx-auto w-full flex flex-col gap-8">
         <div>
           <h1 className="text-3xl font-serif font-bold text-primary mb-2">
-            Diagnostic Assessments
+            Diagnostic Checks
           </h1>
           <p className="text-muted-foreground">
-            Two instruments — Professional Judgment and Critical Reasoning — taken
-            once at the start and again after the unit. For each one, pick an answer
-            format and a length — Short, Medium, or Long — using the buttons below;
-            the test starts as soon as you choose a length. Submitting an assessment
-            earns a pass; together they count for 20% of your course grade.
+            Two kinds of check — <strong>Criminal Psychology</strong> (about the
+            course material) and <strong>General Reasoning</strong> — offered at
+            four points in your journey: before the course, one-third through,
+            two-thirds through, and after. Pick any one anytime, in the format
+            (Multiple Choice, Hybrid, or Written) and length (Short, Medium, or
+            Long) you like. These are <strong>ungraded practice</strong>: take
+            them as many times as you want — the questions are different every
+            time — and they never affect your course grade.
           </p>
         </div>
 
@@ -209,15 +228,15 @@ export default function Reasoning() {
                   {PHASE_LABELS[phase] ?? phase}
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {instrumentOrder
-                    .filter((inst) => byPhase[phase]![inst]?.length)
-                    .map((inst) => (
-                      <InstrumentCard
-                        key={inst}
-                        instrument={inst}
-                        versions={byPhase[phase]![inst]!}
-                      />
-                    ))}
+                  {INSTRUMENT_ORDER.filter(
+                    (inst) => byPhase[phase]![inst]?.length,
+                  ).map((inst) => (
+                    <InstrumentCard
+                      key={inst}
+                      instrument={inst}
+                      versions={byPhase[phase]![inst]!}
+                    />
+                  ))}
                 </div>
               </div>
             ))}

@@ -10,6 +10,6 @@ export type ReasoningAssessmentSummaryInstrument = typeof ReasoningAssessmentSum
 
 
 export const ReasoningAssessmentSummaryInstrument = {
-  ethical: 'ethical',
-  critical: 'critical',
+  subject: 'subject',
+  general: 'general',
 } as const;

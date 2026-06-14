@@ -6,7 +6,7 @@ import {
   problemsTable,
   seedMetaTable,
 } from "@workspace/db";
-import { eq, sql } from "drizzle-orm";
+import { eq, sql, and, like, notInArray } from "drizzle-orm";
 import { logger } from "./logger";
 
 // Content version of the seeded curriculum. BUMP THIS whenever the TOPICS or
@@ -518,49 +518,44 @@ type SeedPrimer = SeedTopic;
 
 const REASONING_PRIMERS: SeedPrimer[] = [
   {
-    slug: "reasoning-primer-ethical",
-    title: "How to reason about everyday fairness dilemmas",
+    slug: "reasoning-primer-subject",
+    title: "How to reason about criminal psychology cases",
     weekNumber: 1,
     blurb:
-      "Assessment primer: weighing what matters when honesty, fairness, and pressure collide.",
-    lectureTitle: "Primer: How to reason about everyday fairness dilemmas",
-    body: `# How to reason about everyday fairness dilemmas
+      "Diagnostic primer: applying the course's ideas to concrete criminal-psychology situations.",
+    lectureTitle: "Primer: How to reason about criminal psychology cases",
+    body: `# How to reason about criminal psychology cases
 
-This short primer prepares you for the **Professional Judgment** check. That activity does not ask for the "right" answer — it asks *which reasons you give weight to* when you decide. Here is the kind of thinking it rewards.
+This short primer prepares you for the **Criminal Psychology** diagnostic. That check is *ungraded practice* — it never affects your course grade. It is drawn from the eight topics of this unit and asks you to *apply* what you have learned to a specific situation, not to recite a definition.
 
-## A dilemma is a clash of reasons
+## It tests application, not memorization
 
-A real dilemma is a situation where several honest reasons pull in different directions: a promise you made, pressure to make something look better than it is, what's easiest for you, and the truth you owe to other people. Reasoning well does not mean pretending the reasons you act against don't exist — it means being honest that they had some weight, and saying why other reasons mattered more.
+A diagnostic question gives you a small, concrete scene — an investigator, a witness, a defendant, a jury — and asks what the course's ideas tell you about it. Knowing the word "false confession" is not enough; the question wants you to recognize *when* you are looking at one and *why* it matters here.
 
-## Three kinds of reasons
+## What the questions reward
 
-When you justify a decision, the *kind* of reason you lean on matters:
-
-- **What's-easiest-for-me reasons** — what is most comfortable, safe, or rewarding for the person deciding. ("It would be awkward to say no.")
-- **Just-following-the-rule reasons** — what the rules, the grown-ups, or your role say to do. ("I was told to.") Rules keep order, but a rule can itself be unfair.
-- **Fairness reasons** — appeals to honesty, keeping promises, and the interests of *everyone affected*, the kind of reason you could defend to anyone. ("The people trusting this deserve the truth.")
-
-The check's score rises when you give the most weight to fairness reasons rather than to convenience or to "because those are the rules."
+- **Naming the right idea** — match the situation to the concept that fits it: why someone offended, what a profile can and can't tell you, when memory is unreliable, when a confession is suspect, how the law treats responsibility, how dangerousness is judged.
+- **Using evidence from the scene** — point to the detail in the situation that supports your answer, rather than answering from a general impression.
+- **Avoiding the sensational reading** — the course explains behavior; it does not assume the scariest explanation. The best answers stay measured and grounded in the science.
 
 ## How to do this activity well
 
-1. **Decide** what the person should do.
-2. **Rate every reason** by how much it actually weighed on you — be honest, not strategic.
-3. **Rank your top few.** Ranking is where you say what *most* drove the decision.
-4. **Read each reason carefully.** Some are deliberately empty or fancy-sounding and reward nothing; ranking one of those high is a sign of careless answering.
+1. **Read the situation first**, then ask which topic it belongs to.
+2. **Find the detail that decides it** — what in the scene makes one answer better than another.
+3. For written items, **give the core idea in a sentence or two** — clear and correct beats long and padded.
 
-There is no penalty for the choice you make. What's measured is the *quality of the reasons* you stand behind.`,
+Take it as often as you like; the questions are freshly generated every time, and there is no penalty for any answer.`,
   },
   {
-    slug: "reasoning-primer-critical",
-    title: "Core clear-thinking skills",
+    slug: "reasoning-primer-general",
+    title: "Core reasoning skills",
     weekNumber: 1,
     blurb:
-      "Assessment primer: analysis, inference, evaluation, deduction, and induction.",
-    lectureTitle: "Primer: Core clear-thinking skills",
-    body: `# Core clear-thinking skills
+      "Diagnostic primer: analysis, inference, evaluation, deduction, and induction.",
+    lectureTitle: "Primer: Core reasoning skills",
+    body: `# Core reasoning skills
 
-This short primer prepares you for the **Critical Reasoning** check — a set of multiple-choice questions that test five different thinking skills. These are the same skills you use to decide what a set of facts really shows, so they matter directly for thinking clearly about why people act the way they do.
+This short primer prepares you for the **General Reasoning** diagnostic — an *ungraded* check that tests five genuine reasoning skills. These are the same skills you use to decide what a set of facts really shows, so they matter directly for thinking clearly about why people act the way they do.
 
 ## The five skills
 
@@ -578,13 +573,34 @@ Most wrong answers are statements that *sound* reasonable but are **not actually
 
 1. Find the **point** (conclusion) first, then the reasons.
 2. Ask which of the five skills the question is testing (a hidden-assumption question is analysis; a "what follows" question is inference or deduction; a "how good is this reasoning" question is evaluation).
-3. Pick the option that follows **only** from what you were given — not the one that merely sounds true or appealing.`,
+3. Pick the option that follows **only** from what you were given — not the one that merely sounds true or appealing.
+
+Take it as often as you like; the questions are freshly generated every time, and it never affects your grade.`,
   },
 ];
 
 // Insert any teaching-to-the-test primer lectures whose slug is not yet present.
 // Safe to run on every boot: it only adds what is missing.
 export async function seedReasoningPrimersIfMissing(): Promise<void> {
+  const currentSlugs = REASONING_PRIMERS.map((p) => p.slug);
+  // Remove any obsolete primer topics from earlier diagnostic models (their
+  // lectures cascade-delete), so renamed/retired primers self-heal instead of
+  // stranding stale content in existing or republished databases.
+  const stale = await db
+    .delete(topicsTable)
+    .where(
+      and(
+        like(topicsTable.slug, "reasoning-primer-%"),
+        notInArray(topicsTable.slug, currentSlugs),
+      ),
+    )
+    .returning({ slug: topicsTable.slug });
+  if (stale.length > 0) {
+    logger.info(
+      { removed: stale.map((s) => s.slug) },
+      "Reasoning primers: removed obsolete primers",
+    );
+  }
   let added = 0;
   for (let i = 0; i < REASONING_PRIMERS.length; i++) {
     const t = REASONING_PRIMERS[i]!;

@@ -24,9 +24,10 @@ type TestLength = "short" | "medium" | "long";
 // How many questions each length contains, per instrument. Mirrors the server
 // (see LENGTH_COUNTS in api-server/src/lib/reasoning.ts) so the picker can show
 // the question count before the student commits.
-const LENGTH_COUNTS: Record<"ethical" | "critical", Record<TestLength, number>> = {
-  critical: { short: 5, medium: 10, long: 15 },
-  ethical: { short: 3, medium: 6, long: 10 },
+type Instrument = "subject" | "general";
+const LENGTH_COUNTS: Record<Instrument, Record<TestLength, number>> = {
+  subject: { short: 4, medium: 8, long: 12 },
+  general: { short: 4, medium: 8, long: 12 },
 };
 
 const LENGTH_ORDER: TestLength[] = ["short", "medium", "long"];
@@ -40,7 +41,7 @@ const LENGTH_LABELS: Record<TestLength, string> = {
 // length. Used so the test header can always show the length even when the
 // attempt was resumed (no length param around to remember).
 function lengthFromCount(
-  instrument: "ethical" | "critical",
+  instrument: Instrument,
   count: number,
 ): TestLength | null {
   const counts = LENGTH_COUNTS[instrument];
@@ -95,9 +96,7 @@ export default function ReasoningRunner() {
   const [error, setError] = useState<string | null>(null);
 
   const format = (assessment?.format ?? "mcq") as Format;
-  const instrument = (assessment?.instrument ?? "critical") as
-    | "ethical"
-    | "critical";
+  const instrument = (assessment?.instrument ?? "general") as Instrument;
 
   function beginAttempt(length?: TestLength, retake?: boolean) {
     setBegan(true);
@@ -359,7 +358,7 @@ export default function ReasoningRunner() {
             <div>
               <h1 className="text-3xl font-serif font-bold text-primary mb-1">{assessment.title}</h1>
               <span className="inline-flex items-center gap-1.5 text-chart-2 font-medium">
-                <CheckCircle2 className="w-5 h-5" /> Passed
+                <CheckCircle2 className="w-5 h-5" /> Completed · ungraded practice
               </span>
             </div>
             <div className="flex items-center gap-2">

@@ -18,11 +18,10 @@ export function Scene3() {
   }, []);
 
   const milestones = [
-    { label: 'Baseline', desc: 'Pre-course' },
-    { label: 'Checkpoint 1', desc: 'Unit 1' },
-    { label: 'Checkpoint 2', desc: 'Unit 2' },
-    { label: 'Checkpoint 3', desc: 'Unit 3' },
-    { label: 'Checkpoint 4', desc: 'Unit 4' },
+    { label: 'Before', desc: 'Pre-course' },
+    { label: 'One-third', desc: 'Early progress' },
+    { label: 'Two-thirds', desc: 'Late progress' },
+    { label: 'After', desc: 'Post-course' },
   ];
 
   return (
@@ -71,7 +70,7 @@ export function Scene3() {
         transition={{ duration: 0.6 }}
       >
         <p className="text-[1.2vw] text-white font-light">
-          <span className="text-[var(--color-accent)] font-semibold">10 total administrations</span> to measure true reasoning growth.
+          <span className="text-[var(--color-accent)] font-semibold">Take any check, anytime</span> — ungraded, and never the same questions twice.
         </p>
       </motion.div>
     </motion.div>

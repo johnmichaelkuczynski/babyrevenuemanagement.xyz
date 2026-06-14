@@ -3,14 +3,18 @@ name: Diagnostic answer-format versions
 description: How the three selectable answer formats per diagnostic test relate to grading and progress.
 ---
 
-Each diagnostic reasoning test is one logical `(instrument, phase)` group offered in THREE selectable answer formats (mcq | hybrid | written), seeded as separate assessment rows (2 instruments × 2 phases × 3 formats = 12 rows).
+Diagnostics were rebuilt: instruments are now `subject` (Criminal Psychology) and `general` (General Reasoning — genuine reasoning across analysis/inference/evaluation/deduction/induction, NOT "critical thinking"/docility); phases are `before | third | twothirds | after`. There is NO "ethical"/"Professional Judgment"/"Critical Reasoning" anymore — purge on sight (incl. video scenes + README).
+
+Each diagnostic reasoning test is one logical `(instrument, phase)` group offered in THREE selectable answer formats (mcq | hybrid | written), seeded as separate assessment rows: 2 instruments × 4 phases × 3 formats = 24 rows (= DIAGNOSTIC_SEED). At runtime ×3 lengths = 72 selectable tests.
+
+**Diagnostics are UNGRADED practice.** Gradebook is coursework 100% / diagnostics 0% (weightPercent:0, earnedPercent:0, informational detail only). Takeable anytime, unlimited, fresh-generated questions every attempt (never repeat). Never gate the grade on them.
 
 **Rule:** the formats are ALTERNATIVES, not extra required work. A student picks ONE format per group and takes it.
 
-**Why:** treating each of the 12 rows as independently-required work inflates the diagnostics denominator — completing one format per group (the intended path) would otherwise read as 4/12 instead of full credit.
-
 **How to apply:**
-- Any gradebook / progress / callout aggregation over diagnostics MUST group by `(instrument, phase)` and treat any-format-pass as a group pass (expected 4 groups), never count per assessment row.
+- Any gradebook / progress / callout aggregation over diagnostics MUST group by `(instrument, phase)` and treat any-format-pass as a group pass, never count per assessment row.
+- `LENGTH_COUNTS` is now {short:4, medium:8, long:12} for BOTH instruments (mirrored in api-server/src/lib/reasoning.ts, qr-course Reasoning.tsx, and ReasoningRunner.tsx — keep all three in lockstep).
+- Reseed self-heals on api-server restart via signature mismatch (truncate+reseed runs async; a curl right after restart can catch a partial count — re-query after it settles).
 - The dashboard callout and gradebook reasoning rows are collapsed to one row per group and link to the chooser (`/reasoning`) so the student picks a format.
 - No cheating/AI-authorship detection runs on diagnostics (intentional) — the keystroke trace from the shared AnswerInput is captured but ignored on this path.
 - Per-format question content is NOT forced identical; the app generates fresh same-kind variant items per attempt, and the student only sees the one format they chose, so divergence across formats is never observed.
@@ -22,7 +26,7 @@ Each diagnostic reasoning test is one logical `(instrument, phase)` group offere
 - Diagnostic textareas use AnswerInput `compact` + `allowPaste` (no detection here, so pasting is fine).
 - Seed instructions are part of the reseed signature, so wording changes self-heal on restart.
 
-**Selectable length per attempt (on top of format):** before starting (and again on retake) the student picks Short / Medium / Long, mapping to question counts — critical {5,10,15}, ethical {3,6,10}. Critical medium == prior behavior; ethical was widened to 3/6/10 (user wanted "a few"→"a lot", 1/2/3 felt too small).
+**Selectable length per attempt (on top of format):** before starting (and again on retake) the student picks Short / Medium / Long, mapping to question counts — {short:4, medium:8, long:12} for BOTH instruments (subject and general identical).
 - `length` is an OPTIONAL field on the start request (default medium); count resolves server-side via `itemCountFor(instrument, length)`. `LENGTH_COUNTS` is duplicated client+server — keep them in lockstep if either changes.
 - Detail GET returns a required `status` (not_started|in_progress|passed) the frontend keys off.
 - **The length picker must be reachable for `in_progress` tests, not just `not_started`.** Auto-resume (no picker) ONLY for `passed` (loads review). For `in_progress` the picker shows a "Continue where I left off" shortcut (resume same items) PLUS length buttons that restart fresh.

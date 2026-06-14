@@ -442,19 +442,18 @@ export type ReasoningAssessmentSummaryInstrument = typeof ReasoningAssessmentSum
 
 
 export const ReasoningAssessmentSummaryInstrument = {
-  ethical: 'ethical',
-  critical: 'critical',
+  subject: 'subject',
+  general: 'general',
 } as const;
 
 export type ReasoningAssessmentSummaryPhase = typeof ReasoningAssessmentSummaryPhase[keyof typeof ReasoningAssessmentSummaryPhase];
 
 
 export const ReasoningAssessmentSummaryPhase = {
-  baseline: 'baseline',
-  unit1: 'unit1',
-  unit2: 'unit2',
-  unit3: 'unit3',
-  unit4: 'unit4',
+  before: 'before',
+  third: 'third',
+  twothirds: 'twothirds',
+  after: 'after',
 } as const;
 
 /**
@@ -508,19 +507,18 @@ export type ReasoningAssessmentInstrument = typeof ReasoningAssessmentInstrument
 
 
 export const ReasoningAssessmentInstrument = {
-  ethical: 'ethical',
-  critical: 'critical',
+  subject: 'subject',
+  general: 'general',
 } as const;
 
 export type ReasoningAssessmentPhase = typeof ReasoningAssessmentPhase[keyof typeof ReasoningAssessmentPhase];
 
 
 export const ReasoningAssessmentPhase = {
-  baseline: 'baseline',
-  unit1: 'unit1',
-  unit2: 'unit2',
-  unit3: 'unit3',
-  unit4: 'unit4',
+  before: 'before',
+  third: 'third',
+  twothirds: 'twothirds',
+  after: 'after',
 } as const;
 
 export type ReasoningAssessmentFormat = typeof ReasoningAssessmentFormat[keyof typeof ReasoningAssessmentFormat];
@@ -755,19 +753,18 @@ export type GradebookReasoningItemInstrument = typeof GradebookReasoningItemInst
 
 
 export const GradebookReasoningItemInstrument = {
-  ethical: 'ethical',
-  critical: 'critical',
+  subject: 'subject',
+  general: 'general',
 } as const;
 
 export type GradebookReasoningItemPhase = typeof GradebookReasoningItemPhase[keyof typeof GradebookReasoningItemPhase];
 
 
 export const GradebookReasoningItemPhase = {
-  baseline: 'baseline',
-  unit1: 'unit1',
-  unit2: 'unit2',
-  unit3: 'unit3',
-  unit4: 'unit4',
+  before: 'before',
+  third: 'third',
+  twothirds: 'twothirds',
+  after: 'after',
 } as const;
 
 export type GradebookReasoningItemStatus = typeof GradebookReasoningItemStatus[keyof typeof GradebookReasoningItemStatus];

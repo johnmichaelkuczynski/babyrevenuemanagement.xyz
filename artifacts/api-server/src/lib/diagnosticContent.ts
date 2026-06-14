@@ -1,18 +1,26 @@
 // ---------------------------------------------------------------------------
 // Original content for the embedded diagnostic reasoning assessments.
 //
-// Two instruments, each administered at a baseline (before the course) and a
-// checkpoint (after the single unit), with MUTUALLY UNIQUE items:
-//   - Professional Judgment: realistic everyday-judgment scenarios where
-//     legitimate considerations conflict. The principled choice is keyed first.
-//   - Critical Reasoning (CCTST-style): items spanning analysis, inference,
-//     evaluation, deduction, and induction.
+// Two instruments, each offered at FOUR time-points (phases) so a student can
+// gauge themselves before, during, and after the course:
+//   - subject  — Criminal Psychology subject-specific reasoning. Realistic
+//     short cases about the course material; the best-supported answer is keyed
+//     first.
+//   - general  — General Reasoning. Genuine reasoning items spanning analysis,
+//     inference, evaluation, deduction, and induction (NOT a "docility"/agree-
+//     with-authority test).
 //
 // Each (instrument, phase) is offered in THREE selectable answer formats that
-// share the same questions:
+// share the same kind of questions:
 //   - mcq     — pick the single best option.
-//   - hybrid  — pick the best option AND write a short justification.
+//   - hybrid  — pick the best option AND (optionally) write a short note.
 //   - written — no options shown; write a short answer in your own words.
+//
+// These diagnostics are UNGRADED practice: takeable anytime, unlimited times,
+// and they never affect the course grade. Every time a test is started, fresh
+// questions are generated (see reasoning.ts) so questions never repeat. The
+// items below are the structural BLUEPRINT (style + fallback) for that
+// generation, grounded per phase by GEN_SPECS.
 //
 // All items are ORIGINAL. For every item the correct option is written FIRST;
 // at seed time options are rotated so the correct answer lands at a varied
@@ -27,7 +35,9 @@ export type SkillArea =
   | "deduction"
   | "induction";
 
-export type Phase = "baseline" | "unit1";
+export type Instrument = "subject" | "general";
+
+export type Phase = "before" | "third" | "twothirds" | "after";
 
 export type DiagFormat = "mcq" | "hybrid" | "written";
 
@@ -42,7 +52,7 @@ export type DiagItem = {
 };
 
 export type DiagnosticSeed = {
-  instrument: "ethical" | "critical";
+  instrument: Instrument;
   phase: Phase;
   format: DiagFormat;
   title: string;
@@ -50,6 +60,84 @@ export type DiagnosticSeed = {
   instructions: string;
   items: DiagItem[];
 };
+
+// ===========================================================================
+// Phase metadata
+// ===========================================================================
+
+export const PHASE_ORDER: Phase[] = ["before", "third", "twothirds", "after"];
+
+export const PHASE_LABEL: Record<Phase, string> = {
+  before: "Before the course",
+  third: "One-third of the way through",
+  twothirds: "Two-thirds of the way through",
+  after: "After the course",
+};
+
+// ===========================================================================
+// Per-(instrument, phase) generation specs
+// Used by reasoning.ts to generate fresh, never-repeating questions grounded in
+// the right scope for the chosen time-point. `topicFocus` describes WHAT to ask
+// about; `level` nudges difficulty for the time-point.
+// ===========================================================================
+
+export type GenSpec = { topicFocus: string; level: string };
+
+const SUBJECT_SPECS: Record<Phase, GenSpec> = {
+  before: {
+    level:
+      "Intro level: answerable by a thoughtful newcomer reasoning carefully, BEFORE any lessons. Do not assume prior course knowledge or technical terms.",
+    topicFocus:
+      "What criminal psychology is and how it thinks about crime: that offending has multiple interacting causes (personal, social, situational) rather than a single 'born evil' cause, and that the field studies behavior scientifically rather than by intuition or moral judgement.",
+  },
+  third: {
+    level:
+      "Early course level: covers roughly the first third of the unit. Plain language, short realistic cases.",
+    topicFocus:
+      "Topics 1.1-1.3: what criminal psychology is; why people offend (interacting biological, psychological, and social/situational factors, opportunity, and the limits of single-cause explanations); and traits associated with psychopathy (superficial charm, manipulation, lack of remorse) and how they differ from everyday wrongdoing.",
+  },
+  twothirds: {
+    level:
+      "Mid course level: covers roughly the first two-thirds of the unit. Realistic short cases requiring a step of reasoning.",
+    topicFocus:
+      "Topics 1.1-1.6: causes of offending and psychopathy, PLUS offender profiling and its limits, eyewitness memory (memory is reconstructive and confident witnesses can be wrong), and interrogation and false confessions (coercive or high-pressure tactics can lead even innocent people to confess).",
+  },
+  after: {
+    level:
+      "End-of-course level: covers the whole unit. Integrative short cases that apply more than one idea.",
+    topicFocus:
+      "The full unit, topics 1.1-1.8: causes of offending, psychopathy, profiling, eyewitness memory, interrogation/false confessions, PLUS madness and the law (legal insanity and competence are about understanding/responsibility at the time, not merely having a diagnosis) and predicting danger (risk assessment gives probabilities, not certainties, and can err).",
+  },
+};
+
+const GENERAL_SPECS: Record<Phase, GenSpec> = {
+  before: {
+    level: "Everyday, accessible reasoning. One step of inference per item.",
+    topicFocus:
+      "General reasoning on everyday, neutral topics: identifying assumptions and conclusions, what evidence does and does not support, judging the strength of sources, valid vs. invalid deduction, and the strength of generalizations.",
+  },
+  third: {
+    level: "Everyday reasoning, slightly more demanding than the baseline.",
+    topicFocus:
+      "General reasoning on everyday, neutral topics: assumptions/conclusions, supported inferences, source quality, deductive validity, and inductive strength.",
+  },
+  twothirds: {
+    level: "Moderately demanding reasoning, sometimes two steps.",
+    topicFocus:
+      "General reasoning on everyday, neutral topics: assumptions/conclusions, supported inferences, source quality, deductive validity, and inductive strength.",
+  },
+  after: {
+    level: "More demanding, multi-step reasoning where appropriate.",
+    topicFocus:
+      "General reasoning on everyday, neutral topics: assumptions/conclusions, supported inferences, source quality, deductive validity, and inductive strength.",
+  },
+};
+
+export function genSpecFor(instrument: Instrument, phase: Phase): GenSpec {
+  return instrument === "subject"
+    ? SUBJECT_SPECS[phase]
+    : GENERAL_SPECS[phase];
+}
 
 // ===========================================================================
 // Format-specific instructions
@@ -61,65 +149,196 @@ const FORMAT_LABEL: Record<DiagFormat, string> = {
   written: "Written",
 };
 
-function instructionsFor(
-  instrument: "ethical" | "critical",
-  format: DiagFormat,
-): string {
+function instructionsFor(instrument: Instrument, format: DiagFormat): string {
   const subject =
-    instrument === "ethical"
-      ? "Read each scenario and decide what the person should do"
-      : "Answer each question — these measure reasoning, not recall";
+    instrument === "subject"
+      ? "Answer each question about criminal psychology — these reward careful reasoning about realistic cases, not memorized facts"
+      : "Answer each reasoning question — these measure how you think, not what you recall";
   const body =
     format === "mcq"
       ? `${subject} by selecting the single best option.`
       : format === "hybrid"
         ? `${subject} by selecting the best option. You can add a quick note on your reasoning if you like — it's optional and a few words is plenty.`
-        : `${subject}. No answer options are shown — just jot a brief answer in your own words. One sentence is plenty; there's no need to write a lot.`;
-  return `${body} Submitting completes the assessment and you'll receive written feedback${
-    instrument === "ethical" ? " on your reasoning" : " on your performance"
-  }.`;
+        : `${subject}. No answer options are shown — just jot a brief answer in your own words. One or two sentences is plenty; there's no need to write a lot.`;
+  return `${body} This is ungraded practice — take it anytime, as many times as you like; it never affects your course grade. Submitting shows your results with written feedback.`;
 }
 
 // ===========================================================================
-// PROFESSIONAL JUDGMENT — two unique everyday-judgment scenarios
-// (principled choice keyed FIRST)
+// SUBJECT — Criminal Psychology blueprint cases (best answer keyed FIRST)
 // ===========================================================================
 
-const ETHICAL_BASELINE: DiagItem[] = [
+const SUBJECT_BEFORE: DiagItem[] = [
   {
     prompt:
-      "Mia helped run a small experiment for her group's science-fair project, testing whether people remember a short list of words better in a quiet room than in a noisy one. The real difference her group found was tiny. The day before judging, a teammate asks Mia to describe the result on their poster as a 'huge, dramatic difference,' even though it was barely there, because it 'sounds more impressive.' The actual numbers wouldn't change — only how they're described.\n\nWhat should Mia do?",
+      "A reporter asks a criminal psychologist why a particular teenager shoplifted. The psychologist would most likely explain the behavior in terms of:",
     options: [
-      "Refuse and present the result honestly, describing the difference as the small one it actually was.",
-      "Go along with the teammate and describe the tiny difference as 'huge and dramatic' because it sounds more impressive.",
-      "Quietly remove the result from the poster so no one has to decide how to describe it.",
-      "Leave the wording up to whichever teammate cares most, since the numbers don't change.",
+      "a mix of personal, social, and situational pressures acting on the teenager",
+      "the teenager's astrological sign",
+      "whether the store happened to be busy that day",
+      "the reporter's personal opinion of teenagers",
     ],
     modelAnswer:
-      "Mia should refuse and describe the result honestly. The judges and audience are entitled to an accurate account, and calling a tiny difference 'huge' misleads them and undermines the honesty the whole project depends on — looking like a cooperative team player matters far less than reporting the truth.",
+      "Criminal psychology explains offending through interacting personal, social, and situational factors, not luck, intuition, or unrelated traits.",
+  },
+  {
+    prompt:
+      "A headline claims 'most people who break the law are simply born evil.' How would a criminal psychologist most likely treat this claim?",
+    options: [
+      "As an oversimplification, since behavior usually has many interacting causes",
+      "As obviously true and needing no evidence",
+      "As something that cannot be studied at all",
+      "As true only for certain personality types",
+    ],
+    modelAnswer:
+      "It is an oversimplification; the field rejects single-cause 'born evil' explanations because offending arises from many interacting causes.",
+  },
+  {
+    prompt:
+      "Which question is most central to what criminal psychology actually studies?",
+    options: [
+      "Why people commit crimes and how the justice system responds to them",
+      "Which lawyer charges the lowest fees",
+      "How to design a more comfortable courtroom chair",
+      "Which crimes make the most dramatic movies",
+    ],
+    modelAnswer:
+      "Criminal psychology studies the causes of offending and how the justice system thinks about and responds to it.",
   },
 ];
 
-const ETHICAL_UNIT1: DiagItem[] = [
+const SUBJECT_THIRD: DiagItem[] = [
   {
     prompt:
-      "Theo runs the sign-up sheet for the school chess club. People wrote down their phone numbers only so they could get reminders about chess meetings. Now a friend running an unrelated bake-sale fundraiser asks Theo to share those numbers to send out fundraiser texts. The friend says 'it's for a good cause, and you have the numbers anyway.'\n\nWhat should Theo do?",
+      "Over years, Dana is repeatedly charming on first meeting, lies easily to get what she wants, and shows no remorse after hurting others. These patterns are most associated with:",
     options: [
-      "Refuse to share the numbers, since people gave them only for chess reminders and were promised privacy.",
-      "Hand the numbers over because it's for a good cause and he already has them anyway.",
-      "Share only the numbers of people he personally likes, and keep the rest private.",
-      "Pass the list to his friend and let the friend decide who to text.",
+      "traits linked to psychopathy",
+      "ordinary shyness",
+      "a temporary bad mood",
+      "simple forgetfulness",
     ],
     modelAnswer:
-      "Theo should refuse to share the numbers. People gave them only for chess reminders and were promised privacy; a good cause doesn't override that promise, and honoring it is what keeps club members able to trust the club — his friend's gratitude doesn't justify breaking that trust.",
+      "Superficial charm, manipulative lying, and lack of remorse are traits associated with psychopathy, not ordinary mood or memory.",
+    skillArea: "analysis",
+  },
+  {
+    prompt:
+      "Two neighborhoods are alike except that one has far more unsupervised places for teens to gather, and it also has more youth crime. This best illustrates that offending is shaped by:",
+    options: [
+      "situational and social opportunity, not just individual character",
+      "nothing but the weather",
+      "the age of the buildings alone",
+      "pure random chance",
+    ],
+    modelAnswer:
+      "It shows offending is influenced by situational and social opportunity, not by individual character alone.",
+    skillArea: "inference",
+  },
+  {
+    prompt:
+      "A student says 'people offend for exactly one reason: bad parents.' Why would a criminal psychologist push back?",
+    options: [
+      "Because offending typically results from several interacting causes, not a single one",
+      "Because parents never influence behavior at all",
+      "Because only adults can ever offend",
+      "Because crime cannot be explained in any way",
+    ],
+    modelAnswer:
+      "Single-cause explanations are too simple; offending usually results from interacting biological, psychological, and social factors.",
+    skillArea: "evaluation",
+  },
+];
+
+const SUBJECT_TWOTHIRDS: DiagItem[] = [
+  {
+    prompt:
+      "A witness very confidently identifies a suspect, but later evidence shows the identification was wrong. What does this best illustrate about memory?",
+    options: [
+      "Memory is reconstructive, so a confident witness can still be mistaken",
+      "Confident witnesses are always correct",
+      "Memory works like a perfect video recording",
+      "Witnesses never make identification errors",
+    ],
+    modelAnswer:
+      "Memory is reconstructive and fallible; high confidence does not guarantee accuracy, so confident witnesses can be wrong.",
+    skillArea: "evaluation",
+  },
+  {
+    prompt:
+      "An innocent, exhausted suspect is questioned for hours with repeated pressure and promises of leniency, and finally confesses. What does this scenario best demonstrate?",
+    options: [
+      "Coercive, high-pressure interrogation can produce false confessions even from innocent people",
+      "Anyone who confesses must be guilty",
+      "Long interrogations always uncover the truth",
+      "Pressure has no effect on what people say",
+    ],
+    modelAnswer:
+      "Coercive or high-pressure interrogation can lead even innocent people to confess falsely, so a confession is not proof of guilt.",
+    skillArea: "inference",
+  },
+  {
+    prompt:
+      "An investigator treats an offender profile as if it names one exact guilty person. Why is that a mistake?",
+    options: [
+      "A profile describes likely characteristics, not a guaranteed identity",
+      "Profiles are always completely accurate",
+      "Profiles can only ever be wrong",
+      "Profiles replace the need for any evidence",
+    ],
+    modelAnswer:
+      "Profiling suggests probable characteristics to narrow a search; it is not a certain identification of a specific person.",
+    skillArea: "analysis",
+  },
+];
+
+const SUBJECT_AFTER: DiagItem[] = [
+  {
+    prompt:
+      "A defendant has a diagnosed mental illness. A court is deciding a legal-insanity claim. Which consideration matters most for that legal question?",
+    options: [
+      "Whether, at the time of the act, the person could understand what they did or that it was wrong",
+      "Only whether a diagnosis exists on paper",
+      "How the public feels about the crime",
+      "Whether the trial is expensive to run",
+    ],
+    modelAnswer:
+      "Legal insanity turns on the person's understanding and responsibility at the time of the act, not merely on having a diagnosis.",
+    skillArea: "evaluation",
+  },
+  {
+    prompt:
+      "A risk-assessment tool labels someone 'high risk' of reoffending. How should that result be understood?",
+    options: [
+      "As a probability that can be wrong, not a certainty about the future",
+      "As a guarantee the person will reoffend",
+      "As proof the person already committed a new crime",
+      "As a fixed fact that can never change",
+    ],
+    modelAnswer:
+      "Risk assessment gives probabilities, not certainties; a 'high risk' label can be mistaken and does not guarantee future behavior.",
+    skillArea: "inference",
+  },
+  {
+    prompt:
+      "Reviewing a case, an analyst relies only on a single confident eyewitness and a 'high risk' score to declare guilt certain. Drawing on the unit, the strongest criticism is that:",
+    options: [
+      "Both eyewitness confidence and risk scores are fallible, so neither makes guilt certain",
+      "Eyewitnesses are always reliable, so the conclusion is fine",
+      "Risk scores are certainties, so the conclusion is fine",
+      "Cases can never be reviewed after the fact",
+    ],
+    modelAnswer:
+      "Eyewitness memory is reconstructive and risk scores are probabilistic; both can err, so together they cannot make guilt certain.",
+    skillArea: "evaluation",
   },
 ];
 
 // ===========================================================================
-// CRITICAL REASONING — two unique 10-item forms (correct option listed first)
+// GENERAL — reasoning blueprint (analysis / inference / evaluation /
+// deduction / induction). Shared across phases; difficulty is nudged per phase
+// at generation time (see GEN_SPECS.level).
 // ===========================================================================
 
-const CRITICAL_BASELINE: DiagItem[] = [
+const GENERAL_BLUEPRINT: DiagItem[] = [
   {
     prompt:
       "Consider: 'All students who studied passed the exam. Maria studied. So Maria passed.' Which unstated assumption does the argument rely on?",
@@ -130,20 +349,7 @@ const CRITICAL_BASELINE: DiagItem[] = [
       "The exam was unusually difficult.",
     ],
     modelAnswer:
-      "It assumes Maria is one of the students covered by 'all students who studied' — that her studying puts her in the group the first statement describes.",
-    skillArea: "analysis",
-  },
-  {
-    prompt:
-      "'Since the new policy cut accidents by 40%, and fewer accidents mean lower insurance costs, the city should keep the policy. After all, saving money benefits everyone.' What is the main conclusion?",
-    options: [
-      "The city should keep the policy.",
-      "The new policy cut accidents by 40%.",
-      "Fewer accidents mean lower insurance costs.",
-      "Saving money benefits everyone.",
-    ],
-    modelAnswer:
-      "The main conclusion is that the city should keep the policy; the other statements are reasons offered in support of it.",
+      "It assumes Maria is one of the students covered by 'all students who studied' — that her studying puts her in the group described.",
     skillArea: "analysis",
   },
   {
@@ -156,20 +362,7 @@ const CRITICAL_BASELINE: DiagItem[] = [
       "Anyone who wants good sleep must exercise daily.",
     ],
     modelAnswer:
-      "Only that daily exercisers are more likely to report good sleep than non-exercisers — an association, not a guarantee or a proven cause.",
-    skillArea: "inference",
-  },
-  {
-    prompt:
-      "A report notes that ice-cream sales and drowning deaths rise in the same months. A careful reader should infer that:",
-    options: [
-      "Both may be linked to a third factor, such as hot weather.",
-      "Eating ice cream causes drowning.",
-      "Drowning incidents cause ice-cream sales.",
-      "The data must simply be mistaken.",
-    ],
-    modelAnswer:
-      "That both probably rise because of a shared third factor such as hot weather — the correlation doesn't mean one causes the other.",
+      "Only that daily exercisers are more likely to report good sleep — an association, not a guarantee or a proven cause.",
     skillArea: "inference",
   },
   {
@@ -181,34 +374,8 @@ const CRITICAL_BASELINE: DiagItem[] = [
       "A popular wellness blog post.",
     ],
     modelAnswer:
-      "A large, peer-reviewed clinical trial — independent, systematic evidence is far stronger than a single testimonial, an ad, or a blog post.",
+      "A large, peer-reviewed clinical trial — independent, systematic evidence is far stronger than a testimonial, an ad, or a blog.",
     skillArea: "evaluation",
-  },
-  {
-    prompt:
-      "'My grandfather smoked daily and lived to 95, so smoking isn't really harmful.' The main weakness of this argument is that it:",
-    options: [
-      "Relies on a single example against strong statistical evidence.",
-      "Quotes an unreliable expert.",
-      "Contains an internal contradiction.",
-      "Appeals purely to emotion.",
-    ],
-    modelAnswer:
-      "It rests on one anecdote and ignores the strong statistical evidence that smoking is harmful; a single exception doesn't overturn the overall pattern.",
-    skillArea: "evaluation",
-  },
-  {
-    prompt:
-      "'All mammals are warm-blooded. All whales are mammals. Therefore all whales are warm-blooded.' This argument is:",
-    options: [
-      "Valid.",
-      "Invalid, because whales live in water.",
-      "Invalid, because it assumes what it proves.",
-      "Invalid, because the premises are uncertain.",
-    ],
-    modelAnswer:
-      "Valid — the conclusion follows necessarily from the two premises.",
-    skillArea: "deduction",
   },
   {
     prompt:
@@ -225,19 +392,6 @@ const CRITICAL_BASELINE: DiagItem[] = [
   },
   {
     prompt:
-      "A pollster surveys five of her friends and predicts how the whole country will vote. The strongest objection is that:",
-    options: [
-      "The sample is far too small and unrepresentative.",
-      "Friends never tell the truth.",
-      "Polls are always wrong.",
-      "Voting is supposed to be private.",
-    ],
-    modelAnswer:
-      "Five friends are far too small and unrepresentative a sample to support a prediction about the whole country.",
-    skillArea: "induction",
-  },
-  {
-    prompt:
       "Plants given a new fertilizer grew taller than otherwise identical plants without it, all else held equal. The best-supported conclusion is:",
     options: [
       "The fertilizer probably caused the extra growth.",
@@ -249,135 +403,18 @@ const CRITICAL_BASELINE: DiagItem[] = [
       "Because everything else was held equal, the fertilizer probably caused the extra growth.",
     skillArea: "induction",
   },
-];
-
-const CRITICAL_UNIT1: DiagItem[] = [
-  {
-    prompt: "'We should ban the chemical because it's unnatural.' This argument assumes that:",
-    options: [
-      "Natural things are always safe and unnatural things are harmful.",
-      "The chemical is expensive to produce.",
-      "Bans are easy to enforce.",
-      "Most people dislike the chemical.",
-    ],
-    modelAnswer:
-      "It assumes that natural things are safe and unnatural ones harmful — an unsupported leap from 'unnatural' to 'should be banned.'",
-    skillArea: "analysis",
-  },
   {
     prompt:
-      "'The bridge must be inspected, because cracks have appeared and ignoring cracks has caused collapses before.' Which is a premise supporting the conclusion?",
+      "A report notes that ice-cream sales and drowning deaths rise in the same months. A careful reader should infer that:",
     options: [
-      "Cracks have appeared on the bridge.",
-      "The bridge must be inspected.",
-      "The bridge is quite old.",
-      "Inspections are expensive.",
+      "Both may be linked to a third factor, such as hot weather.",
+      "Eating ice cream causes drowning.",
+      "Drowning incidents cause ice-cream sales.",
+      "The data must simply be mistaken.",
     ],
     modelAnswer:
-      "'Cracks have appeared on the bridge' is a premise; 'the bridge must be inspected' is the conclusion it supports.",
-    skillArea: "analysis",
-  },
-  {
-    prompt:
-      "A study finds students who eat breakfast score higher on morning tests than those who skip it. Which is best supported?",
-    options: [
-      "Eating breakfast is associated with higher morning test scores.",
-      "Breakfast makes everyone a genius.",
-      "Skipping breakfast should be banned.",
-      "Tests should always be held in the afternoon.",
-    ],
-    modelAnswer:
-      "Only that eating breakfast is associated with higher morning test scores — an association, not a sweeping cause or a policy.",
+      "That both probably rise because of a shared third factor such as hot weather — correlation doesn't mean one causes the other.",
     skillArea: "inference",
-  },
-  {
-    prompt: "'All items on the shelf are on sale. The blue mug is on the shelf.' Therefore:",
-    options: [
-      "The blue mug is on sale.",
-      "The blue mug is expensive.",
-      "Only mugs are on sale.",
-      "The shelf is completely full.",
-    ],
-    modelAnswer:
-      "The blue mug is on sale — it's on the shelf, and everything on the shelf is on sale.",
-    skillArea: "inference",
-  },
-  {
-    prompt: "To evaluate the claim 'crime is rising,' which is the most relevant evidence?",
-    options: [
-      "Official crime statistics gathered over several years.",
-      "A friend's sense that things seem worse lately.",
-      "A dramatic recent news headline.",
-      "A popular movie about crime.",
-    ],
-    modelAnswer:
-      "Official crime statistics gathered over several years — systematic data over time, not impressions, a headline, or a movie.",
-    skillArea: "evaluation",
-  },
-  {
-    prompt:
-      "'You can't trust her argument for the policy — she's not even an economist.' This response is weak because it:",
-    options: [
-      "Attacks the person rather than the argument.",
-      "Relies on too much data.",
-      "Is far too detailed.",
-      "Simply restates the policy.",
-    ],
-    modelAnswer:
-      "It attacks the person instead of addressing her actual argument — an ad hominem that leaves the argument itself unanswered.",
-    skillArea: "evaluation",
-  },
-  {
-    prompt:
-      "'If a number is divisible by 4, it is even. Twelve is divisible by 4.' What necessarily follows?",
-    options: [
-      "Twelve is even.",
-      "Twelve is odd.",
-      "All even numbers are divisible by 4.",
-      "Nothing follows.",
-    ],
-    modelAnswer:
-      "Twelve is even — it's divisible by 4, and anything divisible by 4 is even.",
-    skillArea: "deduction",
-  },
-  {
-    prompt:
-      "'If she practiced, she improved. She improved. Therefore she practiced.' This reasoning is:",
-    options: [
-      "Invalid, because she might have improved for another reason.",
-      "Valid and certain.",
-      "Invalid, because practice never helps.",
-      "Valid only on weekends.",
-    ],
-    modelAnswer:
-      "Invalid — improvement could have come from another cause, so it doesn't follow that she practiced (affirming the consequent).",
-    skillArea: "deduction",
-  },
-  {
-    prompt:
-      "After three rainy Mondays in a row, someone concludes 'it always rains on Mondays.' This generalization is:",
-    options: [
-      "Hasty — based on far too few cases.",
-      "A valid logical deduction.",
-      "Certainly true.",
-      "Impossible to evaluate at all.",
-    ],
-    modelAnswer:
-      "Hasty — three cases are far too few to support an 'always' generalization.",
-    skillArea: "induction",
-  },
-  {
-    prompt:
-      "A new drug cured 95% of patients in a large, well-designed trial. The best-supported prediction is:",
-    options: [
-      "The drug will likely help most future patients with the condition.",
-      "The drug will cure every disease.",
-      "The drug works only inside trials.",
-      "The drug is probably unsafe.",
-    ],
-    modelAnswer:
-      "That it will likely help most future patients with the condition — a strong, well-designed trial supports a probable prediction, not a certainty about every disease.",
-    skillArea: "induction",
   },
 ];
 
@@ -386,43 +423,34 @@ const CRITICAL_UNIT1: DiagItem[] = [
 // ===========================================================================
 
 type BaseContent = {
-  instrument: "ethical" | "critical";
+  instrument: Instrument;
   phase: Phase;
   baseTitle: string;
-  subtitle: string;
   items: DiagItem[];
 };
 
-const BASE_CONTENT: BaseContent[] = [
-  {
-    instrument: "ethical",
-    phase: "baseline",
-    baseTitle: "Professional Judgment Inventory — Baseline",
-    subtitle: "Before the course",
-    items: ETHICAL_BASELINE,
-  },
-  {
-    instrument: "critical",
-    phase: "baseline",
-    baseTitle: "Critical Reasoning Assessment — Baseline",
-    subtitle: "Before the course",
-    items: CRITICAL_BASELINE,
-  },
-  {
-    instrument: "ethical",
-    phase: "unit1",
-    baseTitle: "Professional Judgment Inventory — Course Checkpoint",
-    subtitle: "After the unit: Criminal Psychology for Everyone",
-    items: ETHICAL_UNIT1,
-  },
-  {
-    instrument: "critical",
-    phase: "unit1",
-    baseTitle: "Critical Reasoning Assessment — Course Checkpoint",
-    subtitle: "After the unit: Criminal Psychology for Everyone",
-    items: CRITICAL_UNIT1,
-  },
-];
+const BASE_CONTENT: BaseContent[] = PHASE_ORDER.flatMap((phase) => {
+  const subjectItems: Record<Phase, DiagItem[]> = {
+    before: SUBJECT_BEFORE,
+    third: SUBJECT_THIRD,
+    twothirds: SUBJECT_TWOTHIRDS,
+    after: SUBJECT_AFTER,
+  };
+  return [
+    {
+      instrument: "subject" as const,
+      phase,
+      baseTitle: `Criminal Psychology Check — ${PHASE_LABEL[phase]}`,
+      items: subjectItems[phase],
+    },
+    {
+      instrument: "general" as const,
+      phase,
+      baseTitle: `General Reasoning Check — ${PHASE_LABEL[phase]}`,
+      items: GENERAL_BLUEPRINT,
+    },
+  ];
+});
 
 const FORMATS: DiagFormat[] = ["mcq", "hybrid", "written"];
 
@@ -432,7 +460,7 @@ export const DIAGNOSTIC_SEED: DiagnosticSeed[] = BASE_CONTENT.flatMap((base) =>
     phase: base.phase,
     format,
     title: `${base.baseTitle} · ${FORMAT_LABEL[format]}`,
-    subtitle: base.subtitle,
+    subtitle: PHASE_LABEL[base.phase],
     instructions: instructionsFor(base.instrument, format),
     items: base.items,
   })),

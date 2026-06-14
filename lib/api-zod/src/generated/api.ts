@@ -594,8 +594,8 @@ export const GenerateReportResponse = zod.object({
  */
 export const ListReasoningAssessmentsResponseItem = zod.object({
   "id": zod.number(),
-  "instrument": zod.enum(['ethical', 'critical']),
-  "phase": zod.enum(['baseline', 'unit1', 'unit2', 'unit3', 'unit4']),
+  "instrument": zod.enum(['subject', 'general']),
+  "phase": zod.enum(['before', 'third', 'twothirds', 'after']),
   "format": zod.enum(['mcq', 'hybrid', 'written']).describe('The answer format of this version of the test: mcq (options only), hybrid (options + a short written justification), or written (a short written answer, no options).'),
   "title": zod.string(),
   "subtitle": zod.string().nullish(),
@@ -615,8 +615,8 @@ export const GetReasoningAssessmentParams = zod.object({
 
 export const GetReasoningAssessmentResponse = zod.object({
   "id": zod.number(),
-  "instrument": zod.enum(['ethical', 'critical']),
-  "phase": zod.enum(['baseline', 'unit1', 'unit2', 'unit3', 'unit4']),
+  "instrument": zod.enum(['subject', 'general']),
+  "phase": zod.enum(['before', 'third', 'twothirds', 'after']),
   "format": zod.enum(['mcq', 'hybrid', 'written']),
   "title": zod.string(),
   "subtitle": zod.string().nullish(),
@@ -717,7 +717,7 @@ export const SubmitReasoningAttemptResponse = zod.object({
 
 
 /**
- * @summary Course gradebook (coursework 80% + diagnostics 20%)
+ * @summary Course gradebook (coursework 100%; diagnostics are ungraded practice)
  */
 export const GetGradebookResponse = zod.object({
   "overallPercent": zod.number(),
@@ -739,8 +739,8 @@ export const GetGradebookResponse = zod.object({
 })),
   "reasoning": zod.array(zod.object({
   "id": zod.number(),
-  "instrument": zod.enum(['ethical', 'critical']),
-  "phase": zod.enum(['baseline', 'unit1', 'unit2', 'unit3', 'unit4']),
+  "instrument": zod.enum(['subject', 'general']),
+  "phase": zod.enum(['before', 'third', 'twothirds', 'after']),
   "title": zod.string(),
   "status": zod.enum(['not_started', 'in_progress', 'passed'])
 }))

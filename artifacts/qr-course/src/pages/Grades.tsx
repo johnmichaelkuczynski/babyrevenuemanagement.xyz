@@ -6,8 +6,15 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Link } from "wouter";
 
 const PHASE_SHORT: Record<string, string> = {
-  baseline: "Baseline",
-  unit1: "Unit 1",
+  before: "Before the course",
+  third: "One-third through",
+  twothirds: "Two-thirds through",
+  after: "After the course",
+};
+
+const INSTRUMENT_SHORT: Record<string, string> = {
+  subject: "Criminal Psychology",
+  general: "General Reasoning",
 };
 
 function statusPill(status: string) {
@@ -17,7 +24,7 @@ function statusPill(status: string) {
     : status === "in_progress"
     ? "bg-chart-4/20 text-chart-4"
     : "bg-secondary text-secondary-foreground";
-  const label = passed ? (status === "passed" ? "passed" : "submitted") : status.replace("_", " ");
+  const label = passed ? (status === "passed" ? "completed" : "submitted") : status.replace("_", " ");
   return <span className={`text-xs px-2 py-0.5 rounded-full ${cls}`}>{label}</span>;
 }
 
@@ -30,7 +37,8 @@ export default function Grades() {
         <div>
           <h1 className="text-3xl font-serif font-bold text-primary mb-2">Grades</h1>
           <p className="text-muted-foreground">
-            Your course grade combines coursework (80%) and diagnostic assessments (20%).
+            Your course grade is 100% coursework. Diagnostic checks are ungraded
+            practice and never affect your grade.
           </p>
         </div>
 
@@ -101,7 +109,10 @@ export default function Grades() {
 
             <div className="flex flex-col gap-4">
               <h2 className="text-xl font-serif font-semibold border-b pb-2">
-                Diagnostic Assessments
+                Diagnostic Checks{" "}
+                <span className="text-sm font-normal text-muted-foreground">
+                  (ungraded practice)
+                </span>
               </h2>
               <div className="flex flex-col divide-y border rounded-md">
                 {gb.reasoning.map((r) => (
@@ -110,7 +121,7 @@ export default function Grades() {
                       <div className="flex flex-col">
                         <span className="font-medium">{r.title}</span>
                         <span className="text-xs uppercase tracking-wider text-muted-foreground">
-                          {r.instrument === "ethical" ? "Professional Judgment" : "Critical Reasoning"} ·{" "}
+                          {INSTRUMENT_SHORT[r.instrument] ?? r.instrument} ·{" "}
                           {PHASE_SHORT[r.phase] ?? r.phase}
                         </span>
                       </div>

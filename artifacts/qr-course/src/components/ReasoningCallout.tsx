@@ -4,34 +4,42 @@ import type { ReasoningAssessmentSummary } from "@workspace/api-client-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
-import { Compass, Brain, CheckCircle2 } from "lucide-react";
+import { Scale, Brain, CheckCircle2 } from "lucide-react";
 
-type Phase = "baseline" | "unit1";
+type Phase = "before" | "third" | "twothirds" | "after";
+type Instrument = "subject" | "general";
 
 const HEADINGS: Record<Phase, string> = {
-  baseline: "Start here: Baseline reasoning assessments",
-  unit1: "End of Unit 1: Reasoning checkpoint",
+  before: "Optional warm-up: diagnostic checks",
+  third: "One-third through: diagnostic checks",
+  twothirds: "Two-thirds through: diagnostic checks",
+  after: "After the course: diagnostic checks",
 };
 
 const BLURBS: Record<Phase, string> = {
-  baseline:
-    "Take both short diagnostics before you begin so your progress can be measured against where you started.",
-  unit1: "Take both diagnostics one last time to capture your end-of-course growth.",
+  before:
+    "Try a quick check before you begin — entirely optional, ungraded, and retakeable as often as you like.",
+  third: "Check in on your reasoning a third of the way through. Ungraded practice.",
+  twothirds: "Check in again two-thirds of the way through. Ungraded practice.",
+  after: "Take a check after the course to see your growth. Ungraded practice.",
 };
 
-// One row per instrument. Each instrument now has three format versions; the
-// row links to the chooser (/reasoning) where the student picks a format, and
-// shows "Passed" once ANY version of that instrument has been submitted.
+const INSTRUMENT_LABELS: Record<Instrument, string> = {
+  subject: "Criminal Psychology",
+  general: "General Reasoning",
+};
+
+// One row per instrument. Each instrument has three format versions; the row
+// links to the chooser (/reasoning) where the student picks a format and length.
 function Row({
   instrument,
   versions,
 }: {
-  instrument: "ethical" | "critical";
+  instrument: Instrument;
   versions: ReasoningAssessmentSummary[];
 }) {
-  const isEthical = instrument === "ethical";
-  const Icon = isEthical ? Compass : Brain;
-  const passed = versions.some((v) => v.status === "passed");
+  const Icon = instrument === "subject" ? Scale : Brain;
+  const done = versions.some((v) => v.status === "passed");
   const inProgress = versions.some((v) => v.status === "in_progress");
   return (
     <Link href="/reasoning">
@@ -42,12 +50,12 @@ function Row({
         <div className="flex items-center gap-3 min-w-0">
           <Icon className="w-4 h-4 text-primary shrink-0" />
           <span className="text-sm font-medium truncate">
-            {isEthical ? "Professional Judgment" : "Critical Reasoning"}
+            {INSTRUMENT_LABELS[instrument]}
           </span>
         </div>
-        {passed ? (
+        {done ? (
           <span className="inline-flex items-center gap-1 text-xs text-chart-2 font-medium shrink-0">
-            <CheckCircle2 className="w-3.5 h-3.5" /> Passed
+            <CheckCircle2 className="w-3.5 h-3.5" /> Completed
           </span>
         ) : (
           <Button size="sm" variant="default" className="shrink-0">
@@ -64,7 +72,7 @@ export function ReasoningCallout({ phase }: { phase: Phase }) {
   const items = (data ?? []).filter((a) => a.phase === phase);
   if (items.length === 0) return null;
 
-  const instruments: ("ethical" | "critical")[] = ["ethical", "critical"];
+  const instruments: Instrument[] = ["subject", "general"];
   const grouped = instruments
     .map((inst) => ({
       instrument: inst,
@@ -78,7 +86,7 @@ export function ReasoningCallout({ phase }: { phase: Phase }) {
         <div className="flex items-center justify-between gap-3">
           <h3 className="font-serif font-semibold">{HEADINGS[phase]}</h3>
           <span className="text-xs uppercase tracking-wider text-muted-foreground">
-            20% of grade
+            Ungraded
           </span>
         </div>
         <p className="text-sm text-muted-foreground">{BLURBS[phase]}</p>

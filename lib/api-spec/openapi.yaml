@@ -571,7 +571,7 @@ paths:
     get:
       operationId: getGradebook
       tags: [reasoning]
-      summary: Course gradebook (coursework 80% + diagnostics 20%)
+      summary: Course gradebook (coursework 100%; diagnostics are ungraded practice)
       responses:
         "200":
           description: OK
@@ -1055,10 +1055,10 @@ components:
         id: { type: integer }
         instrument:
           type: string
-          enum: [ethical, critical]
+          enum: [subject, general]
         phase:
           type: string
-          enum: [baseline, unit1, unit2, unit3, unit4]
+          enum: [before, third, twothirds, after]
         format:
           type: string
           enum: [mcq, hybrid, written]
@@ -1095,10 +1095,10 @@ components:
         id: { type: integer }
         instrument:
           type: string
-          enum: [ethical, critical]
+          enum: [subject, general]
         phase:
           type: string
-          enum: [baseline, unit1, unit2, unit3, unit4]
+          enum: [before, third, twothirds, after]
         format:
           type: string
           enum: [mcq, hybrid, written]
@@ -1290,10 +1290,10 @@ components:
         id: { type: integer }
         instrument:
           type: string
-          enum: [ethical, critical]
+          enum: [subject, general]
         phase:
           type: string
-          enum: [baseline, unit1, unit2, unit3, unit4]
+          enum: [before, third, twothirds, after]
         title: { type: string }
         status:
           type: string

@@ -10,9 +10,8 @@ export type ReasoningAssessmentPhase = typeof ReasoningAssessmentPhase[keyof typ
 
 
 export const ReasoningAssessmentPhase = {
-  baseline: 'baseline',
-  unit1: 'unit1',
-  unit2: 'unit2',
-  unit3: 'unit3',
-  unit4: 'unit4',
+  before: 'before',
+  third: 'third',
+  twothirds: 'twothirds',
+  after: 'after',
 } as const;

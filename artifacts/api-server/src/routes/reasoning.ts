@@ -37,16 +37,16 @@ import {
 
 const router: IRouter = Router();
 
-const COURSEWORK_WEIGHT = 80;
-const DIAGNOSTIC_WEIGHT = 20;
+// Diagnostics are ungraded practice: the entire course grade is coursework.
+const COURSEWORK_WEIGHT = 100;
 
 function parseIdParam(raw: unknown): number {
   const s = Array.isArray(raw) ? raw[0] : (raw as string);
   return parseInt(s ?? "", 10);
 }
 
-type Instrument = "ethical" | "critical";
-type Phase = "baseline" | "unit1" | "unit2" | "unit3" | "unit4";
+type Instrument = "subject" | "general";
+type Phase = "before" | "third" | "twothirds" | "after";
 
 type ItemRowRaw = typeof diagnosticItemsTable.$inferSelect;
 
@@ -294,9 +294,10 @@ router.post("/reasoning/assessments/:assessmentId/start", async (req, res): Prom
   // structural blueprint, and the fallback if generation fails.
   const length = (parsedBody.data.length ?? "medium") as TestLength;
   const instrument = a.instrument as Instrument;
+  const phase = a.phase as Phase;
   const count = itemCountFor(instrument, length);
   const template = await loadTemplateItems(id);
-  const variant = await generateVariantItems(instrument, template, count);
+  const variant = await generateVariantItems(instrument, phase, template, count);
   await insertAttemptItems(id, created.id, variant);
   const items = await loadItemsForAttempt(id, created.id);
 
@@ -442,7 +443,7 @@ router.post("/reasoning/assessments/:assessmentId/submit", async (req, res): Pro
 });
 
 router.get("/reasoning/grades", async (_req, res) => {
-  // ---- Coursework (80%) ----
+  // ---- Coursework (100%) ----
   const assignments = await db
     .select()
     .from(assignmentsTable)
@@ -476,11 +477,11 @@ router.get("/reasoning/grades", async (_req, res) => {
       ? 0
       : coursework.reduce((s, c) => s + (c.bestScore ?? 0), 0) / coursework.length;
 
-  // ---- Diagnostics (20%) ----
-  // Each logical test is one (instrument, phase) group offered in three
-  // selectable answer formats. The formats are ALTERNATIVES, not extra required
-  // work: completing any one format counts the whole group as done. So progress
-  // is measured per group (expected 4 groups), not per assessment row (12).
+  // ---- Diagnostics (ungraded practice — 0% of grade) ----
+  // Listed for the student's own reference only; completing them never changes
+  // the grade. Each logical test is one (instrument, phase) group offered in
+  // three selectable answer formats; the formats are ALTERNATIVES, so progress
+  // is measured per group, not per assessment row.
   const assessments = await db
     .select()
     .from(diagnosticAssessmentsTable)
@@ -546,12 +547,10 @@ router.get("/reasoning/grades", async (_req, res) => {
       };
     });
   const passedCount = reasoning.filter((r) => r.status === "passed").length;
-  const reasoningPct =
-    reasoning.length === 0 ? 0 : (passedCount / reasoning.length) * 100;
 
+  // The whole grade is coursework; diagnostics are ungraded practice.
   const courseworkEarned = (courseworkAvg / 100) * COURSEWORK_WEIGHT;
-  const diagnosticsEarned = (reasoningPct / 100) * DIAGNOSTIC_WEIGHT;
-  const overall = courseworkEarned + diagnosticsEarned;
+  const overall = courseworkEarned;
 
   const letterGrade =
     overall >= 90
@@ -578,10 +577,10 @@ router.get("/reasoning/grades", async (_req, res) => {
         },
         {
           key: "diagnostics",
-          label: "Diagnostic assessments",
-          weightPercent: DIAGNOSTIC_WEIGHT,
-          earnedPercent: Math.round(diagnosticsEarned * 10) / 10,
-          detail: `${passedCount} of ${reasoning.length} assessments passed`,
+          label: "Diagnostic checks",
+          weightPercent: 0,
+          earnedPercent: 0,
+          detail: `Ungraded practice — does not affect your grade (${passedCount} of ${reasoning.length} taken)`,
         },
       ],
       coursework,

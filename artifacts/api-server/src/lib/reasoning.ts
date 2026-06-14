@@ -1,7 +1,7 @@
 import { chatText, chatJson } from "./ai";
 import { gradeAnswer } from "./grading";
 import { logger } from "./logger";
-import type { SkillArea } from "./diagnosticContent";
+import { genSpecFor, type SkillArea, type Phase } from "./diagnosticContent";
 
 // Shape of a persisted diagnostic item row (payload/scoring are jsonb).
 export interface DiagnosticItemRow {
@@ -22,17 +22,15 @@ export interface ResponseInput {
 
 export type DiagFormat = "mcq" | "hybrid" | "written";
 export type ReasoningMetricLike = ReasoningMetric;
-export type Instrument = "ethical" | "critical";
+export type Instrument = "subject" | "general";
 
-// How many questions each test length contains, per instrument. "medium" is the
-// previous default. Critical Reasoning cycles through five skill areas, so its
-// counts are multiples that stay balanced; Professional Judgment is one or a few
-// in-depth scenarios.
+// How many questions each test length contains, per instrument. Kept short so a
+// test never feels long; the same counts apply to both instruments.
 export type TestLength = "short" | "medium" | "long";
 
 const LENGTH_COUNTS: Record<Instrument, Record<TestLength, number>> = {
-  critical: { short: 5, medium: 10, long: 15 },
-  ethical: { short: 3, medium: 6, long: 10 },
+  subject: { short: 4, medium: 8, long: 12 },
+  general: { short: 4, medium: 8, long: 12 },
 };
 
 export function itemCountFor(
@@ -96,12 +94,12 @@ function referenceAnswer(item: DiagnosticItemRow): string {
   return opts[sc.correctIndex] ?? "";
 }
 
-// --- Model-judged correct option (mcq/hybrid, critical only) --------------
+// --- Model-judged correct option (mcq/hybrid, general only) ---------------
 // Independently determine the genuinely correct option for each item using the
 // model's own reasoning rather than trusting the stored answer key. The stored
 // key is passed only as a fallible hint. On any failure it falls back to the
 // stored key per item.
-export async function judgeCritical(
+export async function judgeReasoning(
   items: DiagnosticItemRow[],
 ): Promise<Map<number, number>> {
   const result = new Map<number, number>();
@@ -174,7 +172,7 @@ function buildMetrics(
   const metrics: ReasoningMetric[] = [
     { label: "Overall", value: `${correct} / ${total} (${percent}%)` },
   ];
-  if (instrument === "critical") {
+  if (instrument === "general") {
     for (const skill of Object.keys(SKILL_LABELS) as SkillArea[]) {
       const b = perSkill.get(skill);
       if (!b) continue;
@@ -236,8 +234,8 @@ export async function gradeAssessment(
   } else {
     // mcq / hybrid: correctness from the chosen option.
     const judged =
-      instrument === "critical"
-        ? await judgeCritical(items)
+      instrument === "general"
+        ? await judgeReasoning(items)
         : new Map<number, number>();
     for (const item of items) {
       const sc = itemScoring(item);
@@ -273,7 +271,7 @@ function deterministicFeedback(
   summary: ScoreSummary,
 ): string {
   const overall = summary.metrics.find((m) => m.label === "Overall");
-  if (instrument === "critical") {
+  if (instrument === "general") {
     const weak = summary.metrics
       .filter((m) => m.label !== "Overall")
       .filter((m) => {
@@ -285,9 +283,9 @@ function deterministicFeedback(
       weak.length > 0
         ? ` Your strongest opportunity for growth is in ${weak.join(", ")}; revisit how to spot assumptions and what conclusions the evidence actually licenses.`
         : " Your reasoning was solid across the items.";
-    return `Thank you for completing this critical-reasoning checkpoint.${overall?.value ? ` You scored ${overall.value}.` : ""}${weakLine} Remember that a strong answer follows only from the reasons given — distinguish what is stated, what is assumed, and what is merely plausible.`;
+    return `Thanks for working through this reasoning check.${overall?.value ? ` You scored ${overall.value}.` : ""}${weakLine} Remember that a strong answer follows only from the reasons given — distinguish what is stated, what is assumed, and what is merely plausible.`;
   }
-  return `Thank you for working through these everyday-judgment scenarios.${overall?.value ? ` You scored ${overall.value}.` : ""} Strong professional judgment rests on reasons you could defend to anyone affected by your choice — honesty, fairness, and the rights of the people involved — rather than on convenience or self-interest.`;
+  return `Thanks for working through these criminal-psychology cases.${overall?.value ? ` You scored ${overall.value}.` : ""} Strong answers here come from reasoning about the case — looking for multiple interacting causes, weighing how reliable the evidence is, and resisting single-cause or 'obvious' explanations.`;
 }
 
 export async function generateFeedback(
@@ -299,9 +297,9 @@ export async function generateFeedback(
     .map((m) => `- ${m.label}: ${m.value}${m.detail ? ` (${m.detail})` : ""}`)
     .join("\n");
   const system =
-    instrument === "ethical"
-      ? "You are an instructor giving warm, specific feedback on a student's professional-judgment assessment about realistic everyday-judgment scenarios. 2-4 sentences. Note their overall performance and offer one concrete way to deepen their reasoning. Use only the metrics provided; do not invent numbers. Plain prose, no markdown headings."
-      : "You are a critical-thinking instructor giving warm, specific feedback on a student's reasoning assessment. 2-4 sentences. Note overall performance and the skill areas to strengthen, using only the metrics provided. Plain prose, no markdown headings.";
+    instrument === "subject"
+      ? "You are an instructor giving warm, specific feedback on a student's criminal-psychology reasoning check (realistic short cases about the course material). 2-4 sentences. Note their overall performance and offer one concrete way to reason better about cases. Use only the metrics provided; do not invent numbers. Plain prose, no markdown headings."
+      : "You are a reasoning instructor giving warm, specific feedback on a student's general-reasoning check. 2-4 sentences. Note overall performance and the skill areas to strengthen, using only the metrics provided. Plain prose, no markdown headings.";
   const user = `Assessment: ${assessmentTitle}\nResult summary: ${summary.headline}\nMetrics:\n${metricsText}`;
   try {
     const text = await chatText(system, user);
@@ -345,12 +343,13 @@ function templateContent(items: DiagnosticItemRow[]): GeneratedItemContent[] {
   }));
 }
 
-async function generateCriticalVariant(
+async function generateGeneralVariant(
   items: DiagnosticItemRow[],
   count: number,
+  phase: Phase,
 ): Promise<GeneratedItemContent[]> {
   // Build a skill-area list of the requested length by cycling the template's
-  // skill areas (falling back to the five canonical critical-thinking skills).
+  // skill areas (falling back to the five canonical reasoning skills).
   const pool = items.map((it) => itemScoring(it).skillArea ?? "analysis");
   const base =
     pool.length > 0
@@ -358,11 +357,13 @@ async function generateCriticalVariant(
       : ["analysis", "inference", "evaluation", "deduction", "induction"];
   const skills = Array.from({ length: count }, (_, i) => base[i % base.length]!);
   const examplePrompts = items.slice(0, 3).map((it) => it.prompt);
+  const spec = genSpecFor("general", phase);
   const system =
-    "You are an assessment author writing ORIGINAL critical-thinking multiple-choice questions. " +
-    "Each question must measure reasoning (not recall), have exactly four answer options with one unambiguously best answer, and target the requested skill area. " +
+    "You are an assessment author writing ORIGINAL general-reasoning multiple-choice questions. " +
+    "Each question must measure genuine reasoning (not recall, and NOT mere agreement with authority), have exactly four answer options with one unambiguously best answer, and target the requested skill area. " +
     "List the CORRECT option FIRST, followed by three plausible but wrong distractors. " +
-    "Write fresh questions on varied everyday topics — do NOT reuse the example wording. " +
+    "Write fresh questions on varied, neutral everyday topics — do NOT reuse the example wording. " +
+    `Difficulty: ${spec.level} ` +
     'Respond ONLY as JSON of the form {"items":[{"prompt":"...","options":["correct","wrong","wrong","wrong"],"skillArea":"analysis"}]}.';
   const user =
     `Write ${skills.length} new questions, one per skill area in THIS exact order: ${JSON.stringify(skills)}.\n` +
@@ -373,21 +374,21 @@ async function generateCriticalVariant(
   }>(system, user);
   const raw = out.items;
   if (!Array.isArray(raw) || raw.length !== skills.length) {
-    throw new Error("critical variant: wrong item count");
+    throw new Error("general variant: wrong item count");
   }
   return raw.map((q, i) => {
     const expectedSkill = skills[i]!;
     const prompt = q.prompt;
     const options = q.options;
     if (typeof prompt !== "string" || prompt.trim().length < 8) {
-      throw new Error("critical variant: bad prompt");
+      throw new Error("general variant: bad prompt");
     }
     if (
       !Array.isArray(options) ||
       options.length !== 4 ||
       !options.every((o) => typeof o === "string" && o.trim().length > 0)
     ) {
-      throw new Error("critical variant: bad options");
+      throw new Error("general variant: bad options");
     }
     const correctText = (options[0] as string).trim();
     const { options: rotated, correctIndex } = rotateOptions(options as string[]);
@@ -404,86 +405,85 @@ async function generateCriticalVariant(
   });
 }
 
-async function generateEthicalVariant(
-  items: DiagnosticItemRow[],
+async function generateSubjectVariant(
   count: number,
+  phase: Phase,
+  examplePrompts: string[],
 ): Promise<GeneratedItemContent[]> {
-  // Each scenario is generated independently so the test can be any length.
-  const generated = await Promise.all(
-    Array.from({ length: count }, () => generateOneEthicalScenario(items)),
-  );
-  return generated.flat();
-}
-
-async function generateOneEthicalScenario(
-  items: DiagnosticItemRow[],
-): Promise<GeneratedItemContent[]> {
-  const template = items[0];
-  if (!template) throw new Error("ethical variant: no template item");
-  const optionCount = itemOptions(template).length || 4;
+  const spec = genSpecFor("subject", phase);
   const system =
-    "You are an assessment author writing an ORIGINAL everyday-judgment scenario for a professional-judgment test. " +
-    "Produce a realistic, self-contained scenario about a named person (a student, a friend, a teammate) facing a hard decision where legitimate considerations conflict — honesty, fairness, loyalty, privacy, peer pressure, or owning up to a mistake. End the scenario with the question 'What should [name] do?'. " +
-    "Then write answer options. The FIRST option must be the principled, defensible choice (the genuinely best answer); the rest are tempting but worse choices (self-interest, going along with a request, or a cop-out). " +
-    "Also write a one-to-two sentence model answer explaining why the principled choice is best. " +
-    "Write a DISTINCT scenario from any example. " +
-    `Respond ONLY as JSON: {"prompt":"scenario text ending with the question","options":["principled best choice","worse choice","worse choice","worse choice"],"modelAnswer":"why the first option is best"}.`;
+    "You are an assessment author writing ORIGINAL criminal-psychology questions for an intro course. " +
+    "Every question must be a short, realistic CASE (a named person or situation) that rewards REASONING about the case, never recall of a definition or a one-word fact. " +
+    "Each has exactly four answer options with one clearly best, well-supported answer. " +
+    "List the CORRECT option FIRST, followed by three plausible but worse distractors (an over-simple single-cause claim, an 'obvious'/sensational answer, or an irrelevant one). " +
+    "Also write a one-sentence model answer explaining why the first option is best. " +
+    "Keep the subject matter tasteful and age-appropriate — never graphic or sensational. " +
+    `Difficulty: ${spec.level} ` +
+    `Stay strictly within this scope: ${spec.topicFocus} ` +
+    'Respond ONLY as JSON of the form {"items":[{"prompt":"short case ending in a question","options":["best","worse","worse","worse"],"modelAnswer":"why the first option is best"}]}.';
   const user =
-    `Write ONE new scenario with exactly ${optionCount} options (the FIRST being the principled, correct choice).\n` +
-    `For style only (do NOT copy it): ${JSON.stringify(template.prompt.slice(0, 200))}`;
+    `Write ${count} new, distinct criminal-psychology case questions within the scope above.\n` +
+    `For style only (do NOT copy these): ${JSON.stringify(examplePrompts)}.`;
   const out = await chatJson<{
-    prompt?: unknown;
-    options?: unknown;
-    modelAnswer?: unknown;
+    items?: { prompt?: unknown; options?: unknown; modelAnswer?: unknown }[];
   }>(system, user);
-  const prompt = out.prompt;
-  const options = out.options;
-  const modelAnswer = out.modelAnswer;
-  if (typeof prompt !== "string" || prompt.trim().length < 40) {
-    throw new Error("ethical variant: bad prompt");
+  const raw = out.items;
+  if (!Array.isArray(raw) || raw.length !== count) {
+    throw new Error("subject variant: wrong item count");
   }
-  if (
-    !Array.isArray(options) ||
-    options.length !== optionCount ||
-    !options.every((o) => typeof o === "string" && o.trim().length > 0)
-  ) {
-    throw new Error("ethical variant: bad options");
-  }
-  const correctText = (options[0] as string).trim();
-  const model =
-    typeof modelAnswer === "string" && modelAnswer.trim().length > 0
-      ? modelAnswer.trim()
-      : correctText;
-  const { options: rotated, correctIndex } = rotateOptions(options as string[]);
-  return [
-    {
-      type: "mcq",
+  return raw.map((q) => {
+    const prompt = q.prompt;
+    const options = q.options;
+    const modelAnswer = q.modelAnswer;
+    if (typeof prompt !== "string" || prompt.trim().length < 20) {
+      throw new Error("subject variant: bad prompt");
+    }
+    if (
+      !Array.isArray(options) ||
+      options.length !== 4 ||
+      !options.every((o) => typeof o === "string" && o.trim().length > 0)
+    ) {
+      throw new Error("subject variant: bad options");
+    }
+    const correctText = (options[0] as string).trim();
+    const model =
+      typeof modelAnswer === "string" && modelAnswer.trim().length > 0
+        ? modelAnswer.trim()
+        : correctText;
+    const { options: rotated, correctIndex } = rotateOptions(options as string[]);
+    return {
+      type: "mcq" as const,
       prompt: prompt.trim(),
       payload: { options: rotated },
       scoring: { correctIndex, modelAnswer: model },
-    },
-  ];
+    };
+  });
 }
 
 export async function generateVariantItems(
   instrument: Instrument,
+  phase: Phase,
   templateItems: DiagnosticItemRow[],
   count: number,
 ): Promise<GeneratedItemContent[]> {
-  if (templateItems.length === 0 || count <= 0) return [];
+  if (count <= 0) return [];
   try {
     const generated =
-      instrument === "critical"
-        ? await generateCriticalVariant(templateItems, count)
-        : await generateEthicalVariant(templateItems, count);
+      instrument === "general"
+        ? await generateGeneralVariant(templateItems, count, phase)
+        : await generateSubjectVariant(
+            count,
+            phase,
+            templateItems.slice(0, 3).map((it) => it.prompt),
+          );
     if (generated.length === count) return generated;
     logger.warn(
-      { instrument, want: count, got: generated.length },
+      { instrument, phase, want: count, got: generated.length },
       "Reasoning variant: count mismatch, using template",
     );
   } catch (err) {
     logger.warn(
-      { instrument, err: err instanceof Error ? err.message : String(err) },
+      { instrument, phase, err: err instanceof Error ? err.message : String(err) },
       "Reasoning variant generation failed, using template items",
     );
   }
