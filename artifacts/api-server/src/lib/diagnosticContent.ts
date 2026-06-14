@@ -1,31 +1,24 @@
 // ---------------------------------------------------------------------------
 // Original content for the embedded diagnostic reasoning assessments.
 //
-// Two instruments, each administered twice (a baseline before the course and a
-// checkpoint after the single unit) with MUTUALLY UNIQUE items:
-//   - Professional Judgment (DIT-style): a realistic everyday scenario; the
-//     student rates ~12 considerations by importance and ranks the most
-//     important few. A principled-judgment ("P") index is computed from how
-//     postconventional considerations are ranked. Stages: P = personal
-//     interest, M = maintaining norms/rules/approval, PC = postconventional/
-//     principled, X = meaningless (a reliability check — ranking it high
-//     signals careless responding).
-//   - Critical Reasoning (CCTST-style): multiple-choice items spanning analysis,
-//     inference, evaluation, deduction, and induction.
+// Two instruments, each administered at a baseline (before the course) and a
+// checkpoint (after the single unit), with MUTUALLY UNIQUE items:
+//   - Professional Judgment: realistic everyday-judgment scenarios where
+//     legitimate considerations conflict. The principled choice is keyed first.
+//   - Critical Reasoning (CCTST-style): items spanning analysis, inference,
+//     evaluation, deduction, and induction.
 //
-// All items are ORIGINAL. No real DIT or CCTST items are reproduced. For every
-// MCQ the correct option is written FIRST; at seed time options are rotated so
-// the correct answer lands at a varied index (see seedDiagnostics.ts).
+// Each (instrument, phase) is offered in THREE selectable answer formats that
+// share the same questions:
+//   - mcq     — pick the single best option.
+//   - hybrid  — pick the best option AND write a short justification.
+//   - written — no options shown; write a short answer in your own words.
+//
+// All items are ORIGINAL. For every item the correct option is written FIRST;
+// at seed time options are rotated so the correct answer lands at a varied
+// index (see seedDiagnostics.ts). `modelAnswer` is the ideal short written
+// response used to grade the written/hybrid formats.
 // ---------------------------------------------------------------------------
-
-export type Stage = "P" | "M" | "PC" | "X";
-
-export type DilemmaItem = {
-  prompt: string;
-  decisionOptions: string[];
-  considerations: { text: string; stage: Stage }[];
-  rankCount: number;
-};
 
 export type SkillArea =
   | "analysis"
@@ -34,90 +27,99 @@ export type SkillArea =
   | "deduction"
   | "induction";
 
-export type McqItem = {
-  prompt: string;
-  // Correct option is listed FIRST. Rotated at seed time.
-  options: string[];
-  skillArea: SkillArea;
-};
-
 export type Phase = "baseline" | "unit1";
+
+export type DiagFormat = "mcq" | "hybrid" | "written";
+
+// A single unified diagnostic item. The correct option is listed FIRST and is
+// rotated to a random index at seed time. `modelAnswer` is the reference answer
+// for grading the written/hybrid formats.
+export type DiagItem = {
+  prompt: string;
+  options: string[];
+  modelAnswer: string;
+  skillArea?: SkillArea;
+};
 
 export type DiagnosticSeed = {
   instrument: "ethical" | "critical";
   phase: Phase;
+  format: DiagFormat;
   title: string;
   subtitle: string;
   instructions: string;
-  dilemmas?: DilemmaItem[];
-  mcqs?: McqItem[];
+  items: DiagItem[];
 };
-
-const ETHICAL_INSTRUCTIONS =
-  "Read the scenario and decide what the person should do. Then rate each consideration by how important it was to your decision, and finally rank your most important considerations. There are no right or wrong answers here — answer honestly. Submitting completes the assessment and you'll receive written feedback on your reasoning.";
-
-const CRITICAL_INSTRUCTIONS =
-  "Answer each question by selecting the single best option. Work carefully — these questions measure reasoning, not recall. Submitting completes the assessment and you'll receive written feedback on your performance.";
 
 // ===========================================================================
-// PROFESSIONAL JUDGMENT — two unique everyday scenarios
+// Format-specific instructions
 // ===========================================================================
 
-const DILEMMA_BASELINE: DilemmaItem = {
-  prompt:
-    "Mia helped run a small experiment for her group's science-fair project, testing whether people remember a short list of words better in a quiet room than in a noisy one. The real difference her group found was tiny. The day before judging, a teammate asks Mia to describe the result on their poster as a 'huge, dramatic difference,' even though it was barely there, because it 'sounds more impressive.' The actual numbers wouldn't change — only how they're described.\n\nShould Mia refuse and present the result honestly?",
-  decisionOptions: [
-    "Mia should refuse and present the result honestly",
-    "Can't decide",
-    "Mia should exaggerate the result to sound impressive, as asked",
-  ],
-  considerations: [
-    { text: "Whether refusing would make Mia look difficult and upset her teammates.", stage: "P" },
-    { text: "Whether the judges and audience deserve an accurate description so they can judge fairly.", stage: "PC" },
-    { text: "Whether Mia's job is simply to do whatever the group decides.", stage: "M" },
-    { text: "Whether calling a tiny difference 'huge,' even with the same numbers, misleads the people listening.", stage: "PC" },
-    { text: "Whether Mia would feel more comfortable just going along with the request.", stage: "P" },
-    { text: "Whether the science-fair rules call for honest reporting of results.", stage: "M" },
-    { text: "Whether Mia might be thanked by the group for being a cooperative 'team player'.", stage: "P" },
-    { text: "Whether exaggerating the result chips away at the honesty the whole project depends on.", stage: "PC" },
-    { text: "Whether the group should have used nicer poster colors.", stage: "X" },
-    { text: "Whether 'everyone hypes up their results anyway.'", stage: "M" },
-    { text: "Whether the people reading the poster deserve a faithful account of what really happened.", stage: "PC" },
-    { text: "Whether refusing might cost Mia a good grade from her teammates' point of view.", stage: "P" },
-  ],
-  rankCount: 4,
+const FORMAT_LABEL: Record<DiagFormat, string> = {
+  mcq: "Multiple Choice",
+  hybrid: "Hybrid",
+  written: "Written",
 };
 
-const DILEMMA_UNIT1: DilemmaItem = {
-  prompt:
-    "Theo runs the sign-up sheet for the school chess club. People wrote down their phone numbers only so they could get reminders about chess meetings. Now a friend running an unrelated bake-sale fundraiser asks Theo to share those numbers to send out fundraiser texts. The friend says 'it's for a good cause, and you have the numbers anyway.'\n\nShould Theo refuse to hand over the private phone numbers?",
-  decisionOptions: [
-    "Theo should refuse to share the private numbers",
-    "Can't decide",
-    "Theo should share the numbers, as his friend asks",
-  ],
-  considerations: [
-    { text: "Whether the people who signed up have a right to the privacy they were promised.", stage: "PC" },
-    { text: "Whether Theo could get blamed if people found out their numbers were shared.", stage: "P" },
-    { text: "Whether keeping a promise to people matters even when breaking it would help a good cause.", stage: "PC" },
-    { text: "Whether the friend's say-so is enough to make sharing okay.", stage: "M" },
-    { text: "Whether Theo would gain his friend's gratitude by handing the numbers over.", stage: "P" },
-    { text: "Whether the school's rules about personal information cover how the list may be used.", stage: "M" },
-    { text: "Whether Theo personally likes the friend asking.", stage: "P" },
-    { text: "Whether the people on the list would agree if Theo actually asked them first.", stage: "PC" },
-    { text: "Whether the fundraiser texts should use a fun emoji.", stage: "X" },
-    { text: "Whether 'you have the numbers anyway' is a good enough reason.", stage: "M" },
-    { text: "Whether trust between the club and its members depends on honoring such promises.", stage: "PC" },
-    { text: "Whether refusing could cause an argument with his friend.", stage: "P" },
-  ],
-  rankCount: 4,
-};
+function instructionsFor(
+  instrument: "ethical" | "critical",
+  format: DiagFormat,
+): string {
+  const subject =
+    instrument === "ethical"
+      ? "Read each scenario and decide what the person should do"
+      : "Answer each question — these measure reasoning, not recall";
+  const body =
+    format === "mcq"
+      ? `${subject} by selecting the single best option.`
+      : format === "hybrid"
+        ? `${subject} by selecting the best option, then write a sentence or two explaining your reasoning.`
+        : `${subject}. No answer options are shown — write a short answer in your own words, a sentence or two, explaining your thinking.`;
+  return `${body} Submitting completes the assessment and you'll receive written feedback${
+    instrument === "ethical" ? " on your reasoning" : " on your performance"
+  }.`;
+}
+
+// ===========================================================================
+// PROFESSIONAL JUDGMENT — two unique everyday-judgment scenarios
+// (principled choice keyed FIRST)
+// ===========================================================================
+
+const ETHICAL_BASELINE: DiagItem[] = [
+  {
+    prompt:
+      "Mia helped run a small experiment for her group's science-fair project, testing whether people remember a short list of words better in a quiet room than in a noisy one. The real difference her group found was tiny. The day before judging, a teammate asks Mia to describe the result on their poster as a 'huge, dramatic difference,' even though it was barely there, because it 'sounds more impressive.' The actual numbers wouldn't change — only how they're described.\n\nWhat should Mia do?",
+    options: [
+      "Refuse and present the result honestly, describing the difference as the small one it actually was.",
+      "Go along with the teammate and describe the tiny difference as 'huge and dramatic' because it sounds more impressive.",
+      "Quietly remove the result from the poster so no one has to decide how to describe it.",
+      "Leave the wording up to whichever teammate cares most, since the numbers don't change.",
+    ],
+    modelAnswer:
+      "Mia should refuse and describe the result honestly. The judges and audience are entitled to an accurate account, and calling a tiny difference 'huge' misleads them and undermines the honesty the whole project depends on — looking like a cooperative team player matters far less than reporting the truth.",
+  },
+];
+
+const ETHICAL_UNIT1: DiagItem[] = [
+  {
+    prompt:
+      "Theo runs the sign-up sheet for the school chess club. People wrote down their phone numbers only so they could get reminders about chess meetings. Now a friend running an unrelated bake-sale fundraiser asks Theo to share those numbers to send out fundraiser texts. The friend says 'it's for a good cause, and you have the numbers anyway.'\n\nWhat should Theo do?",
+    options: [
+      "Refuse to share the numbers, since people gave them only for chess reminders and were promised privacy.",
+      "Hand the numbers over because it's for a good cause and he already has them anyway.",
+      "Share only the numbers of people he personally likes, and keep the rest private.",
+      "Pass the list to his friend and let the friend decide who to text.",
+    ],
+    modelAnswer:
+      "Theo should refuse to share the numbers. People gave them only for chess reminders and were promised privacy; a good cause doesn't override that promise, and honoring it is what keeps club members able to trust the club — his friend's gratitude doesn't justify breaking that trust.",
+  },
+];
 
 // ===========================================================================
 // CRITICAL REASONING — two unique 10-item forms (correct option listed first)
 // ===========================================================================
 
-const CRITICAL_BASELINE: McqItem[] = [
+const CRITICAL_BASELINE: DiagItem[] = [
   {
     prompt:
       "Consider: 'All students who studied passed the exam. Maria studied. So Maria passed.' Which unstated assumption does the argument rely on?",
@@ -127,6 +129,8 @@ const CRITICAL_BASELINE: McqItem[] = [
       "Maria always studies for her exams.",
       "The exam was unusually difficult.",
     ],
+    modelAnswer:
+      "It assumes Maria is one of the students covered by 'all students who studied' — that her studying puts her in the group the first statement describes.",
     skillArea: "analysis",
   },
   {
@@ -138,6 +142,8 @@ const CRITICAL_BASELINE: McqItem[] = [
       "Fewer accidents mean lower insurance costs.",
       "Saving money benefits everyone.",
     ],
+    modelAnswer:
+      "The main conclusion is that the city should keep the policy; the other statements are reasons offered in support of it.",
     skillArea: "analysis",
   },
   {
@@ -149,6 +155,8 @@ const CRITICAL_BASELINE: McqItem[] = [
       "Poor sleep is what causes people to stop exercising.",
       "Anyone who wants good sleep must exercise daily.",
     ],
+    modelAnswer:
+      "Only that daily exercisers are more likely to report good sleep than non-exercisers — an association, not a guarantee or a proven cause.",
     skillArea: "inference",
   },
   {
@@ -160,6 +168,8 @@ const CRITICAL_BASELINE: McqItem[] = [
       "Drowning incidents cause ice-cream sales.",
       "The data must simply be mistaken.",
     ],
+    modelAnswer:
+      "That both probably rise because of a shared third factor such as hot weather — the correlation doesn't mean one causes the other.",
     skillArea: "inference",
   },
   {
@@ -170,6 +180,8 @@ const CRITICAL_BASELINE: McqItem[] = [
       "An advertisement produced by the manufacturer.",
       "A popular wellness blog post.",
     ],
+    modelAnswer:
+      "A large, peer-reviewed clinical trial — independent, systematic evidence is far stronger than a single testimonial, an ad, or a blog post.",
     skillArea: "evaluation",
   },
   {
@@ -181,6 +193,8 @@ const CRITICAL_BASELINE: McqItem[] = [
       "Contains an internal contradiction.",
       "Appeals purely to emotion.",
     ],
+    modelAnswer:
+      "It rests on one anecdote and ignores the strong statistical evidence that smoking is harmful; a single exception doesn't overturn the overall pattern.",
     skillArea: "evaluation",
   },
   {
@@ -192,6 +206,8 @@ const CRITICAL_BASELINE: McqItem[] = [
       "Invalid, because it assumes what it proves.",
       "Invalid, because the premises are uncertain.",
     ],
+    modelAnswer:
+      "Valid — the conclusion follows necessarily from the two premises.",
     skillArea: "deduction",
   },
   {
@@ -203,6 +219,8 @@ const CRITICAL_BASELINE: McqItem[] = [
       "The streets are dry for some other reason.",
       "Nothing at all follows.",
     ],
+    modelAnswer:
+      "It did not rain — if rain would have made the streets wet and they are not wet, then it cannot have rained.",
     skillArea: "deduction",
   },
   {
@@ -214,6 +232,8 @@ const CRITICAL_BASELINE: McqItem[] = [
       "Polls are always wrong.",
       "Voting is supposed to be private.",
     ],
+    modelAnswer:
+      "Five friends are far too small and unrepresentative a sample to support a prediction about the whole country.",
     skillArea: "induction",
   },
   {
@@ -225,11 +245,13 @@ const CRITICAL_BASELINE: McqItem[] = [
       "Fertilizer is required for any plant growth at all.",
       "The result was pure coincidence.",
     ],
+    modelAnswer:
+      "Because everything else was held equal, the fertilizer probably caused the extra growth.",
     skillArea: "induction",
   },
 ];
 
-const CRITICAL_UNIT1: McqItem[] = [
+const CRITICAL_UNIT1: DiagItem[] = [
   {
     prompt: "'We should ban the chemical because it's unnatural.' This argument assumes that:",
     options: [
@@ -238,6 +260,8 @@ const CRITICAL_UNIT1: McqItem[] = [
       "Bans are easy to enforce.",
       "Most people dislike the chemical.",
     ],
+    modelAnswer:
+      "It assumes that natural things are safe and unnatural ones harmful — an unsupported leap from 'unnatural' to 'should be banned.'",
     skillArea: "analysis",
   },
   {
@@ -249,6 +273,8 @@ const CRITICAL_UNIT1: McqItem[] = [
       "The bridge is quite old.",
       "Inspections are expensive.",
     ],
+    modelAnswer:
+      "'Cracks have appeared on the bridge' is a premise; 'the bridge must be inspected' is the conclusion it supports.",
     skillArea: "analysis",
   },
   {
@@ -260,6 +286,8 @@ const CRITICAL_UNIT1: McqItem[] = [
       "Skipping breakfast should be banned.",
       "Tests should always be held in the afternoon.",
     ],
+    modelAnswer:
+      "Only that eating breakfast is associated with higher morning test scores — an association, not a sweeping cause or a policy.",
     skillArea: "inference",
   },
   {
@@ -270,6 +298,8 @@ const CRITICAL_UNIT1: McqItem[] = [
       "Only mugs are on sale.",
       "The shelf is completely full.",
     ],
+    modelAnswer:
+      "The blue mug is on sale — it's on the shelf, and everything on the shelf is on sale.",
     skillArea: "inference",
   },
   {
@@ -280,6 +310,8 @@ const CRITICAL_UNIT1: McqItem[] = [
       "A dramatic recent news headline.",
       "A popular movie about crime.",
     ],
+    modelAnswer:
+      "Official crime statistics gathered over several years — systematic data over time, not impressions, a headline, or a movie.",
     skillArea: "evaluation",
   },
   {
@@ -291,6 +323,8 @@ const CRITICAL_UNIT1: McqItem[] = [
       "Is far too detailed.",
       "Simply restates the policy.",
     ],
+    modelAnswer:
+      "It attacks the person instead of addressing her actual argument — an ad hominem that leaves the argument itself unanswered.",
     skillArea: "evaluation",
   },
   {
@@ -302,6 +336,8 @@ const CRITICAL_UNIT1: McqItem[] = [
       "All even numbers are divisible by 4.",
       "Nothing follows.",
     ],
+    modelAnswer:
+      "Twelve is even — it's divisible by 4, and anything divisible by 4 is even.",
     skillArea: "deduction",
   },
   {
@@ -313,6 +349,8 @@ const CRITICAL_UNIT1: McqItem[] = [
       "Invalid, because practice never helps.",
       "Valid only on weekends.",
     ],
+    modelAnswer:
+      "Invalid — improvement could have come from another cause, so it doesn't follow that she practiced (affirming the consequent).",
     skillArea: "deduction",
   },
   {
@@ -324,6 +362,8 @@ const CRITICAL_UNIT1: McqItem[] = [
       "Certainly true.",
       "Impossible to evaluate at all.",
     ],
+    modelAnswer:
+      "Hasty — three cases are far too few to support an 'always' generalization.",
     skillArea: "induction",
   },
   {
@@ -335,41 +375,65 @@ const CRITICAL_UNIT1: McqItem[] = [
       "The drug works only inside trials.",
       "The drug is probably unsafe.",
     ],
+    modelAnswer:
+      "That it will likely help most future patients with the condition — a strong, well-designed trial supports a probable prediction, not a certainty about every disease.",
     skillArea: "induction",
   },
 ];
 
-export const DIAGNOSTIC_SEED: DiagnosticSeed[] = [
+// ===========================================================================
+// Seed expansion — each (instrument, phase) in all three formats
+// ===========================================================================
+
+type BaseContent = {
+  instrument: "ethical" | "critical";
+  phase: Phase;
+  baseTitle: string;
+  subtitle: string;
+  items: DiagItem[];
+};
+
+const BASE_CONTENT: BaseContent[] = [
   {
     instrument: "ethical",
     phase: "baseline",
-    title: "Professional Judgment Inventory — Baseline",
+    baseTitle: "Professional Judgment Inventory — Baseline",
     subtitle: "Before the course",
-    instructions: ETHICAL_INSTRUCTIONS,
-    dilemmas: [DILEMMA_BASELINE],
+    items: ETHICAL_BASELINE,
   },
   {
     instrument: "critical",
     phase: "baseline",
-    title: "Critical Reasoning Assessment — Baseline",
+    baseTitle: "Critical Reasoning Assessment — Baseline",
     subtitle: "Before the course",
-    instructions: CRITICAL_INSTRUCTIONS,
-    mcqs: CRITICAL_BASELINE,
+    items: CRITICAL_BASELINE,
   },
   {
     instrument: "ethical",
     phase: "unit1",
-    title: "Professional Judgment Inventory — Course Checkpoint",
+    baseTitle: "Professional Judgment Inventory — Course Checkpoint",
     subtitle: "After the unit: Criminal Psychology for Everyone",
-    instructions: ETHICAL_INSTRUCTIONS,
-    dilemmas: [DILEMMA_UNIT1],
+    items: ETHICAL_UNIT1,
   },
   {
     instrument: "critical",
     phase: "unit1",
-    title: "Critical Reasoning Assessment — Course Checkpoint",
+    baseTitle: "Critical Reasoning Assessment — Course Checkpoint",
     subtitle: "After the unit: Criminal Psychology for Everyone",
-    instructions: CRITICAL_INSTRUCTIONS,
-    mcqs: CRITICAL_UNIT1,
+    items: CRITICAL_UNIT1,
   },
 ];
+
+const FORMATS: DiagFormat[] = ["mcq", "hybrid", "written"];
+
+export const DIAGNOSTIC_SEED: DiagnosticSeed[] = BASE_CONTENT.flatMap((base) =>
+  FORMATS.map((format) => ({
+    instrument: base.instrument,
+    phase: base.phase,
+    format,
+    title: `${base.baseTitle} · ${FORMAT_LABEL[format]}`,
+    subtitle: base.subtitle,
+    instructions: instructionsFor(base.instrument, format),
+    items: base.items,
+  })),
+);

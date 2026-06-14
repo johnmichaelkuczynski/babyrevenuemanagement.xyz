@@ -160,6 +160,11 @@ export const diagnosticAssessmentsTable = pgTable("diagnostic_assessments", {
   id: serial("id").primaryKey(),
   instrument: text("instrument").notNull(), // ethical | critical
   phase: text("phase").notNull(), // baseline | unit1 | unit2 | unit3 | unit4
+  // Answer format of this version of the test: mcq (options only), hybrid
+  // (options + a short written justification), or written (short written
+  // justification, no options). Each (instrument, phase) is offered in all
+  // three formats as separate selectable assessments.
+  format: text("format").notNull().default("mcq"), // mcq | hybrid | written
   title: text("title").notNull(),
   subtitle: text("subtitle"),
   instructions: text("instructions").notNull(),
@@ -217,9 +222,10 @@ export const diagnosticResponsesTable = pgTable("diagnostic_responses", {
   itemId: integer("item_id")
     .notNull()
     .references(() => diagnosticItemsTable.id, { onDelete: "cascade" }),
-  selectedIndex: integer("selected_index"), // mcq — chosen option index
-  decisionIndex: integer("decision_index"), // dilemma — chosen decision index
-  ratings: jsonb("ratings"), // dilemma — importance rating per consideration
-  ranking: jsonb("ranking"), // dilemma — consideration indices, most-important first
-  isCorrect: boolean("is_correct"), // mcq only — null for dilemma items
+  selectedIndex: integer("selected_index"), // mcq/hybrid — chosen option index
+  writtenAnswer: text("written_answer"), // hybrid/written — free-text answer
+  decisionIndex: integer("decision_index"), // legacy dilemma — chosen decision index
+  ratings: jsonb("ratings"), // legacy dilemma — importance rating per consideration
+  ranking: jsonb("ranking"), // legacy dilemma — consideration indices, most-important first
+  isCorrect: boolean("is_correct"), // graded correctness (null if unanswered)
 });
