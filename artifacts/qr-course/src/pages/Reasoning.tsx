@@ -31,6 +31,21 @@ const FORMAT_BLURBS: Record<Format, string> = {
   written: "Write a short answer in your own words — no options.",
 };
 
+type TestLength = "short" | "medium" | "long";
+const LENGTH_ORDER: TestLength[] = ["short", "medium", "long"];
+const LENGTH_LABELS: Record<TestLength, string> = {
+  short: "Short",
+  medium: "Medium",
+  long: "Long",
+};
+// Question count per length, per instrument. Mirrors LENGTH_COUNTS in
+// api-server/src/lib/reasoning.ts and ReasoningRunner.tsx — keep in lockstep.
+const LENGTH_COUNTS: Record<"ethical" | "critical", Record<TestLength, number>> =
+  {
+    critical: { short: 5, medium: 10, long: 15 },
+    ethical: { short: 3, medium: 6, long: 10 },
+  };
+
 function statusBadge(status: string) {
   const cls =
     status === "passed"
@@ -74,23 +89,18 @@ function InstrumentCard({
         <p className="text-sm text-muted-foreground">
           Choose how you'd like to answer this assessment:
         </p>
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-3">
           {FORMAT_ORDER.map((fmt) => {
             const a = byFormat.get(fmt);
             if (!a) return null;
-            const cta =
-              a.status === "passed"
-                ? "Review"
-                : a.status === "in_progress"
-                ? "Resume"
-                : "Begin";
+            const counts = LENGTH_COUNTS[instrument];
             return (
-              <Link key={fmt} href={`/reasoning/${a.id}`}>
-                <button
-                  type="button"
-                  className="w-full text-left rounded-md border border-border hover:bg-secondary transition-colors p-3 flex items-center justify-between gap-3"
-                  data-testid={`button-open-reasoning-${a.id}`}
-                >
+              <div
+                key={fmt}
+                className="rounded-md border border-border p-3 flex flex-col gap-2.5"
+                data-testid={`format-block-reasoning-${a.id}`}
+              >
+                <div className="flex items-start justify-between gap-2">
                   <span className="min-w-0">
                     <span className="flex items-center gap-2">
                       <span className="font-medium text-sm">
@@ -102,11 +112,56 @@ function InstrumentCard({
                       {FORMAT_BLURBS[fmt]}
                     </span>
                   </span>
-                  <span className="text-sm font-medium text-primary shrink-0">
-                    {cta}
+                  {a.status === "passed" ? (
+                    <Link href={`/reasoning/${a.id}`}>
+                      <span
+                        className="text-xs font-medium text-primary shrink-0 hover:underline cursor-pointer"
+                        data-testid={`link-review-reasoning-${a.id}`}
+                      >
+                        Review
+                      </span>
+                    </Link>
+                  ) : a.status === "in_progress" ? (
+                    <Link href={`/reasoning/${a.id}`}>
+                      <span
+                        className="text-xs font-medium text-primary shrink-0 hover:underline cursor-pointer"
+                        data-testid={`link-resume-reasoning-${a.id}`}
+                      >
+                        Resume
+                      </span>
+                    </Link>
+                  ) : null}
+                </div>
+                <div className="flex flex-col gap-1">
+                  <span className="text-[11px] uppercase tracking-wider text-muted-foreground">
+                    {a.status === "not_started"
+                      ? "Choose a length to begin"
+                      : "Or start fresh at a length"}
                   </span>
-                </button>
-              </Link>
+                  <div className="flex gap-2">
+                    {LENGTH_ORDER.map((len) => (
+                      <Link
+                        key={len}
+                        href={`/reasoning/${a.id}?length=${len}`}
+                        className="flex-1"
+                      >
+                        <button
+                          type="button"
+                          className="w-full rounded-md border border-border hover:border-primary hover:bg-secondary transition-colors px-2 py-1.5 text-center"
+                          data-testid={`button-length-${a.id}-${len}`}
+                        >
+                          <span className="block text-xs font-medium">
+                            {LENGTH_LABELS[len]}
+                          </span>
+                          <span className="block text-[11px] text-muted-foreground">
+                            {counts[len]} {counts[len] === 1 ? "question" : "questions"}
+                          </span>
+                        </button>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
             );
           })}
         </div>
@@ -135,10 +190,11 @@ export default function Reasoning() {
             Diagnostic Assessments
           </h1>
           <p className="text-muted-foreground">
-            Two short instruments — Professional Judgment and Critical Reasoning — taken
-            once at the start and again after the unit. Each is offered in three
-            answer formats; pick the one you prefer before you begin. Submitting an
-            assessment earns a pass; together they count for 20% of your course grade.
+            Two instruments — Professional Judgment and Critical Reasoning — taken
+            once at the start and again after the unit. Each comes in three answer
+            formats and three lengths — Short, Medium, or Long — so pick the format
+            and length that suit you before you begin. Submitting an assessment earns
+            a pass; together they count for 20% of your course grade.
           </p>
         </div>
 
