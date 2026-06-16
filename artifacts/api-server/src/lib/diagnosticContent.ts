@@ -3,7 +3,7 @@
 //
 // Two instruments, each offered at FOUR time-points (phases) so a student can
 // gauge themselves before, during, and after the course:
-//   - subject  — Criminal Psychology subject-specific reasoning. Realistic
+//   - subject  — Hospitality Analytics subject-specific reasoning. Realistic
 //     short cases about the course material; the best-supported answer is keyed
 //     first.
 //   - general  — General Reasoning. Genuine reasoning items spanning analysis,
@@ -88,25 +88,25 @@ const SUBJECT_SPECS: Record<Phase, GenSpec> = {
     level:
       "Intro level: answerable by a thoughtful newcomer reasoning carefully, BEFORE any lessons. Do not assume prior course knowledge or technical terms.",
     topicFocus:
-      "What criminal psychology is and how it thinks about crime: that offending has multiple interacting causes (personal, social, situational) rather than a single 'born evil' cause, and that the field studies behavior scientifically rather than by intuition or moral judgement.",
+      "What hospitality analytics is and how it thinks about a restaurant: that a restaurant's health has multiple interacting drivers (how many guests come, how much each spends, and what it all costs) rather than a single number like 'a full room', and that the field measures what's really happening rather than trusting gut feeling or how a night looks.",
   },
   third: {
     level:
       "Early course level: covers roughly the first third of the unit. Plain language, short realistic cases.",
     topicFocus:
-      "Topics 1.1-1.3: what criminal psychology is; why people offend (interacting biological, psychological, and social/situational factors, opportunity, and the limits of single-cause explanations); and traits associated with psychopathy (superficial charm, manipulation, lack of remorse) and how they differ from everyday wrongdoing.",
+      "Topics 1.1-1.3: what hospitality analytics is; the metrics that matter (covers, table turns, the average check, and that revenue is not the same as profit); and menu engineering (judging dishes on BOTH popularity and profit, so a best-seller is not always the most valuable dish).",
   },
   twothirds: {
     level:
       "Mid course level: covers roughly the first two-thirds of the unit. Realistic short cases requiring a step of reasoning.",
     topicFocus:
-      "Topics 1.1-1.6: causes of offending and psychopathy, PLUS offender profiling and its limits, eyewitness memory (memory is reconstructive and confident witnesses can be wrong), and interrogation and false confessions (coercive or high-pressure tactics can lead even innocent people to confess).",
+      "Topics 1.1-1.6: measuring a restaurant, the key metrics, and menu engineering, PLUS demand forecasting and its limits (a forecast is an estimate from past patterns, not a certainty), pricing and yield (price is a signal and the same seat is worth more at peak demand), and guests as data (repeat guests and lifetime value often matter more than chasing only new faces).",
   },
   after: {
     level:
       "End-of-course level: covers the whole unit. Integrative short cases that apply more than one idea.",
     topicFocus:
-      "The full unit, topics 1.1-1.8: causes of offending, psychopathy, profiling, eyewitness memory, interrogation/false confessions, PLUS madness and the law (legal insanity and competence are about understanding/responsibility at the time, not merely having a diagnosis) and predicting danger (risk assessment gives probabilities, not certainties, and can err).",
+      "The full unit, topics 1.1-1.8: measuring a restaurant, key metrics, menu engineering, forecasting, pricing/yield, and guests/loyalty, PLUS reviews and sentiment (read reviews as data at scale rather than reacting to a single opinion or one bad review) and from dashboard to decision (data informs a decision but does not make it, and you must separate the metrics that matter from flattering vanity metrics).",
   },
 };
 
@@ -152,7 +152,7 @@ const FORMAT_LABEL: Record<DiagFormat, string> = {
 function instructionsFor(instrument: Instrument, format: DiagFormat): string {
   const subject =
     instrument === "subject"
-      ? "Answer each question about criminal psychology — these reward careful reasoning about realistic cases, not memorized facts"
+      ? "Answer each question about hospitality analytics — these reward careful reasoning about realistic restaurant situations, not memorized facts"
       : "Answer each reasoning question — these measure how you think, not what you recall";
   const body =
     format === "mcq"
@@ -164,86 +164,86 @@ function instructionsFor(instrument: Instrument, format: DiagFormat): string {
 }
 
 // ===========================================================================
-// SUBJECT — Criminal Psychology blueprint cases (best answer keyed FIRST)
+// SUBJECT — Hospitality Analytics blueprint cases (best answer keyed FIRST)
 // ===========================================================================
 
 const SUBJECT_BEFORE: DiagItem[] = [
   {
     prompt:
-      "A reporter asks a criminal psychologist why a particular teenager shoplifted. The psychologist would most likely explain the behavior in terms of:",
+      "A reporter asks a hospitality analyst why a particular restaurant struggled even though it always looked busy. The analyst would most likely explain it in terms of:",
     options: [
-      "a mix of personal, social, and situational pressures acting on the teenager",
-      "the teenager's astrological sign",
-      "whether the store happened to be busy that day",
-      "the reporter's personal opinion of teenagers",
+      "a mix of how many guests came, how much each spent, and what it all cost",
+      "whether the owner is a naturally lucky person",
+      "the color of the restaurant's sign",
+      "the reporter's personal opinion of the food",
     ],
     modelAnswer:
-      "Criminal psychology explains offending through interacting personal, social, and situational factors, not luck, intuition, or unrelated traits.",
+      "Hospitality analytics explains a restaurant's results through interacting measures — guest counts, spending per guest, and costs — not luck or a single impression like how full the room looks.",
   },
   {
     prompt:
-      "A headline claims 'most people who break the law are simply born evil.' How would a criminal psychologist most likely treat this claim?",
+      "A headline claims 'a packed restaurant is always a successful one.' How would a hospitality analyst most likely treat this claim?",
     options: [
-      "As an oversimplification, since behavior usually has many interacting causes",
+      "As an oversimplification, since profit depends on spending and costs, not just a full room",
       "As obviously true and needing no evidence",
-      "As something that cannot be studied at all",
-      "As true only for certain personality types",
+      "As something that can never be measured",
+      "As true only for expensive restaurants",
     ],
     modelAnswer:
-      "It is an oversimplification; the field rejects single-cause 'born evil' explanations because offending arises from many interacting causes.",
+      "It is an oversimplification; a full room can still lose money, so the field looks at spending and costs together, not just how busy a place looks.",
   },
   {
     prompt:
-      "Which question is most central to what criminal psychology actually studies?",
+      "Which question is most central to what hospitality analytics actually studies?",
     options: [
-      "Why people commit crimes and how the justice system responds to them",
-      "Which lawyer charges the lowest fees",
-      "How to design a more comfortable courtroom chair",
-      "Which crimes make the most dramatic movies",
+      "Whether a restaurant is really working, measured by its guests, spending, and costs",
+      "Which restaurant has the friendliest-looking logo",
+      "How to fold a dinner napkin most elegantly",
+      "Which restaurant would make the best movie set",
     ],
     modelAnswer:
-      "Criminal psychology studies the causes of offending and how the justice system thinks about and responds to it.",
+      "Hospitality analytics studies whether a restaurant is actually working, using measurements of guests, spending, and costs rather than impressions.",
   },
 ];
 
 const SUBJECT_THIRD: DiagItem[] = [
   {
     prompt:
-      "Over years, Dana is repeatedly charming on first meeting, lies easily to get what she wants, and shows no remorse after hurting others. These patterns are most associated with:",
+      "Over several months one dish sells constantly but earns almost nothing after its ingredient costs, while a quieter dish earns a lot per plate. Looking at dishes this way is most associated with:",
     options: [
-      "traits linked to psychopathy",
-      "ordinary shyness",
-      "a temporary bad mood",
-      "simple forgetfulness",
+      "menu engineering, which judges dishes on both popularity and profit",
+      "guessing based on the owner's personal favorite",
+      "the day's weather",
+      "the alphabetical order of the menu",
     ],
     modelAnswer:
-      "Superficial charm, manipulative lying, and lack of remorse are traits associated with psychopathy, not ordinary mood or memory.",
+      "Judging dishes by both how often they sell and how much they earn is menu engineering, which shows popularity is not the same as profit.",
     skillArea: "analysis",
   },
   {
     prompt:
-      "Two neighborhoods are alike except that one has far more unsupervised places for teens to gather, and it also has more youth crime. This best illustrates that offending is shaped by:",
+      "Two restaurants serve the same number of guests, but one sells drinks and dessert while the other sells only entrées, and it earns far more. This best illustrates that results are shaped by:",
     options: [
-      "situational and social opportunity, not just individual character",
-      "nothing but the weather",
-      "the age of the buildings alone",
+      "how much each guest spends (the average check), not just how many guests come",
+      "nothing but luck",
+      "the number of chairs alone",
       "pure random chance",
     ],
     modelAnswer:
-      "It shows offending is influenced by situational and social opportunity, not by individual character alone.",
+      "It shows results depend on spending per guest (the average check), not only on how many guests come.",
     skillArea: "inference",
   },
   {
     prompt:
-      "A student says 'people offend for exactly one reason: bad parents.' Why would a criminal psychologist push back?",
+      "A student says 'one number — total revenue — tells you everything about a restaurant.' Why would a hospitality analyst push back?",
     options: [
-      "Because offending typically results from several interacting causes, not a single one",
-      "Because parents never influence behavior at all",
-      "Because only adults can ever offend",
-      "Because crime cannot be explained in any way",
+      "Because health depends on several metrics together, since revenue is not the same as profit",
+      "Because revenue never matters at all",
+      "Because only large restaurants have revenue",
+      "Because a restaurant cannot be measured in any way",
     ],
     modelAnswer:
-      "Single-cause explanations are too simple; offending usually results from interacting biological, psychological, and social factors.",
+      "A single number is too simple; revenue is not profit, so you must read covers, spending, and costs together.",
     skillArea: "evaluation",
   },
 ];
@@ -251,41 +251,41 @@ const SUBJECT_THIRD: DiagItem[] = [
 const SUBJECT_TWOTHIRDS: DiagItem[] = [
   {
     prompt:
-      "A witness very confidently identifies a suspect, but later evidence shows the identification was wrong. What does this best illustrate about memory?",
+      "A manager very confidently forecasts that tonight will be slow and staffs light, but a nearby concert fills the restaurant. What does this best illustrate about forecasting?",
     options: [
-      "Memory is reconstructive, so a confident witness can still be mistaken",
-      "Confident witnesses are always correct",
-      "Memory works like a perfect video recording",
-      "Witnesses never make identification errors",
+      "A forecast is an estimate from past patterns and can be wrong, especially if a factor is missed",
+      "A confident forecast is always correct",
+      "Forecasts predict the future perfectly",
+      "Demand can never be estimated at all",
     ],
     modelAnswer:
-      "Memory is reconstructive and fallible; high confidence does not guarantee accuracy, so confident witnesses can be wrong.",
+      "Forecasts are probabilistic estimates built from past clues; missing a factor like a nearby event can make even a confident forecast wrong.",
     skillArea: "evaluation",
   },
   {
     prompt:
-      "An innocent, exhausted suspect is questioned for hours with repeated pressure and promises of leniency, and finally confesses. What does this scenario best demonstrate?",
+      "A restaurant gives the same menu to two groups — one with dollar signs, one without — and the group reading it without dollar signs spends more. What does this best demonstrate?",
     options: [
-      "Coercive, high-pressure interrogation can produce false confessions even from innocent people",
-      "Anyone who confesses must be guilty",
-      "Long interrogations always uncover the truth",
-      "Pressure has no effect on what people say",
+      "How a price is presented can change spending, so our pricing instincts are unreliable",
+      "The food was actually different for each group",
+      "Price presentation never affects behavior",
+      "Guests always ignore the menu entirely",
     ],
     modelAnswer:
-      "Coercive or high-pressure interrogation can lead even innocent people to confess falsely, so a confession is not proof of guilt.",
+      "Presentation, like dropping the dollar sign, changes spending even when the prices are identical, showing pricing instincts mislead us.",
     skillArea: "inference",
   },
   {
     prompt:
-      "An investigator treats an offender profile as if it names one exact guilty person. Why is that a mistake?",
+      "An owner treats a loyalty program as just a giveaway and ignores what it reveals about who comes back. Why is that a mistake?",
     options: [
-      "A profile describes likely characteristics, not a guaranteed identity",
-      "Profiles are always completely accurate",
-      "Profiles can only ever be wrong",
-      "Profiles replace the need for any evidence",
+      "A loyalty program is data showing frequency, recency, and lifetime value, not just a discount",
+      "Loyalty programs always lose money",
+      "Repeat guests never matter",
+      "Loyalty can never be measured at all",
     ],
     modelAnswer:
-      "Profiling suggests probable characteristics to narrow a search; it is not a certain identification of a specific person.",
+      "A loyalty program reveals how often and how recently guests return and their lifetime value; ignoring that wastes its real purpose.",
     skillArea: "analysis",
   },
 ];
@@ -293,41 +293,41 @@ const SUBJECT_TWOTHIRDS: DiagItem[] = [
 const SUBJECT_AFTER: DiagItem[] = [
   {
     prompt:
-      "A defendant has a diagnosed mental illness. A court is deciding a legal-insanity claim. Which consideration matters most for that legal question?",
+      "A restaurant gets one angry one-star review. A manager is deciding how seriously to treat it. Which consideration matters most?",
     options: [
-      "Whether, at the time of the act, the person could understand what they did or that it was wrong",
-      "Only whether a diagnosis exists on paper",
-      "How the public feels about the crime",
-      "Whether the trial is expensive to run",
+      "Whether the complaint is a recurring theme across many reviews or just a single outlier",
+      "Only whether the review exists at all",
+      "How the manager happens to feel that morning",
+      "Whether the restaurant is expensive",
     ],
     modelAnswer:
-      "Legal insanity turns on the person's understanding and responsibility at the time of the act, not merely on having a diagnosis.",
+      "What matters is whether the issue recurs across many reviews (a real pattern) versus a lone outlier; one bad review is not a catastrophe.",
     skillArea: "evaluation",
   },
   {
     prompt:
-      "A risk-assessment tool labels someone 'high risk' of reoffending. How should that result be understood?",
+      "A dashboard flags a single slow week as a 'problem.' How should that one result be understood?",
     options: [
-      "As a probability that can be wrong, not a certainty about the future",
-      "As a guarantee the person will reoffend",
-      "As proof the person already committed a new crime",
+      "As possible noise that may not need action, not automatic proof something is wrong",
+      "As a guarantee the restaurant is failing",
+      "As proof the menu must be replaced immediately",
       "As a fixed fact that can never change",
     ],
     modelAnswer:
-      "Risk assessment gives probabilities, not certainties; a 'high risk' label can be mistaken and does not guarantee future behavior.",
+      "One slow week may be noise; data informs but does not decide, so it is not automatic proof of a real problem.",
     skillArea: "inference",
   },
   {
     prompt:
-      "Reviewing a case, an analyst relies only on a single confident eyewitness and a 'high risk' score to declare guilt certain. Drawing on the unit, the strongest criticism is that:",
+      "Reviewing results, an analyst declares a restaurant a clear success based only on a packed room and a high social-media follower count. Drawing on the unit, the strongest criticism is that:",
     options: [
-      "Both eyewitness confidence and risk scores are fallible, so neither makes guilt certain",
-      "Eyewitnesses are always reliable, so the conclusion is fine",
-      "Risk scores are certainties, so the conclusion is fine",
-      "Cases can never be reviewed after the fact",
+      "Both a full room and follower counts can mislead, so neither proves the restaurant is profitable",
+      "A packed room always proves profit, so the conclusion is fine",
+      "Follower counts are exact measures of profit, so the conclusion is fine",
+      "Results can never be reviewed after the fact",
     ],
     modelAnswer:
-      "Eyewitness memory is reconstructive and risk scores are probabilistic; both can err, so together they cannot make guilt certain.",
+      "A full room can still lose money and followers are a vanity metric; neither proves profitability, which needs covers, spending, and costs read together.",
     skillArea: "evaluation",
   },
 ];
@@ -440,7 +440,7 @@ const BASE_CONTENT: BaseContent[] = PHASE_ORDER.flatMap((phase) => {
     {
       instrument: "subject" as const,
       phase,
-      baseTitle: `Criminal Psychology Check — ${PHASE_LABEL[phase]}`,
+      baseTitle: `Hospitality Analytics Check — ${PHASE_LABEL[phase]}`,
       items: subjectItems[phase],
     },
     {

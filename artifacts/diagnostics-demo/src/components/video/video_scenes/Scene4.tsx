@@ -18,7 +18,7 @@ export function Scene4() {
   const highlights = [
     "Pass-on-submit completion",
     "Detailed written feedback",
-    "20% of overall course grade",
+    "Ungraded — coursework is 100%",
     "Pre-assessment reasoning primers"
   ];
 
@@ -60,8 +60,8 @@ export function Scene4() {
         transition={{ duration: 0.8 }}
       >
         <div className="w-[1px] h-12 bg-white/20 mx-auto mb-6" />
-        <h1 className="text-[3vw] font-display text-white tracking-widest uppercase mb-2">Criminal Psychology</h1>
-        <p className="text-[1.2vw] text-[var(--color-accent)] italic font-display text-2xl tracking-widest">Why people break the rules.</p>
+        <h1 className="text-[3vw] font-display text-white tracking-widest uppercase mb-2">Hospitality Analytics</h1>
+        <p className="text-[1.2vw] text-[var(--color-accent)] italic font-display text-2xl tracking-widest">What makes a restaurant really work.</p>
       </motion.div>
     </motion.div>
   );

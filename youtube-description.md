@@ -1,28 +1,28 @@
-# YouTube — Criminal Psychology for Children
+# YouTube — Restaurant & Hospitality Analytics for Children
 
 ## 🎬 Title options (pick one)
 
-1. Criminal Psychology for Children — an AI course that teaches, tutors & grades itself
-2. I built an AI Criminal Psychology course (it even catches AI cheating)
-3. Inside the Criminal Mind — a friendly AI course for curious students & adults
+1. Restaurant & Hospitality Analytics for Children — an AI course that teaches, tutors & grades itself
+2. I built an AI Restaurant Analytics course (it even catches AI cheating)
+3. What Makes a Restaurant Really Work — a friendly AI course for curious students & adults
 
 ---
 
 ## ✏️ Short description (~150 chars, for the box preview)
 
-A friendly, one-unit intro to criminal psychology — taught, tutored, drilled, and graded by AI. No math, no coding. For curious students and grown-ups alike.
+A friendly, one-unit intro to restaurant & hospitality analytics — taught, tutored, drilled, and graded by AI. No math, no coding. For curious students and grown-ups alike.
 
 ---
 
 ## 📝 Full description (paste into YouTube)
 
-Why do people break the rules?
+What actually makes a restaurant work?
 
-Meet **Criminal Psychology for Children** — a friendly, one-unit intro to criminal psychology that teaches, tutors, drills, and grades itself, entirely with AI. No math, no coding, no jargon. Just plain-language lessons about the science of why people offend and how the justice system reasons — kept tasteful and age-appropriate from start to finish.
+Meet **Restaurant & Hospitality Analytics for Children** — a friendly, one-unit intro to restaurant and hospitality analytics that teaches, tutors, drills, and grades itself, entirely with AI. No math, no coding, no jargon. Just plain-language lessons about how a restaurant really makes money — covers, average check, menu profit, forecasting, and loyal guests — kept friendly and age-appropriate from start to finish.
 
 In this video you'll see the whole course in action:
 
-🔎 Eight plain-language topics — from "what criminal psychology really is" all the way to "predicting danger"
+🔎 Eight plain-language topics — from "what hospitality analytics really is" all the way to "turning a dashboard into a decision"
 📖 Three-depth lessons — read any topic Short, Medium, or Long, same ideas at your pace
 ✨ Examples on demand — turn any lesson into a version packed with vivid, real-to-life illustrations for every point
 💬 A section-scoped AI tutor that answers questions about the exact paragraph you're reading, streaming in real time
@@ -35,27 +35,27 @@ It's a self-paced course students can actually trust to be fair — and instruct
 👉 Try it / learn more: [add your link here]
 
 ⏱️ Chapters
-0:00 Inside the criminal mind
+0:00 What makes a restaurant work
 0:08 What you'll learn
 0:20 The AI tutor, lessons & adaptive practice
-0:35 Criminal Psychology for Children
+0:35 Restaurant & Hospitality Analytics for Children
 
 🧠 Topics covered
-1.1 What criminal psychology is
-1.2 Why people offend
-1.3 Inside the psychopath
-1.4 Profiling the offender
-1.5 Eyewitnesses and memory
-1.6 Interrogation and false confessions
-1.7 Madness and the law
-1.8 Predicting danger
+1.1 What hospitality analytics is
+1.2 Covers, turns, and the bottom line
+1.3 Menu engineering: the menu as a profit machine
+1.4 Forecasting demand: knowing the crowd
+1.5 Pricing and yield: the right amount at the right time
+1.6 Guests as data: loyalty, LTV, and coming back
+1.7 Reviews, sentiment, and reputation
+1.8 From dashboard to decision
 
 Perfect for middle schoolers, curious adults wanting a quick but meaningful intro, instructors exploring AI-taught coursework, and academic-integrity researchers.
 
-#CriminalPsychology #Psychology #AIeducation #EdTech #OnlineLearning #ForensicPsychology #StudyTok #LearnSomethingNew
+#HospitalityAnalytics #RestaurantManagement #AIeducation #EdTech #OnlineLearning #DataLiteracy #StudyTok #LearnSomethingNew
 
 ---
 
 ## 🏷️ Tags (comma-separated, for the Tags field)
 
-criminal psychology, forensic psychology, psychology course, AI tutor, AI education, edtech, online learning, adaptive learning, psychology for beginners, why people commit crime, psychopath, eyewitness memory, false confessions, insanity defense, self-paced course, AI grading, academic integrity
+hospitality analytics, restaurant analytics, restaurant management, data literacy, AI tutor, AI education, edtech, online learning, adaptive learning, analytics for beginners, menu engineering, average check, demand forecasting, customer lifetime value, self-paced course, AI grading, academic integrity

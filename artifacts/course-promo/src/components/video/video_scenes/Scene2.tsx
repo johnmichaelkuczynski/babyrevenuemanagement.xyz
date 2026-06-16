@@ -36,7 +36,7 @@ export function Scene2() {
           }
           transition={{ type: 'spring', stiffness: 300, damping: 20 }}
         >
-          <h2 className="text-[4vw] font-black text-secondary">Why people offend.</h2>
+          <h2 className="text-[4vw] font-black text-secondary">Covers, turns & the bottom line.</h2>
         </motion.div>
 
         {/* Phase 2: Noticing */}
@@ -50,7 +50,7 @@ export function Scene2() {
           }
           transition={{ type: 'spring', stiffness: 300, damping: 20 }}
         >
-          <h2 className="text-[4vw] font-black text-primary">Inside the psychopath.</h2>
+          <h2 className="text-[4vw] font-black text-primary">The menu as a profit machine.</h2>
           <div className="flex gap-2 mt-4">
             {[1, 2, 3].map(i => (
               <motion.div key={i} className="w-6 h-6 rounded-full bg-primary" 
@@ -71,7 +71,7 @@ export function Scene2() {
           }
           transition={{ type: 'spring', stiffness: 300, damping: 20 }}
         >
-          <h2 className="text-[4vw] font-black text-accent text-center">Memory, lies,<br/>and the law.</h2>
+          <h2 className="text-[4vw] font-black text-accent text-center">Guests, reviews,<br/>and the bottom line.</h2>
         </motion.div>
       </div>
     </motion.div>

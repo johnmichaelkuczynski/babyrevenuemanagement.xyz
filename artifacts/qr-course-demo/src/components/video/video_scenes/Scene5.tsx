@@ -26,7 +26,7 @@ export function Scene5({ setCursorPos, setIsClicking }: { setCursorPos: (pos: {x
     }, 2000);
 
     const t3 = setTimeout(() => {
-      setTypedAnswer("Their character.");
+      setTypedAnswer("How many guests came.");
     }, 3000);
 
     const t4 = setTimeout(() => {
@@ -50,11 +50,11 @@ export function Scene5({ setCursorPos, setIsClicking }: { setCursorPos: (pos: {x
 
     const t9 = setTimeout(() => {
       setCursorPos({ x: '35vw', y: '82vh' }); // move into answer box
-      setTypedAnswer("Even with");
+      setTypedAnswer("Different");
     }, 8500);
-    const t10 = setTimeout(() => setTypedAnswer("Even with the same home,"), 9000);
-    const t11 = setTimeout(() => setTypedAnswer("Even with the same home, their friends"), 9500);
-    const t12 = setTimeout(() => setTypedAnswer("Even with the same home, their friends and stresses differed."), 10000);
+    const t10 = setTimeout(() => setTypedAnswer("Different average checks,"), 9000);
+    const t11 = setTimeout(() => setTypedAnswer("Different average checks, costs,"), 9500);
+    const t12 = setTimeout(() => setTypedAnswer("Different average checks, costs, and table turns mean equal covers earn differently."), 10000);
 
     const t13 = setTimeout(() => {
       setCursorPos({ x: '70vw', y: '60vh' }); // Move to Submit
@@ -110,7 +110,7 @@ export function Scene5({ setCursorPos, setIsClicking }: { setCursorPos: (pos: {x
         <div className="text-xs font-bold text-muted-foreground tracking-widest uppercase mb-4">Topic Practice</div>
         <div className="flex justify-between items-end mb-8">
           <div>
-            <h1 className="text-4xl font-serif text-primary mb-2">Why people offend</h1>
+            <h1 className="text-4xl font-serif text-primary mb-2">Covers, turns, and the bottom line</h1>
             <div className="text-sm text-muted-foreground">Unit 1 · 1 prior attempt · 1% accuracy · <span className="text-emerald-600 font-semibold">STRONG</span></div>
           </div>
           <div className="text-sm font-medium border border-border px-3 py-1 rounded-md bg-white">
@@ -126,10 +126,10 @@ export function Scene5({ setCursorPos, setIsClicking }: { setCursorPos: (pos: {x
         <div className="bg-white border border-border rounded-xl shadow-sm overflow-hidden flex flex-col min-h-[400px]">
           <div className="p-8 flex-1 border-b border-border text-lg text-primary font-medium leading-relaxed">
             {phase >= 1 && phase < 4 && (
-              <StreamingText text="A first-time offender shoplifts during one stressful week, then never again. Is this better explained by their character or their situation? Explain." delay={0} />
+              <StreamingText text="A diner is packed on Saturday but earns less than a calm Tuesday lunch service. Is this better explained by how many guests came, or by what each guest spent? Explain." delay={0} />
             )}
             {phase >= 4 && (
-              <StreamingText text="Two siblings are raised in the same home, but one offends and one doesn't. Why can a shared upbringing still lead to different paths?" delay={0} />
+              <StreamingText text="Two restaurants seat the same number of guests each night, but one brings home far more. Why can the same number of covers still lead to very different profit?" delay={0} />
             )}
           </div>
           
@@ -159,7 +159,7 @@ export function Scene5({ setCursorPos, setIsClicking }: { setCursorPos: (pos: {x
                     <span>Not quite</span>
                   </div>
                   <div className="text-sm text-red-900 leading-relaxed">
-                    <StreamingText text="Not quite. A single act during one stressful week points more to the situation than to fixed character. Criminal psychology looks at the pressures around a person, not just who they 'are'." delay={0} />
+                    <StreamingText text="Not quite. A busy night with a low average check can earn less than a quiet one with high-spending guests. Hospitality analytics looks at what each guest spends, not just how many came through the door." delay={0} />
                   </div>
                 </motion.div>
               )}
@@ -174,7 +174,7 @@ export function Scene5({ setCursorPos, setIsClicking }: { setCursorPos: (pos: {x
                     <span>Correct!</span>
                   </div>
                   <div className="text-sm text-emerald-900 leading-relaxed">
-                    <StreamingText text="Correct! A shared home isn't the whole story. Different friends, stresses, and opportunities push siblings down different paths — which is why people from the same household can turn out so differently." delay={0} />
+                    <StreamingText text="Correct! The same number of covers isn't the whole story. Different average checks, table turns, and costs push two restaurants toward very different bottom lines — which is why equally busy places can earn so differently." delay={0} />
                   </div>
                 </motion.div>
               )}
@@ -182,8 +182,8 @@ export function Scene5({ setCursorPos, setIsClicking }: { setCursorPos: (pos: {x
 
             <div className="mt-4">
               <div className="flex space-x-2 border-b border-border pb-2 mb-3 overflow-x-auto text-xs font-medium">
-                <div className="px-3 py-1 border-b-2 border-primary text-primary">Causes of crime</div>
-                {['Psychopathy', 'Profiling', 'Memory', 'Confessions', 'The law', 'Risk'].map(t => (
+                <div className="px-3 py-1 border-b-2 border-primary text-primary">Key metrics</div>
+                {['Menu engineering', 'Forecasting', 'Pricing', 'Guest loyalty', 'Reviews', 'Decisions'].map(t => (
                   <div key={t} className="px-3 py-1 text-muted-foreground">{t}</div>
                 ))}
               </div>

@@ -155,16 +155,16 @@ router.post("/practice/sessions/:sessionId/next", async (req, res): Promise<void
       correctAnswer: string;
       explanation: string;
     }>(
-      `You generate a single introductory criminal psychology practice problem for a curious beginner. The problem MUST be on the topic "${topic.title}" and at difficulty "${difficultyLabel}" (${difficulty.toFixed(
+      `You generate a single introductory hospitality analytics practice problem for a curious beginner. The problem MUST be on the topic "${topic.title}" and at difficulty "${difficultyLabel}" (${difficulty.toFixed(
         1,
-      )}/5). Test general knowledge of the SUBJECT of criminal psychology, not recall of any particular book, lecture, or course. The question MUST be fully self-contained and answerable by anyone who knows the discipline: do NOT reference "the lecture", "the text", "the course", "the example", "the case", or any named character or example a student would only recognize from a specific reading.\n\nSTRICT QUESTION RULES (no exceptions):\n- Every question must present a SPECIFIC, concrete everyday scenario (e.g. a confident witness who turns out to be mistaken, a tired suspect who confesses just to end the questioning, a juror who assumes a confession means guilt, a parole board weighing whether someone is likely to reoffend) and ask the student to APPLY the topic's idea to THAT scenario — to judge, compare, explain, interpret, or decide.\n- NEVER ask for a definition, a term, or what something is "called"; NEVER ask the student to recite an abstract formulation from any reading.\n- NEVER write a question whose answer is a single word, a single term, or a bare "yes"/"no". The answer must require reasoning that is HARD TO SHARE: the student must explain their thinking about the specific scenario in 2-4 sentences.\n- The "correctAnswer" is the model answer (2-4 sentences) showing the operational reasoning a strong student would give for THIS scenario. The "explanation" briefly says what earns full credit.\n\nRespond as strict JSON: {"prompt": string, "correctAnswer": string, "explanation": string}. Avoid these recent prompts: ${JSON.stringify(
+      )}/5). Test general knowledge of the SUBJECT of restaurant and hospitality analytics, not recall of any particular book, lecture, or course. The question MUST be fully self-contained and answerable by anyone who knows the discipline: do NOT reference "the lecture", "the text", "the course", "the example", "the case", or any named character or example a student would only recognize from a specific reading.\n\nSTRICT QUESTION RULES (no exceptions):\n- Every question must present a SPECIFIC, concrete everyday scenario (e.g. a packed restaurant that is quietly losing money, a best-selling dish that barely earns a profit, a manager whose confident forecast misses a nearby event, an owner spending heavily to chase new customers while regulars drift away, a manager panicking over one bad review) and ask the student to APPLY the topic's idea to THAT scenario — to judge, compare, explain, interpret, or decide.\n- NEVER ask for a definition, a term, or what something is "called"; NEVER ask the student to recite an abstract formulation from any reading.\n- NEVER write a question whose answer is a single word, a single term, or a bare "yes"/"no". The answer must require reasoning that is HARD TO SHARE: the student must explain their thinking about the specific scenario in 2-4 sentences.\n- The "correctAnswer" is the model answer (2-4 sentences) showing the operational reasoning a strong student would give for THIS scenario. The "explanation" briefly says what earns full credit.\n\nRespond as strict JSON: {"prompt": string, "correctAnswer": string, "explanation": string}. Avoid these recent prompts: ${JSON.stringify(
         lastProblems.map((p) => p.prompt),
       )}.`,
       userRequest || `Generate a new ${difficultyLabel} problem on ${topic.title}.`,
     );
   } catch {
     generated = {
-      prompt: `Practice (${topic.title}): A friend reads about a real case and jumps to a quick conclusion about why the person did it. Using the idea behind "${topic.title}", walk through how you'd help them think it through more carefully, and explain your reasoning in 2-4 sentences about that situation.`,
+      prompt: `Practice (${topic.title}): A restaurant owner glances at one number on their dashboard and jumps to a quick conclusion about how the business is doing. Using the idea behind "${topic.title}", walk through how you'd help them read the situation more carefully, and explain your reasoning in 2-4 sentences about that situation.`,
       correctAnswer:
         "A strong answer applies the topic to the concrete situation step by step — saying what to look at, what it would mean, and what to do next — rather than just naming or defining the idea.",
       explanation:
@@ -257,7 +257,7 @@ router.post("/practice/sessions/:sessionId/grade", async (req, res): Promise<voi
     try {
       tutorTip = (
         await chatJson<{ tip: string }>(
-          "You are a kind, concise criminal psychology tutor. Given a problem, the correct answer, and the student's wrong attempt, give ONE focused next-step tip (2 sentences max). Respond as strict JSON: {\"tip\": string}.",
+          "You are a kind, concise hospitality analytics tutor. Given a problem, the correct answer, and the student's wrong attempt, give ONE focused next-step tip (2 sentences max). Respond as strict JSON: {\"tip\": string}.",
           JSON.stringify({
             prompt: problem.prompt,
             correctAnswer: problem.correctAnswer,

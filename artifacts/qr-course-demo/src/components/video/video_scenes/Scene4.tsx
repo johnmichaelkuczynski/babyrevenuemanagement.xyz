@@ -71,11 +71,11 @@ export function Scene4({ setCursorPos, setIsClicking }: { setCursorPos: (pos: {x
   }, [setCursorPos, setIsClicking]);
 
   const rows = [
-    { topic: 'What criminal psychology is', week: 'Unit 1', att: 0, acc: 0, stat: 'UNTESTED', statColor: 'text-muted-foreground bg-muted' },
-    { topic: 'Why people offend', week: 'Unit 1', att: 1, acc: 1, stat: 'STRONG', statColor: 'text-emerald-700 bg-emerald-50' },
-    { topic: 'Inside the psychopath', week: 'Unit 1', att: 1, acc: 1, stat: 'STRONG', statColor: 'text-emerald-700 bg-emerald-50' },
-    { topic: 'Profiling the offender', week: 'Unit 1', att: 0, acc: 0, stat: 'UNTESTED', statColor: 'text-muted-foreground bg-muted' },
-    { topic: 'Eyewitnesses and memory', week: 'Unit 1', att: 0, acc: 0, stat: 'UNTESTED', statColor: 'text-muted-foreground bg-muted' },
+    { topic: 'What hospitality analytics is', week: 'Unit 1', att: 0, acc: 0, stat: 'UNTESTED', statColor: 'text-muted-foreground bg-muted' },
+    { topic: 'Covers, turns, and the bottom line', week: 'Unit 1', att: 1, acc: 1, stat: 'STRONG', statColor: 'text-emerald-700 bg-emerald-50' },
+    { topic: 'Menu engineering', week: 'Unit 1', att: 1, acc: 1, stat: 'STRONG', statColor: 'text-emerald-700 bg-emerald-50' },
+    { topic: 'Forecasting demand', week: 'Unit 1', att: 0, acc: 0, stat: 'UNTESTED', statColor: 'text-muted-foreground bg-muted' },
+    { topic: 'Pricing and yield', week: 'Unit 1', att: 0, acc: 0, stat: 'UNTESTED', statColor: 'text-muted-foreground bg-muted' },
   ];
 
   return (
