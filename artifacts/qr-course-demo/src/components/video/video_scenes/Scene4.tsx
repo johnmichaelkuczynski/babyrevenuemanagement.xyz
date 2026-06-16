@@ -71,11 +71,11 @@ export function Scene4({ setCursorPos, setIsClicking }: { setCursorPos: (pos: {x
   }, [setCursorPos, setIsClicking]);
 
   const rows = [
-    { topic: 'What hospitality analytics is', week: 'Unit 1', att: 0, acc: 0, stat: 'UNTESTED', statColor: 'text-muted-foreground bg-muted' },
-    { topic: 'Covers, turns, and the bottom line', week: 'Unit 1', att: 1, acc: 1, stat: 'STRONG', statColor: 'text-emerald-700 bg-emerald-50' },
-    { topic: 'Menu engineering', week: 'Unit 1', att: 1, acc: 1, stat: 'STRONG', statColor: 'text-emerald-700 bg-emerald-50' },
-    { topic: 'Forecasting demand', week: 'Unit 1', att: 0, acc: 0, stat: 'UNTESTED', statColor: 'text-muted-foreground bg-muted' },
-    { topic: 'Pricing and yield', week: 'Unit 1', att: 0, acc: 0, stat: 'UNTESTED', statColor: 'text-muted-foreground bg-muted' },
+    { topic: 'What financial & managerial analytics is', week: 'Unit 1', att: 0, acc: 0, stat: 'UNTESTED', statColor: 'text-muted-foreground bg-muted' },
+    { topic: 'The three financial statements', week: 'Unit 1', att: 1, acc: 1, stat: 'STRONG', statColor: 'text-emerald-700 bg-emerald-50' },
+    { topic: 'Cost behavior', week: 'Unit 1', att: 1, acc: 1, stat: 'STRONG', statColor: 'text-emerald-700 bg-emerald-50' },
+    { topic: 'Break-even', week: 'Unit 1', att: 0, acc: 0, stat: 'UNTESTED', statColor: 'text-muted-foreground bg-muted' },
+    { topic: 'Budgets and variance', week: 'Unit 1', att: 0, acc: 0, stat: 'UNTESTED', statColor: 'text-muted-foreground bg-muted' },
   ];
 
   return (

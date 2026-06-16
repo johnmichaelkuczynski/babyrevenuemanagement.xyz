@@ -1,18 +1,18 @@
-# 🔎 Restaurant & Hospitality Analytics for Children
+# 🔎 Financial & Managerial Analytics for Children
 
-**A Friendly, One-Unit Intro to Restaurant & Hospitality Analytics That Teaches, Tutors, and Proofs Itself — for Curious Students and Adults Alike**
+**A Friendly, One-Unit Intro to Financial & Managerial Analytics That Teaches, Tutors, and Proofs Itself — for Curious Students and Adults Alike**
 
 ---
 
 ## 🧩 Overview
 
-Restaurant & Hospitality Analytics for Children is a self-paced, single-user web course that delivers a friendly, plain-language introduction to restaurant and hospitality analytics — taught, tutored, drilled, and graded entirely by AI, with built-in academic-integrity enforcement. No math, coding, statistics, or other technical skills required.
+Financial & Managerial Analytics for Children is a self-paced, single-user web course that delivers a friendly, plain-language introduction to financial and managerial analytics — taught, tutored, drilled, and graded entirely by AI, with built-in academic-integrity enforcement. No math, coding, statistics, or other technical skills required.
 
-It turns the everyday human habit of *asking what makes a restaurant really work* into one product: read each lesson at the depth you want, ask a tutor scoped to the exact section you're on, drill questions whose difficulty adapts to you in real time, and submit homework, a unit test, and a final that are AI-graded with feedback and screened for AI-generated answers. The material is kept friendly and age-appropriate — it explains how a restaurant makes money and how owners read the numbers to make better decisions, never technical or jargon-heavy.
+It turns the everyday human habit of *asking what makes a business really work* into one product: read each lesson at the depth you want, ask a tutor scoped to the exact section you're on, drill questions whose difficulty adapts to you in real time, and submit homework, a unit test, and a final that are AI-graded with feedback and screened for AI-generated answers. The material is kept friendly and age-appropriate — it explains how a business makes money and how owners read the numbers to make better decisions, never technical or jargon-heavy.
 
-The curriculum is organized into **one unit and 8 topics**: 1.1 what hospitality analytics is; 1.2 covers, turns, and the bottom line; 1.3 menu engineering: the menu as a profit machine; 1.4 forecasting demand: knowing the crowd; 1.5 pricing and yield: the right amount at the right time; 1.6 guests as data: loyalty, LTV, and coming back; 1.7 reviews, sentiment, and reputation; and 1.8 from dashboard to decision.
+The curriculum is organized into **one unit and 8 topics**: 1.1 what financial & managerial analytics is; 1.2 reading the score — the three financial statements; 1.3 where the money goes — fixed, variable, and cost behavior; 1.4 break-even — the single most useful number in business; 1.5 budgets and variance — plan vs. reality; 1.6 unit economics — does each sale actually make money?; 1.7 forecasting and KPIs — steering by the right dials; and 1.8 from numbers to decisions.
 
-Designed for **middle schoolers, curious adults wanting brief but meaningful exposure, instructors evaluating AI-taught coursework, and researchers studying AI academic integrity**, Restaurant & Hospitality Analytics for Children pairs a real curriculum with two layers of AI-authorship detection — surfacing not just *whether* the writing looks AI-generated, but whether the *act of producing it* did.
+Designed for **middle schoolers, curious adults wanting brief but meaningful exposure, instructors evaluating AI-taught coursework, and researchers studying AI academic integrity**, Financial & Managerial Analytics for Children pairs a real curriculum with two layers of AI-authorship detection — surfacing not just *whether* the writing looks AI-generated, but whether the *act of producing it* did.
 
 ---
 
@@ -24,7 +24,7 @@ Designed for **middle schoolers, curious adults wanting brief but meaningful exp
 - **Adaptive Topic Practice** — Generated problem sets that move difficulty up after a streak and down after a miss, with explanations on every answer. Per-session difficulty persists, so each drill picks up where the last one left off.
 - **AI-Graded Assignments** — Homework, the unit test, and the final are scored by an LLM grader that judges semantic equivalence to a model answer, returns per-problem correctness *plus* a written rationale, then rolls up to a percent score on the attempt.
 - **Two-Layer AI Detection on Every Submission** — Each submitted answer is screened by both a static text classifier (GPTZero) and a diachronic keystroke-pattern detector. Each verdict ships with a human-readable rationale.
-- **Diagnostic Reasoning Checks** — Two instruments (Hospitality Analytics subject reasoning; and General Reasoning across analysis, inference, evaluation, deduction, and induction), each offered in three formats (multiple choice, hybrid, or written) and three lengths, at four points in the journey (before, one-third, two-thirds, and after the course). They are ungraded practice — takeable anytime, unlimited, with freshly generated questions every attempt — and never affect the grade (coursework is 100%).
+- **Diagnostic Reasoning Checks** — Two instruments (Financial & Managerial Analytics subject reasoning; and General Reasoning across analysis, inference, evaluation, deduction, and induction), each offered in three formats (multiple choice, hybrid, or written) and three lengths, at four points in the journey (before, one-third, two-thirds, and after the course). They are ungraded practice — takeable anytime, unlimited, with freshly generated questions every attempt — and never affect the grade (coursework is 100%).
 - **Live Analytics** — Dashboard KPIs (attempts, accuracy, streak), per-topic mastery percentages, and a recent-activity feed — so progress, weak spots, and momentum are all visible at a glance.
 - **Operator Diagnostics** — One-click self-tests (system health and synthetic-student end-to-end run) verify the entire stack — database, OpenAI integration, GPTZero, detection pipeline, and the practice/grade loop — before you trust a session.
 - **Built-In Product Demo Video** — A screencast of the live UI — animated cursor, real typing, real streaming responses — ships as its own deployable artifact, so the product can show itself without anyone narrating it.
@@ -50,7 +50,7 @@ Designed for **middle schoolers, curious adults wanting brief but meaningful exp
 
 ## 📊 Designed For
 
-- **Middle Schoolers & Curious Adults:** A complete, plain-language intro to restaurant and hospitality analytics delivered with on-demand tutoring and adaptive practice — no instructor, math, or coding required.
+- **Middle Schoolers & Curious Adults:** A complete, plain-language intro to financial and managerial analytics delivered with on-demand tutoring and adaptive practice — no instructor, math, or coding required.
 - **Instructors & Curriculum Designers:** A working reference for what AI-taught, AI-graded, AI-detection-screened coursework actually looks like end-to-end.
 - **Academic-Integrity Researchers:** A live testbed for layered AI-authorship detection that combines text-based classification with behavioral keystroke evidence.
 - **Product & Engineering Teams:** A reference implementation of contract-first full-stack architecture, streaming AI UX, and self-diagnostic operator tooling in a Replit pnpm monorepo.
@@ -59,11 +59,11 @@ Designed for **middle schoolers, curious adults wanting brief but meaningful exp
 
 ## 💡 Core Idea
 
-Restaurant & Hospitality Analytics for Children reframes an AI-taught course as a *closed accountability loop*.
+Financial & Managerial Analytics for Children reframes an AI-taught course as a *closed accountability loop*.
 
 It doesn't just teach the material and grade the homework — it **teaches**, **tutors**, **drills**, **grades**, **detects misuse**, and **proves the whole pipeline still works** with a single click. The result is a self-paced course that students can actually trust to be fair, and that instructors can actually trust to be honest.
 
-**Restaurant & Hospitality Analytics for Children — where the curriculum, the tutor, the grader, and the integrity check all live in one room.**
+**Financial & Managerial Analytics for Children — where the curriculum, the tutor, the grader, and the integrity check all live in one room.**
 
 ---
 

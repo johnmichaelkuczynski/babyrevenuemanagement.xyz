@@ -1,20 +1,32 @@
-# Ethics 101 — App Blueprint
+# Financial & Managerial Analytics for Children — App Blueprint
 
-A complete architectural blueprint for the Ethics 101 4-unit college Ethics course. This document is the single reference for what the app does, how it's wired, and the contracts between pieces. For day-to-day commands and gotchas see `replit.md`.
+A complete architectural blueprint for the Financial & Managerial Analytics for Children one-unit course. This document is the single reference for what the app does, how it's wired, and the contracts between pieces. For day-to-day commands and gotchas see `replit.md`.
 
 ---
 
 ## 1. Product summary
 
-Ethics 101 is a self-paced, single-user, no-login web course covering a four-unit college Ethics curriculum (27 topics, grounded in "Some Fundamental Principles Relating to Ethics"). Students read AI-rewritten lecture notes at three lengths, ask an AI tutor scoped to the section they're reading, drill on adaptive practice problems, and submit homework / tests / midterm / final that are AI-graded and AI-detection-screened.
+Financial & Managerial Analytics for Children is a self-paced, single-user web course (Clerk sign-in) covering a friendly, plain-language one-unit curriculum (8 topics) introducing how a business makes money and how owners read the numbers to decide. Students read AI-rewritten lecture notes at three lengths, ask an AI tutor scoped to the section they're reading, drill on adaptive practice problems, and submit homework / unit test / final that are AI-graded and AI-detection-screened.
 
-The product surface is three deployable artifacts in one pnpm monorepo:
+The 8 topics (Unit 1):
+
+1. 1.1 What Financial & Managerial Analytics Is — The Business as a Story in Numbers
+2. 1.2 Reading the Score — The Three Financial Statements at a Glance
+3. 1.3 Where the Money Goes — Fixed, Variable, and the Cost Behavior Trick
+4. 1.4 Break-Even — The Single Most Useful Number in Business
+5. 1.5 Budgets and Variance — Plan vs. Reality
+6. 1.6 Unit Economics — Does Each Sale Actually Make Money?
+7. 1.7 Forecasting and KPIs — Steering by the Right Dials
+8. 1.8 From Numbers to Decisions (Capstone)
+
+The product surface is four deployable artifacts in one pnpm monorepo:
 
 | Artifact | Slug | Role |
 | --- | --- | --- |
 | `@workspace/api-server` | `api-server` | Express 5 API mounted at `/api`. Owns the DB, OpenAI calls, AI detection, grading, diagnostics. |
 | `@workspace/qr-course` | `qr-course` | Student-facing React + Vite app. The actual course. |
 | `@workspace/qr-course-demo` | `qr-course-demo` | A screencast-style product demo video, exported as MP4 from the preview pane. |
+| `@workspace/course-promo` & `@workspace/diagnostics-demo` | `course-promo`, `diagnostics-demo` | Short promo / diagnostics screencast videos, exported as MP4 from the preview pane. |
 
 Shared contracts live in `lib/`:
 
@@ -32,7 +44,7 @@ Source: `lib/db/src/schema/course.ts`.
 ```
 topics ──< lectures              (one topic, one lecture per length)
 topics ──< problems              (problems tagged to a topic for analytics)
-assignments ──< problems         (homework / test / midterm / final)
+assignments ──< problems         (homework / unit test / final)
 assignments ──< attempts ──< answers
                                 ↑ per-answer keystroke trace + AI scores
 practice_sessions ──< practice_problems ──< practice_attempts
@@ -179,7 +191,7 @@ Steps:
 
 1. **Environment** — `DATABASE_URL` present.
 2. **Database** — `SELECT 1` round-trip.
-3. **Database** — course content is seeded (≥27 topics, ≥1 lecture / assignment / problem).
+3. **Database** — course content is seeded (8 topics, ≥1 lecture / assignment / problem).
 4. **OpenAI** — fast-model chat completion returns non-empty text.
 5. **OpenAI** — JSON mode returns `{ ok: true }`.
 6. **Detection** — heuristic+scoring pipeline returns numbers for a benign sentence.
@@ -223,7 +235,7 @@ React + Vite + Tailwind. Routes:
 | `/weeks/:weekNumber` | `WeekView` | List of week's lectures and assignments |
 | `/lectures/:lectureId` | `LectureView` | Lecture body + Short/Medium/Long toggle + right-rail tutor / practice |
 | `/practice/topic/:topicId` | `TopicPractice` | Adaptive single-topic drill |
-| `/assignments` | `Assignments` | All homework / tests / midterm / final |
+| `/assignments` | `Assignments` | All homework / unit test / final |
 | `/assignments/:id` | `AssignmentRunner` | Take + review an assignment; shows AI grade + detection per answer |
 | `/analytics` | `Analytics` | KPIs, topic mastery table, recent activity |
 | `/diagnostics` | `Diagnostics` | Operator self-test UI (see §6) |

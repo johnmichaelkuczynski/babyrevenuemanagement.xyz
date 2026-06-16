@@ -26,7 +26,7 @@ export function Scene4() {
         animate={phase >= 1 ? { scale: 1, opacity: 1 } : { scale: 0.8, opacity: 0 }}
         transition={{ type: 'spring', stiffness: 200, damping: 20 }}
       >
-        <span className="text-primary block mb-2">HOSPITALITY ANALYTICS</span>
+        <span className="text-primary block mb-2">FINANCIAL &amp; MANAGERIAL ANALYTICS</span>
         <span className="text-white">FOR CHILDREN</span>
       </motion.div>
 
@@ -36,7 +36,7 @@ export function Scene4() {
         animate={phase >= 2 ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
         transition={{ duration: 0.8 }}
       >
-        <p>What makes a restaurant really work.</p>
+        <p>What makes a business really work.</p>
       </motion.div>
 
       {/* Decorative stars */}

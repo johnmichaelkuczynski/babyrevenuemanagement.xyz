@@ -25,3 +25,11 @@ Even more easily-missed spots (caught only by code review, not by an initial sce
 - **Backend `catch{}` fallback prompts** (e.g. practice-problem generator) carry the old domain's example scenario; they only surface when generation fails, so a happy-path test never reveals them.
 
 **Why:** a SceneN.tsx + index.html grep misses backend prompt literals, simulated demo answers, and fallback branches. **How to apply:** grep the WHOLE repo (incl. `routes/*.ts`, `lib/*.ts`) for old-subject terms AND a small set of broad words ("character", "case", "the person"), and cross-check demo card/assignment labels against the seed file. Run an architect review with `includeGitDiff:true` — it reliably catches these.
+
+Repo-root + asset blind spots (found only by a true whole-repo grep, not artifact-scoped):
+
+- **There are THREE separate README/description docs that drift independently:** repo-root `README.md`, `replit.md`, AND repo-root `youtube-description.md` — plus the per-artifact `YOUTUBE_DESCRIPTION.md`. A prior conversion can update `replit.md` while leaving `README.md`/`youtube-description.md` on the old subject. Convert all of them.
+- **`BLUEPRINT.md` can be staler than the prior subject entirely** — it described a long-dead "Ethics 101" 4-unit/27-topic version (never updated in the hospitality conversion). For a subject swap, fix the identity + topic list + the directly-conflicting structural facts (topic count, midterm→unit test, artifact list, no-login→Clerk); do NOT undertake a full architectural re-doc (out of scope).
+- **`artifacts/qr-course/public/logo.svg`** carried a hard-coded `aria-label` + visible text from a much older brand ("Ethics 101"). It's referenced by Clerk's sign-in appearance (`logoImageUrl` in `App.tsx`), so it shows on the login screen. Grep svg assets for stale brand text.
+
+DB reseed prerequisite: the seed self-heal runs on api-server boot but **requires the schema to already exist**. On a fresh/wiped DB the boot log shows `relation "topics" does not exist` and seeding aborts. Run `pnpm --filter @workspace/db run push` first, then restart api-server — the reseed then succeeds.

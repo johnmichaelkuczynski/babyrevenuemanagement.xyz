@@ -64,7 +64,7 @@ export function Scene2({ setCursorPos, setIsClicking }: { setCursorPos: (pos: {x
       {/* Left Pane: Lecture Content */}
       <div className="w-1/2 h-full border-r border-border p-12 overflow-hidden flex flex-col relative">
         <div className="text-xs font-bold tracking-widest text-muted-foreground mb-4">UNIT 1</div>
-        <h1 className="text-3xl font-serif text-primary mb-8">1.1 What hospitality analytics is</h1>
+        <h1 className="text-3xl font-serif text-primary mb-8">1.1 What financial &amp; managerial analytics is</h1>
         
         <div className="flex bg-muted/50 rounded-lg p-1 w-fit mb-10 border border-border">
           <div className={`px-4 py-1.5 rounded-md text-sm font-medium transition-colors ${phase < 1 ? 'bg-white shadow-sm text-primary' : 'text-muted-foreground'}`}>Short</div>
@@ -73,12 +73,12 @@ export function Scene2({ setCursorPos, setIsClicking }: { setCursorPos: (pos: {x
         </div>
 
         <div className="prose prose-sm max-w-none text-foreground/80 space-y-6">
-          <h2 className="font-serif text-2xl text-primary">What hospitality analytics is</h2>
+          <h2 className="font-serif text-2xl text-primary">What financial &amp; managerial analytics is</h2>
           <p>
-            Hospitality analytics is the study of why a restaurant really works — what brings guests in, how much they spend, what it all costs, and how owners use those numbers to make better decisions.
+            Financial &amp; managerial analytics is the study of why a business really works — how much money comes in, how much goes out, what's left over, whether there's actually cash, and how owners use those numbers to make better decisions.
           </p>
           <p>
-            A restaurant's success isn't random or just about looking busy. There are patterns behind which nights, dishes, and guests actually make money. Understanding those patterns helps a place stay open and treat its guests well.
+            A business's success isn't random or just about looking busy. There are patterns behind which products, months, and customers actually make money. Understanding those patterns helps a business stay open and serve its customers well.
           </p>
           
           <AnimatePresence>
@@ -90,10 +90,10 @@ export function Scene2({ setCursorPos, setIsClicking }: { setCursorPos: (pos: {x
                 className="space-y-6"
               >
                 <p>
-                  A restaurant's health is rarely about a single number. How many guests come, how much each one spends, and what the food and staff cost all push on the bottom line — sometimes a little, sometimes a lot.
+                  A business's health is rarely about a single number. How much money comes in, what it all costs, what's left as profit, and whether there's cash on hand all push on the bottom line — sometimes a little, sometimes a lot.
                 </p>
                 <p>
-                  For example, a packed dining room can still lose money if the average check is low and costs are high. Hospitality analytics asks why — and uses the answer to keep the doors open and the guests happy.
+                  For example, a business can show a profit on paper and still run out of cash if money is tied up or bills come due first. Financial &amp; managerial analytics asks why — and uses the answer to keep the doors open and customers served.
                 </p>
               </motion.div>
             )}
@@ -120,9 +120,9 @@ export function Scene2({ setCursorPos, setIsClicking }: { setCursorPos: (pos: {x
               >
                 <div className="mb-4 text-xs font-semibold text-muted-foreground uppercase tracking-widest">Starter questions for this section</div>
                 <div className="flex flex-wrap gap-2 mb-6">
-                  <div className="px-3 py-1.5 rounded-full border border-border text-sm text-primary bg-muted/30">A café is packed every morning but barely breaks even — what might explain that?</div>
-                  <div className="px-3 py-1.5 rounded-full border border-border text-sm text-primary bg-muted/30">Two restaurants serve the same number of guests, but one earns far more. Why?</div>
-                  <div className="px-3 py-1.5 rounded-full border border-border text-sm text-primary bg-muted/30">Why can a restaurant's busiest night still be one of its worst for profit?</div>
+                  <div className="px-3 py-1.5 rounded-full border border-border text-sm text-primary bg-muted/30">A bakery posts its best profit ever but can't make rent — what might explain that?</div>
+                  <div className="px-3 py-1.5 rounded-full border border-border text-sm text-primary bg-muted/30">Two shops report the same sales, but only one has cash in the bank. Why?</div>
+                  <div className="px-3 py-1.5 rounded-full border border-border text-sm text-primary bg-muted/30">Why can a business's busiest month still be one of its worst for cash?</div>
                 </div>
                 <div className="w-full h-24 border border-border rounded-lg bg-muted/20 p-3 text-muted-foreground text-sm flex items-end shadow-inner">
                   <div className="w-full flex justify-between">
@@ -157,7 +157,7 @@ export function Scene2({ setCursorPos, setIsClicking }: { setCursorPos: (pos: {x
                     className="p-6 border border-border rounded-xl shadow-sm bg-white"
                   >
                     <p className="text-foreground font-medium mb-6">
-                      A restaurant is full every Friday night but still can't make payroll, while a quieter bistro nearby is thriving. What does this suggest about what really makes a restaurant work?
+                      A shop posts a record profit this month but still can't make payroll, while a quieter shop nearby pays every bill on time. What does this suggest about what really makes a business work?
                     </p>
                     <div className="w-full h-12 border border-border rounded-md bg-muted/10 mb-4 px-3 flex items-center text-muted-foreground">Type your answer...</div>
                     <div className="px-4 py-2 bg-primary text-white rounded-md text-sm font-medium w-fit ml-auto">Submit</div>

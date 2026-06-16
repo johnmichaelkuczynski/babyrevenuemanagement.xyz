@@ -107,7 +107,7 @@ export default function VideoTemplate({
         </nav>
 
         <div className="px-6 mt-auto">
-          <div className="text-xs text-muted-foreground uppercase font-semibold">Hospitality Analytics MVP</div>
+          <div className="text-xs text-muted-foreground uppercase font-semibold">Financial &amp; Managerial Analytics MVP</div>
         </div>
       </div>
 

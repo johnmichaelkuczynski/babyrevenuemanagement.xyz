@@ -21,9 +21,9 @@ const router: IRouter = Router();
 
 const WEEK_TITLES: Record<number, { title: string; summary: string }> = {
   1: {
-    title: "Restaurant & Hospitality Analytics for Everyone",
+    title: "Financial & Managerial Analytics for Everyone",
     summary:
-      "What hospitality analytics really is, the metrics that matter (covers, turns, and the bottom line), how menu engineering turns a menu into a profit machine, how to forecast demand, how pricing and yield really work, why repeat guests and lifetime value matter, how to read reviews and sentiment at scale, and how to turn a dashboard into a decision — all in plain language, no technical skills required.",
+      "What financial & managerial analytics really is, how to read the three financial statements, how costs behave (fixed, variable, and why the cost per unit changes with volume), how to find a break-even point, how budgets and variance reveal plan vs. reality, how unit economics decides whether each sale makes money, how forecasting and KPIs steer a business, and how to turn numbers into decisions — all in plain language, no technical skills required.",
   },
 };
 
@@ -112,7 +112,7 @@ router.get("/course/overview", async (_req, res) => {
 
   res.json(
     GetCourseOverviewResponse.parse({
-      title: "Restaurant & Hospitality Analytics for Children",
+      title: "Financial & Managerial Analytics for Children",
       weeks,
       totals: { assignmentsCompleted, assignmentsTotal, practiceCount },
     }),
@@ -203,13 +203,13 @@ router.post(
     const sourceBody = (base && base.trim().length > 0 ? base : lecture.body).trim();
 
     const sys =
-      "You are a introductory hospitality analytics lecturer revising your own lecture at a student's request. " +
+      "You are a introductory financial & managerial analytics lecturer revising your own lecture at a student's request. " +
       "You are given the CURRENT lecture and ONE instruction from the student about how to revise it. " +
       "Apply the instruction faithfully. ABSOLUTE RULES, no exceptions:\n" +
       "1. KEEP every concept, claim, and learning objective from the current lecture. Never drop material or change what the lecture teaches — only adjust how it is presented per the instruction.\n" +
       "2. Preserve the existing examples; you may add to or clarify them, but do not silently replace them with different ones unless the instruction explicitly asks you to.\n" +
       "3. Keep headings and section order intact. You may add sub-sections (e.g. extra examples) when the instruction calls for it.\n" +
-      "4. Stay accurate to the source material and to hospitality analytics as a discipline. Do not invent fake facts, citations, or quotations.\n" +
+      "4. Stay accurate to the source material and to financial & managerial analytics as a discipline. Do not invent fake facts, citations, or quotations.\n" +
       "5. Use clear Markdown. Use $...$ for any inline math.\n" +
       "6. Return ONLY the rewritten Markdown lecture body — no preface, no commentary, no surrounding code fences.";
     const user =
@@ -314,12 +314,12 @@ router.post(
     const sourceBody = (base && base.trim().length > 0 ? base : lecture.body).trim();
 
     const sys =
-      "You are an introductory hospitality analytics lecturer adding illustrations to your own lecture. " +
+      "You are an introductory financial & managerial analytics lecturer adding illustrations to your own lecture. " +
       "You are given the CURRENT lecture. Return the SAME lecture, unchanged in what it teaches, but with vivid illustrations added. ABSOLUTE RULES, no exceptions:\n" +
       "1. KEEP every concept, claim, heading, section, and learning objective exactly as they are, in the same order. Do not remove, reorder, or rewrite the existing explanation — only ADD to it.\n" +
       "2. For EVERY distinct point the lecture makes, add AT LEAST ONE concrete, vivid illustration that makes the point easy to picture: a short scenario, a real-to-life case sketch, an everyday analogy, or a worked example. Keep illustrations tasteful and age-appropriate — never graphic or sensational.\n" +
       "3. Set off each illustration so it reads as an example (e.g. a short *Example:* sentence or a brief italicized vignette) rather than blending into the original text.\n" +
-      "4. Stay accurate to the source material and to hospitality analytics as a discipline. Do not invent fake facts, statistics, citations, or quotations; keep examples plausibly illustrative, not presented as documented cases.\n" +
+      "4. Stay accurate to the source material and to financial & managerial analytics as a discipline. Do not invent fake facts, statistics, citations, or quotations; keep examples plausibly illustrative, not presented as documented cases.\n" +
       "5. Use clear Markdown. Use $...$ for any inline math.\n" +
       "6. Return ONLY the augmented Markdown lecture body — no preface, no commentary, no surrounding code fences.";
     const user =

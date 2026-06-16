@@ -3,9 +3,9 @@
 //
 // Two instruments, each offered at FOUR time-points (phases) so a student can
 // gauge themselves before, during, and after the course:
-//   - subject  — Hospitality Analytics subject-specific reasoning. Realistic
-//     short cases about the course material; the best-supported answer is keyed
-//     first.
+//   - subject  — Financial & Managerial Analytics subject-specific reasoning.
+//     Realistic short cases about the course material; the best-supported answer
+//     is keyed first.
 //   - general  — General Reasoning. Genuine reasoning items spanning analysis,
 //     inference, evaluation, deduction, and induction (NOT a "docility"/agree-
 //     with-authority test).
@@ -88,25 +88,25 @@ const SUBJECT_SPECS: Record<Phase, GenSpec> = {
     level:
       "Intro level: answerable by a thoughtful newcomer reasoning carefully, BEFORE any lessons. Do not assume prior course knowledge or technical terms.",
     topicFocus:
-      "What hospitality analytics is and how it thinks about a restaurant: that a restaurant's health has multiple interacting drivers (how many guests come, how much each spends, and what it all costs) rather than a single number like 'a full room', and that the field measures what's really happening rather than trusting gut feeling or how a night looks.",
+      "What financial & managerial analytics is and how it thinks about a business: that a business's health has multiple interacting parts (how much money comes in, how much goes out, what's left over, and whether there's actually cash) rather than a single number like 'high sales', and that the field measures what's really happening rather than trusting gut feeling or how busy a business looks.",
   },
   third: {
     level:
       "Early course level: covers roughly the first third of the unit. Plain language, short realistic cases.",
     topicFocus:
-      "Topics 1.1-1.3: what hospitality analytics is; the metrics that matter (covers, table turns, the average check, and that revenue is not the same as profit); and menu engineering (judging dishes on BOTH popularity and profit, so a best-seller is not always the most valuable dish).",
+      "Topics 1.1-1.3: what financial & managerial analytics is; the three financial statements (income statement, balance sheet, and cash flow statement, and that profit is not the same as cash); and cost behavior (fixed vs variable costs, and that the cost per unit changes with volume so there is no single 'cost to make one').",
   },
   twothirds: {
     level:
       "Mid course level: covers roughly the first two-thirds of the unit. Realistic short cases requiring a step of reasoning.",
     topicFocus:
-      "Topics 1.1-1.6: measuring a restaurant, the key metrics, and menu engineering, PLUS demand forecasting and its limits (a forecast is an estimate from past patterns, not a certainty), pricing and yield (price is a signal and the same seat is worth more at peak demand), and guests as data (repeat guests and lifetime value often matter more than chasing only new faces).",
+      "Topics 1.1-1.6: what the field is, the three financial statements, and cost behavior, PLUS break-even (the sales needed to cover total costs, and that a lower price shrinks each sale's contribution and raises the break-even point), budgets and variance (a budget is a plan, not a promise, and variance is the plan-vs-reality gap to learn from), and unit economics (whether each single sale actually makes money, since growth multiplies losses if it does not).",
   },
   after: {
     level:
       "End-of-course level: covers the whole unit. Integrative short cases that apply more than one idea.",
     topicFocus:
-      "The full unit, topics 1.1-1.8: measuring a restaurant, key metrics, menu engineering, forecasting, pricing/yield, and guests/loyalty, PLUS reviews and sentiment (read reviews as data at scale rather than reacting to a single opinion or one bad review) and from dashboard to decision (data informs a decision but does not make it, and you must separate the metrics that matter from flattering vanity metrics).",
+      "The full unit, topics 1.1-1.8: the field, the three statements, cost behavior, break-even, budgets/variance, and unit economics, PLUS forecasting and KPIs (a forecast is an estimate from past patterns, not a certainty, and you choose the few dials that matter over flattering vanity metrics) and from numbers to decisions (data informs a decision but does not make it, and you must separate the metrics that matter from vanity metrics).",
   },
 };
 
@@ -152,7 +152,7 @@ const FORMAT_LABEL: Record<DiagFormat, string> = {
 function instructionsFor(instrument: Instrument, format: DiagFormat): string {
   const subject =
     instrument === "subject"
-      ? "Answer each question about hospitality analytics — these reward careful reasoning about realistic restaurant situations, not memorized facts"
+      ? "Answer each question about financial & managerial analytics — these reward careful reasoning about realistic business situations, not memorized facts"
       : "Answer each reasoning question — these measure how you think, not what you recall";
   const body =
     format === "mcq"
@@ -164,86 +164,86 @@ function instructionsFor(instrument: Instrument, format: DiagFormat): string {
 }
 
 // ===========================================================================
-// SUBJECT — Hospitality Analytics blueprint cases (best answer keyed FIRST)
+// SUBJECT — Financial & Managerial Analytics blueprint cases (best answer keyed FIRST)
 // ===========================================================================
 
 const SUBJECT_BEFORE: DiagItem[] = [
   {
     prompt:
-      "A reporter asks a hospitality analyst why a particular restaurant struggled even though it always looked busy. The analyst would most likely explain it in terms of:",
+      "A reporter asks a financial analyst why a particular business struggled even though it always had lots of customers and big sales. The analyst would most likely explain it in terms of:",
     options: [
-      "a mix of how many guests came, how much each spent, and what it all cost",
+      "a mix of how much money came in, how much went out, and whether cash was actually there",
       "whether the owner is a naturally lucky person",
-      "the color of the restaurant's sign",
-      "the reporter's personal opinion of the food",
+      "the color of the company's logo",
+      "the reporter's personal opinion of the products",
     ],
     modelAnswer:
-      "Hospitality analytics explains a restaurant's results through interacting measures — guest counts, spending per guest, and costs — not luck or a single impression like how full the room looks.",
+      "Financial analytics explains a business's results through interacting measures — money in, money out, and actual cash — not luck or a single impression like how busy it looks.",
   },
   {
     prompt:
-      "A headline claims 'a packed restaurant is always a successful one.' How would a hospitality analyst most likely treat this claim?",
+      "A headline claims 'a business with high sales is always a successful one.' How would a financial analyst most likely treat this claim?",
     options: [
-      "As an oversimplification, since profit depends on spending and costs, not just a full room",
+      "As an oversimplification, since profit and cash depend on costs and timing, not just sales",
       "As obviously true and needing no evidence",
       "As something that can never be measured",
-      "As true only for expensive restaurants",
+      "As true only for large companies",
     ],
     modelAnswer:
-      "It is an oversimplification; a full room can still lose money, so the field looks at spending and costs together, not just how busy a place looks.",
+      "It is an oversimplification; a business with high sales can still lose money or run out of cash, so the field looks at costs and cash together, not just the sales number.",
   },
   {
     prompt:
-      "Which question is most central to what hospitality analytics actually studies?",
+      "Which question is most central to what financial & managerial analytics actually studies?",
     options: [
-      "Whether a restaurant is really working, measured by its guests, spending, and costs",
-      "Which restaurant has the friendliest-looking logo",
-      "How to fold a dinner napkin most elegantly",
-      "Which restaurant would make the best movie set",
+      "Whether a business is really making money, measured by what comes in, goes out, and what's left",
+      "Which company has the friendliest-looking logo",
+      "How to design the fanciest office lobby",
+      "Which company would make the best movie set",
     ],
     modelAnswer:
-      "Hospitality analytics studies whether a restaurant is actually working, using measurements of guests, spending, and costs rather than impressions.",
+      "Financial & managerial analytics studies whether a business is actually making money, using measurements of money in, money out, and cash rather than impressions.",
   },
 ];
 
 const SUBJECT_THIRD: DiagItem[] = [
   {
     prompt:
-      "Over several months one dish sells constantly but earns almost nothing after its ingredient costs, while a quieter dish earns a lot per plate. Looking at dishes this way is most associated with:",
+      "A company reports a healthy profit on its income statement but cannot pay this month's bills. Understanding how both can be true at once depends most on:",
     options: [
-      "menu engineering, which judges dishes on both popularity and profit",
-      "guessing based on the owner's personal favorite",
+      "reading the cash flow statement too, because profit is not the same as cash",
+      "guessing based on the owner's personal mood",
       "the day's weather",
-      "the alphabetical order of the menu",
+      "the alphabetical order of the products",
     ],
     modelAnswer:
-      "Judging dishes by both how often they sell and how much they earn is menu engineering, which shows popularity is not the same as profit.",
+      "Profit on the income statement isn't cash in the bank; the cash flow statement can show money draining out even while profit looks good, so you read the statements together.",
     skillArea: "analysis",
   },
   {
     prompt:
-      "Two restaurants serve the same number of guests, but one sells drinks and dessert while the other sells only entrées, and it earns far more. This best illustrates that results are shaped by:",
+      "Asked 'what did it cost to make one mug?', a manager answers 'it depends on how many we made.' This best illustrates that costs are shaped by:",
     options: [
-      "how much each guest spends (the average check), not just how many guests come",
+      "cost behavior — fixed costs spread over volume, so the per-unit cost changes with how many you make",
       "nothing but luck",
-      "the number of chairs alone",
+      "the number of shelves alone",
       "pure random chance",
     ],
     modelAnswer:
-      "It shows results depend on spending per guest (the average check), not only on how many guests come.",
+      "Because fixed costs like rent spread over however many units are made, the cost per unit changes with volume, so there is no single 'cost to make one.'",
     skillArea: "inference",
   },
   {
     prompt:
-      "A student says 'one number — total revenue — tells you everything about a restaurant.' Why would a hospitality analyst push back?",
+      "A student says 'one number — total sales — tells you everything about a business.' Why would a financial analyst push back?",
     options: [
-      "Because health depends on several metrics together, since revenue is not the same as profit",
-      "Because revenue never matters at all",
-      "Because only large restaurants have revenue",
-      "Because a restaurant cannot be measured in any way",
+      "Because health depends on several measures together, since sales is not profit and profit is not cash",
+      "Because sales never matter at all",
+      "Because only large businesses have sales",
+      "Because a business cannot be measured in any way",
     ],
     modelAnswer:
-      "A single number is too simple; revenue is not profit, so you must read covers, spending, and costs together.",
+      "A single number is too simple; sales isn't profit and profit isn't cash, so you must read the three statements together.",
     skillArea: "evaluation",
   },
 ];
@@ -251,83 +251,83 @@ const SUBJECT_THIRD: DiagItem[] = [
 const SUBJECT_TWOTHIRDS: DiagItem[] = [
   {
     prompt:
-      "A manager very confidently forecasts that tonight will be slow and staffs light, but a nearby concert fills the restaurant. What does this best illustrate about forecasting?",
+      "An owner slashes prices to sell more, stays busy all day, yet still loses money on every sale. What does this best illustrate about break-even?",
     options: [
-      "A forecast is an estimate from past patterns and can be wrong, especially if a factor is missed",
-      "A confident forecast is always correct",
-      "Forecasts predict the future perfectly",
-      "Demand can never be estimated at all",
+      "A lower price shrinks each sale's contribution and raises the break-even point, so high volume can still lose money",
+      "A lower price always guarantees a profit",
+      "Break-even has nothing to do with price",
+      "Selling more always means making money",
     ],
     modelAnswer:
-      "Forecasts are probabilistic estimates built from past clues; missing a factor like a nearby event can make even a confident forecast wrong.",
+      "Cutting the price lowers what each sale contributes toward fixed costs, raising the break-even point, so a busy business at too low a price can still lose money on every sale.",
     skillArea: "evaluation",
   },
   {
     prompt:
-      "A restaurant gives the same menu to two groups — one with dollar signs, one without — and the group reading it without dollar signs spends more. What does this best demonstrate?",
+      "A team spent more than its budget on supplies, and the manager wants to punish whoever's responsible. What's the better way to read this?",
     options: [
-      "How a price is presented can change spending, so our pricing instincts are unreliable",
-      "The food was actually different for each group",
-      "Price presentation never affects behavior",
-      "Guests always ignore the menu entirely",
+      "A budget is a plan and the variance is a signal to ask why, not a rule broken to punish",
+      "The budget was a promise that someone failed to keep",
+      "Variances never carry any useful information",
+      "Going over budget always means someone cheated",
     ],
     modelAnswer:
-      "Presentation, like dropping the dollar sign, changes spending even when the prices are identical, showing pricing instincts mislead us.",
-    skillArea: "inference",
+      "A budget is a plan you measure reality against; the variance is a signal to ask why (prices rose? more was made?), used to learn and adjust rather than to assign blame.",
+    skillArea: "analysis",
   },
   {
     prompt:
-      "An owner treats a loyalty program as just a giveaway and ignores what it reveals about who comes back. Why is that a mistake?",
+      "A startup's signups double every month, but each customer costs more to win and serve than they ever pay. What does this best demonstrate?",
     options: [
-      "A loyalty program is data showing frequency, recency, and lifetime value, not just a discount",
-      "Loyalty programs always lose money",
-      "Repeat guests never matter",
-      "Loyalty can never be measured at all",
+      "Unit economics — if each sale loses money, faster growth multiplies the losses",
+      "That growth always fixes a money problem",
+      "That signups are the only number that matters",
+      "That costs can never be measured per customer",
     ],
     modelAnswer:
-      "A loyalty program reveals how often and how recently guests return and their lifetime value; ignoring that wastes its real purpose.",
-    skillArea: "analysis",
+      "If a single sale loses money, growing only grows the losses; you can't 'make it up in volume' until each unit is profitable once all its costs are counted.",
+    skillArea: "inference",
   },
 ];
 
 const SUBJECT_AFTER: DiagItem[] = [
   {
     prompt:
-      "A restaurant gets one angry one-star review. A manager is deciding how seriously to treat it. Which consideration matters most?",
+      "A founder points to a chart of 'total users, all time' that keeps climbing as proof the business is thriving. Which consideration matters most?",
     options: [
-      "Whether the complaint is a recurring theme across many reviews or just a single outlier",
-      "Only whether the review exists at all",
-      "How the manager happens to feel that morning",
-      "Whether the restaurant is expensive",
+      "Whether users actually stay, since a number that only ever rises can hide people quietly leaving",
+      "Only whether the chart exists at all",
+      "How the founder happens to feel that morning",
+      "Whether the company has a nice logo",
     ],
     modelAnswer:
-      "What matters is whether the issue recurs across many reviews (a real pattern) versus a lone outlier; one bad review is not a catastrophe.",
+      "'Total users, all time' is a vanity metric that can only rise and may hide churn; a useful KPI like active users or retention can deliver the bad news it conceals.",
     skillArea: "evaluation",
   },
   {
     prompt:
-      "A dashboard flags a single slow week as a 'problem.' How should that one result be understood?",
+      "A manager confidently forecasts a slow month and cuts inventory, but a large unexpected order arrives. How should that one result be understood?",
     options: [
-      "As possible noise that may not need action, not automatic proof something is wrong",
-      "As a guarantee the restaurant is failing",
-      "As proof the menu must be replaced immediately",
+      "A forecast is an estimate from past patterns and can be wrong, so it shouldn't be treated as a certainty",
+      "As proof the business is failing",
+      "As a guarantee forecasts are useless",
       "As a fixed fact that can never change",
     ],
     modelAnswer:
-      "One slow week may be noise; data informs but does not decide, so it is not automatic proof of a real problem.",
+      "A forecast is a likely estimate built from past clues, not a promise; a missed factor can make even a confident forecast wrong, so it informs planning rather than dictating it.",
     skillArea: "inference",
   },
   {
     prompt:
-      "Reviewing results, an analyst declares a restaurant a clear success based only on a packed room and a high social-media follower count. Drawing on the unit, the strongest criticism is that:",
+      "Reviewing results, an analyst declares a business a clear success based only on big sales and a high social-media follower count. Drawing on the unit, the strongest criticism is that:",
     options: [
-      "Both a full room and follower counts can mislead, so neither proves the restaurant is profitable",
-      "A packed room always proves profit, so the conclusion is fine",
+      "Both big sales and follower counts can mislead, so neither proves the business is profitable or has cash",
+      "High sales always prove profit, so the conclusion is fine",
       "Follower counts are exact measures of profit, so the conclusion is fine",
       "Results can never be reviewed after the fact",
     ],
     modelAnswer:
-      "A full room can still lose money and followers are a vanity metric; neither proves profitability, which needs covers, spending, and costs read together.",
+      "High sales can still lose money and followers are a vanity metric; neither proves profitability or cash, which need the three statements read together.",
     skillArea: "evaluation",
   },
 ];
@@ -440,7 +440,7 @@ const BASE_CONTENT: BaseContent[] = PHASE_ORDER.flatMap((phase) => {
     {
       instrument: "subject" as const,
       phase,
-      baseTitle: `Hospitality Analytics Check — ${PHASE_LABEL[phase]}`,
+      baseTitle: `Financial & Managerial Analytics Check — ${PHASE_LABEL[phase]}`,
       items: subjectItems[phase],
     },
     {

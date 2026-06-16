@@ -14,7 +14,7 @@ import { logger } from "./logger";
 // the value stored in seed_meta; a mismatch forces a full re-seed, so content
 // edits self-heal in every environment (including a republished production)
 // without a manual database wipe.
-const SEED_CONTENT_VERSION = "2026-06-16-restaurant-hospitality-analytics-for-children-v1";
+const SEED_CONTENT_VERSION = "2026-06-16-financial-managerial-analytics-for-children-v1";
 
 type SeedTopic = {
   slug: string;
@@ -26,250 +26,254 @@ type SeedTopic = {
 };
 
 const TOPICS: SeedTopic[] = [
-  // Unit 1 — Restaurant & Hospitality Analytics for Everyone
+  // Unit 1 — Financial & Managerial Analytics for Everyone
   {
-    slug: "what-hospitality-analytics-is",
-    title: "What hospitality analytics is",
+    slug: "what-financial-analytics-is",
+    title: "What financial & managerial analytics is",
     weekNumber: 1,
-    blurb: "Hospitality analytics asks whether a restaurant is really working — and most of what gut instinct tells you about that is a myth.",
-    lectureTitle: "1.1 What hospitality analytics is (turning a restaurant into numbers)",
-    body: `# What hospitality analytics is
+    blurb: "Financial analytics asks whether a business is really making money — and most of what gut instinct tells you about that is a myth.",
+    lectureTitle: "1.1 What financial & managerial analytics is (the business as a story in numbers)",
+    body: `# What financial & managerial analytics is
 
-Almost everything most people "know" about running a restaurant comes from gut feeling and a packed Friday night. Those feelings are powerful, but they're often wrong. **Hospitality analytics** is the careful study of the question those instincts only pretend to answer: is this restaurant actually working, and how would we know — not by how it feels, but by what the numbers show?
+Almost everything most people "know" about whether a business is doing well comes from gut feeling and a busy storefront. Those feelings are powerful, but they're often wrong. **Financial and managerial analytics** is the careful study of the question those instincts only pretend to answer: is this business actually making money, and how would we know — not by how it feels, but by what the numbers show?
 
-## A business you can actually measure
+## A business you can actually read
 
-Hospitality analytics is a way of running a restaurant on evidence instead of hunches. It turns a fuzzy place full of smells, noise, and busy nights into things you can count: how many guests came, how long they stayed, what they spent, what each dish cost, which night truly made money. The goal isn't to drain the charm out of hospitality. It's to see clearly what's really happening so you can make the place both more welcoming *and* more profitable.
+Every business — a lemonade stand, a bakery, a giant company — tells a **story in numbers.** Financial and managerial analytics is the skill of reading that story instead of guessing at it. It turns a busy, confusing place full of sales, bills, and effort into things you can follow: how much money came in, how much went out, what's left over, and whether each thing the business does actually pays for itself. The goal isn't to make business cold; it's to see clearly what's really happening so you can keep the doors open.
 
-## A number is a measurement, not the meal
+## Two readers of the same story
 
-Here's something easy to forget: a "metric" isn't the same as the experience. It's a **measurement** we choose to take. The number of covers, the average check, the food cost — each is one snapshot, not the whole night. So good analysts keep two things apart: the *experience* a guest has, and the *measurements* we use to understand it. Confusing the measurement for the meal — or ignoring it entirely — is the first mistake clear thinking avoids.
+There are really two audiences for this story, and that's the "financial *and* managerial" part. **Financial analytics** is the version told to outsiders — owners, lenders, the tax office — like an official scoreboard reporting how the team did. **Managerial analytics** is the version used inside the business by the people making decisions, like a dashboard a driver watches *while* steering. Same business, same numbers underneath, but one looks back to report and the other looks ahead to decide.
 
-## The myths the industry tells you
+## A number is a measurement, not the money
 
-Restaurant lore is full of confident myths: that a busy room always means a healthy business, that a famous chef can "feel" what's working, that the best-selling dish must be the most valuable one, that more choices on the menu always sell more food. None of these hold up. A packed restaurant can quietly lose money, instinct misses what only counting reveals, and best-sellers are sometimes the least profitable items on the menu. A big part of this course is **un-learning** those myths.
+Here's something easy to forget: a "metric" isn't the same as the business itself. It's a **measurement** we choose to take. Profit, sales, cash on hand — each is one snapshot, not the whole story. There's even a saying that captures the biggest trap here: **profit is an opinion, but cash is a fact.** Profit depends on choices about *when* to count things; the actual cash in the drawer does not. Good analysts keep that difference in mind instead of trusting a single comforting number.
+
+## The myths the numbers tell you
+
+Business lore is full of confident myths: that high sales mean a healthy company, that "profit on paper" means money in the bank, that a low price always wins more customers, that growing fast is the same as doing well. None of these hold up on their own. A company can post record sales and quietly run out of cash; a fast-growing business can lose a little more on every single sale. A big part of this course is **un-learning** those myths and replacing them with a few honest numbers read together.
 
 ## Why this matters
 
-Getting this right isn't just for big chains with data teams. The same ideas decide whether a small family restaurant survives its first three years, whether a hard-working owner is exhausting themselves on the wrong nights, and whether a great meal is also a sustainable business. When people run on myth instead of measurement, real harm follows — the owner burns out, the staff get cut, the doors close. Reading a restaurant honestly is a kind of fairness to everyone who depends on it.
+Getting this right isn't just for big companies with finance teams. The same ideas decide whether a small shop survives its first three years, whether a family can tell if a side business is worth the effort, and whether a good idea is also a workable one. When people run on myth instead of measurement, real harm follows — savings vanish, jobs are lost, the doors close. Reading a business honestly is a kind of fairness to everyone who depends on it.
 
 ## In the real world
 
-A restaurant can be *slammed* every weekend and still go under. Owners often point to a full dining room as proof they're thriving — yet many of those packed places are turning tables too slowly, discounting too hard, or busy mainly at their lowest-margin hours. Only when someone finally turns the room into numbers — covers, check averages, food and labor costs — does the truth show up: "busy" felt like success but never was. That gap between how a night *feels* and what it actually *earns* is the warning that runs through this whole course.`,
+One of the most surprising facts in business is that **profitable companies go broke all the time.** A growing business can show a healthy profit on its reports and still fail, because it ran out of *cash* — its money was tied up in unsold inventory or in customers who hadn't paid yet, while the rent and payroll came due now. Studies of why small businesses fail keep pointing to running out of cash, not lack of profit, as a leading cause. That gap between looking profitable and actually having money is exactly the kind of thing analytics is meant to catch — and it's the warning that runs through this whole course.`,
   },
   {
-    slug: "metrics-that-matter",
-    title: "The metrics that matter",
+    slug: "three-financial-statements",
+    title: "The three financial statements",
     weekNumber: 1,
-    blurb: "No single number tells you if a restaurant is healthy — profit grows from covers, turns, check average, and costs read together.",
-    lectureTitle: "1.2 The metrics that matter (covers, turns, and the bottom line)",
-    body: `# The metrics that matter
+    blurb: "No single report tells you if a business is healthy — the income statement, balance sheet, and cash flow statement only make sense read together.",
+    lectureTitle: "1.2 Reading the score (the three financial statements at a glance)",
+    body: `# The three financial statements
 
-When someone asks "how's the restaurant doing?", everyone wants one simple number: revenue, or seats filled, or a great review. The honest answer is that there is **no single number** that tells the story. A restaurant's health grows out of several measurements stacked together — how many guests, how often the tables turn, how much each guest spends, and what it all costs. This section is about reading them at once.
+When someone asks "how's the business doing?", everyone wants one simple report. The honest answer is that the story is told by **three different reports**, and any one of them alone can mislead you. Together they're like reading several vital signs at once instead of trusting your pulse alone. This section is about what each one shows — and why you need all three.
 
-## Covers and turns: counting the guests
+## The income statement: did we make a profit?
 
-The most basic numbers are **covers** (the number of guests actually served) and **turns** (how many times a single table is used in a service). A four-top that seats one party all night is one turn; the same table seating three parties is three. Covers tell you how many people you fed; turns tell you how hard your seats worked. A half-empty room and a fully booked room that never turns can serve the same number of people — the counts make the difference visible.
+The **income statement** answers one question over a stretch of time: did we earn more than we spent? It starts with the money the business made from selling things (**revenue**), subtracts the costs of running the business, and ends with what's left over (**profit**, sometimes called the "bottom line" because it's literally the last line). It's the report people quote most. But it covers only *profit over a period* — it doesn't tell you what the business owns, owes, or whether it actually has cash right now.
 
-## The check average: what each guest spends
+## The balance sheet: a snapshot of what we own and owe
 
-Counting heads isn't enough, because not every guest is worth the same. The **average check** — total sales divided by covers — shows how much a typical guest spends. Two restaurants can serve the same number of covers and earn very different amounts because one sells appetizers, drinks, and dessert while the other sells just an entrée. Raising the average check, even a little, can matter as much as filling more seats.
+The **balance sheet** is a photograph taken on a single day. It lists what the business **owns** (its *assets* — cash, equipment, inventory) and what it **owes** (its *liabilities* — loans, unpaid bills), and the difference between them is the owner's stake. It always "balances" because everything the business has was paid for either by borrowing or by the owners. Where the income statement is a movie of a whole period, the balance sheet is a still frame of one moment.
 
-## The bottom line: revenue isn't profit
+## The cash flow statement: where the money actually went
 
-Here's the number that fools people most: **revenue is not profit.** Money coming in isn't money kept. Out of every sale comes the cost of the food and the cost of the labor — together often called **prime cost** — plus rent, utilities, and the rest. A restaurant can post record sales and still lose money if those costs climbed faster. The bottom line is what's left *after* the costs, and it's the only number that tells you whether the business actually works.
+The **cash flow statement** tracks the one thing that keeps the lights on: actual cash moving in and out. This matters because of that earlier saying — **profit is an opinion, cash is a fact.** A sale can count as profit the moment it's made, even if the customer won't pay for sixty days, so a business can show a profit while its bank account drains. The cash flow statement strips away the timing tricks and shows the plain truth of whether more money came in than went out.
 
-## One number lies; the dashboard tells the truth
+## Why you read all three together
 
-Put it together and you get the field's most important idea: **no single metric is destiny.** Revenue alone, covers alone, or one glowing review alone can each point the wrong way. You read them *together* — covers and turns and check average and costs — the way a doctor reads several vital signs at once instead of trusting your pulse alone. Anyone who promises that one magic number proves a restaurant is healthy is selling a myth.
+Here's the key idea: **no single statement is the whole story.** The income statement can show a profit while the cash flow statement shows the business is bleeding money. The balance sheet can look strong while profits are sliding. Each report answers a different question — *Did we earn?*, *What do we have?*, *Did cash come in?* — and only by reading them side by side do you see whether a business is genuinely healthy or just looks that way from one angle.
 
 ## In the real world
 
-A restaurant once celebrated its best sales month ever — and the owner still couldn't make payroll. Revenue was up, so the team assumed everything was fine. But food prices had crept up and they'd added staff, pushing prime cost from a manageable share of sales to well over the rule-of-thumb ceiling many operators watch (roughly two-thirds of every dollar). The record revenue was real; so were the losses hiding underneath it. Only when they tracked the metrics *together* did the problem — and the fix — finally come into focus.`,
+Plenty of companies have reported glowing profits right up until they collapsed, because the profit was on paper while the cash quietly ran out. It happens so often that the cash flow statement — now considered essential — wasn't even *required* of U.S. companies until 1987, after too many "profitable" businesses surprised everyone by failing. The lesson investors learned the hard way is this section's whole point: a single shiny report is a starting point, not the truth. You only see what's really happening when you read the score, the snapshot, and the cash all at once.`,
   },
   {
-    slug: "menu-engineering",
-    title: "Menu engineering",
+    slug: "cost-behavior",
+    title: "Cost behavior: fixed and variable",
     weekNumber: 1,
-    blurb: "A menu isn't just a list of food — it's a profit machine, and the best-selling dish is not always the one you should be pushing.",
-    lectureTitle: "1.3 Menu engineering (why the menu is a profit machine)",
-    body: `# Menu engineering
+    blurb: "\"What did it cost to make?\" has no single answer — costs behave differently, and the same item can cost very different amounts depending on how many you make.",
+    lectureTitle: "1.3 Where the money goes (fixed, variable, and the cost behavior trick)",
+    body: `# Cost behavior: fixed and variable
 
-No object in a restaurant is more underestimated than the **menu.** Most people see a list of food and prices. In hospitality analytics, the menu is something far more powerful — and, in some ways, far more surprising: a carefully engineered machine that quietly steers what guests order and how much money the restaurant keeps.
+Ask "how much does it cost to make one of these?" and most people expect a single, fixed number. One of the most useful — and most surprising — ideas in managerial analytics is that there often *isn't* one. Costs **behave** in different ways, and once you see how, a "trick" appears that explains why making more of something can quietly make each one cheaper.
 
-## What menu engineering actually is
+## Two kinds of cost
 
-Menu engineering means looking at every dish through **two numbers at once**: how *popular* it is (how often it sells) and how *profitable* it is (how much it earns after its ingredients). Sort dishes by those two and you get four groups — the **stars** (popular and profitable), the **plowhorses** (popular but low-margin), the **puzzles** (profitable but rarely ordered), and the **dogs** (neither). The menu stops being a list and becomes a map of where your money is really made.
+Costs split into two families. **Fixed costs** stay roughly the same no matter how much you sell: the rent on the shop, the manager's salary, the insurance. Whether you serve one customer or a thousand, the rent is the rent. **Variable costs** rise and fall with how much you make: the flour in each loaf of bread, the box each order ships in, the electricity to run a machine longer. Sorting every cost into "stays the same" or "grows with each unit" is the first move of cost analysis.
 
-## Popularity isn't profit
+## The cost behavior trick
 
-Here's the part that trips everyone up: a best-seller can be one of your *least* profitable dishes. A popular plowhorse — say a big cheap pasta everyone loves — fills the room but barely earns. Pushing it harder can actually shrink profit, while a quiet "puzzle" dish with a great margin goes unnoticed. The missing piece in most people's thinking is profit per dish; without it, "what sells most" and "what earns most" get treated as the same thing when they often aren't.
+Here's the trick that trips people up: because fixed costs stay put, the cost *per item* changes as you make more. Imagine rent is the only fixed cost. Make ten loaves and each loaf carries one-tenth of the rent; make a thousand and each carries one-thousandth. The fixed cost gets **spread thinner** over more units, so the average cost per loaf falls — even though nothing about the recipe changed. This is why bigger producers can often charge less: they're not magic, they're just spreading their fixed costs over more sales.
 
-## Not just about the priciest dish
+## Why "what did it cost?" is a trap
 
-The opposite mistake is just as common: assuming the most *expensive* dish is the most profitable. It isn't necessarily. A $40 steak with costly beef can earn less per plate than a $16 pasta made of cheap, simple ingredients. What matters is the **margin** — price minus what the dish costs to make — not the price tag alone. High price and high profit are two different things that only sometimes line up.
+This is why "what did this product cost us to make?" is a trap question. The honest answer is "it depends on how many we made." If you treat a cost as one fixed number, you'll misprice things, misjudge which products are worth selling, and panic over the wrong numbers. Good managers always ask *which kind* of cost they're looking at and *at what volume*, instead of trusting a single cost tag.
 
-## Measuring it carefully
+## The most important cost is the next one
 
-Because favorites and hunches mislead, good operators don't engineer a menu by taste. They use **real numbers**: actual sales counts from the register and the real food cost of each recipe, calculated carefully. A single gut feeling about a dish means little; it's the documented pattern across the whole menu that tells you what to promote, reprice, redesign, or cut. This discipline is the opposite of "the owner just knows what's working."
+For decisions, the cost that matters most is the **marginal cost** — what it costs to make just *one more.* Once the rent is paid and the machine is on, one extra unit might cost almost nothing. That's why a business will sometimes happily sell something cheaply that "cost a lot to make": the fixed part is already spent, so any price above the tiny extra cost adds money. Confusing the average cost with the cost of the next one leads to turning away good sales.
 
 ## In the real world
 
-In a famous study, shoppers were offered free jam to taste. One table displayed **24** jams; another displayed just **6**. The big display drew far more curious crowds — it *looked* like the winner. But when researchers counted actual purchases, the small display sold roughly **ten times** as much. More choices pulled people in and then overwhelmed them into buying nothing. It's a perfect menu-engineering lesson: "more options must mean more sales" feels obvious, sounds smart, and is simply wrong until someone counts what actually sells.`,
+Think of an airplane about to take off with ten empty seats. The flight's big costs — the plane, the crew, the fuel — are **fixed**: they're the same whether those seats are full or empty. The cost of letting one more passenger board an already-departing flight is tiny: a bit more fuel and a snack. That's why airlines sell last-minute empty seats cheap; almost any price beats flying them empty. It's a perfect picture of cost behavior: the seat didn't get cheaper to provide overall — but the cost of *one more* passenger was nearly nothing, and that's the number the decision turns on.`,
   },
   {
-    slug: "forecasting-demand",
-    title: "Forecasting demand",
+    slug: "break-even",
+    title: "Break-even",
     weekNumber: 1,
-    blurb: "A forecast is an educated guess about a crowd that hasn't arrived yet, built from clues in past patterns — useful as a guide, dangerous as a certainty.",
-    lectureTitle: "1.4 Forecasting demand (knowing the crowd before it arrives)",
-    body: `# Forecasting demand
+    blurb: "Before you can know if a price or a plan works, you need one number: how much you must sell just to stop losing money.",
+    lectureTitle: "1.4 Break-even (the single most useful number in business)",
+    body: `# Break-even
 
-This is the part that looks like magic: a seasoned manager glances at the calendar and "just knows" how busy tonight will be. The real thing — **demand forecasting** — is more careful, more limited, and a lot more honest than the legend. It's the craft of using clues from the past to make educated guesses about a crowd that hasn't shown up yet.
+If you could keep only one number about a business, many experts would keep this one: the **break-even point** — how much you have to sell before you stop losing money and start making it. It's the line between "this is draining money" and "this is finally paying for itself," and a shocking number of business decisions go wrong simply because nobody worked it out.
 
-## The past leaves a pattern
+## What break-even means
 
-A restaurant's history is full of signal. Fridays beat Tuesdays; summer differs from winter; a sunny patio day differs from a downpour; a big game or concert nearby changes everything. None of these are random — they're **patterns** that repeat. Forecasting starts by noticing them: pulling up what really happened on similar days before, instead of trusting a vague sense that "it'll probably be busy."
+The break-even point is the amount of sales where **total money in exactly equals total money out** — no profit, no loss. Below it, every day you're a little in the hole; above it, you're finally ahead. It quietly answers the most important question before you start: *how much do we need to sell just to survive?* If that number is wildly higher than what you could realistically sell, the plan is broken before it begins, and break-even tells you that early.
 
-## From patterns to a forecast
+## Contribution: what each sale chips in
 
-A forecaster turns those clues into a **likely number** of guests — not a promise, an estimate. That number then drives real decisions: how many cooks and servers to schedule, how much food to order, whether to take the big reservation. A good forecast isn't about predicting the future perfectly; it's about getting close enough to staff and stock the place sensibly, so you're neither drowning nor standing around.
+To find break-even you need one idea: each sale doesn't have to cover *everything*, just its own variable cost — and whatever is left over **contributes** to paying the fixed costs. If a drink sells for $3 and the cup, lid, and liquid cost $1, that drink contributes $2 toward the rent. Keep selling, and those $2 chunks stack up until the fixed costs are fully covered. The moment they are, you've broken even, and every sale after that is profit.
 
-## Educated guess, not a crystal ball
+## Why it's the most useful number
 
-A forecast is a set of **odds**, and odds are sometimes wrong. You're guessing about people who haven't decided to come yet, from limited clues, so a forecast is a tool to *prepare* — never a guarantee. The danger comes when someone treats it as certain and locks in staffing and orders as if the number were fact. Used humbly, a forecast smooths the night; used as gospel, it sets you up to be caught out.
+Break-even is so useful because it turns vague hopes into a concrete target. Instead of "I hope this does well," you get "we need to sell 200 of these a month to cover our costs." That single number lets you sanity-check a price, a rent, or a whole business idea in minutes. It also reframes decisions: raising the price or trimming a fixed cost lowers the number you must hit, while a cheap price can push break-even so high you could never reach it.
 
-## When forecasting goes wrong
+## The low-price trap
 
-The biggest risk is **tunnel vision on one factor**: staffing only by the day of the week while ignoring the marathon downtown, or trusting last year's numbers through a heat wave. A confidently wrong forecast is worse than none, because the whole night — schedules, food orders, prep — gets built on it before anyone notices it's off. Careful operators treat a forecast as one input among many and stay ready to adjust the moment reality disagrees.
+This is where a common myth falls apart: "just lower the price and we'll sell enough to make it up." Cutting the price shrinks how much each sale contributes, which *raises* the number you must sell to break even — sometimes to impossible heights. A business can be busy, selling tons, and still lose money on every transaction because the price never covered the costs. Knowing your break-even point is what protects you from cheerfully selling your way into bankruptcy.
 
 ## In the real world
 
-A neighborhood restaurant knew its rhythm cold: Tuesdays were slow, so they staffed light. One Tuesday they were buried — a sold-out concert had let out two blocks away, and they'd never checked the local calendar. Guests waited too long, food ran short, reviews soured, all because a reliable pattern was trusted too confidently and one powerful clue (a nearby event) was missed. Weather and local events are among the strongest things that move a crowd, which is exactly why a forecast is valuable as a guide and dangerous as a certainty.`,
+Hollywood lives and dies by break-even. A movie doesn't break even at its production budget — a film that cost $100 million to make usually has to earn roughly **twice** that at the box office just to break even, because theaters keep about half the ticket money and marketing can cost nearly as much as the film itself. That's why a movie can gross "over $150 million" and still be called a flop: it never crossed its real break-even line. The number that decides a hit isn't the splashy gross — it's the quiet break-even point underneath it.`,
   },
   {
-    slug: "pricing-and-yield",
-    title: "Pricing and yield",
+    slug: "budgets-and-variance",
+    title: "Budgets and variance",
     weekNumber: 1,
-    blurb: "The 'right price' isn't fixed, and our instincts about it are surprisingly unreliable — the same seat can be worth very different amounts.",
-    lectureTitle: "1.5 Pricing and yield (charging the right amount at the right time)",
-    body: `# Pricing and yield
+    blurb: "A budget isn't a prediction that's right or wrong — it's a plan, and the gap between plan and reality is where the real lessons hide.",
+    lectureTitle: "1.5 Budgets and variance (plan vs. reality)",
+    body: `# Budgets and variance
 
-"Just charge what it costs, plus a little" sounds like the obvious way to price a menu. But here is one of the most surprising — and most useful — findings in hospitality analytics: the "right price" is **not a fixed number**, and our gut instincts about pricing are far less reliable than they feel. The same dish, the same seat, can be worth very different amounts depending on how and when it's sold.
+People treat a **budget** like a fortune-teller's prediction — something that's either right or wrong by year's end. That's the wrong way to think about it. A budget is a **plan written in numbers**, and its real value shows up later, when you compare it against what actually happened. That gap between plan and reality has a name — **variance** — and learning to read it is one of the most practical skills in managerial analytics.
 
-## Price is a signal, not just a number
+## A budget is a plan, not a promise
 
-A price doesn't only collect money; it **tells the guest something.** Too cheap and people quietly assume the food is low quality; too expensive and they feel cheated. The exact same dish can sell better at a slightly higher price because the price signals "this is good." So price isn't just cost-plus arithmetic — it's part of how guests decide what something is worth before they've even tasted it.
+A budget says, in advance, "here's what we expect to bring in and spend." It's how a business turns goals into something checkable: how much to sell, how much to spend on supplies, how many people to hire. It will never be exactly right — the future never is — and that's fine. A budget isn't a promise to hit every number; it's a baseline you can measure reality against so you notice, quickly, when things drift off course.
 
-## The same seat is worth more at peak
+## Variance: the gap that teaches you
 
-A table at 8 p.m. on Saturday is simply more valuable than the same table at 3 p.m. on Tuesday — demand is higher, and someone will gladly take it. This is the heart of **yield** (or revenue) thinking: match the price and the rules to the demand. That's why peak times might carry a small premium, a minimum spend, or a tighter reservation policy, while slow times get specials to pull people in. The seat never changed; its *value* did.
+**Variance** is simply the difference between what you planned and what actually happened. Planned to spend $1,000 on supplies but spent $1,300? That's a $300 variance. The point of measuring it isn't to assign blame — it's to ask *why.* A big surprise, good or bad, is a signal that the world didn't behave the way you assumed, and chasing down the reason is where the real understanding comes from.
 
-## Our pricing instincts mislead us
+## Favorable isn't always good news
 
-People assume they can feel the right price — round it off, add a standard markup, copy the place next door. Research keeps showing that **gut pricing leaves money on the table** or scares guests away, and that small, almost invisible changes move behavior a lot. The confident feeling that "this just feels like the right price" tells us surprisingly little about what guests will actually do. Pricing is one of those places where intuition is loud and often wrong.
+Here's the subtle part: variances come in two flavors, and the labels can fool you. A **favorable** variance helped profit (you spent less, or earned more); an **unfavorable** one hurt it. But "favorable" doesn't always mean "good." Spending far less than budgeted on training looks favorable on paper yet might be quietly starving the business. And hitting your sales target can hide an ugly truth — like reaching it only by slashing prices, which is a favorable volume but an unfavorable price. The labels tell you the direction, not the wisdom.
 
-## Pricing done right
+## Plans should bend, not break
 
-The good news: knowing our instincts mislead us tells us how to price more carefully. **Test** changes and watch what actually sells. Use what's known about how people read menus — charm prices, dropping the dollar sign, placing a high "anchor" dish nearby to make others look reasonable. And adjust by **demand**, charging a bit more when seats are scarce and less when they're empty. None of this is trickery; it's pricing on evidence instead of on a hunch.
+Because reality always differs from the plan, good managers treat a budget as a living guide, not a cage. When a big variance shows up, the question isn't "who broke the rule?" but "what changed, and should the plan change too?" A budget held too rigidly makes people hit numbers that no longer make sense; a budget ignored entirely leaves you flying blind. The skill is using the gaps to learn and adjust, not to punish or to panic.
 
 ## In the real world
 
-At a well-known hospitality school, researchers gave guests the *same* menu in different formats. One listed prices with dollar signs ("$20.00"); another simply wrote the number ("20"). Guests reading the menu **without** dollar signs spent noticeably more — the currency symbol quietly reminded them they were spending money. Nothing about the food or the actual prices changed; only the presentation did. It's a sharp reminder of this section's lesson: our instincts about price are unreliable, and only careful testing shows what really moves a guest.`,
+Big public projects are famous for enormous unfavorable variances: study after study finds that most large infrastructure projects — bridges, tunnels, rail lines — come in **over budget**, often dramatically so. Researchers who collected hundreds of these found cost overruns were the rule, not the exception. The valuable part isn't shaming the planners; it's what the variances *teach* — that early estimates are systematically too rosy, so future budgets should plan for the surprises that history says are coming. That's variance doing its real job: turning the gap between plan and reality into a lesson for next time.`,
   },
   {
-    slug: "guests-as-data",
-    title: "Guests as data",
+    slug: "unit-economics",
+    title: "Unit economics",
     weekNumber: 1,
-    blurb: "It feels like success means a flood of new faces — but the real money is in the guests who come back, and chasing only new ones is a costly trap.",
-    lectureTitle: "1.6 Guests as data (loyalty, lifetime value, and coming back)",
-    body: `# Guests as data
+    blurb: "Growing sales feels like winning — but if each individual sale loses money, growing only digs the hole faster.",
+    lectureTitle: "1.6 Unit economics (does each sale actually make money?)",
+    body: `# Unit economics
 
-A line out the door of brand-new customers feels like the very picture of success. Why fuss over the regulars when there's a whole world of new guests to win? Yet one of the most important findings in hospitality analytics is that **the guests who come back are worth far more** than a constant churn of first-timers — and understanding *why* changes where a restaurant spends its energy.
+A chart of sales climbing up and to the right feels like the very picture of success. But one of the most important questions in business is hiding underneath that chart, and it's almost embarrassingly simple: **does each single sale actually make money?** This is **unit economics** — zooming all the way in from the whole company to one transaction — and it's where a lot of impressive-looking businesses fall apart.
 
-## Why repeat guests matter
+## One sale at a time
 
-Winning a brand-new guest is expensive: advertising, discounts, the effort of a first impression. A returning guest costs almost nothing to bring back, already knows the menu, and tends to spend more and bring friends. So a restaurant full of regulars is usually healthier than one constantly burning money to refill the room with strangers. The repeat guest is the quiet engine of a stable business.
+Unit economics asks you to look at a single "unit" — one product sold, one customer served, one subscription — and check whether it earns more than it costs. If selling one item brings in more than that item's own costs, the business has a chance; if each one loses money, no amount of selling will save it. It's the same idea as break-even, pointed at the smallest possible piece: get the single sale right, and the whole can work; get it wrong, and scale only makes it worse.
 
-## Lifetime value: the long view
+## The "make it up in volume" trap
 
-The key idea is **lifetime value** — looking at a guest not as one check, but as *all* the visits they might make over months and years. A regular who comes in twice a month for a year is worth far more than a one-time big spender, even if tonight's bill is smaller. Thinking in lifetime value flips the question from "how much did this guest spend today?" to "how much is keeping this guest worth?" — and the second number is usually much bigger.
+There's an old joke: "we lose a little on every sale, but we make it up in volume." It's a joke because it's impossible — if every sale loses money, more sales mean *bigger* losses, not profit. Yet businesses fall for a fancier version of it all the time, especially fast-growing ones, telling themselves that growth now will somehow turn into profit later even though each customer costs more to serve than they bring in. Volume can only rescue you if the underlying unit already makes money.
 
-## The trap of chasing only new faces
+## What it really costs to win a customer
 
-Here's the costly trap: pouring everything into attracting first-timers while ignoring the people who already love the place. Deep discounts and giveaways can pull in a crowd of one-time deal-seekers who never return and may even **lose money** on each visit. Meanwhile the loyal guests, taken for granted, drift away. The flood of new faces feels like growth, but it can quietly hollow out the very base that keeps the lights on.
+A fair unit-economics check counts *all* the costs of a sale, including the often-forgotten one: what you spent to win that customer in the first place — the ads, the discounts, the free trial. Smart operators compare what a customer is worth over their whole relationship (their **lifetime value**) against what it cost to acquire them. If you spend more to land a customer than they'll ever spend with you, every new customer quietly makes the hole deeper, no matter how exciting the growth chart looks.
 
-## Measuring loyalty carefully
+## Why this discipline is hard
 
-Because loyalty is easy to assume and hard to see, good operators **measure** it: how often guests return (frequency), how recently they last came (recency), and how much they're worth over time (lifetime value). A loyalty program isn't just a punch card — it's a way to *see* these patterns, spot regulars slipping away, and welcome them back before they're gone. The documented pattern, not a warm feeling about "our regulars," is what guides the decisions.
+Unit economics is unglamorous, and that's exactly why it gets skipped. Total revenue and user counts make for thrilling headlines and happy investors; "we lose $4 every time someone buys" does not. So the comforting big numbers get celebrated while the painful per-sale number goes unexamined. The discipline is to keep asking the small, honest question even when the big numbers are flattering — because the single sale, not the grand total, decides whether the business can ever stand on its own.
 
 ## In the real world
 
-In a widely cited business study, researchers found that increasing customer **retention** by just **5%** could raise profits anywhere from **25% to 95%**, depending on the business. The reason is exactly this section's lesson: loyal customers cost less to serve, spend more over time, and refer others, so even a small improvement in keeping them compounds into a large gain. It's the clearest evidence that the guests already coming back are often worth more than the next crowd of strangers.`,
+A famous example is the movie-ticket subscription that, for a while, let people see almost unlimited movies for about ten dollars a month. Customers loved it and signups exploded — the growth chart was spectacular. But the company *paid theaters close to full price* for each ticket, so a single heavy user could cost far more than ten dollars in a single month. Every enthusiastic new subscriber made the losses worse, and the business burned through its money and collapsed. The sales were real and the growth was real; the unit economics never worked, and that's what decided it.`,
   },
   {
-    slug: "reviews-and-sentiment",
-    title: "Reviews, sentiment, and reputation",
+    slug: "forecasting-and-kpis",
+    title: "Forecasting and KPIs",
     weekNumber: 1,
-    blurb: "Reviews are data, not just opinions — and the obvious way to read them (the star average, that one angry review) is usually the wrong way.",
-    lectureTitle: "1.7 Listening at scale (reviews, sentiment, and reputation)",
-    body: `# Reviews, sentiment, and reputation
+    blurb: "A forecast is an educated guess about a future that hasn't happened, and the dials you choose to watch quietly decide what you'll do about it.",
+    lectureTitle: "1.7 Forecasting and KPIs (steering by the right dials)",
+    body: `# Forecasting and KPIs
 
-Everybody reads reviews — and almost everybody misreads them. A restaurant's online reputation can feel like a single scary number or one furious paragraph that ruins your week. But treated carefully, reviews at scale are **data**, and the obvious way to read them is usually the wrong way. Learning to listen to thousands of voices at once is its own skill.
+Running a business by looking only at last month's reports is like driving while staring in the rear-view mirror. The forward-looking half of managerial analytics has two parts: **forecasting** (an educated guess about what's coming) and **KPIs** (the handful of dials you watch to steer). Both are powerful, and both are easy to get dangerously wrong.
 
-## Reviews are data, not just opinions
+## Forecasting: an educated guess, not a crystal ball
 
-A single review is one person's opinion. A *thousand* reviews, read together, become a **pattern** you can measure. This is the idea behind **sentiment analysis**: turning piles of written words into a signal — what guests mention most, what they praise, what they complain about again and again. The point isn't to obsess over any one comment; it's to hear the whole room at once and find the themes that actually repeat.
+A **forecast** turns clues from the past — last year's sales, the season, the trend — into a likely number for the future, so you can plan: how much to order, how many people to hire, whether you can afford something. The crucial word is *likely.* A forecast is a set of odds, not a promise, because it's about a future that hasn't decided to happen yet. Used humbly, it helps you prepare; treated as fact, it sets you up to be caught out when reality disagrees.
 
-## What the star average hides
+## KPIs: the few dials that matter
 
-The headline star rating is the number everyone stares at — and it hides a lot. A 4.2 built from steady, recent praise is very different from a 4.2 propped up by glowing reviews from three years ago and a string of recent complaints. The **distribution** (how many fives versus ones), the **recency** (are things getting better or worse?), and the **volume** (10 reviews or 10,000?) often matter more than the single average. The one number is a starting point, not the story.
+A business can measure thousands of things, but a driver doesn't watch a hundred gauges. **KPIs** — Key Performance Indicators — are the few numbers a business decides are most important to watch, the ones that actually tell you whether you're on course. The skill isn't collecting more numbers; it's choosing the *right* few. Pick the dials that genuinely signal health, and a quick glance tells you what to do; drown in dials, and the important warning light gets lost in the clutter.
 
-## One bad review is not a catastrophe
+## Leading vs. lagging dials
 
-The most common overreaction is panic over a single one-star review. But one angry outlier is **not a pattern** — every good restaurant has a few. The mistake is letting one loud voice drive a frantic overhaul while the real, repeating signals go ignored. What deserves attention is a theme that shows up over and over ("slow service," "tiny portions"), not a lone complaint from an unusually bad night. Outliers are noise; patterns are signal.
+Not all dials are equal. A **lagging** indicator tells you what already happened — last month's profit, like a final score you can't change. A **leading** indicator hints at what's coming — like how many people asked for a quote this week, which signals next month's sales. Both matter, but leading indicators are what let you steer *before* you hit trouble, instead of just reading about it afterward. A good dashboard mixes the two so you can both keep score and see around the corner.
 
-## Reading reviews carefully
+## The vanity-metric trap
 
-Listening well means separating that **signal from noise**: looking for recurring themes instead of reacting to individual reviews, watching the trend over time, and weighing volume. It also means **responding** thoughtfully — a calm, fair reply to a complaint is read by everyone who comes after. Used this way, reviews become a free, constant stream of honest feedback, instead of a source of dread ruled by whoever shouted loudest today.
+The biggest danger is choosing flattering dials instead of useful ones. A **vanity metric** is a number that looks great and feels good — total followers, total signups, all-time sales — but doesn't actually tell you what to do. It only ever goes up, so it always seems like good news, even while the business quietly struggles. The cure is to ask of every dial: *if this number moved, would I do anything differently?* If the answer is no, it's decoration, not a KPI.
 
 ## In the real world
 
-A study from a leading business school examined thousands of restaurants and their online ratings. The finding was striking: a **one-star increase** in a restaurant's rating was linked to roughly a **5% to 9% increase in revenue** — and the effect was strongest for independent places without a famous brand name to fall back on. Reputation, measured at scale, translated directly into money through the door. It shows why reviews deserve to be read like data, carefully and in aggregate, rather than feared one comment at a time.`,
+Many fast-growing apps have proudly watched their **total registered users** climb — a number that can only rise — while a deadlier dial went ignored: how many of those users actually *stayed.* If new people sign up but quietly leave just as fast, the impressive "total users" hides a leaking bucket, and the company is shocked when growth suddenly stalls. The fix is choosing a KPI that can deliver bad news, like active users or the rate people leave, instead of a vanity metric that only ever flatters you. Steering by the right dial is the whole point.`,
   },
   {
-    slug: "dashboard-to-decision",
-    title: "From dashboard to decision (capstone)",
+    slug: "numbers-to-decisions",
+    title: "From numbers to decisions (capstone)",
     weekNumber: 1,
-    blurb: "Can a dashboard full of numbers actually run a restaurant? Only with judgment — and the whole course comes together in how data turns into a decision.",
-    lectureTitle: "1.8 From dashboard to decision, and what comes next (Capstone)",
-    body: `# From dashboard to decision (capstone)
+    blurb: "Can a page full of numbers actually run a business? Only with judgment — and the whole course comes together in how data turns into a decision.",
+    lectureTitle: "1.8 From numbers to decisions, and what comes next (Capstone)",
+    body: `# From numbers to decisions (capstone)
 
-We end on the hardest, highest-stakes skill in the whole field: **turning numbers into an actual decision.** A manager staring at a dashboard, an owner deciding what to cut, a chef choosing what to take off the menu — all of them have to move from *measuring* to *acting*. Everything in this course comes together here, including its deepest limits.
+We end on the hardest, highest-stakes skill in the whole field: **turning numbers into an actual decision.** An owner deciding whether to raise prices, a manager choosing what to cut, a founder deciding whether the business can survive — all of them have to move from *measuring* to *acting.* Everything in this course comes together here, including its deepest limits.
 
 ## The hardest step: numbers to action
 
-A dashboard doesn't decide anything; **people do.** It's tempting to think that once you have the data, the answer is automatic — but two managers can read the same numbers and choose opposite things. The real skill isn't collecting metrics; it's asking the right question of them: *what is this number telling me to do, and how sure am I?* Data informs the decision; it never makes it for you.
+A spreadsheet doesn't decide anything; **people do.** It's tempting to think that once you have the data, the answer is automatic — but two managers can read the same numbers and choose opposite things. The real skill isn't collecting figures; it's asking the right question of them: *what is this number telling me to do, and how sure am I?* Data informs the decision; it never makes it for you.
 
 ## Vanity metrics vs. metrics that matter
 
-For a long time, restaurants chased whatever number felt flattering — total followers, total revenue, a packed room — and quietly mistook those for health. The improvement comes from separating **vanity metrics** (numbers that look good but don't change a decision) from the **metrics that matter** (the ones that actually tell you to staff up, reprice a dish, or fix the slow night). Picking the right few numbers to watch beats drowning in a dashboard of pretty ones — just as a careful checklist beats a flattering gut feeling.
+For a long time, businesses chased whatever number felt flattering — total sales, total followers, a busy storefront — and quietly mistook those for health. The improvement comes from separating **vanity metrics** (numbers that look good but don't change a decision) from the **metrics that matter** (the ones that actually tell you to raise a price, cut a product, or fix the cash problem). Picking the right few numbers to watch beats drowning in a dashboard of pretty ones — just as a careful checklist beats a flattering gut feeling.
 
 ## The cost of acting wrong (both ways)
 
-Every decision from data can fail in two directions, and both hurt. **Overreact** to a number that was just noise — one bad review, one slow week — and you tear up a menu or cut staff you needed. **Ignore** a number that was a real signal — costs creeping up, regulars slipping away — and the problem grows until it's serious. There's no setting that removes both risks at once, so an operator has to judge, openly and honestly, which mistake is more dangerous right now.
+Every decision from data can fail in two directions, and both hurt. **Overreact** to a number that was just noise — one slow week, one scary-looking variance — and you cut staff or kill a product you needed. **Ignore** a number that was a real signal — cash quietly draining, each sale losing money — and the problem grows until it's fatal. There's no setting that removes both risks at once, so an operator has to judge, openly and honestly, which mistake is more dangerous right now.
 
 ## Tying the course together
 
-Look back and you'll see one thread through all eight topics: **resist the simple, flattering story.** A busy room isn't automatically profit, no single metric proves health, the best-seller isn't always the moneymaker, a forecast isn't a fact, your pricing instinct isn't trustworthy, new faces aren't worth more than loyal ones, and one angry review isn't the truth. Hospitality analytics replaces tidy assumptions with careful, honest, measured thinking — which is harder, but it's the only kind that actually keeps a restaurant alive.
+Look back and you'll see one thread through all eight topics: **resist the simple, flattering story.** Profit on paper isn't cash in the bank, one report isn't the whole picture, a single cost tag hides how costs really behave, a low price can sell you into bankruptcy, a budget isn't a promise, growing sales can lose money on every unit, and a flattering dial isn't a useful one. Financial and managerial analytics replaces tidy assumptions with careful, honest, measured thinking — which is harder, but it's the only kind that actually keeps a business alive.
 
 ## The biggest questions stay open
 
-And plenty stays unsettled. How do you balance what the numbers say against the warmth and judgment that make hospitality *hospitality*? How much should a great host trust a spreadsheet over their read of the room? How do you keep your metrics from quietly steering you toward a colder, worse experience? Analytics gives a restaurant better questions and more honest answers — not final ones. The most useful habit to carry out of this course is simple: whenever a number tells a clean, comforting story, ask, "Is that real, or is it a myth?"
+And plenty stays unsettled. How do you weigh what the numbers say against the vision and judgment that build great companies? How much should a leader trust a spreadsheet over their read of the situation? How do you keep your metrics from quietly steering you toward short-term tricks that look good on a report but hurt the business? Analytics gives a business better questions and more honest answers — not final ones. The most useful habit to carry out of this course is simple: whenever a number tells a clean, comforting story, ask, "Is that real, or is it a myth?"
 
 ## In the real world
 
-When a struggling hospitality company brought in a leader who believed in measurement, he reportedly asked his team a pointed question: *"Do we believe in luck, or do we believe in data?"* Instead of running on the industry's gut traditions, they tracked their guests carefully — who came, how often, what they valued — and made decisions from that. The turnaround was dramatic. But the lesson cuts both ways: the data only helped because *people* asked the right questions of it and still cared about the guest. That marriage of honest numbers and human judgment is where this whole course has been heading.`,
+When struggling companies are turned around, the story is rarely a single magic number — it's someone finally reading the numbers honestly *and* having the judgment to act. A classic turnaround move is discovering, through unit economics, that a beloved product or customer actually loses money on every sale, and making the painful decision to cut it — which feels like shrinking but restores the company to health. The numbers revealed the truth, but a person still had to choose to believe them and act. That marriage of honest numbers and human judgment is where this whole course has been heading.`,
   },
 ];
 
@@ -292,7 +296,7 @@ type SeedAssignment = {
 const ASSIGNMENTS: SeedAssignment[] = [
   {
     kind: "homework",
-    title: "Homework 1.1 — Measuring, metrics, menus, and forecasting",
+    title: "Homework 1.1 — Statements, costs, and break-even",
     weekNumber: 1,
     isTimed: false,
     timeLimitMinutes: null,
@@ -300,47 +304,47 @@ const ASSIGNMENTS: SeedAssignment[] = [
       "Untimed practice covering sections 1.1–1.4. Answer each question in a few sentences (about 3–5) in your own words. There's no need for any math — just explain your thinking clearly. One-word answers won't receive credit.",
     problems: [
       {
-        topicSlug: "what-hospitality-analytics-is",
+        topicSlug: "what-financial-analytics-is",
         prompt:
-          "A friend says, 'You can tell a restaurant is doing great just by walking in and seeing it packed — a full room means it's winning.' Use what hospitality analytics actually shows to explain why 'busy means successful' is a myth. (3–5 sentences.)",
+          "A friend says, 'You can tell a business is doing great just by seeing lots of customers and big sales — high sales means it's winning.' Use what financial analytics actually shows to explain why 'big sales means healthy' is a myth. (3–5 sentences.)",
         correctAnswer:
-          "A packed room only tells you how it feels, not whether the business is healthy. A restaurant can be slammed and still lose money — it might be busy mainly at low-margin hours, turning tables too slowly, or discounting so heavily that each guest barely earns anything. Whether 'busy' is actually good only shows up in the numbers: covers, how often tables turn, the average check, and the food and labor costs underneath it all. So my friend is mistaking how a night feels for what it actually earns, which is exactly the trap analytics is meant to catch.",
+          "Big sales only tell you money is coming in, not whether the business is actually healthy. A company can post record sales and still run out of cash or even lose money on each sale, because what matters is what's left after costs and whether real cash is in the bank — not the size of the sales number. There's a reason people say profit is an opinion but cash is a fact: a sale can be counted before the customer has actually paid. So my friend is mistaking a busy, high-sales feeling for proof of health, which is exactly the trap analytics is meant to catch.",
         explanation:
-          "Full credit: explains that a full room is a feeling, not proof of profit, gives a reason busy can lose money (slow turns, discounts, low-margin times), and notes only the measured numbers (covers, turns, check average, costs) reveal real health.",
+          "Full credit: explains that high sales is money in, not proof of health/profit; notes costs and cash matter (a busy business can still lose money or run out of cash); and that real health shows up in measured numbers read together, not a single flattering figure.",
       },
       {
-        topicSlug: "metrics-that-matter",
+        topicSlug: "three-financial-statements",
         prompt:
-          "A restaurant brags that it just had its best sales month ever, but the owner is quietly stressed about making payroll. Use the idea that 'revenue isn't profit' and 'read the metrics together' to explain how both things can be true at once. (3–5 sentences.)",
+          "A bakery shows a healthy profit on its income statement, but the owner can't make this month's rent. Using the idea that you must read the three statements together, explain how both things can be true at once. (3–5 sentences.)",
         correctAnswer:
-          "Record revenue means a lot of money came in, but revenue isn't profit — what matters is what's left after the costs. If food prices crept up and the restaurant added staff, its prime cost (food plus labor) could have climbed faster than sales, so more money came in and even more went out. That's why no single number tells the story: you have to read revenue alongside covers, check average, and costs to see what's really happening. The 'best month ever' and 'can't make payroll' are both true because revenue was high while the bottom line underneath it shrank.",
+          "The income statement shows profit over a period, but profit isn't the same as cash in the bank — that's the saying 'profit is an opinion, cash is a fact.' The bakery may have counted sales as profit even though customers haven't paid yet, or tied its cash up in unsold inventory, so the cash flow statement would reveal money draining out even while the income statement looks good. That's why no single report tells the story: each one answers a different question (did we earn? what do we have? did cash come in?). Reading them together shows a profitable-looking bakery can still be unable to pay the rent right now.",
         explanation:
-          "Full credit: distinguishes revenue from profit, explains rising costs (e.g. prime cost) can erase a sales record, and notes metrics must be read together rather than trusting one number.",
-        hint: "Think about whether money coming in is the same as money kept, and what costs sit between the two.",
+          "Full credit: distinguishes profit (income statement) from cash (cash flow statement), gives a reason profit can outrun cash (unpaid customers, inventory, timing), and explains the statements must be read together because each answers a different question.",
+        hint: "Think about whether a profit on paper is the same as money in the bank, and which statement would reveal the difference.",
       },
       {
-        topicSlug: "menu-engineering",
+        topicSlug: "cost-behavior",
         prompt:
-          "Someone says, 'Our best-selling dish is obviously our most important one — we should promote it even harder.' Using menu engineering, explain two things this might get wrong. (3–5 sentences.)",
+          "Someone asks, 'What does it cost us to make one of these mugs?' and expects a single fixed number. Using cost behavior, explain two things this question gets wrong. (3–5 sentences.)",
         correctAnswer:
-          "First, popularity isn't profit: a best-seller can be a 'plowhorse' that everyone orders but that earns very little per plate, so pushing it harder can actually shrink profit rather than grow it. Menu engineering judges every dish on two numbers at once — how often it sells and how much it earns after its ingredients — not popularity alone. Second, this thinking can ignore the quiet 'puzzle' dishes that are highly profitable but rarely ordered, which are often exactly the ones worth promoting. So the most important dish is the one that's both popular and profitable (a 'star'), which the best-seller may or may not be.",
+          "First, costs come in two kinds — fixed costs like rent that stay the same no matter how many mugs you make, and variable costs like clay that grow with each mug — so there isn't one single 'cost to make a mug.' Second, because fixed costs get spread over however many mugs you produce, the cost per mug actually changes with volume: make ten and each carries a tenth of the rent, make a thousand and each carries far less. So the honest answer is 'it depends on how many we make.' For most decisions, what matters is the marginal cost — what it costs to make just one more — which can be much smaller than the average cost once the fixed costs are already paid.",
         explanation:
-          "Full credit: explains popularity ≠ profit (a popular dish can be low-margin), that dishes must be judged on both sales and margin, and that promoting a low-profit best-seller can hurt while profitable 'puzzle' dishes get missed.",
+          "Full credit: distinguishes fixed vs variable costs, explains that fixed costs spread over volume so per-unit cost changes with how many are made (no single fixed number), and/or notes marginal cost (the next unit) is what matters for decisions.",
       },
       {
-        topicSlug: "forecasting-demand",
+        topicSlug: "break-even",
         prompt:
-          "A manager claims they can just 'feel' how busy tonight will be and staff accordingly. Explain what real demand forecasting actually does, and why treating any forecast as a certainty is dangerous. (3–5 sentences.)",
+          "A new juice stand owner says, 'I'll just lower my prices way down — that way I'll sell tons and definitely make money.' Explain what break-even is and why this plan could backfire. (3–5 sentences.)",
         correctAnswer:
-          "Real forecasting doesn't rely on a feeling; it uses clues from the past — the day of the week, the season, the weather, nearby events — to estimate a likely number of guests so you can staff and order sensibly. That estimate is a set of odds, not a promise, because you're guessing about people who haven't decided to come yet. Treating it as certain is dangerous because the whole night — schedules, food orders, prep — gets locked in around one number, so a confidently wrong forecast leaves you badly over- or understaffed. A careful manager treats the forecast as one input and stays ready to adjust the moment reality disagrees.",
+          "The break-even point is how much you have to sell before total money in equals total money out — the line where you stop losing money and start making it. Each sale only contributes what's left after its own variable cost toward covering the fixed costs like rent, so a much lower price shrinks that contribution and actually raises the number of sales you need to break even, sometimes to an impossible level. That means the owner could be busy, selling tons of juice, and still lose money on every cup because the price never covered the costs. Lowering the price doesn't 'definitely make money' unless they first check whether they could ever realistically sell enough to reach the new, higher break-even point.",
         explanation:
-          "Full credit: describes forecasting as using past patterns/clues to estimate likely demand for staffing and ordering, frames it as probabilistic, and explains the danger of over-trusting it (locked-in plans, over/understaffing).",
+          "Full credit: defines break-even as the sales level where revenue equals total cost, explains a lower price shrinks each sale's contribution and raises the break-even point, and warns that high volume at too low a price can still lose money on every sale.",
       },
     ],
   },
   {
     kind: "homework",
-    title: "Homework 1.2 — Pricing, loyalty, reviews, and decisions",
+    title: "Homework 1.2 — Budgets, unit economics, KPIs, and decisions",
     weekNumber: 1,
     isTimed: false,
     timeLimitMinutes: null,
@@ -348,39 +352,39 @@ const ASSIGNMENTS: SeedAssignment[] = [
       "Untimed practice covering sections 1.5–1.8. Answer each question in a few sentences (about 3–5) in your own words. No math is required — explain your reasoning. One-word answers won't receive credit.",
     problems: [
       {
-        topicSlug: "pricing-and-yield",
+        topicSlug: "budgets-and-variance",
         prompt:
-          "A guest grumbles, 'Writing 12 instead of $12.00 on the menu is silly — it's the exact same price.' Explain why how a price is presented, and when it's charged, can matter even when the cost itself doesn't change. (3–5 sentences.)",
+          "A manager is furious that the team spent $300 more on supplies than the budget said, and wants to punish whoever's responsible. Explain a better way to think about a budget and this variance. (3–5 sentences.)",
         correctAnswer:
-          "A price isn't just a number; it's a signal, and small changes in how it's presented quietly change behavior — dropping the dollar sign, for instance, can make guests spend more because it stops reminding them they're spending money. Our instincts about pricing are unreliable, so these almost invisible details matter more than they seem. On top of that, the same seat or dish is worth different amounts at different times: a table at 8 p.m. Saturday is in higher demand than at 3 p.m. Tuesday, so the smart price can shift with demand (yield). So even when the underlying cost is identical, presentation and timing can change what a guest is willing to pay.",
+          "A budget isn't a promise that must be hit exactly; it's a plan written in numbers that you compare against reality so you can spot when things drift. The $300 gap is a variance, and the useful response is to ask why it happened rather than to assign blame — maybe supply prices rose, or the team made more product than planned, which would actually be good news. Variances are signals that the world didn't behave as assumed, and chasing the reason is where the learning is. A budget held too rigidly forces people to hit numbers that may no longer make sense, so the manager should use the gap to understand and adjust, not to punish.",
         explanation:
-          "Full credit: explains price as a signal whose presentation changes behavior (e.g. dropping the dollar sign), notes our pricing instincts are unreliable, and/or that the same seat is worth more at peak demand (yield).",
+          "Full credit: explains a budget is a plan/baseline not a promise, that variance is the plan-vs-actual gap whose value is asking 'why' (not blame), and that some variances reflect changed circumstances and should inform adjusting the plan.",
+        hint: "Is a budget a prediction that's right or wrong, or a plan you measure reality against? What is the gap actually telling you?",
       },
       {
-        topicSlug: "guests-as-data",
+        topicSlug: "unit-economics",
         prompt:
-          "Many owners say, 'Growth just means getting as many brand-new customers as possible.' Explain why focusing only on new guests can actually be a costly mistake. (3–5 sentences.)",
+          "A startup brags that it's growing fast — signups are doubling every month — but it spends more to win and serve each customer than that customer ever pays. Explain why fast growth here is a problem, not a victory. (3–5 sentences.)",
         correctAnswer:
-          "Winning a brand-new guest is expensive — advertising, discounts, the work of a first impression — while a returning guest costs almost nothing to bring back, already knows the menu, spends more over time, and refers friends. That's why lifetime value matters: a regular who visits often for years is worth far more than a one-time big spender. Chasing only new faces with deep discounts can pull in deal-seekers who never return and sometimes lose money on each visit, while the loyal guests get taken for granted and drift away. So pouring everything into new customers can quietly hollow out the repeat base that actually keeps the restaurant healthy.",
+          "Unit economics asks whether a single sale or customer actually makes money, and here each customer costs more than they bring in, so every one is sold at a loss. When the unit loses money, growth makes things worse, not better — doubling signups doubles the losses, which is the real version of the old joke about 'losing money on every sale but making it up in volume.' Volume can only help if the underlying customer is already profitable once you count everything, including what was spent to acquire them. So the exciting growth chart is actually digging the hole faster, and the startup needs to fix the per-customer math before scaling.",
         explanation:
-          "Full credit: explains new guests are costly to win while repeat guests are cheaper and worth more over time (lifetime value), and that chasing only new faces with discounts can lose money and neglect loyal regulars.",
-        hint: "Think about what it costs to win a stranger versus bring back a regular, and how much a loyal guest is worth over years rather than one visit.",
+          "Full credit: explains unit economics (does one sale/customer make money), that growth multiplies losses when each unit loses money, and that acquisition/serving costs must be counted; volume only helps if the unit is already profitable.",
       },
       {
-        topicSlug: "reviews-and-sentiment",
+        topicSlug: "forecasting-and-kpis",
         prompt:
-          "A manager sees one new one-star review and wants to overhaul the whole menu and retrain every server immediately. Explain two ways this overreaction misreads the data. (3–5 sentences.)",
+          "A founder proudly points to a chart of 'total users, all time' that keeps climbing as proof the app is thriving. Explain why this might be a vanity metric and what dial would be more useful. (3–5 sentences.)",
         correctAnswer:
-          "First, a single review is one opinion, not a pattern — every good restaurant gets the occasional angry outlier, so one one-star review shouldn't drive a frantic overhaul. What actually deserves attention is a theme that repeats across many reviews ('slow service,' 'tiny portions'), which is the real signal; one bad night is just noise. Second, the manager is ignoring the bigger picture the data offers: the distribution of ratings, whether things are trending up or down over time, and the volume of reviews all matter more than a single comment. Reading reviews well means listening at scale and separating recurring signal from one-off noise, not reacting to whoever shouted loudest today.",
+          "A 'total users, all time' count can only ever go up, so it always looks like good news and never tells the founder to do anything — that's what makes it a vanity metric. It can hide a leaking bucket: lots of people sign up while just as many quietly leave, so the business looks healthy right until growth stalls. A more useful KPI is one that can deliver bad news, like active users, how many people stay (retention), or the rate at which they leave (churn). The test for any dial is simple: if this number moved, would I do anything differently? If not, it's decoration, not a real KPI.",
         explanation:
-          "Full credit: explains that one review is an outlier, not a pattern (signal vs. noise), and that real reading looks at recurring themes, distribution, trend over time, and volume rather than a single comment.",
+          "Full credit: explains a vanity metric looks good but doesn't change a decision (a number that only rises), that 'total users' can hide churn, and names a more actionable KPI (active users, retention, churn); may cite the 'would I act differently?' test.",
       },
       {
-        topicSlug: "dashboard-to-decision",
+        topicSlug: "numbers-to-decisions",
         prompt:
-          "A new manager is proud that the restaurant now has a dashboard showing dozens of numbers. Explain why having all that data isn't the same as making a good decision, and what separates a 'metric that matters' from a 'vanity metric.' (3–5 sentences.)",
+          "A new manager is proud that the business now has a dashboard showing dozens of numbers. Explain why having all that data isn't the same as making a good decision, and what separates a 'metric that matters' from a 'vanity metric.' (3–5 sentences.)",
         correctAnswer:
-          "A dashboard measures things, but it doesn't decide anything — people do, and two managers can read the same numbers and choose opposite actions. The real skill is asking the right question of the data: what is this number telling me to do, and how sure am I? A 'metric that matters' is one that actually changes a decision — staff up tonight, reprice a dish, fix the slow night — while a 'vanity metric' just looks flattering (big follower counts, total revenue) without telling you to act. So watching a few decision-driving numbers beats drowning in a dashboard of pretty ones, and the data still needs human judgment to become a good decision.",
+          "A dashboard measures things, but it doesn't decide anything — people do, and two managers can read the same numbers and choose opposite actions. The real skill is asking the right question of the data: what is this number telling me to do, and how sure am I? A 'metric that matters' is one that actually changes a decision — raise a price, cut a product, fix the cash problem — while a 'vanity metric' just looks flattering (total sales, follower counts) without telling you to act. So watching a few decision-driving numbers beats drowning in a dashboard of pretty ones, and the data still needs human judgment to become a good decision.",
         explanation:
           "Full credit: explains that data informs but doesn't make decisions (people do), and distinguishes metrics that drive action from flattering vanity metrics that don't change what you do.",
       },
@@ -388,7 +392,7 @@ const ASSIGNMENTS: SeedAssignment[] = [
   },
   {
     kind: "test",
-    title: "Unit Test — Restaurant & Hospitality Analytics for Everyone",
+    title: "Unit Test — Financial & Managerial Analytics for Everyone",
     weekNumber: 1,
     isTimed: true,
     timeLimitMinutes: 30,
@@ -396,74 +400,74 @@ const ASSIGNMENTS: SeedAssignment[] = [
       "Timed. 30 minutes. Covers sections 1.1–1.8. Answer each question in a few sentences (about 4–6) in your own words. No math is required. Pasting is disabled; keystrokes are screened for AI use.",
     problems: [
       {
-        topicSlug: "what-hospitality-analytics-is",
+        topicSlug: "what-financial-analytics-is",
         prompt:
-          "Explain what hospitality analytics is, and why it insists that 'a number is a measurement, not the meal.' Why does keeping that distinction matter? (4–6 sentences.)",
+          "Explain what financial and managerial analytics is, including the difference between the 'financial' and 'managerial' sides, and why it insists that 'a number is a measurement, not the money.' Why does keeping that distinction matter? (4–6 sentences.)",
         correctAnswer:
-          "Hospitality analytics is the practice of running a restaurant on evidence instead of hunches — turning a fuzzy, busy place into things you can count, like covers, turn times, check averages, and costs. Saying 'a number is a measurement, not the meal' means a metric isn't the actual guest experience; it's one snapshot we choose to take of it. So a good analyst keeps two things apart: the experience a guest has, and the measurements used to understand it. That distinction matters because confusing the measurement for the meal — or ignoring measurement entirely — leads to bad calls: you either chase a number while wrecking the experience, or you run on gut feeling and miss what's really happening. Holding both together is the first habit of clear thinking about a restaurant.",
+          "Financial and managerial analytics is the practice of reading a business through its numbers instead of guessing — turning sales, bills, and effort into things you can follow to tell whether it's really making money. The 'financial' side reports the story to outsiders like owners and lenders, a kind of official scoreboard looking back; the 'managerial' side is used inside the business to make decisions, like a dashboard you watch while steering ahead. Saying 'a number is a measurement, not the money' means a metric like profit is just one chosen snapshot, not the actual cash or the whole business — captured by the saying 'profit is an opinion, cash is a fact.' That distinction matters because confusing a flattering measurement for reality leads to bad calls: you might celebrate a profit while the cash runs out, or trust one number while the real story hides behind it. Keeping measurement and reality apart is the first habit of clear thinking about a business.",
         explanation:
-          "Full credit: defines hospitality analytics as evidence-based measurement of a restaurant, explains a metric as a chosen snapshot (not the experience itself), and why separating measurement from experience supports clear, balanced decisions.",
+          "Full credit: defines the field as evidence-based reading of a business, distinguishes financial (outward report) from managerial (internal decisions), explains a metric as a chosen snapshot (profit is an opinion, cash is a fact), and why separating measurement from reality supports clear decisions.",
       },
       {
-        topicSlug: "metrics-that-matter",
+        topicSlug: "three-financial-statements",
         prompt:
-          "Explain why hospitality analytics rejects any single 'magic number' for a restaurant's health, using covers, turns, check average, and costs. Why is 'no single metric is destiny' the key takeaway? (4–6 sentences.)",
+          "Describe the three financial statements and the different question each one answers, and explain why a business's health can only be read by looking at all three together. (4–6 sentences.)",
         correctAnswer:
-          "A restaurant's health grows out of several measurements stacked together, not one. Covers count the guests served and turns count how hard each table works, so two restaurants can serve the same people very differently. The average check shows how much each guest spends, which can make equally busy restaurants earn very different amounts. And costs matter most of all, because revenue isn't profit — food and labor (prime cost) plus rent eat into every sale, so a record-revenue month can still lose money. 'No single metric is destiny' is the key takeaway because any one number — revenue, covers, a great review — can point the wrong way; you have to read them together, like several vital signs at once, to see the truth.",
+          "The income statement answers 'did we make a profit?' over a period — revenue minus costs down to the bottom line. The balance sheet is a snapshot on one day answering 'what do we own and owe?' — assets versus liabilities, with the difference being the owner's stake. The cash flow statement answers 'did cash actually come in?' by tracking real money moving in and out, which matters because profit is an opinion while cash is a fact. You need all three because each can mislead alone: the income statement can show a profit while the cash flow statement shows the business bleeding money, or the balance sheet can look strong while profits slide. Only reading them side by side — earnings, what's owned, and actual cash — reveals whether a business is genuinely healthy or just looks that way from one angle.",
         explanation:
-          "Full credit: explains covers, turns, check average, and costs as stacked metrics (revenue ≠ profit), and frames health as requiring all of them read together rather than one magic number.",
+          "Full credit: names the three statements and the distinct question each answers (profit over a period; owns/owes snapshot; actual cash flow), and explains health requires all three together because any one alone (e.g. profit without cash) can mislead.",
       },
       {
-        topicSlug: "menu-engineering",
+        topicSlug: "cost-behavior",
         prompt:
-          "Describe what menu engineering actually is, including the idea that 'popularity isn't profit,' and explain why operators classify dishes using real numbers instead of favorites. (4–6 sentences.)",
+          "Explain the difference between fixed and variable costs, the 'cost behavior trick' that makes per-unit cost change with volume, and why marginal cost is what matters for many decisions. (4–6 sentences.)",
         correctAnswer:
-          "Menu engineering judges every dish on two numbers at once: how popular it is (how often it sells) and how profitable it is (what it earns after its ingredients). Sorting on both gives four groups — stars (popular and profitable), plowhorses (popular but low-margin), puzzles (profitable but rarely ordered), and dogs (neither). 'Popularity isn't profit' is the core insight: a best-seller can be a plowhorse that fills the room but barely earns, so pushing it harder can shrink profit while a quiet, high-margin puzzle goes unnoticed. It's also a mistake to assume the priciest dish is the most profitable, because margin — price minus cost — is what counts, not the price tag. Operators classify dishes using real sales counts and real food costs rather than favorites, because gut feelings about a dish mislead and only the documented pattern across the whole menu shows what to promote, reprice, or cut.",
+          "Fixed costs stay roughly the same no matter how much you make — rent, salaries, insurance — while variable costs rise and fall with each unit, like the materials in each item. The 'cost behavior trick' is that because fixed costs stay put, the cost per unit changes with volume: make ten items and each carries a tenth of the rent, make a thousand and each carries far less, so the average cost per unit falls as you spread fixed costs thinner. That's why 'what did it cost to make one?' is a trap question — the honest answer is 'it depends how many we made.' For decisions, the most useful figure is often the marginal cost, what it costs to make just one more, which can be tiny once the fixed costs are already paid. That's why a business will sometimes sell something cheaply that seemed expensive to make: any price above the small extra cost still adds money.",
         explanation:
-          "Full credit: describes the two-axis (popularity × profit) classification and its categories, explains popularity ≠ profit (and price ≠ margin), and justifies using real sales/cost data over favorites.",
+          "Full credit: distinguishes fixed vs variable costs, explains fixed costs spread over volume so per-unit cost drops as output rises (no single cost), and explains marginal cost (the next unit) drives decisions and can be far below average cost.",
       },
       {
-        topicSlug: "forecasting-demand",
+        topicSlug: "break-even",
         prompt:
-          "Explain how demand forecasting works — from past patterns to a forecast — and explain the biggest risk that comes from trusting a forecast too much. (4–6 sentences.)",
+          "Explain what the break-even point is, how 'contribution' from each sale builds toward it, and why a lower price doesn't automatically make a plan work. (4–6 sentences.)",
         correctAnswer:
-          "Forecasting starts from the fact that a restaurant's past is full of repeating patterns: Fridays beat Tuesdays, seasons differ, weather matters, and nearby events change everything. A forecaster pulls those clues together to estimate a likely number of guests — an estimate, not a promise — which then drives staffing, food orders, and reservation decisions. Used well, this gets the restaurant close enough to be neither drowning nor standing around. The biggest risk is treating the forecast as certain and locking the whole night around it, especially with tunnel vision on a single factor like the day of the week while ignoring a marathon or a heat wave. A confidently wrong forecast is worse than none, so careful operators treat it as one input and adjust the moment reality disagrees.",
+          "The break-even point is the level of sales where total money in exactly equals total money out — no profit, no loss — and below it the business loses money while above it every sale is profit. Each sale doesn't have to cover everything, only its own variable cost; what's left over contributes toward the fixed costs, and those contributions stack up until the fixed costs are fully covered, which is the break-even point. This makes break-even the most useful single number because it turns 'I hope this works' into a concrete target, like 'we must sell 200 a month.' A lower price doesn't automatically help because cutting the price shrinks each sale's contribution, which raises the number you must sell to break even, sometimes to impossible heights. So a busy business selling at too low a price can still lose money on every transaction, which is why you check break-even before assuming volume will save you.",
         explanation:
-          "Full credit: explains forecasting as turning past patterns/clues into a likely demand estimate for staffing/ordering, and identifies over-trusting it (tunnel vision, locked-in plans) as the central danger.",
+          "Full credit: defines break-even (revenue = total cost), explains contribution (price minus variable cost) accumulating to cover fixed costs, frames it as a concrete target, and explains a lower price raises break-even so high volume at a low price can still lose money.",
       },
       {
-        topicSlug: "pricing-and-yield",
+        topicSlug: "budgets-and-variance",
         prompt:
-          "Explain why the 'right price' is less fixed than it feels and why our pricing instincts mislead us, and describe two ways to price more carefully. (4–6 sentences.)",
+          "Explain why a budget is better understood as a plan than a prediction, what variance is, and why a 'favorable' variance isn't always good news. (4–6 sentences.)",
         correctAnswer:
-          "A price isn't just cost-plus arithmetic; it's a signal that shapes how guests judge quality — too cheap reads as low quality, too expensive feels like a rip-off — so the 'right price' depends on perception, not just cost. It also depends on demand: the same seat is worth more at a packed 8 p.m. Saturday than an empty Tuesday afternoon, which is the heart of yield thinking. Our instincts mislead us because gut pricing (round numbers, a standard markup, copying the place next door) often leaves money on the table or scares guests, and tiny invisible changes move behavior a lot. To price more carefully you can test changes and watch what actually sells, and use what's known about how people read menus — charm prices, dropping the dollar sign, or placing a high anchor dish nearby. Adjusting prices by demand, higher when seats are scarce and lower when empty, is another evidence-based move rather than a hunch.",
+          "A budget is a plan written in numbers — what you expect to bring in and spend — not a fortune-teller's prediction that's simply right or wrong; its value is as a baseline you measure reality against so you notice when things drift. Variance is the gap between what you planned and what actually happened, and the point of measuring it isn't blame but asking why, since a surprise signals the world didn't behave as assumed. Variances are labeled favorable (helped profit) or unfavorable (hurt it), but the labels show direction, not wisdom. A favorable variance isn't always good: spending far less than budgeted on training looks favorable yet might be starving the business, and hitting a sales target can hide that you only reached it by slashing prices (favorable volume but unfavorable price). So good managers treat the budget as a living guide and use variances to learn and adjust rather than to punish or panic.",
         explanation:
-          "Full credit: explains price as a perception signal and as demand-dependent (yield), that gut pricing is unreliable, and gives valid careful methods (testing, menu psychology like dropping dollar signs/charm pricing/anchoring, demand-based adjustment).",
+          "Full credit: explains a budget is a plan/baseline not a prediction, defines variance as plan-vs-actual whose purpose is asking 'why', and explains a favorable variance can still be bad (e.g. under-spending on something needed, hitting sales only via discounts).",
       },
       {
-        topicSlug: "guests-as-data",
+        topicSlug: "unit-economics",
         prompt:
-          "Explain why repeat guests are often worth more than a constant churn of new ones, what 'lifetime value' means, and the trap of chasing only new faces. (4–6 sentences.)",
+          "Explain what unit economics is, why 'we'll make it up in volume' fails when each sale loses money, and what costs an honest unit-economics check must include. (4–6 sentences.)",
         correctAnswer:
-          "Winning a brand-new guest is expensive — advertising, discounts, the effort of a first impression — while a returning guest costs almost nothing to bring back, already knows the menu, spends more, and brings friends, so a base of regulars is usually healthier than a room constantly refilled with strangers. 'Lifetime value' means looking at a guest not as one check but as all the visits they might make over months and years, so a twice-a-month regular can be worth far more than a one-time big spender. The trap is pouring everything into first-timers with deep discounts that attract deal-seekers who never return and sometimes lose money per visit, while loyal guests are taken for granted and drift away. That flood of new faces feels like growth but can hollow out the repeat base that keeps the restaurant alive. That's why operators measure loyalty — frequency, recency, and lifetime value — instead of just trusting a warm feeling about 'our regulars.'",
+          "Unit economics zooms in from the whole company to a single unit — one product sold, one customer — and checks whether that one sale earns more than it costs. If each unit makes money the business has a chance, but if each one loses money, selling more only grows the losses, which is why 'we lose a little on every sale but make it up in volume' is impossible — more volume means bigger losses. An honest check counts all the costs of a sale, including the easily forgotten one: what you spent to win that customer (ads, discounts, free trials), compared against what the customer is worth over their whole relationship (lifetime value). If acquiring a customer costs more than they'll ever spend, every new customer deepens the hole no matter how exciting the growth chart looks. The discipline is to keep asking the small per-sale question even when total revenue and signups look flattering, because the single sale, not the grand total, decides whether the business can stand on its own.",
         explanation:
-          "Full credit: explains repeat guests are cheaper and worth more than churn, defines lifetime value as total visits over time, and identifies the trap of discount-chasing new faces while neglecting loyal regulars.",
+          "Full credit: defines unit economics (does one sale/customer make money), explains volume multiplies losses when the unit is unprofitable, and that all costs including customer acquisition must be counted (CAC vs lifetime value); notes the discipline is unglamorous but decisive.",
       },
       {
-        topicSlug: "reviews-and-sentiment",
+        topicSlug: "forecasting-and-kpis",
         prompt:
-          "Explain why reviews at scale should be treated as data rather than single opinions, what the star average can hide, and why one bad review is not a catastrophe. (4–6 sentences.)",
+          "Explain what a forecast is and why it should be treated as odds rather than a fact, what makes a good KPI, and the difference between a leading and a lagging indicator. (4–6 sentences.)",
         correctAnswer:
-          "A single review is one person's opinion, but a thousand read together become a measurable pattern — which is the idea behind sentiment analysis, turning piles of written words into a signal of what guests praise and complain about repeatedly. So reviews at scale are data: the goal is to hear the whole room and find themes that recur, not to obsess over any one comment. The star average can hide a lot, because a 4.2 built on steady recent praise is very different from a 4.2 propped up by old glowing reviews and recent complaints; the distribution, the recency, and the volume often matter more than the single number. One bad review is not a catastrophe because an angry outlier isn't a pattern — every good restaurant gets a few — and reacting to it while ignoring repeating signals is the real mistake. Reading reviews well means separating recurring signal from one-off noise and watching the trend over time.",
+          "A forecast turns clues from the past — last year's sales, the season, the trend — into a likely number for the future so you can plan ordering, hiring, and spending; the key word is 'likely,' so it's a set of odds, not a promise, because it's about a future that hasn't happened yet. Treating it as fact is dangerous because plans get locked around one number and a confidently wrong forecast catches you out, so it should be used humbly and adjusted as reality disagrees. A good KPI is one of the few dials that genuinely signals health and tells you what to do — the test is 'if this number moved, would I act differently?' A lagging indicator reports what already happened, like last month's profit (a final score you can't change), while a leading indicator hints at what's coming, like how many people asked for a quote this week. Leading indicators let you steer before you hit trouble, so a good dashboard mixes both to keep score and see around the corner.",
         explanation:
-          "Full credit: explains reviews-as-data/sentiment at scale (patterns over single opinions), what the star average hides (distribution, recency, volume), and that a single bad review is an outlier, not a pattern.",
+          "Full credit: explains a forecast as a probabilistic estimate from past patterns (odds not certainty) and the danger of over-trusting it, defines a good KPI as a few action-driving dials (vs vanity), and distinguishes leading (predictive) from lagging (after-the-fact) indicators.",
       },
       {
-        topicSlug: "dashboard-to-decision",
+        topicSlug: "numbers-to-decisions",
         prompt:
           "Explain why turning a dashboard into a decision is hard, why 'metrics that matter' beat 'vanity metrics,' and what it means that acting on data can fail in two different directions. (4–6 sentences.)",
         correctAnswer:
-          "Turning a dashboard into a decision is hard because a dashboard only measures; it doesn't decide, and two managers can read the same numbers and choose opposite actions. The real skill is asking the right question of the data — what is this telling me to do, and how sure am I — because data informs a decision but never makes it for you. 'Metrics that matter' beat 'vanity metrics' because some numbers look flattering (followers, total revenue, a full room) without changing any decision, while the ones worth watching actually tell you to staff up, reprice a dish, or fix a slow night; picking a few decision-driving numbers beats drowning in pretty ones. Acting on data can fail two ways: overreacting to noise (one bad review, one slow week) tears up things you needed, while ignoring a real signal (creeping costs, regulars slipping away) lets a problem grow. No setting removes both risks at once, so an operator has to judge honestly which mistake is more dangerous right now.",
+          "Turning a dashboard into a decision is hard because a dashboard only measures; it doesn't decide, and two managers can read the same numbers and choose opposite actions. The real skill is asking the right question of the data — what is this telling me to do, and how sure am I — because data informs a decision but never makes it for you. 'Metrics that matter' beat 'vanity metrics' because some numbers look flattering (total sales, followers) without changing any decision, while the ones worth watching actually tell you to raise a price, cut a product, or fix a cash problem; picking a few decision-driving numbers beats drowning in pretty ones. Acting on data can fail two ways: overreacting to noise (one slow week, one scary variance) tears up things you needed, while ignoring a real signal (cash draining, each sale losing money) lets a problem grow until it's fatal. No setting removes both risks at once, so an operator has to judge honestly which mistake is more dangerous right now.",
         explanation:
           "Full credit: explains data informs but people decide, distinguishes decision-driving metrics from flattering vanity metrics, and that errors split into overreacting to noise vs. ignoring real signal — a judgment trade-off.",
       },
@@ -471,7 +475,7 @@ const ASSIGNMENTS: SeedAssignment[] = [
   },
   {
     kind: "final",
-    title: "Final — Restaurant & Hospitality Analytics for Everyone",
+    title: "Final — Financial & Managerial Analytics for Everyone",
     weekNumber: 1,
     isTimed: true,
     timeLimitMinutes: 45,
@@ -479,40 +483,40 @@ const ASSIGNMENTS: SeedAssignment[] = [
       "Timed cumulative final. 45 minutes. Covers the whole course (sections 1.1–1.8). Answer each question in a paragraph (about 5–7 sentences) in your own words. No math is required. Pasting is disabled; keystrokes are screened for AI use.",
     problems: [
       {
-        topicSlug: "dashboard-to-decision",
+        topicSlug: "numbers-to-decisions",
         prompt:
-          "Using ideas from across the whole course, argue that one habit of mind — 'resist the simple, flattering story' — runs through hospitality analytics. Show how it applies to at least three different topics (for example: a packed room, a single magic metric, the best-selling dish, a confident forecast, a gut sense of the 'right price,' chasing only new customers, or one angry review). (5–7 sentences.)",
+          "Using ideas from across the whole course, argue that one habit of mind — 'resist the simple, flattering story' — runs through financial and managerial analytics. Show how it applies to at least three different topics (for example: high sales, profit on paper, a single cost tag, a low price, a budget, growing sales, or a flattering dial). (5–7 sentences.)",
         correctAnswer:
-          "The thread running through the whole course is to resist the simple, flattering story and replace it with careful, measured thinking. A packed room feels like success, but a busy restaurant can quietly lose money, so 'busy' has to be checked against covers, turns, check average, and costs. There's no single magic metric either — revenue isn't profit, and you read the numbers together rather than trusting one. The best-selling dish isn't automatically the moneymaker, because popularity isn't profit and a popular plowhorse can earn very little. The same caution undoes the confident forecast (it's odds, not a fact), the gut sense of the 'right price' (our pricing instincts mislead us), the rush to chase only new faces (loyal guests are usually worth more), and the panic over one angry review (an outlier isn't a pattern). That shared habit — harder than believing a neat, comforting story — is what makes hospitality analytics both more honest and more likely to keep a restaurant alive.",
+          "The thread running through the whole course is to resist the simple, flattering story and replace it with careful, measured thinking. High sales feel like success, but a business with record sales can still run out of cash, so 'big sales' has to be checked against profit and actual cash. Profit on paper isn't money in the bank either — profit is an opinion while cash is a fact — so you read the income statement, balance sheet, and cash flow together rather than trusting one. A single cost tag is misleading too, because costs behave differently and the per-unit cost depends on volume, so 'what did it cost?' really means 'it depends how many we made.' The same caution undoes the low price that quietly raises break-even past what you could ever sell, the budget mistaken for a promise, the fast growth that loses money on every unit, and the flattering dial like 'total users' that hides who actually stayed. That shared habit — harder than believing a neat, comforting story — is what makes financial and managerial analytics both more honest and more likely to keep a business alive.",
         explanation:
           "Full credit: states the unifying habit (reject simple/flattering stories for measured thinking) and applies it correctly to at least three distinct course topics with accurate detail.",
       },
       {
-        topicSlug: "metrics-that-matter",
+        topicSlug: "three-financial-statements",
         prompt:
-          "Someone insists, 'A packed restaurant is automatically a successful one — full seats mean it's making money.' Using ideas from the course, argue why a restaurant's success is better understood through several metrics read together. Use at least one concrete example. (5–7 sentences.)",
+          "Someone insists, 'If a company reports a big profit, it's obviously doing fine — profit is all that matters.' Using ideas from the course, argue why a business's health is better understood by reading the three statements together. Use at least one concrete example. (5–7 sentences.)",
         correctAnswer:
-          "The 'packed equals successful' view assumes a single signal — a full room — proves health, but a restaurant's health actually grows from several measurements stacked together. Covers count the guests and turns show how hard each table works, so a packed room that never turns can serve the same people as a calmer one that turns several times. The average check matters too, because two equally busy restaurants earn very differently if one sells drinks and dessert and the other just entrées. Most important, revenue isn't profit: food and labor (prime cost) plus rent come out of every sale, so a record-revenue, packed month can still lose money. For example, a restaurant once had its best sales month ever yet couldn't make payroll, because rising food prices and added staff pushed prime cost past the rough two-thirds-of-sales ceiling operators watch. So 'packed' mistakes a feeling for the bottom line, which only shows up when the metrics are read together.",
+          "The 'profit is all that matters' view assumes one number proves health, but a business's health actually shows up across three reports that each answer a different question. The income statement shows profit over a period, the balance sheet shows what's owned and owed on a given day, and the cash flow statement shows whether real cash came in — and that last one matters because profit is an opinion while cash is a fact. A company can count a sale as profit before the customer has paid, so its income statement glows while the cash flow statement reveals money draining out and bills it can't cover. For example, profitable companies have collapsed because their cash was tied up in unsold inventory or unpaid invoices — a problem that's invisible on the income statement but obvious on the cash flow statement. So a big reported profit is a starting point, not proof of fine; only reading the three together — earnings, what's owned and owed, and actual cash — reveals whether a business is genuinely healthy.",
         explanation:
-          "Full credit: rejects the single-signal 'packed = success' view, explains multiple stacked metrics (covers, turns, check average, costs) and that revenue ≠ profit, and supports it with a concrete example (e.g. record revenue undone by rising prime cost).",
+          "Full credit: rejects the single-number 'profit = fine' view, explains the three statements answer different questions and that profit isn't cash, and supports it with a concrete example (e.g. a profitable company failing from a cash crunch / unpaid customers).",
       },
       {
-        topicSlug: "pricing-and-yield",
+        topicSlug: "break-even",
         prompt:
-          "Explain why our instincts about pricing are unreliable, why this matters for a restaurant, and how careful, evidence-based pricing can help. Use a concrete example. (5–7 sentences.)",
+          "Explain why break-even is often called the single most useful number in business, why a lower price can make a plan harder rather than easier, and how an owner should use break-even before launching. Use a concrete example. (5–7 sentences.)",
         correctAnswer:
-          "Our pricing instincts are unreliable because a price is a signal, not just cost-plus arithmetic, and tiny, almost invisible changes move guest behavior far more than gut feeling expects. A price too low quietly reads as low quality and one too high feels like a rip-off, so the 'right price' depends on perception, not just cost — and it also depends on demand, since the same seat is worth more at a packed Saturday night than an empty Tuesday afternoon. This matters because gut pricing — round numbers, a standard markup, copying the place next door — routinely leaves money on the table or scares guests away. Careful pricing helps by replacing the hunch with evidence: test changes and watch what actually sells, use what's known about how people read menus, and adjust prices by demand. For example, a hospitality study gave guests the same menu with prices written as '$20.00' or simply '20,' and the guests reading it without the dollar sign spent noticeably more, even though the food and prices were identical. That shows only careful testing, not instinct, reveals what truly moves a guest.",
+          "Break-even is the level of sales where total money in equals total money out, the line between losing money and making it, and it's so useful because it turns a vague hope into a concrete survival target. It works through contribution: each sale only needs to cover its own variable cost, and what's left over stacks up to pay the fixed costs until they're covered, after which every sale is profit. A lower price can make a plan harder because cutting the price shrinks each sale's contribution, which raises the number you must sell to break even — sometimes so high you could never realistically reach it, so a busy business can still lose money on every sale. Before launching, an owner should work out the break-even point and ask honestly whether that many sales is achievable; if not, the idea, the price, or the costs need to change first. For example, a movie that cost $100 million usually has to earn roughly twice that to break even, because theaters keep about half the ticket money and marketing adds huge costs — which is why a film can gross over $150 million and still be a flop. That quiet break-even line, not the splashy sales figure, is what decides whether the plan actually works.",
         explanation:
-          "Full credit: explains price as a perception signal and demand-dependent (yield), that gut pricing is unreliable and costly, names evidence-based methods, and supports it with a concrete example (e.g. the dropped-dollar-sign menu study).",
+          "Full credit: defines break-even and contribution, explains a lower price raises the break-even point (so volume at a low price can still lose money), says an owner should check whether break-even sales are achievable before launching, and supports it with a concrete example (e.g. a film needing ~2x its budget).",
       },
       {
-        topicSlug: "guests-as-data",
+        topicSlug: "unit-economics",
         prompt:
-          "An owner says, 'I should spend almost everything on attracting brand-new customers — that's how you grow.' Using the course, explain why repeat guests and lifetime value matter so much, and what an owner should check before pouring money into new faces. Use a concrete example or figure. (5–7 sentences.)",
+          "A founder says, 'We're losing money now, but we're growing so fast that scale will fix everything.' Using the course, explain why this can be a dangerous mistake and what the founder should check first. Use a concrete example. (5–7 sentences.)",
         correctAnswer:
-          "The 'all-in on new customers' view ignores how expensive new guests are to win — advertising, discounts, the effort of a first impression — compared with a returning guest who costs almost nothing to bring back, already knows the menu, spends more, and refers friends. That's why lifetime value matters: a guest isn't one check but all the visits they might make over months and years, so a twice-a-month regular can be worth far more than a one-time big spender. Chasing only new faces with deep discounts tends to attract deal-seekers who never return and can lose money on each visit, while loyal guests, taken for granted, quietly drift away. We know retention is powerful: a widely cited study found that improving customer retention by just 5% could raise profits by roughly 25% to 95%, because loyal customers cost less, spend more over time, and refer others. Before pouring money into new faces, an owner should check loyalty metrics — how often guests return (frequency), how recently they last came (recency), and their lifetime value — to see whether the existing base is being kept or lost. Otherwise the flood of new customers can hollow out the very base that keeps the restaurant alive.",
+          "The 'scale will fix everything' view ignores unit economics — whether a single sale or customer actually makes money once you count all its costs. If each customer costs more to win and serve than they ever pay, then growth multiplies the losses instead of curing them, which is the real version of the joke about losing money on every sale but making it up in volume. So before scaling, the founder should check the per-unit math: does one customer bring in more than their full cost, including what was spent to acquire them (their lifetime value versus their acquisition cost)? Only if that single unit is already profitable can volume turn into profit; if it isn't, every exciting new signup digs the hole deeper. A famous example is the movie-ticket subscription that charged about ten dollars a month for nearly unlimited movies while paying theaters close to full price per ticket, so heavy users cost far more than they paid; signups exploded, the losses grew with them, and the company collapsed. The growth and the sales were real, but the unit economics never worked, and that's what decided it.",
         explanation:
-          "Full credit: explains repeat guests are cheaper and worth more (lifetime value), warns the discount-chasing trap can lose money and neglect regulars, cites evidence retention is valuable (e.g. ~5% retention → large profit gains), and names what to check (frequency, recency, LTV).",
+          "Full credit: explains unit economics (does one sale make money), that growth multiplies losses when the unit is unprofitable, what to check first (per-unit profit including acquisition cost vs lifetime value), and supports it with a concrete example (e.g. the unlimited-movie subscription).",
       },
     ],
   },
@@ -523,24 +527,24 @@ type SeedPrimer = SeedTopic;
 const REASONING_PRIMERS: SeedPrimer[] = [
   {
     slug: "reasoning-primer-subject",
-    title: "How to reason about hospitality analytics cases",
+    title: "How to reason about financial & managerial analytics cases",
     weekNumber: 1,
     blurb:
-      "Diagnostic primer: applying the course's ideas to concrete restaurant and hospitality situations.",
-    lectureTitle: "Primer: How to reason about hospitality analytics cases",
-    body: `# How to reason about hospitality analytics cases
+      "Diagnostic primer: applying the course's ideas to concrete business and money situations.",
+    lectureTitle: "Primer: How to reason about financial & managerial analytics cases",
+    body: `# How to reason about financial & managerial analytics cases
 
-This short primer prepares you for the **Hospitality Analytics** diagnostic. That check is *ungraded practice* — it never affects your course grade. It is drawn from the eight topics of this unit and asks you to *apply* what you have learned to a specific situation, not to recite a definition.
+This short primer prepares you for the **Financial & Managerial Analytics** diagnostic. That check is *ungraded practice* — it never affects your course grade. It is drawn from the eight topics of this unit and asks you to *apply* what you have learned to a specific situation, not to recite a definition.
 
 ## It tests application, not memorization
 
-A diagnostic question gives you a small, concrete scene — a packed dining room, a best-selling dish, a slow Tuesday, a one-star review — and asks what the course's ideas tell you about it. Knowing the words "lifetime value" or "prime cost" is not enough; the question wants you to recognize *when* you are looking at one and *why* it matters here.
+A diagnostic question gives you a small, concrete scene — a profitable business short on cash, a low price that won't break even, a product that loses money on every sale, a flattering "total users" chart — and asks what the course's ideas tell you about it. Knowing the words "break-even" or "unit economics" is not enough; the question wants you to recognize *when* you are looking at one and *why* it matters here.
 
 ## What the questions reward
 
-- **Naming the right idea** — match the situation to the concept that fits it: why busy isn't always profitable, what a menu's popularity does and doesn't tell you, why a forecast is only an estimate, when a price signal matters, why a regular can be worth more than a stranger, how to read a review at scale.
+- **Naming the right idea** — match the situation to the concept that fits it: why high sales isn't proof of health, why profit isn't cash, how costs behave with volume, what break-even really demands, why a budget is a plan not a promise, whether a single sale makes money, and which dial is worth watching.
 - **Using evidence from the scene** — point to the detail in the situation that supports your answer, rather than answering from a general impression.
-- **Avoiding the flattering reading** — the course measures what's really happening; it does not assume the most comforting explanation. The best answers stay grounded in the numbers, not in how a night feels.
+- **Avoiding the flattering reading** — the course measures what's really happening; it does not assume the most comforting explanation. The best answers stay grounded in the numbers, not in how a business feels.
 
 ## How to do this activity well
 
@@ -640,7 +644,7 @@ export async function seedReasoningPrimersIfMissing(): Promise<void> {
 }
 
 export async function seedIfEmpty(): Promise<void> {
-  // The course was migrated to the Restaurant & Hospitality Analytics for
+  // The course was migrated to the Financial & Managerial Analytics for
   // Children syllabus. Detect the marker topic; if present and the content
   // version matches, the content is current and we skip. This makes the seed
   // self-healing across environments: a database that still holds older content
@@ -648,7 +652,7 @@ export async function seedIfEmpty(): Promise<void> {
   const markerTopic = await db
     .select({ id: topicsTable.id })
     .from(topicsTable)
-    .where(eq(topicsTable.slug, "what-hospitality-analytics-is"));
+    .where(eq(topicsTable.slug, "what-financial-analytics-is"));
   // Read the stored content version. Tolerate the seed_meta table not yet
   // existing (e.g. a boot that races ahead of schema migration): treat that as
   // "no version recorded", which forces a reseed once the table is present.
@@ -689,7 +693,7 @@ export async function seedIfEmpty(): Promise<void> {
     const row = (existing.rows[0] ?? {}) as { n?: number };
     if ((row.n ?? 0) > 0) {
       logger.warn(
-        "Seed: stale course content detected — replacing with the Restaurant & Hospitality Analytics for Children curriculum",
+        "Seed: stale course content detected — replacing with the Financial & Managerial Analytics for Children curriculum",
       );
       await tx.execute(
         sql`TRUNCATE TABLE answers, attempts, practice_attempts, practice_problems, practice_sessions, problems, assignments, lectures, topics, diagnostic_responses, diagnostic_attempts, diagnostic_items, diagnostic_assessments RESTART IDENTITY CASCADE`,

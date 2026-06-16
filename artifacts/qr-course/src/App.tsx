@@ -235,13 +235,13 @@ function ClerkProviderWithRoutes() {
         signIn: {
           start: {
             title: "Welcome back",
-            subtitle: "Sign in to continue your Restaurant & Hospitality Analytics for Children course",
+            subtitle: "Sign in to continue your Financial & Managerial Analytics for Children course",
           },
         },
         signUp: {
           start: {
             title: "Create your account",
-            subtitle: "Start your hospitality analytics journey with Restaurant & Hospitality Analytics for Children",
+            subtitle: "Start your financial & managerial analytics journey with Financial & Managerial Analytics for Children",
           },
         },
       }}

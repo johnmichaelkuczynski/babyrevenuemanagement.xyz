@@ -37,7 +37,7 @@ export function Scene1() {
           animate={phase >= 2 ? { scale: 1, rotate: [-10, 5, 0] } : { scale: 0, rotate: -10 }}
           transition={{ type: 'spring', stiffness: 400, damping: 15 }}
         >
-          <span className="text-[5vw] font-black tracking-wide">RESTAURANT SMARTS</span>
+          <span className="text-[5vw] font-black tracking-wide">MONEY SMARTS</span>
         </motion.div>
       </div>
 
