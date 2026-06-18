@@ -11,14 +11,14 @@ import { Scene7 } from './video_scenes/Scene7';
 import { Scene8 } from './video_scenes/Scene8';
 
 export const SCENE_DURATIONS = {
-  s1_intro: 4500,
-  s2_curriculum: 6000,
-  s3_depths: 6000,
-  s4_tutor: 9000,
-  s5_practice: 7000,
-  s6_grading: 6500,
-  s7_detection: 8000,
-  s8_outro: 7000
+  s1_intro: 3500,
+  s2_curriculum: 5000,
+  s3_depths: 5000,
+  s4_tutor: 7000,
+  s5_practice: 6000,
+  s6_grading: 6000,
+  s7_detection: 6000,
+  s8_outro: 6000
 };
 
 const SCENE_COMPONENTS: Record<string, React.ComponentType> = {
@@ -77,9 +77,11 @@ export default function VideoTemplate({
     audio.play().catch(() => {});
   }, [currentSceneKey, baseSceneKey, muted]);
 
+  const showChrome = !['s1_intro', 's8_outro'].includes(baseSceneKey as string);
+
   return (
-    <div className="w-full h-screen overflow-hidden relative bg-slate-50 text-slate-900" style={{ fontFamily: 'var(--font-body)' }}>
-      {/* Persistent Background Layer (Very subtle for clean UI shots) */}
+    <div className="w-full h-screen overflow-hidden relative bg-slate-50 text-slate-900 flex" style={{ fontFamily: 'var(--font-body)' }}>
+      {/* Persistent Background Layer */}
       <div className="absolute inset-0 pointer-events-none z-0">
         <motion.div
           className="absolute w-[80vw] h-[80vw] rounded-full opacity-[0.03] blur-3xl"
@@ -87,18 +89,42 @@ export default function VideoTemplate({
           animate={{ x: ['-20%', '30%', '-10%'], y: ['-10%', '40%', '-20%'], scale: [1, 1.2, 0.9] }}
           transition={{ duration: 15, repeat: Infinity, ease: 'easeInOut' }}
         />
-        <motion.div
-          className="absolute w-[60vw] h-[60vw] rounded-full opacity-[0.02] blur-3xl right-0 bottom-0"
-          style={{ background: 'radial-gradient(circle, var(--color-accent), transparent)' }}
-          animate={{ x: ['20%', '-20%', '10%'], y: ['10%', '-30%', '20%'] }}
-          transition={{ duration: 18, repeat: Infinity, ease: 'easeInOut' }}
-        />
       </div>
 
-      <div className="relative z-10 w-full h-full">
-        <AnimatePresence mode="popLayout">
-          {SceneComponent && <SceneComponent key={currentSceneKey} />}
-        </AnimatePresence>
+      {showChrome && (
+        <motion.div 
+          className="w-64 bg-[#0a1120] text-white flex-shrink-0 flex flex-col z-50 shadow-xl"
+          initial={{ x: -300 }} animate={{ x: 0 }} exit={{ x: -300 }} transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <div className="h-16 flex items-center px-6 border-b border-white/10 font-display font-bold text-lg text-white">
+            Pricing Analytics
+          </div>
+          <div className="p-4 flex flex-col gap-1 text-sm font-medium">
+            <div className="px-3 py-2.5 rounded-md hover:bg-white/10 text-slate-300">Dashboard</div>
+            <div className="px-3 py-2.5 rounded-md bg-white/10 text-white">Coursework</div>
+            <div className="px-3 py-2.5 rounded-md hover:bg-white/10 text-slate-300">Diagnostics</div>
+            <div className="px-3 py-2.5 rounded-md hover:bg-white/10 text-slate-300">Grades</div>
+            <div className="px-3 py-2.5 rounded-md hover:bg-white/10 text-slate-300">Analytics</div>
+          </div>
+        </motion.div>
+      )}
+
+      <div className="flex-1 flex flex-col relative z-10 w-full h-full overflow-hidden">
+        {showChrome && (
+          <motion.div 
+            className="h-16 bg-white border-b border-slate-200 flex items-center px-6 justify-between flex-shrink-0 z-50"
+            initial={{ y: -100 }} animate={{ y: 0 }} transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <div className="text-sm font-medium text-slate-500 tracking-wider uppercase">Unit 1: Foundations</div>
+            <div className="w-8 h-8 rounded-full bg-slate-200"></div>
+          </motion.div>
+        )}
+
+        <div className="flex-1 relative">
+          <AnimatePresence mode="popLayout">
+            {SceneComponent && <SceneComponent key={currentSceneKey} />}
+          </AnimatePresence>
+        </div>
       </div>
 
       <audio

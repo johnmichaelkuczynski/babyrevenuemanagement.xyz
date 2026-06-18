@@ -11,3 +11,4 @@
 - [Subject conversion blind spots](subject-conversion-blindspots.md) — when rebranding the course subject, video artifacts also hide subject copy in index.html OG/Twitter meta + a per-artifact YOUTUBE_DESCRIPTION.md, not just scene .tsx files.
 - [Removing an artifact](artifact-deletion.md) — no deleteArtifact callback; `rm -rf artifacts/<slug>` auto-reconciles registry+workflow; removeWorkflow is blocked (PROHIBITED_ACTION) for artifact workflows.
 - [OpenAPI adjacent-op edits](openapi-adjacent-op-edits.md) — inserting an op before another can orphan its response `content` block & flip a generated client return type; include the full responses block in old_string and verify generated Promise<…> after codegen.
+- [Promo video fidelity](promo-video-fidelity.md) — "show the real course" video: DESIGN subagent defaults to its own tokens; enforce real app navy+serif/Inter, sidebar chrome, 4-state depth toggle, ≤45s, and verify index.css yourself.
