@@ -48,7 +48,7 @@ export function Scene4() {
         >
           <div className="p-4 border-b border-slate-200 flex items-center justify-between bg-slate-50/50">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center text-accent">✨</div>
+              <div className="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center text-accent"><svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l1.8 5.2L19 9l-5.2 1.8L12 16l-1.8-5.2L5 9l5.2-1.8z" /></svg></div>
               <span className="font-bold text-slate-900">AI Tutor</span>
             </div>
           </div>
@@ -67,7 +67,7 @@ export function Scene4() {
             {/* AI response streaming */}
             {phase >= 3 && (
               <div className="self-start flex gap-3 max-w-[90%]">
-                <div className="w-6 h-6 rounded-full bg-accent/20 flex items-center justify-center shrink-0 mt-1">✨</div>
+                <div className="w-6 h-6 rounded-full bg-accent/20 flex items-center justify-center shrink-0 mt-1 text-accent"><svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l1.8 5.2L19 9l-5.2 1.8L12 16l-1.8-5.2L5 9l5.2-1.8z" /></svg></div>
                 <div className="bg-primary text-white rounded-2xl rounded-tl-sm p-4 text-sm leading-relaxed shadow-sm">
                   <TypewriterText text={answerText} speed={15} />
                 </div>

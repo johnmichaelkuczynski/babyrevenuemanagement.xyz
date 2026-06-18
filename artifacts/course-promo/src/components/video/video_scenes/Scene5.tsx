@@ -49,9 +49,9 @@ export function Scene5() {
               <motion.div 
                 initial={{ opacity: 0, y: 10, scale: 0.5 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
-                className="text-primary font-bold ml-1 text-lg leading-none"
+                className="text-primary font-bold ml-1 leading-none"
               >
-                ↑
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 11l7-7 7 7M12 4v16" /></svg>
               </motion.div>
             )}
           </motion.div>
@@ -65,8 +65,8 @@ export function Scene5() {
           >
             <div className="flex items-center justify-between mb-6">
               <div className="text-sm font-bold text-primary tracking-widest uppercase">Question 3 of 5</div>
-              <div className="flex gap-1 text-orange-500">
-                <span className="text-lg leading-none">🔥</span>
+              <div className="flex items-center gap-1 text-orange-500">
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2c.5 3-1.5 4.5-3 6.5C7 11 6 13 7 15a5 5 0 0010 0c0-2-1-3.5-2.5-5 .5 1.5 0 2.5-1 3 .5-2-1-4-1.5-6.5z" /></svg>
                 <span className="font-bold">2 Streak</span>
               </div>
             </div>
@@ -100,7 +100,7 @@ export function Scene5() {
                   initial={{ height: 0, opacity: 0 }}
                   animate={phase >= 3 ? { height: 'auto', opacity: 1 } : { height: 0, opacity: 0 }}
                 >
-                  <div className="w-5 h-5 rounded-full bg-emerald-500 text-white flex items-center justify-center shrink-0 mt-0.5">✓</div>
+                  <div className="w-5 h-5 rounded-full bg-emerald-500 text-white flex items-center justify-center shrink-0 mt-0.5"><svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" /></svg></div>
                   <p><strong>Correct!</strong> Holding cost is the physical price of storage. Opportunity cost is the invisible price of not being able to use that cash for something else.</p>
                 </motion.div>
               </motion.div>

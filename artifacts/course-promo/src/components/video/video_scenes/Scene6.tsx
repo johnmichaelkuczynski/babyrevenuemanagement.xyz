@@ -65,7 +65,7 @@ export function Scene6() {
                 initial={{ opacity: 0, height: 0, marginTop: 0 }}
                 animate={phase >= 3 ? { opacity: 1, height: 'auto', marginTop: '1.5rem' } : { opacity: 0, height: 0, marginTop: 0 }}
               >
-                <div className="w-10 h-10 rounded-full bg-blue-500/20 flex flex-shrink-0 items-center justify-center text-blue-400 text-xl">✨</div>
+                <div className="w-10 h-10 rounded-full bg-blue-500/20 flex flex-shrink-0 items-center justify-center text-blue-400"><svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l1.8 5.2L19 9l-5.2 1.8L12 16l-1.8-5.2L5 9l5.2-1.8z" /></svg></div>
                 <div>
                   <h4 className="text-blue-400 font-bold mb-2">AI Feedback</h4>
                   <p className="text-blue-100/80 leading-relaxed">
