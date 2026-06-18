@@ -55,7 +55,7 @@ export function Scene1() {
           animate={phase >= 2 ? { y: 0, opacity: 1 } : { y: 50, opacity: 0 }}
           transition={{ type: "spring", stiffness: 300, damping: 25 }}
         >
-          Operations & Supply Chain <br/>
+          Revenue Management & Pricing <br/>
           <span className="text-accent">Analytics for Children</span>
         </motion.h1>
 
@@ -65,7 +65,7 @@ export function Scene1() {
           animate={phase >= 3 ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          A friendly intro to how things really move through a business.<br/>
+          A friendly intro to why two seats cost different prices.<br/>
           Taught, tutored, and graded by AI.
         </motion.p>
       </div>

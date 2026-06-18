@@ -13,7 +13,7 @@ export function Scene4() {
     return () => timers.forEach(t => clearTimeout(t));
   }, []);
 
-  const answerText = "Drying is the bottleneck. The car wash can only finish 10 cars an hour because that's the maximum speed of the slowest step. Buying a faster vacuum just creates a traffic jam of wet cars waiting to be dried. To wash more cars, you must speed up the drying step.";
+  const answerText = "Because the coffee shop faces elastic demand. With three rivals next door, customers can easily switch, so a price rise sends many of them away — and losing that many customers costs more than the extra you earn per cup. The pharmacy can raise prices because its customers have nowhere else to go.";
 
   return (
     <motion.div 
@@ -28,13 +28,13 @@ export function Scene4() {
       >
         <div className="flex-1 p-16 bg-slate-50 relative overflow-hidden">
           <div className="max-w-3xl opacity-40 blur-[2px] pointer-events-none transition-all duration-1000">
-            <h1 className="text-4xl font-display font-bold text-slate-900 mb-8">Bottlenecks</h1>
+            <h1 className="text-4xl font-display font-bold text-slate-900 mb-8">Price Elasticity</h1>
             <p className="text-xl leading-relaxed text-slate-700 mb-6">
-              A bottleneck is the slowest step in a process. Imagine a garden hose that is pinched in the middle. It doesn't matter how wide the hose is before or after the pinch; the water can only flow as fast as the pinched part allows.
+              Price elasticity measures how sensitive buyers are to a change in price. Imagine a coffee shop with three rivals next door raising its price — many customers simply walk to a cheaper rival. That's elastic demand: bendy and quick to react.
             </p>
             <div className="p-6 bg-white border border-slate-200 rounded-xl mt-6 shadow-sm">
-              <h4 className="font-bold text-slate-900 mb-2">Example: The Car Wash</h4>
-              <p className="text-slate-600">A car wash can vacuum 20 cars an hour, but the drying station can only dry 10 cars an hour. The drying station is the bottleneck.</p>
+              <h4 className="font-bold text-slate-900 mb-2">Example: Coffee vs. Medicine</h4>
+              <p className="text-slate-600">A 10% price rise at a coffee shop surrounded by rivals can lose a third of its customers, while the same rise on a life-saving medicine barely changes how much is bought.</p>
             </div>
           </div>
         </div>
@@ -61,7 +61,7 @@ export function Scene4() {
               animate={phase >= 2 ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
               transition={{ delay: 0.5 }}
             >
-              Wait, if they buy a vacuum that does 40 cars an hour, why won't more cars get washed?
+              Wait, if raising prices earns more money, why doesn't the coffee shop just raise its prices too?
             </motion.div>
 
             {/* AI response streaming */}

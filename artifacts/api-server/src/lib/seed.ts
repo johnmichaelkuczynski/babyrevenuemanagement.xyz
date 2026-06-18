@@ -14,7 +14,7 @@ import { logger } from "./logger";
 // the value stored in seed_meta; a mismatch forces a full re-seed, so content
 // edits self-heal in every environment (including a republished production)
 // without a manual database wipe.
-const SEED_CONTENT_VERSION = "2026-06-18-operations-supply-chain-analytics-for-children-v1";
+const SEED_CONTENT_VERSION = "2026-06-18-revenue-management-pricing-analytics-for-children-v1";
 
 type SeedTopic = {
   slug: string;
@@ -26,258 +26,282 @@ type SeedTopic = {
 };
 
 const TOPICS: SeedTopic[] = [
-  // Unit 1 — Operations & Supply Chain Analytics for Everyone
+  // Unit 1 — Revenue Management & Pricing Analytics for Everyone
   {
-    slug: "what-operations-analytics-is",
-    title: "What operations & supply chain analytics is",
+    slug: "what-revenue-management-is",
+    title: "What revenue management is",
     weekNumber: 1,
-    blurb: "Most people picture a business as a building full of stuff — but it's really a flow, and almost everything that goes wrong is a problem with how things move.",
-    lectureTitle: "1.1 What operations & supply chain analytics is (the business as a flow)",
-    body: `# What operations & supply chain analytics is
+    blurb: "Two people in identical seats on the same flight usually paid wildly different prices — and that's not a mistake or a rip-off, it's a whole craft called revenue management.",
+    lectureTitle: "1.1 What revenue management is (why two seats cost different prices)",
+    body: `# What revenue management is
 
-Ask most people to picture a business and they imagine a place — a store, a warehouse, a factory full of stuff. That picture is comforting, and it's also why so many businesses get stuck. **Operations and supply chain analytics** starts from a different picture: a business isn't a pile of things sitting still, it's a **flow** — materials, orders, and work moving through steps from the very start until they reach a customer. Learning to see and measure that flow is the whole game.
+Ask most people what something "costs" and they'll give you a single number, as if every product has one true price stamped on it forever. But sit on an airplane and quietly ask the travelers around you what they paid, and you'll hear a dozen different numbers for the very same seat on the very same flight. That isn't a glitch or a rip-off — it's **revenue management**, the craft of deciding what to charge, for what, to whom, and when, so a business earns the most it possibly can from what it has to sell. Learning to see those different prices as a deliberate skill instead of an accident is the whole game.
 
-## A business you can watch move
+## The same seat, many prices
 
-Think of how a pizza reaches your door: someone grows wheat and tomatoes, a mill and a cannery turn them into flour and sauce, a truck carries those to a shop, a cook assembles a pizza, an oven bakes it, and a driver delivers it. Every business is a chain of steps like that, and **operations analytics** is the skill of watching things move through those steps instead of just counting what's on the shelves. The question stops being "how much do we have?" and becomes "how smoothly is it moving, and where does it get stuck?"
+The traveler in 14C might have paid $120 because they booked three months early; the one in 14D paid $450 because they booked last night for a work trip; the one in 14E grabbed a $90 deal in a weekend sale. Same flight, same legroom, same little bag of pretzels — three very different prices. Revenue management is the reason. Instead of asking "what is the right price for a seat?", it asks "what is the right price for *this* seat, sold to *this* kind of buyer, at *this* moment?" The single price most people imagine gets replaced by a moving set of prices aimed at different people and different times.
 
-## Operations vs. supply chain: inside vs. the whole chain
+## Why one fixed price leaves money behind
 
-The two halves of the name point at two views of the same flow. **Operations** is the flow *inside* one business — how an order travels through your own kitchen, factory, or office. **Supply chain** is the flow *across* many businesses linked together — the farmers, factories, trucks, and stores that hand things off to each other until a customer gets them. Same idea at two zoom levels: one looks at the steps you control directly, the other at the long chain of companies you depend on and can only nudge.
+Imagine the airline picked one price for everyone — say $250. The business traveler who would happily have paid $450 now pays only $250, so the airline *loses* $200 it could have had. Meanwhile the budget traveler who could only afford $120 doesn't fly at all, so the airline loses that sale completely *and* sends the plane up with an empty seat. A single fixed price is almost always too high for some customers and too low for others at the same time. Revenue management exists because that one-price-fits-all approach quietly leaves money on the table at both ends.
 
-## Flow, not a pile
+## What revenue management actually decides
 
-Three plain measurements describe any flow. **Throughput** is how much actually comes out the far end in a given time — pizzas per hour, packages per day. **Flow time** is how long one item takes to travel the whole way through. And **inventory** is how much is sitting *inside* the system waiting at any moment. The surprising part is how tightly these are linked: a place can look busy and full of inventory yet still have low throughput, because being full is not the same as moving fast.
+At heart, revenue management juggles a few linked decisions: *what price* to set, *how many* to sell at each price, and *when* to change those prices as the selling window runs out. It decides how many cheap early-bird seats to release before holding the rest back for late, higher-paying buyers. It decides when to drop the price to fill seats that would otherwise fly empty, and when to *raise* it because demand is strong. None of these is a one-time choice — they're constantly re-decided as information arrives about who's actually buying.
 
-## The myths the flow exposes
+## Why it works best on perishable things
 
-Operations is full of confident myths. That a *busy* business is a productive one — but busy can just mean clogged. That a *full warehouse* is a safe one — but full often means cash frozen in stuff nobody's buying yet. That buying one *faster machine* makes everything faster — but if that machine wasn't the slow step, nothing speeds up. Much of this course is un-learning those myths and replacing them with a habit of asking where things actually move, wait, and pile up.
+Revenue management shines for a special kind of product: one with a **fixed supply** that **expires.** An airplane has a set number of seats, and the moment the doors close, every empty seat is worth exactly zero forever — you can't sell tonight's empty seat tomorrow. Hotel rooms, concert tickets, cruise cabins, and rental cars are all like this: limited, and worthless once the date passes. That mix — you can't make more, and the unsold ones vanish — is exactly why squeezing the most money out of each one before it expires becomes a serious, dedicated craft.
 
-## Why this matters
+## Is it fair?
 
-This isn't only for giant factories. The same ideas decide whether a food truck can serve the lunch rush without a thirty-minute line, whether a small online shop ships on time without drowning in unsold boxes, and whether a hospital can move patients through the emergency room before they're harmed by the wait. When a flow is badly managed, people feel it as long waits, empty shelves, late deliveries, and wasted money — so reading the flow honestly is a kind of fairness to everyone who depends on it.
+It can feel unfair that your neighbor paid less, but look closer and there's a logic. The flexible price lets the airline sell cheap seats to people who'd otherwise be priced out *and* fill the plane, which keeps flights running and average fares lower than a single high price would be. The business traveler who paid more values the last-minute flexibility and can afford it; the student who planned ahead got rewarded for it. Revenue management isn't about tricking anyone — it's about matching different prices to different needs so more of the plane gets sold to more kinds of people.
 
 ## In the real world
 
-The most famous example is **Toyota.** For decades carmakers built huge piles of parts and pushed them through, assuming bigger batches meant efficiency. Toyota flipped the picture: treat the factory as a *flow*, make only what the next step actually needs, and relentlessly hunt for the places where things sit and wait. The result — often called "lean" production — let them build better cars with far less inventory and money tied up, and the rest of the world spent years trying to copy it. The lesson runs through this whole course: the win didn't come from a bigger pile, it came from seeing the business as something that moves.`,
+The whole field was born at the airlines. In the 1980s, after U.S. airlines were deregulated, low-cost newcomers like PeopleExpress undercut the big carriers with rock-bottom fares. American Airlines fought back not by matching every fare, but by inventing what it called "yield management" — selling a *limited* number of cheap advance seats to win price-sensitive travelers, while protecting the rest for late-booking business flyers who'd pay full fare. It let one airline compete at both the low end and the high end of the same plane at once, and it worked so well it's credited with driving those rivals out of business. Every time you see an early-bird discount, a "prices may rise" warning, or a last-minute surcharge, you're looking at the descendants of that idea — the simple, powerful realization that the smartest price is rarely a single number.`,
   },
   {
-    slug: "inventory-costs",
-    title: "Inventory: too much and too little",
+    slug: "willingness-to-pay",
+    title: "Willingness to pay",
     weekNumber: 1,
-    blurb: "Keeping lots in stock feels safe and keeping little feels lean — but both have real costs, and the whole skill is balancing two opposite mistakes.",
-    lectureTitle: "1.2 Inventory (the cost of too much and too little)",
-    body: `# Inventory: too much and too little
+    blurb: "Every buyer carries a secret number in their head — the most they'd pay before walking away — and almost the entire art of pricing is trying to guess that hidden number.",
+    lectureTitle: "1.2 Willingness to pay (the hidden number behind every sale)",
+    body: `# Willingness to pay
 
-Inventory is just the stuff a business is holding — the boxes in the back, the parts in the bin, the food in the fridge. It feels like a simple thing to get right: keep enough so you never run out. But inventory is one of the trickiest decisions in all of business, because **both directions are expensive.** Holding too much costs you, and holding too little costs you, and the entire skill is finding the balance between two opposite mistakes.
+Behind every single sale there's a hidden number the seller almost never gets to see: the most that particular buyer would have been willing to pay before deciding to walk away. Economists call it **willingness to pay**, and it's the invisible foundation under every price tag in the world. You carry one in your head for everything you buy — a number where, one cent higher, you'd say "no thanks." Understanding that this number exists, that it's different for every person, and that sellers are constantly trying to guess it, is the key that unlocks the rest of pricing.
 
-## What inventory really is
+## The number in your head
 
-Inventory is anything sitting and waiting to be used or sold — raw materials, half-finished goods, and finished products on the shelf. It's tempting to see a full storeroom as pure wealth, but inventory is really **money frozen in the shape of stuff.** Every item back there is cash you've already spent that hasn't come back yet, parked until a customer finally buys it. That reframe — inventory as trapped money, not safety — is the key to thinking about it clearly.
+Picture yourself eyeing a hoodie. There's some price — maybe $40 — where you'd happily buy it, and some price — maybe $80 — where you'd shrug and leave. Somewhere between sits your personal ceiling, the most you'd part with. That ceiling is your willingness to pay. The important thing is that it's *yours*: the person next to you might have a ceiling of $120 because they love the brand, and someone else's might be $25. The same hoodie meets a different hidden number in every shopper's head.
 
-## The cost of too much
+## The gap that creates a happy customer
 
-Holding too much has a stack of hidden costs people forget. There's the **cash** tied up that you can't use for anything else. There's **space** — shelves, warehouses, refrigeration — that costs rent and power. There's **spoilage and obsolescence**: food rots, fashions change, the newer model arrives and last year's becomes worth little. A warehouse stuffed to the ceiling *looks* like strength, but it can quietly be a slow bleed of money, especially when it turns out customers wanted something else.
+Here's a lovely consequence. If your ceiling is $80 and the hoodie is priced at $40, you don't just buy it — you feel like you *won*. That gap between what you would have paid and what you actually paid is called **consumer surplus**, and it's the warm feeling of a good deal. But notice what it means for the seller: every dollar of your happy surplus is a dollar they *could* have charged you and didn't. Pricing is a quiet tug-of-war over that gap — buyers want it big, sellers want it small.
 
-## The cost of too little
+## Why sellers are guessing in the dark
 
-Holding too little has the opposite danger: the **stockout.** When a customer wants something and you don't have it, you lose that sale — and sometimes you lose the customer for good, because they go to a competitor and stay there. For a factory, running out of one small part can halt an entire production line, so a missing five-cent screw stops a thousand-dollar product. Too little inventory looks lean and disciplined right up until the moment it costs you far more than the savings.
+The seller's whole problem is that willingness to pay is **invisible.** No customer walks in announcing "I'd pay up to $80." If the seller sets the price too high, above your ceiling, they lose the sale entirely. If they set it too low, far below your ceiling, they make the sale but leave money on the table. They're trying to hit a target they can't see, person after person, each with a different number. Almost every pricing tactic in this course is really a clever attempt to *uncover* or *get closer to* that hidden ceiling.
 
-## Why "just keep lots in stock" is a trap
+## Reading the clues
 
-The instinct after a stockout is to overcorrect: never run out again, pile it high. But that just swaps one expensive mistake for another, turning lost sales into spoilage and frozen cash. The honest truth is there's **no setting that removes both risks** — more stock means less risk of running out but more holding cost, and less stock means the reverse. Good operators stop chasing a magic "enough" and instead decide which mistake is more affordable for *this* product.
+Since they can't see the number directly, sellers hunt for clues that hint at it. *Who* is buying — a rushed business traveler usually has a higher ceiling than a flexible tourist. *When* they're buying — someone shopping for a gift the night before a birthday will pay more than someone idly browsing weeks ahead. *What else they buy*, how they react to a discount, whether they bother to clip a coupon — all of it whispers something about their ceiling. A skilled pricer is part detective, reading behavior to estimate a number nobody will say out loud.
 
-## The sweet spot and safety stock
+## Many ceilings, not one
 
-The goal is a sweet spot: enough to serve customers reliably without drowning in extra. Because demand is unpredictable, businesses keep a deliberate cushion called **safety stock** — a little extra to absorb a surprise busy day or a late delivery. How big that cushion should be depends on the item: a cheap, long-lasting, hard-to-replace part deserves a generous buffer, while an expensive item that spoils fast deserves a thin one. Sizing that cushion on purpose, instead of by panic, is the heart of inventory management.
+The reason a single price can never be perfect comes straight from this idea: a room full of buyers holds a whole *range* of willingness-to-pay numbers, not one shared value. Set one price and you simultaneously lose everyone below it while under-charging everyone above it. This is why the later topics exist — elasticity, fences, discounts, and dynamic pricing are all tools for dealing with the awkward, wonderful fact that every buyer's ceiling is different and hidden.
 
 ## In the real world
 
-Fashion retailers live this tension out loud. Order too many of a style that doesn't sell and you're stuck slashing prices on the clearance rack — those giant end-of-season markdowns are the visible cost of *too much.* Meanwhile, popular game consoles and the latest phones routinely **sell out** for months, sending buyers to resellers and rivals — the cost of *too little.* Neither company is foolish; they're both wrestling the same impossible balance, guessing an uncertain future and paying for whichever way they guessed wrong. That balancing act, repeated across every item a business stocks, is exactly what inventory analytics is for.`,
+Think about how a car dealership works, which is practically a machine for discovering willingness to pay. The sticker price is just a starting flag; the real price emerges through haggling, where the salesperson probes — "what monthly payment works for you?", "are you trading in?", "is this your dream color?" — each question quietly measuring how high your ceiling sits. Two buyers can drive off the same lot in identical cars having paid thousands of dollars apart, because the dealer successfully read one buyer's ceiling as higher than the other's. Many people hate the haggle precisely because they sense their hidden number is being hunted — which is exactly what's happening. Online sellers do something gentler but similar, watching your clicks and history to estimate the same secret number a dealer tries to talk out of you.`,
   },
   {
-    slug: "bullwhip-effect",
-    title: "The bullwhip effect",
+    slug: "price-elasticity",
+    title: "Price elasticity",
     weekNumber: 1,
-    blurb: "A tiny wobble in what customers buy turns into wild swings of shortage and glut by the time it reaches the factory — and it happens even when everyone is being sensible.",
-    lectureTitle: "1.3 The bullwhip effect (why small ripples become big waves)",
-    body: `# The bullwhip effect
+    blurb: "When you raise a price, some customers shrug and some flee — and how strongly your buyers react decides whether raising prices makes you more money or less.",
+    lectureTitle: "1.3 Price elasticity (how demand bends when prices move)",
+    body: `# Price elasticity
 
-Here's one of the strangest and most important patterns in all of business: a *small* change in what shoppers buy turns into a *huge* swing in orders by the time it reaches the factory and the farms. A barely-noticeable wobble at the store becomes a flood, then a drought, further up the chain. It's called the **bullwhip effect** — a flick of the wrist at the handle becomes a giant crack at the tip — and the unsettling part is that it happens even when every single person is acting reasonably.
+Raise the price of something and you'll sell fewer of it — that much everyone knows. But the crucial question, the one that decides whether raising prices is brilliant or disastrous, is *how many* fewer. For some products a price hike barely dents sales; for others it sends customers running. This sensitivity — how much demand bends when the price moves — is called **price elasticity**, and it's one of the most useful ideas in all of pricing, because it tells you which way to push a price to make more money.
 
-## A ripple becomes a wave
+## Bendy demand and stiff demand
 
-Picture a chain: shoppers → the store → the distributor → the factory → the raw-material supplier. Suppose customer demand ticks up just a little. The store, not wanting to run out, orders a bit *extra* to be safe. The distributor sees the store's bigger order, assumes demand is climbing, and orders even *more* extra from the factory. The factory, seeing that, ramps up the most of all. A tiny ripple at the shopper end has become a towering wave at the supplier end — and the same thing happens in reverse when demand dips, swinging from too much to too little.
+Some products have **elastic** ("bendy") demand: when the price goes up a little, a lot of customers walk away, and when it drops a little, lots more pile in. Other products have **inelastic** ("stiff") demand: the price can move quite a bit and people keep buying about the same amount. A fancy brand of soda is bendy — raise it and shoppers grab a different bottle. Life-saving medicine is stiff — its price can climb steeply and patients still buy, because they have no real choice. Most things sit somewhere between these two extremes.
 
-## Why each link over-reacts
+## What makes demand bendy
 
-The maddening thing is that no one is being foolish. Each link only sees the orders from the link right next to it, not the actual shoppers, so they're **guessing in the dark.** They add a safety cushion on top of a number that already had a cushion. They **order in big batches** to save on shipping, which turns a smooth trickle of demand into lumpy bursts. And when deliveries are slow, they panic-order more, then cancel when it all arrives at once. Sensible choices, stacked on top of each other, manufacture the chaos.
+Whether a product is elastic or stiff comes down to a few honest questions. *Are there easy substitutes?* If a near-identical option sits on the next shelf, demand is bendy, because buyers can switch in a heartbeat. *Is it a necessity or a luxury?* Necessities stay stiff; nice-to-haves bend. *Does it eat a big chunk of someone's budget?* People barely notice a price change on a pack of gum but agonize over one on a car. *Is there time to react?* Given a week, customers find alternatives they couldn't find in a minute. The fewer escape routes a buyer has, the stiffer their demand.
 
-## The cost of the whiplash
+## Why this decides which way to push price
 
-This whiplash is wildly expensive. The far end of the chain lurches between **gluts** (warehouses overflowing, money frozen, products going stale) and **shortages** (factories idle, customers unserved). Workers get hired in a frenzy and laid off in the bust. Everyone holds extra "just in case" inventory to survive the swings, which costs money all the time. A chain rocked by the bullwhip is more expensive *and* less reliable than the steady demand underneath it ever justified.
+Here's the payoff. If demand is **stiff**, *raising* the price makes more money: you lose only a few sales but earn more on every remaining one, so the total grows. If demand is **bendy**, raising the price *backfires* — you lose so many customers that the higher price on the few who stay can't make up for it, and your total shrinks. The same move, a price increase, helps one business and wrecks another, purely because of elasticity. Knowing whether your product is bendy or stiff tells you whether your prices should go up or down.
 
-## How to tame it
+## The same product can bend differently
 
-The cure is mostly about **information and steadiness.** If every link can see the *real* shopper demand — not just the order from their neighbor — they stop guessing and amplifying. Ordering **smaller amounts more often** smooths the lumps out. Steadier prices stop the artificial stockpiling that big sales and discounts trigger. The pattern can't be erased completely, but sharing honest demand information up and down the chain shrinks the wave back toward the ripple that actually started it.
+Elasticity isn't even fixed for one product — it changes by customer and by moment. Coffee is stiff for the half-asleep commuter who *needs* it now and bendy for the leisurely weekend shopper comparing brands. Umbrellas are bendy on a sunny day and remarkably stiff in a sudden downpour. This is the bridge to the rest of the course: because the same thing is bendy for some buyers and stiff for others, a smart seller tries to charge the stiff-demand customers more and offer the bendy ones a deal — without letting them trade places.
+
+## The trap of guessing wrong
+
+The danger is assuming you know your elasticity without checking. A store owner *certain* that customers will tolerate a price hike can quietly bleed sales if demand turns out bendier than they thought, and a manager *afraid* to ever raise prices can leave a fortune uncollected on a stiff-demand product. Because elasticity is invisible until tested, good pricers treat it as something to *measure* — nudge a price, watch what happens to sales, and learn — rather than a fact they already know. Acting confidently on the wrong guess about elasticity is one of the most expensive mistakes in pricing.
 
 ## In the real world
 
-The effect got its name at **Procter & Gamble**, who noticed that baby-diaper sales — about as steady as demand gets, since babies are wonderfully predictable — produced wildly swinging orders from stores and suppliers. Steady demand, chaotic ordering: the bullwhip in plain sight. A more recent example was the 2020 run on toilet paper: a modest, real bump in home use got amplified by panic-buying and frantic restocking into empty shelves nationwide, even though factories never actually stopped. In both cases the underlying need barely moved — the *chain's reaction* to it is what spun out of control, which is exactly what this pattern predicts.`,
+Streaming services are a live laboratory for elasticity. For years Netflix raised prices cautiously, watching nervously for "churn" — the customers who cancel — to learn just how bendy their demand really was. Each increase was a test: if only a few subscribers left, demand was stiffer than feared and the higher price won; if many fled, they'd pushed too far. They discovered demand was stiffer than skeptics predicted — most people grumbled but kept paying, because the substitutes weren't quite as good and canceling felt like a hassle — which is why prices kept creeping up. Compare that to a small coffee shop next door to three rivals, where nudging the price of a latte up by a dollar can send regulars across the street overnight. Same action, opposite outcome, all because one faces stiff demand and the other faces bendy demand.`,
   },
   {
-    slug: "bottlenecks",
-    title: "Bottlenecks",
+    slug: "price-discrimination-fences",
+    title: "Price discrimination and fences",
     weekNumber: 1,
-    blurb: "A whole system can only go as fast as its single slowest step — which means most efforts to speed things up are aimed at the wrong place and change nothing.",
-    lectureTitle: "1.4 Bottlenecks (why the slowest step rules the whole system)",
-    body: `# Bottlenecks
+    blurb: "The dream of pricing is to charge each buyer exactly their own ceiling — and the trick that makes it possible is building clever 'fences' that sort big spenders from bargain hunters.",
+    lectureTitle: "1.4 Price discrimination and fences (charging each buyer their price)",
+    body: `# Price discrimination and fences
 
-If you remember one rule about getting things done faster, make it this one: **a chain of steps can only move as fast as its slowest step.** That slowest step is called the **bottleneck**, named for the narrow neck of a bottle that controls how fast anything pours out no matter how wide the rest is. It sounds obvious, yet ignoring it is the single most common reason that expensive attempts to "speed things up" accomplish absolutely nothing.
+If every buyer has a different hidden ceiling, the seller's dream is obvious: charge each person exactly *their* ceiling — high prices to those who'll pay them, low prices to those who won't. Charging different customers different prices for essentially the same thing is called **price discrimination**, and despite the harsh-sounding name it's completely legal and absolutely everywhere. The genius isn't the wish to do it — that's easy — it's the practical trick that makes it work: building **fences** that sort the big spenders from the bargain hunters without either one jumping the fence.
 
-## The slowest step sets the pace
+## The dream and its obvious problem
 
-Imagine making sandwiches with friends: one person toasts bread, one adds fillings, one wraps them up. If the toaster can only finish 10 sandwiches an hour, then no matter how lightning-fast the filler and wrapper are, **only 10 sandwiches an hour come out.** The toaster is the bottleneck, and it alone sets the speed of the whole line. Everyone else just ends up waiting on it or piling up work in front of it. The slowest step quietly rules the entire system.
+Suppose you could somehow charge the business traveler $450 and the student $90 for the same seat. Wonderful — except the moment you offer a $90 price, what stops the business traveler from simply *also* buying the $90 ticket? If everyone can grab the lowest price, your different prices collapse into one low price and the dream dies. So price discrimination only works if you can make the cheap option *unattractive or unavailable* to the people who'd happily pay more. That barrier is the whole secret.
 
-## Why speeding up the wrong step is wasted
+## Fences: barriers only some will cross
 
-This leads to the costly mistake. If you spend money making the *filler* twice as fast, your output stays at 10 an hour — the filler was never the limit, so the upgrade does nothing but make a faster worker wait more. Improving a non-bottleneck step is **wasted effort**, every time. Only improving the bottleneck — a second toaster, a faster oven — actually raises how much the whole system produces. Knowing this saves businesses from pouring money into upgrades that look productive and change nothing.
+A **fence** is a condition attached to a low price that the high-paying customers won't or can't meet, even though the bargain hunters happily will. The cheap airfare requires booking weeks ahead and staying over a Saturday night — easy for a flexible tourist, impossible for a Monday-morning meeting. The discount requires clipping a coupon, waiting for a sale, or buying a giant warehouse-sized box. None of these change the product much; they're hoops, and the willingness to jump through a hoop neatly sorts the price-sensitive from the price-blind. Good fences let the same product reach both crowds at two prices.
 
-## Finding the bottleneck
+## The flavors of price discrimination
 
-So how do you spot it? Look for where **work piles up.** Stuff stacks up *in front of* the bottleneck because that step can't keep up, while everything *after* it sits hungry and idle, waiting to be fed. The bottleneck is usually the busiest, most overwhelmed step with the longest line in front of it — the place where everyone is waiting. Once you learn to look for the pile-up and the wait, the slowest step tends to reveal itself.
+It shows up in a few recognizable shapes. There's pricing by *group* — student, senior, and child discounts, where an easy-to-check label stands in for a lower ceiling. There's pricing by *quantity* — the bulk discount, where eager buyers self-select into a cheaper per-unit price. And there's pricing by *version* — offering a basic and a premium edition so customers sort themselves by which one they choose. All three are the same move underneath: create options so buyers reveal their own ceiling by which one they pick.
 
-## What to do about it
+## Why good fences are hard to build
 
-Once you've found the bottleneck, the moves are clear: **never let it sit idle** (every minute it's stopped is output the whole system loses and can never recover), protect it from running out of work, and offload anything from it that a non-bottleneck step could do instead. And here's the twist: when you successfully speed up one bottleneck, the **bottleneck moves** — some other step is now the slowest, and your attention has to follow it. Managing a system is really an endless game of finding and relieving whatever step is currently the limit.
+The art is choosing a fence that lines up with willingness to pay *and* feels acceptable. A leaky fence — one the high payers can easily slip through — destroys your high price. But a fence that's too annoying drives away customers you wanted to keep, and a fence that feels *unfair* can spark real anger, like charging someone more for the identical item just because of who they are. The best fences feel like the customer made a choice — "I chose the cheaper, less convenient option" — rather than like they were singled out and punished. That sense of choice is what keeps price discrimination from feeling like a con.
+
+## Versioning: fences you build on purpose
+
+One of the cleverest fences is deliberately making a slightly worse version of your product. Software companies sell a stripped-down "basic" tier and a full "pro" tier; airlines sell a cramped basic-economy fare beside a roomier one. Sometimes the cheaper version literally costs *more* to create — the company adds restrictions on purpose — which seems crazy until you see the point: the worse option exists to *fence in* the bargain hunters so the premium one can keep its high price for everyone else. The damaged-on-purpose product is a fence wearing a disguise.
 
 ## In the real world
 
-Think of airport security. An airport can have huge parking, dozens of check-in desks, and a giant terminal, but if everyone funnels through a handful of slow screening lanes, **the whole airport moves at the speed of those lanes** — the long, snaking line forms right there, while the gates beyond sit half-empty waiting. Adding more parking or more shops does nothing for the wait; only opening more screening lanes (relieving the bottleneck) helps. The same shape shows up in a restaurant with one oven, a highway where four lanes merge into two, and a hospital with too few beds — the slowest step is where the line forms, and it's the only place worth fixing first.`,
+Movie theaters are a tidy example of fences everywhere. The same film, same seat, costs less for a child, less for a senior, less at a Tuesday matinee, and more on Friday night — each a fence sorting buyers by their ceiling. The matinee fence is especially clever: a retiree or a student with a free afternoon happily comes at 2 p.m. for the cheaper ticket, while the working adult who can only come at 8 p.m. pays full price, and neither feels cheated because each "chose" their showtime. Coffee shops, theme parks, and software all run the same playbook — student IDs, off-peak rates, basic-versus-premium tiers — quietly charging each crowd closer to its own hidden ceiling while letting everyone feel they picked their own deal.`,
   },
   {
-    slug: "waiting-lines-queues",
-    title: "Waiting lines and queues",
+    slug: "dynamic-pricing",
+    title: "Dynamic pricing",
     weekNumber: 1,
-    blurb: "Lines don't form because there isn't enough capacity on average — they form because of randomness, and the closer you run to full, the more the wait explodes.",
-    lectureTitle: "1.5 Waiting lines (the hidden math of queues)",
-    body: `# Waiting lines and queues
+    blurb: "Some prices never sit still — they rise and fall by the hour as demand shifts, turning the price tag from a fixed label into a living thing that reacts to the world in real time.",
+    lectureTitle: "1.5 Dynamic pricing (prices that move in real time)",
+    body: `# Dynamic pricing
 
-Everyone hates waiting in line, and most people assume a line means one simple thing: not enough staff. Sometimes that's true. But one of the most surprising ideas in operations is that **lines form even when there's plenty of capacity on average** — and understanding *why* explains a huge amount about why the world makes you wait, and what can actually be done about it.
+For most of history a price was a label — printed on a tag, painted on a menu, fixed until someone bothered to change it. But a growing share of prices today never sit still: they rise and fall by the hour, sometimes by the minute, reacting to how many people want the thing right now. This is **dynamic pricing** — letting the price move in real time as demand and supply shift — and it turns a price tag from a frozen number into something alive, constantly re-aiming itself at the moment.
 
-## Why lines form even with enough capacity
+## A price that breathes
 
-Here's the key: the trouble isn't the average, it's the **variability.** Customers don't arrive in a tidy, evenly-spaced stream — three show up at once, then nobody for a while. And each one takes a different amount of time to serve — a quick question here, a complicated mess there. Even if a clerk could *on average* handle everyone who comes, those random clumps of arrivals and slow jobs pile up faster than the clerk can clear them, and a line forms. Randomness alone, with no shortage at all, creates the wait.
+Think of a rideshare fare on a rainy Friday night versus a quiet Tuesday afternoon: same trip, very different price, because the app is watching demand and adjusting on the spot. When lots of people want rides and few drivers are out, the price climbs; when demand fades, it falls. The price has become a kind of dial the business turns up and down automatically as the world changes. Instead of guessing one good price in advance and living with it, dynamic pricing keeps re-deciding the price as fresh information arrives.
 
-## The 100% trap
+## Why move the price at all
 
-Now the counterintuitive part. You might think the goal is to keep your server (clerk, machine, doctor) busy nearly 100% of the time — that sounds maximally efficient. But as you push toward 100% busy, the **waiting time doesn't rise gently, it explodes.** A system running at 70% capacity has short, manageable lines; the same system at 95% can have lines many times longer, and at 100% the wait shoots toward infinity. The cushion of slack you "wasted" was actually what kept the line short. Running flat-out doesn't make customers move faster — it makes them wait forever.
+The reason to bother is that demand is never steady — it surges and slumps by time of day, day of week, weather, and events. A fixed price that's perfect on a calm Tuesday is far too low when a sudden crowd shows up wanting the same limited supply, so you sell out instantly and miss all the money those eager buyers would have paid. The same fixed price is too high on a dead afternoon, leaving you with empty seats and no sales. A price that moves can capture the high willingness to pay of the rush *and* tempt buyers during the lull — squeezing more out of both extremes than any single number could.
 
-## One line or many?
+## Two jobs at once: earn more and balance the load
 
-A simple, powerful fix is how you organize the line. Compare a bank with **one** line feeding several tellers against a supermarket with a **separate** line at each register. The single shared line is almost always faster on average, because no one gets stuck behind one unusually slow customer while another teller sits free — the moment any server opens up, the next person goes. Splitting into separate lines means you can be unlucky and picked the slow one. Pooling everyone into one queue smooths out the bad luck. It's the same number of servers; just a smarter shape.
+Dynamic pricing does something sneaky and useful beyond just earning more: it *shapes demand.* A high price during a surge doesn't only collect more money — it also nudges some flexible customers to wait, shift to a quieter time, or go elsewhere, which relieves the crush. A low off-peak price pulls demand *into* the slow times that would otherwise be wasted. So a moving price acts like a traffic signal for demand, smoothing the peaks and filling the valleys, which is especially valuable when supply is fixed and can't simply be expanded for the rush.
 
-## Why this matters
+## The backlash problem
 
-Waiting lines aren't only an annoyance; they're a real business cost. People abandon a too-long line and you lose the sale; a reputation for slowness drives customers away; in an emergency room or a 911 center, the wait can cause genuine harm. And because pushing for 100% efficiency *creates* the waits, managing queues is full of these honest trade-offs — a little planned slack, an extra server at the busy hour, or a single shared line can be worth far more than they cost. Even smart cues, like an accurate "your wait is about 10 minutes," make the same wait easier to bear.
+But moving prices make people uneasy, and ignoring that is a costly mistake. Customers accept a price that *rises* in obvious step with cost or scarcity, but a price that spikes during an emergency — say, ride fares soaring during a disaster — feels like **gouging** and breeds real anger and lasting distrust. People also hate feeling the price changed *because the system somehow knows them*, which crosses from "fair market" into "creepy." The lesson is that the technically optimal price can be the wrong price if it shatters customers' sense of fairness — a dynamic pricer has to weigh goodwill against the extra dollar.
+
+## What makes it possible now
+
+Dynamic pricing isn't new in spirit — markets and street vendors have always haggled prices to the moment — but technology turned it from rare to routine. Online prices can be changed instantly and invisibly, sensors and apps report demand second by second, and software can adjust millions of prices faster than any human could. That's why it has spread from its airline-and-hotel home into rideshares, online stores, sports tickets, even electricity and parking. The idea is old; the ability to do it constantly, automatically, and everywhere is what's genuinely new.
 
 ## In the real world
 
-Call centers run headfirst into the 100% trap. A center staffed so its agents are busy nearly every second sounds maximally efficient — and produces miserable, ballooning hold times, because there's no slack to absorb the random bursts of calls. Adding a few "extra" agents who are sometimes idle dramatically shortens the wait, which is why well-run centers deliberately staff *below* 100% busy. The same math is why banks switched to a single snaking line, why amusement parks post wait times and add slack on busy days, and why a hospital that fills every bed grinds to a halt. The lesson is counterintuitive but reliable: a little breathing room is what keeps the line moving.`,
+Ride-hailing's "surge pricing" is the example everyone has felt. When a concert lets out or rain hits at rush hour, demand for rides spikes against a limited pool of drivers, and the app raises fares — which both rations the scarce rides toward those who need them most *and* lures more drivers onto the road to meet the crush, so the surge tends to cool itself. It's textbook dynamic pricing: the price moves in real time to match supply and demand and to shape behavior on both sides. It's also a textbook lesson in backlash — riders have erupted at surge fares during snowstorms and emergencies, forcing companies to cap prices in crises, a direct admission that the "optimal" price and the *acceptable* price aren't always the same. The same tension plays out quietly every day in airline fares, hotel rates, and the shifting prices on your favorite shopping site.`,
   },
   {
-    slug: "demand-forecasting",
-    title: "Demand forecasting",
+    slug: "overbooking-capacity",
+    title: "Overbooking and capacity",
     weekNumber: 1,
-    blurb: "You have to decide how much to make before you know how much sells — so forecasting is guessing the future on purpose, and the first rule is that every forecast is wrong.",
-    lectureTitle: "1.6 Demand forecasting (stocking for a future you can't see)",
-    body: `# Demand forecasting
+    blurb: "Airlines deliberately sell more seats than the plane holds — and far from being a scam, it's a careful gamble that fills planes that would otherwise fly with empty seats.",
+    lectureTitle: "1.6 Overbooking and capacity (selling what you might not have)",
+    body: `# Overbooking and capacity
 
-Every business that makes or stocks anything faces the same impossible-sounding task: decide **how much to prepare before you know how much people will want.** The bakery has to bake before the customers arrive; the toy company has to order for the holidays months ahead. This is **demand forecasting** — making an educated guess about future demand so you can stock for it — and getting good at it starts with accepting one humbling rule.
+Here's a practice that sounds outrageous until you understand it: airlines, hotels, and restaurants routinely sell *more* reservations than they actually have room for. A 180-seat plane might sell 190 tickets on purpose. It seems like a recipe for disaster — and occasionally it is — but **overbooking** is actually a careful, calculated gamble built on a simple, reliable fact: some people who book never show up. Managing that gap between bookings and bodies is one of the sharpest balancing acts in revenue management.
 
-## Guessing the future on purpose
+## The empty-seat problem
 
-A forecast turns clues from the past — last year's sales, the season, the weather, what's trending — into a likely number for the future, so you can act on it today. It's not fortune-telling and it's not a wild guess; it's a *disciplined* estimate built from evidence. The whole reason it matters is that the decisions can't wait: you must commit to an amount of inventory, staff, and supplies now, and the forecast is your best honest attempt to aim that commitment at a future you genuinely cannot see.
+Start with the pain overbooking solves. On any flight, a predictable slice of ticket-holders simply don't appear — they miss connections, change plans, or no-show — and a missed reservation means a seat flies empty. An empty seat is pure loss: it can never be sold again once the doors close, and the airline already turned away other customers to "save" it. If, say, 10% of bookings typically vanish, then selling exactly 180 tickets reliably flies the plane with empty seats and lost money. Overbooking is the attempt to fill those phantom no-shows in advance.
 
-## Every forecast is wrong
+## Selling the gamble
 
-Here's the rule every good forecaster lives by: **every forecast is wrong** — the only question is by how much, and in which direction. The future never matches the number exactly, so chasing a single perfect prediction is a fool's errand. Instead, smart operators forecast a **range** ("probably between 80 and 120") rather than a single point, and they plan for the miss — that's exactly what safety stock from the inventory topic is for. A forecast you treat as certain sets you up to be caught out; a forecast you treat as odds lets you prepare for being wrong.
+So the airline sells extra tickets, betting that the usual no-shows will make room. If history says about 10 of 180 booked passengers won't show, selling 190 means the plane likely departs comfortably full — every seat earning money instead of flying empty. It's a bet on a pattern: no-shows are surprisingly steady and predictable in the aggregate, even though you can't know *which* individuals will vanish. Done right, overbooking quietly converts wasted empty seats into real revenue, flight after flight.
 
-## Patterns you can actually use
+## When the gamble loses
 
-Even though the future is uncertain, it's not random — it has patterns worth leaning on. There's the **trend** (sales slowly climbing or fading over time), the **season** (umbrellas in spring, ice cream in summer, toys in December), and **known events** (a holiday, a big game, a planned sale). A good forecast blends these: take the baseline, lift it for the season, bump it for the event. Spotting the repeatable patterns is what separates a thoughtful forecast from a coin flip, even though the leftover surprise can never be fully removed.
+But a bet can lose, and overbooking's failure is dramatic: sometimes *everyone* shows up, and now there are more passengers than seats. The airline must "bump" someone — and that means real cost, from cash vouchers and hotel rooms to furious customers and bad headlines. So overbooking is a trade-off between two opposite mistakes, exactly like inventory's too-much-versus-too-little: book too *few* extra and you fly with empty seats (lost money), book too *many* extra and you face expensive, reputation-damaging bumps. The skill is sizing the overbooking to balance those two costs.
 
-## The danger of one number
+## Finding the right amount
 
-The most dangerous forecast is a single confident number that everyone then treats as a fact. Once "we'll sell exactly 1,000" gets written down, plans harden around it, nobody prepares for selling 700 or 1,300, and the inevitable miss becomes a crisis. The cure is humility: state the uncertainty out loud, keep a cushion, and **watch the error** — track how wrong past forecasts were so the next one improves. A forecast is a starting point for planning, not a promise the world agreed to keep.
+How far to overbook depends on weighing the two harms. If an empty seat is cheap to eat but a bump is catastrophic — say, customers who'd never forgive you — you overbook timidly. If empty seats are very costly and a bump is cheaply smoothed over with a voucher, you overbook boldly. The no-show rate matters too: a route full of flexible leisure travelers with many no-shows can be overbooked more aggressively than one packed with committed travelers who always appear. It's the same balancing-two-mistakes logic that runs through pricing, applied to bodies in seats.
+
+## Softening a lost bet
+
+Smart operators also blunt the downside so a lost gamble hurts less. Rather than forcing unlucky passengers off, airlines now *auction* the inconvenience — offering rising vouchers until enough volunteers happily give up their seats — which turns an angry bump into a willing trade. That's revenue-management thinking again: find the customer with the lowest "willingness to stay" and pay them to flex, instead of punishing someone at random. Overbooking paired with a graceful way to handle the overflow is far better than either flying empty or bumping people brutally.
 
 ## In the real world
 
-The car industry learned this painfully in 2020–2021. When the pandemic hit, automakers **forecast that car sales would crash**, so they slashed their orders for the computer chips that modern cars need. But demand bounced back far faster than predicted — the forecast was badly wrong — and by then the chip factories had given those slots to other buyers. The result was a worldwide shortage where finished cars sat in lots waiting for tiny chips, costing the industry enormous sums. The demand was real and the recovery was real; a single confident forecast that turned out wrong is what caused the damage — exactly the trap this topic is about.`,
+Overbooking became infamous in 2017 when United Airlines, having overbooked a full flight, had a paying passenger forcibly dragged off the plane to make room for crew — a video that went viral and cost the airline a fortune in outrage and apologies. It's the perfect cautionary tale: overbooking is a sound, money-making practice, but the moment a lost gamble is handled badly, the reputational cost can dwarf the empty-seat money it was meant to save. The industry's response proved the better path — airlines leaned harder into voluntary, rising-cash buyouts so that when too many people show up, someone *chooses* to take the deal. Hotels and restaurants run the same playbook, quietly overbooking against predictable no-shows and keeping a plan ready for the night everyone actually arrives.`,
   },
   {
-    slug: "routing-optimization",
-    title: "Routing and optimization",
+    slug: "discounts-bundles-anchors",
+    title: "Discounts, bundles, and anchors",
     weekNumber: 1,
-    blurb: "Moving things costs money, and the route you choose can change that cost dramatically — but the number of possible routes explodes so fast that finding the best one is genuinely hard.",
-    lectureTitle: "1.7 Routing and optimization (moving things for less)",
-    body: `# Routing and optimization
+    blurb: "A price isn't just a number — it's a feeling, and clever sellers use discounts, bundles, and reference points to change what a price feels like without changing what you actually get.",
+    lectureTitle: "1.7 Discounts, bundles, and anchors (the psychology of price)",
+    body: `# Discounts, bundles, and anchors
 
-Almost everything you buy had to *travel* to reach you, and travel costs money — fuel, time, drivers, wear on the trucks. Because so much of business is moving things from where they are to where they're needed, a quiet but enormous question is: **what's the cheapest way to move it all?** This is **routing and optimization** — choosing the best path and order among a dizzying number of options — and it saves (or wastes) staggering amounts of money.
+So far we've treated pricing as a fairly rational hunt for hidden ceilings. But there's a twist: people don't judge prices with cool logic — they judge them with *feelings*, against whatever comparison happens to be nearby. The very same price can feel like a steal or a rip-off depending on how it's presented. This topic is about the **psychology of price**: how discounts, bundles, and anchors change what a price *feels* like, often without changing what the customer actually gets.
 
-## Every trip has a cost
+## Prices are felt, not calculated
 
-Start with the simple truth that movement isn't free. Every mile a truck drives burns fuel, pays a driver, and ages the vehicle; every extra stop adds time. So the way you *arrange* the moving — which truck carries what, in what order it visits its stops, which warehouse serves which customer — directly sets the cost. Two delivery plans that drop off the exact same packages can cost wildly different amounts depending only on how cleverly the trips are arranged.
+A price has no meaning on its own — $50 is only "expensive" or "cheap" compared to something. Our brains grab whatever reference point is handy and judge from there, which means the *context* around a price shapes how it lands as much as the number itself. A clever seller doesn't just pick a number; they pick the comparison the customer will measure it against. Get the comparison right and a price feels generous; get it wrong and the identical price feels like a gouge.
 
-## The order you visit matters
+## Anchors: the power of the first number
 
-Picture a driver with twenty stops to make. The packages are fixed, but the **order** they're visited in decides the total distance — a smart order loops efficiently around the city, while a careless one zig-zags back and forth, doubling the miles for no reason. Finding the shortest order to visit a set of stops is such a classic problem it has a name (the "traveling salesman" problem). The same idea scales up: which warehouse should ship to which region, how to combine many small loads into one full truck — all of it is choosing a smart order and grouping over a wasteful one.
+An **anchor** is the first or most prominent number you see, and it quietly sets the bar for everything after. Show a $1,200 watch beside a $400 one and the $400 suddenly feels reasonable — the $1,200 anchor did the work. That's why a "was $80, now $50" tag is so powerful: the crossed-out $80 is an anchor that makes $50 feel like a win, even if the thing was always worth about $50. Anchors explain why menus put one wildly expensive dish at the top (to make the rest look moderate) and why a "suggested retail price" exists at all — to give your discount something to shine against.
 
-## The explosion of options
+## Discounts: selling the feeling of winning
 
-Here's what makes this genuinely hard, not just fiddly: the number of possible routes **explodes** as you add stops. A handful of stops has a few orderings you could check by hand; a few dozen stops has more possible routes than you could check in a lifetime, even with a fast computer trying one at a time. This is why "just try them all" fails. Real routing uses clever shortcuts — smart rules that find a *very good* route quickly without proving it's the single perfect one — because perfect is often impossible to reach, and very-good-and-fast wins.
+A discount sells more than a lower price — it sells the *thrill of a deal.* "50% off" lights up a buyer in a way a quietly low price never does, because the discount hands them a number to feel triumphant about. This is also a fence in disguise (the bargain hunter clips the coupon, the busy shopper doesn't) and an anchor in disguise (the original price props up the sale price). But there's a danger: lean on discounts too hard and you *train* customers to wait, until nobody will buy at full price and the "sale" price quietly becomes the only real price you can charge.
 
-## Trade-offs: fast, cheap, reliable
+## Bundles: hiding the price of each piece
 
-Optimization is never only about distance, because the goals fight each other. The **cheapest** route may be slow; the **fastest** may burn extra fuel or need more trucks; the **most reliable** keeps a time cushion that costs efficiency. You usually can't max out all three at once, so optimizing really means *deciding what to trade* — a delivery business promising same-day speed will happily pay for routes that a cost-first business would reject. The "best" route only has meaning once you've said which of these matters most for this job.
+A **bundle** wraps several items into one combined price — the value meal, the cable package, the software suite. Bundling works partly because it's convenient, but mostly because it *blurs* the price of any single piece, so customers can't easily judge whether each part is a good deal. It also smooths over different ceilings: someone who'd never pay full price for the fries on their own happily accepts them folded into a meal deal. And it can move products that would struggle alone by pairing them with a star item everyone wants — the bundle carries the weak piece along.
+
+## The honesty line
+
+All of this skates near a line, and crossing it is costly. Presenting a price well — a fair anchor, a real discount, a sensible bundle — is legitimate salesmanship. But a *fake* anchor (a "was" price the item never actually sold at), a discount off an inflated number, or a bundle designed to sneak in something worthless tips into deception, and customers increasingly see through it. The psychology of price is powerful precisely because it works on feelings, which is exactly why it has to be used with some restraint: a trick that wins today's sale but leaves the buyer feeling fooled poisons every future one.
 
 ## In the real world
 
-The delivery company **UPS** turned routing into famous savings with a system that, among other things, plans routes to **avoid left turns** wherever possible. It sounds trivial, but in many places a left turn means idling across oncoming traffic — wasting fuel and time and risking accidents — so routes that loop right instead save millions of gallons of fuel a year across millions of stops. No human could hand-plan that for every driver every day; it takes optimization crunching the explosion of options. It's a perfect picture of the topic: the packages don't change, but choosing a smarter *order and path* to move them quietly saves a fortune.`,
+The "anchor" is on full display in any furniture or mattress store, where almost nothing ever sells at the sticker price — there's a permanent "sale," and the high original price exists mainly to be crossed out so the real price feels like a rescue. Restaurant menus play the same game: a $90 steak nobody orders sits near the top so the $40 dishes feel sensible by comparison, and combo meals bundle a drink and fries so you stop tallying each item's worth. Stores like JCPenney even learned this the hard way — when it once scrapped fake "sale" prices for honest everyday-low pricing, shoppers *hated* it, because they missed the thrill of the discount even though they were often paying the same or less. It was a stark proof of this topic's core lesson: a price isn't just what you pay, it's how the sale is made to *feel.*`,
   },
   {
-    slug: "resilience-capstone",
-    title: "Resilience (capstone)",
+    slug: "pricing-strategy-capstone",
+    title: "Setting a pricing strategy (capstone)",
     weekNumber: 1,
-    blurb: "The leaner and more optimized a supply chain gets, the more fragile it becomes — and the whole course comes together in the trade-off between running efficient and not breaking.",
-    lectureTitle: "1.8 Resilience: building a chain that doesn't break (Capstone)",
-    body: `# Resilience (capstone)
+    blurb: "Every idea in the course comes together in one decision: choosing a pricing strategy — and the deepest lesson is that the 'right' price is never a single number, but a set of honest trade-offs.",
+    lectureTitle: "1.8 Setting a pricing strategy (Capstone)",
+    body: `# Setting a pricing strategy (capstone)
 
-We end on the deepest tension in the whole field. Everything in this course pushes toward **efficiency** — less inventory, less slack, smarter routes, no waste. But there's a catch that ties it all together: the leaner and more perfectly optimized a supply chain becomes, the more **fragile** it gets. A chain squeezed for every drop of efficiency can shatter the moment anything unexpected happens. **Resilience** is the skill of building a flow that bends under shock instead of breaking — and balancing it against efficiency is the highest-stakes judgment an operator makes.
+We end where every business actually has to land: deciding, all things considered, how to price. Each earlier topic gave you one lens — hidden ceilings, elasticity, fences, dynamic prices, overbooking, psychology — but a real pricing strategy has to weave them into a single, coherent plan and live with the trade-offs between them. **Setting a pricing strategy** is the capstone skill: choosing not a number but an *approach* that fits your product, your customers, and your goals — and accepting that there is no perfect answer, only well-reasoned ones.
 
-## Efficient isn't the same as robust
+## There is no single right price
 
-It's tempting to think a well-run business is one with no waste — no extra inventory, no idle capacity, no backup suppliers, everything trimmed to the bone. But that bone-lean system has **nothing left to absorb a surprise.** A factory with zero spare parts stops the instant one delivery is late; a chain with one supplier collapses if that supplier does. Efficiency removes the very buffers and slack that protect you, so "perfectly efficient" and "dangerously fragile" are often the same system seen from two angles. Robustness is not the absence of waste — it's having something held in reserve.
+The first hard truth is that "the right price" doesn't exist as a fact waiting to be discovered. Buyers have a whole range of hidden ceilings, demand bends differently for different people, and your costs, rivals, and goals all pull in different directions. So pricing is never solving for one true number — it's *choosing* among reasonable options, each with different winners and losers. A strategy is the set of principles you'll use to keep choosing well as the world shifts, not a price you set once and forget.
 
-## Single points of failure
+## Three forces every price must answer to
 
-The most dangerous fragility is the **single point of failure** — one supplier, one factory, one route, one part that the entire flow depends on. As long as nothing goes wrong, that single point looks like clean, efficient focus. But it's a hidden trap: if that one link breaks, *everything* downstream stops, and there's no plan B. Resilient operators hunt for these single points on purpose and ask the uncomfortable question the efficient plan never asks: "what happens if this one thing fails?"
+A sound price has to reckon with three things at once. First, **cost** — you generally can't sell below what it takes to make and deliver, or you bleed money. Second, **customers** — their willingness to pay and elasticity set the ceiling and how much room you have to move. Third, **competition** — what rivals charge frames what your price will feel like to buyers. Lean only on cost and you ignore what people will actually pay; chase only competitors and you race to the bottom; obsess only over customers and you might price past what the market allows. A real strategy holds all three in view.
 
-## Buffers and backups (the cost of insurance)
+## Choosing a posture
 
-Resilience is built from the very things efficiency wants to cut: **extra inventory** to ride out a disruption, **backup suppliers** in different places, **spare capacity** to surge when needed, and **flexible** setups that can switch products or routes. The honest part is that all of this **costs money all the time** — it's insurance, and insurance feels wasteful right up until the disaster it was for. So resilience is never "max it out"; it's deciding how much protection is worth its cost for the risks you actually face, knowing too little leaves you fragile and too much bleeds money.
+Strategies tend to start from a posture toward those forces. A business can pursue **skimming** — set a high price to harvest the high-ceiling customers first, then lower it over time — or **penetration** — set a low price to grab lots of customers fast and worry about profit later. It can aim to be the **premium** option that signals quality through a high price, or the **value** option that wins on being cheapest. None is universally right: skimming suits a hot new gadget, penetration suits a service that gets more valuable as more people join, premium suits a luxury good, value suits a commodity. The posture should follow from the product and the goal.
 
-## Tying the course together
+## Weaving the tools together
 
-Look back and one thread runs through all eight topics: **a business is a flow, and managing it means handling uncertainty and trade-offs honestly.** A flow can clog; inventory balances too-much against too-little; the bullwhip shows small surprises amplifying into big ones; bottlenecks reveal that only the slowest step matters; queues show variability creating waits and the 100% trap; forecasts are always wrong so you plan a range; routing trades fast against cheap. Resilience is where every one of those trade-offs comes due at once — because the efficient choices from every earlier topic are exactly what a shock tests.
+Once the posture is set, the earlier tools become the instruments that execute it. Elasticity tells you which way to nudge prices; fences and versioning let you serve high and low ceilings at once; dynamic pricing matches the price to the moment; overbooking squeezes value from perishable capacity; anchors and bundles shape how the whole thing *feels.* The capstone insight is that these aren't separate tricks but parts of one system — a discount is also a fence is also an anchor — and a coherent strategy uses them in concert rather than reaching for whichever is fashionable.
+
+## Trade-offs and the long game
+
+Every pricing choice trades something off, and the sharpest trade-off is short-term money against long-term trust. You can almost always squeeze more from customers today — a surge fee, a sneaky add-on, a fake discount — but each squeeze spends down goodwill, and goodwill is what brings customers back. The best strategies treat fairness not as charity but as an investment: a price that feels honest earns repeat business that a cleverer, greedier price would destroy. Knowing *when not to* charge the maximum is as much a part of strategy as knowing how to charge more.
 
 ## The biggest questions stay open
 
-And plenty stays unsettled. How much efficiency should you give up for protection you might never need? How do you prepare for a disruption you can't predict the shape of? When does a sensible buffer become wasteful hoarding? There's no formula that answers these — they take judgment, weighing a cost you pay for sure against a disaster that only might come. The most useful habit to carry out of this course is to keep asking, whenever a flow looks beautifully efficient: "and what happens when something goes wrong?"
+And much stays genuinely unsettled. How much of a customer's surplus *should* you take before fairness tips into exploitation? When does a clever fence become a cynical trap? How do you price something brand-new, with no history to learn from? There's no formula — these take judgment, weighing money you can grab now against trust you'll need later, and reading customers who can't or won't tell you their real ceiling. The most useful habit to carry out of this course is to ask, whenever you set a price: "what is this price really doing — to my revenue, to my different customers, and to whether they'll come back?"
 
 ## In the real world
 
-The COVID years were a global lesson in this trade-off. Decades of squeezing supply chains for maximum efficiency — minimal inventory, single low-cost suppliers far away, no slack — produced chains that worked beautifully until they suddenly didn't, leaving the world short of everything from masks to cars. A single ship, the *Ever Given*, wedged sideways in the Suez Canal and blocked a huge slice of world trade for days, because so much depended on that one route with no easy backup. None of the operators were foolish; they had optimized exactly as this course teaches — and discovered the limit this final topic is about. The hard, honest balance between running efficient and not breaking is where the whole field, and this course, has been heading.`,
+Watch how a company like Apple sets prices and you see a whole strategy, not a number. It chooses a deliberately **premium** posture — high prices that signal quality and protect a luxury image it would never discount its way out of — then **skims** with each new model, launching high to capture eager early adopters before nudging older models down to reach value buyers. It **versions** ruthlessly (storage tiers, "Pro" models) to fence high ceilings from low ones, **anchors** with an ultra-premium option that makes the mid-tier feel reasonable, and **bundles** services to blur and smooth its prices. Every tool from this course is visible, working together toward one coherent goal — and crucially, it almost never slashes prices in a panic, because it's playing the long game of trust and brand that a short-term squeeze would wreck. That's what a pricing *strategy* looks like: not a perfect price, but a consistent, deliberate set of choices about what kind of seller you intend to be.`,
   },
 ];
 
@@ -300,7 +324,7 @@ type SeedAssignment = {
 const ASSIGNMENTS: SeedAssignment[] = [
   {
     kind: "homework",
-    title: "Homework 1.1 — Flow, inventory, bullwhip, and bottlenecks",
+    title: "Homework 1.1 — Revenue management, willingness to pay, elasticity, and fences",
     weekNumber: 1,
     isTimed: false,
     timeLimitMinutes: null,
@@ -308,47 +332,47 @@ const ASSIGNMENTS: SeedAssignment[] = [
       "Untimed practice covering sections 1.1–1.4. Answer each question in a few sentences (about 3–5) in your own words. There's no need for any math — just explain your thinking clearly. One-word answers won't receive credit.",
     problems: [
       {
-        topicSlug: "what-operations-analytics-is",
+        topicSlug: "what-revenue-management-is",
         prompt:
-          "A friend says, 'You can tell a warehouse is well run just by walking in and seeing it packed full and everyone busy — full and busy means efficient.' Using the idea of a business as a flow, explain why 'full and busy means efficient' is a myth. (3–5 sentences.)",
+          "A friend says, 'It's obviously unfair and a rip-off that the person next to me on the plane paid half what I did for the same seat — the airline should just charge everyone one honest price.' Using the idea of revenue management, explain why a single fixed price would actually leave the airline worse off and isn't simply 'more fair.' (3–5 sentences.)",
         correctAnswer:
-          "Operations analytics sees a business as a flow — things moving through steps to a customer — not a pile of stuff sitting still. A full warehouse can mean cash is frozen in inventory nobody has bought yet, and 'busy' can mean clogged and stuck rather than productive, because being full is not the same as moving fast. What actually matters is throughput (how much comes out the end), flow time (how long something takes to get through), and where things pile up and wait. So my friend is reading a busy, full feeling as proof of efficiency, when a smoothly moving but emptier-looking operation could easily be doing better.",
+          "Revenue management exists because buyers have different hidden ceilings, so a single fixed price is too high for some customers and too low for others at the same time. If the airline charged everyone one price, it would lose the budget travelers who can only afford a low fare (flying with empty seats) and undercharge the business travelers who'd happily pay much more — leaving money on the table at both ends. A seat is also perishable and fixed in supply: once the doors close an empty seat is worth zero forever, so filling it cheaply beats flying it empty. The different prices actually let more kinds of people fly and keep average fares lower than one high single price would, so it isn't simply unfair — it's matching different prices to different needs.",
         explanation:
-          "Full credit: frames the business as a flow (not a static pile), explains that 'full' can mean frozen cash and 'busy' can mean clogged, and that what matters is how smoothly things move (throughput/flow time, where things pile up), not how full or busy it looks.",
+          "Full credit: explains buyers have different hidden ceilings so one fixed price is simultaneously too high for some and too low for others (lost money at both ends), notes seats are perishable/fixed supply (empty seat worth zero), and that varied prices fill the plane and serve more buyers rather than being a simple rip-off.",
       },
       {
-        topicSlug: "inventory-costs",
+        topicSlug: "willingness-to-pay",
         prompt:
-          "After running out of a popular item once, a shop owner decides to never run out again by ordering huge quantities of everything. Explain why this 'just keep lots in stock' plan can backfire. (3–5 sentences.)",
+          "A shop owner sets one price for a hoodie and is thrilled when it sells quickly to almost everyone who looks at it. A pricing consultant warns this might actually be a problem. Using the idea of willingness to pay, explain what the consultant is worried about. (3–5 sentences.)",
         correctAnswer:
-          "Inventory is really money frozen in the shape of stuff, so holding huge quantities ties up cash, eats storage space, and risks spoilage or items going out of date before they sell. The owner has only swapped one expensive mistake (running out) for the opposite one (too much), because there's no setting that removes both risks at once — more stock cuts stockouts but raises holding costs. The honest goal is a sweet spot with a deliberate safety-stock cushion sized to each item, not 'pile everything high.' For a cheap, long-lasting item a big cushion is fine, but for an expensive or perishable item, overstocking can cost far more than the occasional stockout it prevents.",
+          "Willingness to pay is the hidden ceiling — the most each buyer would pay before walking away — and it's different for every customer. If nearly everyone buys instantly and happily, that's a sign the price is sitting well below many shoppers' ceilings, so each of those buyers is enjoying a big consumer surplus (the gap between what they'd have paid and what they did). Every dollar of that happy surplus is a dollar the owner could have charged and didn't, so a price that sells too easily is leaving money on the table. The consultant isn't saying to gouge people, but that a price this comfortable suggests room to raise it — or to offer a higher-priced version — closer to those higher hidden ceilings.",
         explanation:
-          "Full credit: explains inventory as frozen cash with holding/space/spoilage costs, that overstocking just trades stockouts for the opposite costly mistake (no setting removes both risks), and that the goal is a balanced sweet spot / safety stock sized to the item.",
-        hint: "Think about what holding lots of stock actually costs, and whether 'never run out' removes risk or just swaps one expensive mistake for another.",
+          "Full credit: defines willingness to pay as the hidden per-buyer ceiling, explains that instant easy sales signal the price is far below many ceilings (large consumer surplus = money the seller could have captured), and concludes there's likely room to raise the price or add a higher option toward those ceilings.",
+        hint: "Think about what it means if a price is well below most buyers' hidden ceilings — who is capturing the gap, the buyer or the seller?",
       },
       {
-        topicSlug: "bullwhip-effect",
+        topicSlug: "price-elasticity",
         prompt:
-          "Shoppers buy only slightly more bottled water than usual, but a few weeks later the bottling factory is scrambling with enormous orders, then suddenly drowning in cancelled ones. Using the bullwhip effect, explain how a small change at the store became a huge swing at the factory. (3–5 sentences.)",
+          "Two shops both decide to raise prices by 10%. The pharmacy's sales barely change, while the coffee shop next to three rivals loses a third of its customers. Using price elasticity, explain why the same 10% increase helped one business and hurt the other. (3–5 sentences.)",
         correctAnswer:
-          "The bullwhip effect is when a small change in real customer demand gets amplified into big swings as it travels up the chain from store to distributor to factory. Each link only sees the order from the link next to it, not the actual shoppers, so they add a safety cushion on top of a number that already had one, and they order in big batches — so a slight bump at the store becomes a flood by the factory. When demand settles, the same thing happens in reverse and the over-ordering turns into cancellations and gluts. Nobody is being foolish; sensible 'order extra to be safe' choices stacked on each other manufacture the wild swing, even though the real demand barely moved.",
+          "Price elasticity is how much demand bends when the price moves: stiff (inelastic) demand barely reacts, while bendy (elastic) demand drops sharply. The pharmacy sells near-necessities with few easy substitutes, so demand is stiff — a 10% rise loses only a few sales but earns more on every remaining one, so total revenue grows. The coffee shop faces bendy demand because three rivals next door make switching effortless, so a 10% rise sends many customers across the street and the higher price on the few who stay can't make up for it. The same action helps the stiff-demand business and hurts the bendy-demand one, which is exactly why knowing your elasticity tells you which way to push price.",
         explanation:
-          "Full credit: defines the bullwhip effect (small demand change amplified up the chain), explains the cause (each link sees only its neighbor's orders, adds safety cushions, batches orders), and notes the swing goes both ways (glut then shortage/cancellations) even though real demand barely changed.",
+          "Full credit: defines elasticity (stiff vs bendy demand), explains the pharmacy has stiff demand (necessity, few substitutes) so a raise earns more, the coffee shop has bendy demand (easy substitutes/rivals) so a raise loses too many customers, and that elasticity determines whether raising price helps or hurts.",
       },
       {
-        topicSlug: "bottlenecks",
+        topicSlug: "price-discrimination-fences",
         prompt:
-          "A sandwich shop is slow at lunch, so the owner spends money to make the fast wrapping station even faster — but the line of customers doesn't get any shorter. Using the idea of a bottleneck, explain what went wrong and what the owner should have done. (3–5 sentences.)",
+          "An airline wants to charge tourists a low fare and business travelers a high fare for the same route, but worries the business travelers will simply buy the cheap tourist tickets. Using price discrimination and fences, explain how the airline can pull this off. (3–5 sentences.)",
         correctAnswer:
-          "A system can only go as fast as its slowest step, the bottleneck, so improving any other step does nothing for overall output. The wrapping station clearly wasn't the bottleneck — speeding it up just makes it wait more while the real slow step (maybe the grill or the register) still sets the pace. To spot the bottleneck the owner should look for where work piles up: stuff stacks up in front of the slow step while later steps sit idle. The fix is to relieve that slowest step — a second grill, an extra cook, offloading some of its work — and to remember that once it's fixed, the bottleneck will move to whatever is now slowest.",
+          "Price discrimination means charging different buyers different prices for essentially the same thing, and it only works if the high-paying customers can't easily grab the low price — that's the job of a fence. A fence is a condition attached to the cheap fare that price-sensitive tourists will happily meet but business travelers won't, such as requiring booking weeks ahead or staying over a Saturday night. A flexible tourist can plan around those rules, while a Monday-morning meeting makes them impossible, so the fence sorts the two groups without anyone being singled out. The best fences feel like the customer chose the cheaper, less convenient option rather than being punished, which keeps the lower fare from leaking to the people who'd pay full price.",
         explanation:
-          "Full credit: states that the slowest step (bottleneck) sets the pace so improving a non-bottleneck does nothing, explains how to find it (where work piles up / later steps sit idle), and that the fix is to relieve the actual bottleneck (and that it then moves).",
+          "Full credit: defines price discrimination and explains it needs fences so high payers can't grab the low price, gives a valid fence that tourists meet but business travelers can't (advance purchase / Saturday-night stay), and notes good fences feel like a customer choice rather than unfair singling-out.",
       },
     ],
   },
   {
     kind: "homework",
-    title: "Homework 1.2 — Queues, forecasting, routing, and resilience",
+    title: "Homework 1.2 — Dynamic pricing, overbooking, psychology, and strategy",
     weekNumber: 1,
     isTimed: false,
     timeLimitMinutes: null,
@@ -356,47 +380,48 @@ const ASSIGNMENTS: SeedAssignment[] = [
       "Untimed practice covering sections 1.5–1.8. Answer each question in a few sentences (about 3–5) in your own words. No math is required — explain your reasoning. One-word answers won't receive credit.",
     problems: [
       {
-        topicSlug: "waiting-lines-queues",
+        topicSlug: "dynamic-pricing",
         prompt:
-          "A manager proudly keeps every cashier busy nearly 100% of the time to be 'maximally efficient,' but customers complain the lines are enormous. Explain why running at nearly 100% busy can create huge waits, and what a small change could do. (3–5 sentences.)",
+          "A parking garage charges the same price 24 hours a day. It's jammed and turning cars away at rush hour but nearly empty at midday. Using dynamic pricing, explain how letting the price move could help, and one risk the garage should watch for. (3–5 sentences.)",
         correctAnswer:
-          "Lines form mainly because of variability — customers arrive in clumps and take different amounts of time — not just because of a shortage on average. As you push a server toward 100% busy, the waiting time doesn't rise gently, it explodes, because there's no slack left to absorb the random bursts, so a system at 95–100% can have lines many times longer than one at 70%. The slack the manager 'wasted' was exactly what kept lines short. Adding a little breathing room — an extra cashier at the busy hour, or pooling everyone into one shared line instead of separate ones — can shorten the wait dramatically even though it looks less 'efficient.'",
+          "Dynamic pricing lets the price rise and fall in real time as demand shifts instead of staying frozen. A single fixed price is too low at rush hour — the garage sells out and misses the money those eager drivers would have paid — and too high at midday, leaving spaces empty. Raising the price during the rush captures the high willingness to pay and also nudges some flexible drivers to come at a quieter time, while a lower midday price pulls demand into the empty hours, so a moving price both earns more and smooths the load. The risk to watch is backlash: if prices spike in a way that feels like gouging (say during an emergency), customers feel cheated and trust is damaged, so the technically optimal price isn't always the acceptable one.",
         explanation:
-          "Full credit: explains lines come from variability not just average shortage, that wait time explodes as utilization nears 100% (slack absorbs bursts), and that a small change (extra server at peak, single shared line / pooling) shortens waits despite looking less efficient.",
-        hint: "Is the goal really to keep servers busy every second? Think about what happens to the wait as you approach 100%, and why some slack helps.",
+          "Full credit: explains dynamic pricing moves the price with demand, that a fixed price is too low at peak (sellouts/lost money) and too high off-peak (empty spaces), that a moving price captures peak willingness to pay and shifts/smooths demand, and names the backlash/fairness (gouging) risk.",
+        hint: "Think about why one price is wrong at both the busy and the empty hours — and how customers might react if the price jumps too far.",
       },
       {
-        topicSlug: "demand-forecasting",
+        topicSlug: "overbooking-capacity",
         prompt:
-          "A toy company forecasts it will sell 'exactly 50,000 units' this holiday season, writes that number into all its plans, and treats it as a fact. Explain what's risky about this and how they should handle the forecast instead. (3–5 sentences.)",
+          "A hotel manager refuses to ever take more reservations than rooms, proud of never overbooking — yet most nights a few rooms sit empty because some guests no-show. Using overbooking and capacity, explain the cost of this policy and the trade-off the manager is ignoring. (3–5 sentences.)",
         correctAnswer:
-          "Every forecast is wrong — the only question is by how much and in which direction — so treating a single confident number as a fact is dangerous because plans harden around it and nobody prepares for selling far more or far less. A better approach is to forecast a range rather than one point, keep a safety-stock cushion for the miss, and use patterns like trend, season, and known events to inform the estimate while staying humble about the leftover uncertainty. They should also watch the error — track how wrong past forecasts were so the next one improves. The forecast should be a starting point for planning, treated as odds, not a promise the world agreed to keep.",
+          "A room, like a seat, is perishable and fixed in supply: once the night passes an empty room earns zero forever, and some booked guests predictably no-show, so booking exactly to capacity reliably leaves rooms empty and money lost. Overbooking deliberately sells a few extra reservations, betting on the steady, predictable no-show rate so the hotel fills the rooms that would otherwise go empty. The trade-off the manager is ignoring is between two opposite mistakes: book too few extra and you eat empty rooms (lost money), book too many and occasionally everyone shows up and you must turn guests away (a costly, reputation-damaging bump). The skill is sizing the overbooking to balance those two costs — and softening a lost bet, for example by offering volunteers a deal to give up their room rather than bumping someone at random.",
         explanation:
-          "Full credit: states every forecast is wrong so a single confident number is risky (plans harden, no cushion for the miss), and recommends forecasting a range, keeping safety stock, using patterns (trend/season/events) and tracking error, treating the forecast as odds not fact.",
+          "Full credit: explains rooms are perishable/fixed and no-shows are predictable so booking to capacity wastes empty rooms, that overbooking bets on the steady no-show rate, names the trade-off (too few extra = empty rooms vs too many = costly bumps), and ideally that the right amount balances those costs / soften the downside with voluntary buyouts.",
       },
       {
-        topicSlug: "routing-optimization",
+        topicSlug: "discounts-bundles-anchors",
         prompt:
-          "Two delivery drivers carry the exact same packages to the exact same houses, but one finishes using far less fuel and time than the other. Using routing and optimization, explain how that's possible and why finding the truly best route is hard. (3–5 sentences.)",
+          "A mattress store keeps a permanent '$1,500, now $799!' sign on a mattress that has basically always sold for around $799. Using anchors and the psychology of price, explain why this works on shoppers — and where it could cross a line. (3–5 sentences.)",
         correctAnswer:
-          "Even with identical packages and stops, the order and path you visit them in decides the total distance, fuel, and time — a smart route loops efficiently while a careless one zig-zags back and forth and doubles the miles. So the difference between the two drivers is almost entirely how cleverly their trips are arranged, which is exactly what routing optimization tries to improve. Finding the truly best route is genuinely hard because the number of possible orderings explodes as you add stops — a few dozen stops have more routes than you could ever check one by one. That's why real routing uses smart shortcuts to find a very good route quickly instead of proving the single perfect one, which is often impossible to reach.",
+          "A price has no meaning on its own; people judge it against whatever comparison is nearby, and an anchor is the first or most prominent number that sets that bar. The crossed-out $1,500 is an anchor that makes $799 feel like a rescue, so shoppers feel the thrill of winning a deal even though the mattress was always worth about $799 — the discount is selling a feeling, not just a lower price. It works because prices are felt, not calculated, and the high 'original' props up the sale price. It crosses a line when the anchor is fake — a 'was' price the item never actually sold at — because that tips legitimate presentation into deception, and customers who feel fooled won't come back, which costs more than the sale was worth.",
         explanation:
-          "Full credit: explains the order/path of stops sets the cost (same packages, very different miles), that this is what optimization improves, and that finding the perfect route is hard because options explode with the number of stops (so good-and-fast shortcuts beat checking them all).",
+          "Full credit: explains prices are judged against a nearby comparison and an anchor sets that reference, that the crossed-out high price makes $799 feel like a deal (selling the feeling of winning), and that it crosses into deception when the original price is fake/never-charged, damaging trust.",
       },
       {
-        topicSlug: "resilience-capstone",
+        topicSlug: "pricing-strategy-capstone",
         prompt:
-          "A company brags that it has trimmed its supply chain to the bone — minimal inventory, one cheap supplier, no spare capacity — and calls it 'perfectly efficient.' Explain why this could be dangerous and what resilience would add. (3–5 sentences.)",
+          "A new company asks, 'Just tell us the one correct price for our product.' Using the idea of a pricing strategy, explain why there's no single right price and what the company should think about instead. (3–5 sentences.)",
         correctAnswer:
-          "A bone-lean chain has nothing left to absorb a surprise, so 'perfectly efficient' and 'dangerously fragile' are often the same system seen two ways. Relying on one cheap supplier and minimal inventory creates single points of failure — if that supplier or a key delivery is disrupted, the whole flow stops with no plan B. Resilience adds the buffers efficiency cuts: some extra inventory, backup suppliers in different places, spare capacity, and flexibility, which act like insurance against disruption. That protection costs money all the time, so the honest goal isn't to maximize it but to decide how much is worth its cost for the risks they actually face — because too little leaves them fragile and too much bleeds money.",
+          "There's no single right price because buyers have a whole range of hidden ceilings, demand bends differently for different people, and cost, competitors, and goals all pull in different directions — so pricing is choosing among reasonable options, not discovering one true number. The company should weigh three forces at once: cost (the floor below which they lose money), customers (their willingness to pay and elasticity), and competition (what rivals charge frames how their price feels). They should also choose a posture that fits their product and goal — skimming high then lowering, penetrating low to grab share, premium, or value — and then use the course's tools (fences, dynamic pricing, anchors, bundles) to execute it. And they should weigh short-term money against long-term trust, since a price that feels fair earns the repeat business a greedier price would destroy.",
         explanation:
-          "Full credit: explains a maximally lean chain has no slack to absorb shocks (efficient = fragile), identifies single points of failure (one supplier/minimal inventory), and that resilience adds buffers/backups/spare capacity/flexibility as costly insurance that must be balanced against efficiency.",
+          "Full credit: explains there's no single right price (range of ceilings, competing forces, so it's a choice not a fact), names the three forces (cost, customers, competition), mentions choosing a posture/strategy (skimming/penetration/premium/value) that fits the product, and ideally the short-term-money vs long-term-trust trade-off.",
+        hint: "Think about why one number can't be 'correct' when every buyer has a different ceiling — and the different forces (cost, customers, competitors) a price has to answer to.",
       },
     ],
   },
   {
     kind: "test",
-    title: "Unit Test — Operations & Supply Chain Analytics for Everyone",
+    title: "Unit Test — Revenue Management & Pricing Analytics for Everyone",
     weekNumber: 1,
     isTimed: true,
     timeLimitMinutes: 30,
@@ -404,82 +429,82 @@ const ASSIGNMENTS: SeedAssignment[] = [
       "Timed. 30 minutes. Covers sections 1.1–1.8. Answer each question in a few sentences (about 4–6) in your own words. No math is required. Pasting is disabled; keystrokes are screened for AI use.",
     problems: [
       {
-        topicSlug: "what-operations-analytics-is",
+        topicSlug: "what-revenue-management-is",
         prompt:
-          "Explain what operations and supply chain analytics is, including the difference between the 'operations' and 'supply chain' sides, and why it insists on seeing a business as a flow rather than a pile of stuff. Why does that view matter? (4–6 sentences.)",
+          "Explain what revenue management is, why a single fixed price leaves money on the table, and what special kind of product (fixed, perishable supply) it works best for. Why does that view matter? (4–6 sentences.)",
         correctAnswer:
-          "Operations and supply chain analytics is the practice of seeing a business as a flow — materials, orders, and work moving through steps to a customer — and measuring how smoothly it moves instead of just counting what's on the shelves. The 'operations' side is the flow inside one business (how an order moves through your own kitchen or factory), while the 'supply chain' side is the flow across many linked businesses (farmers, factories, trucks, stores handing things off until a customer gets them) — the same idea at two zoom levels. Seeing a business as a flow matters because the useful questions become 'how fast is it moving and where does it get stuck?' rather than 'how much do we have?' This view exposes myths like 'busy means productive' or 'a full warehouse is safe,' since busy can mean clogged and full can mean frozen cash. Measuring the flow — throughput, flow time, and where things pile up — is what reveals what's really happening instead of how it feels.",
+          "Revenue management is the craft of deciding what to charge, for what, to whom, and when, so a business earns the most possible from what it has to sell — replacing the idea of one true price with a moving set of prices aimed at different buyers and moments. A single fixed price leaves money on the table because buyers have different hidden ceilings: one price is simultaneously too high for budget customers (who don't buy, leaving empty capacity) and too low for high-ceiling customers (who'd happily have paid more). It works best for products with fixed supply that expires — airline seats, hotel rooms, concert tickets — because you can't make more and an unsold one is worth zero once its date passes, so squeezing the most from each before it expires really matters. Seeing price as a flexible tool rather than a fixed label matters because it lets a business serve both the bargain hunter and the big spender, filling capacity that would otherwise be wasted. The result is often more sales to more kinds of people and lower average prices than a single high price would allow.",
         explanation:
-          "Full credit: defines the field as seeing/measuring a business as a flow, distinguishes operations (flow inside one business) from supply chain (flow across linked businesses), and explains why the flow view matters (right questions, exposes 'busy/full = good' myths, focuses on throughput/flow time/pile-ups).",
+          "Full credit: defines revenue management (what/whom/when to charge to maximize revenue; price as flexible not fixed), explains a single price is too high for some and too low for others (lost money at both ends + unfilled capacity), identifies the fixed/perishable product type it suits, and why the flexible-price view matters.",
       },
       {
-        topicSlug: "inventory-costs",
+        topicSlug: "willingness-to-pay",
         prompt:
-          "Explain the cost of holding too much inventory and the cost of holding too little, why 'just keep lots in stock' is a trap, and what safety stock is for. (4–6 sentences.)",
+          "Explain what willingness to pay is, what consumer surplus is, and why willingness to pay being hidden is the core problem a seller faces. (4–6 sentences.)",
         correctAnswer:
-          "Inventory is really money frozen in the shape of stuff, so holding too much ties up cash, eats storage space, and risks spoilage or items going out of date before they sell. Holding too little risks the stockout — losing the sale, sometimes losing the customer for good, or even halting a whole production line over one missing part. 'Just keep lots in stock' is a trap because it only swaps one expensive mistake for the opposite one: there's no setting that removes both risks at once, since more stock cuts stockouts but raises holding costs and less stock does the reverse. The honest goal is a sweet spot that serves customers reliably without drowning in extra. Safety stock is a deliberate cushion of extra inventory kept to absorb surprises like a busy day or a late delivery, and it should be sized to each item — generous for a cheap, durable, hard-to-replace part, thin for an expensive or perishable one.",
+          "Willingness to pay is the most a particular buyer would pay for something before walking away — a hidden ceiling that is different for every person and exists for everything they buy. Consumer surplus is the gap between that ceiling and the price they actually pay: if your ceiling is $80 and you pay $40, you enjoy $40 of surplus, the warm feeling of a good deal. That same gap is money the seller could have charged and didn't, so pricing is a tug-of-war over the surplus — buyers want it large, sellers want it small. The core problem is that willingness to pay is invisible: no customer announces their ceiling, so set the price too high (above the ceiling) and you lose the sale, set it too low and you leave money on the table. Because the seller is aiming at a target they can't see, person after person with a different number, almost every pricing tactic is really a clever attempt to uncover or get closer to that hidden ceiling — by reading clues like who is buying, when, and how they react to discounts.",
         explanation:
-          "Full credit: explains holding costs of too much (frozen cash, space, spoilage/obsolescence) and costs of too little (lost sales/customers, halted line), that overstocking just trades one mistake for the other (no setting removes both risks), and that safety stock is a deliberate cushion sized per item.",
+          "Full credit: defines willingness to pay (hidden per-buyer ceiling), defines consumer surplus (gap between ceiling and price paid = money the seller forgoes), and explains the hidden nature is the core problem (too high loses the sale, too low leaves money; tactics try to uncover it via clues).",
       },
       {
-        topicSlug: "bullwhip-effect",
+        topicSlug: "price-elasticity",
         prompt:
-          "Explain the bullwhip effect, why each link in the chain over-reacts even when everyone is being sensible, and how the effect can be tamed. (4–6 sentences.)",
+          "Explain price elasticity, what makes a product's demand bendy versus stiff, and why elasticity decides whether raising a price earns more money or less. (4–6 sentences.)",
         correctAnswer:
-          "The bullwhip effect is when a small change in real customer demand gets amplified into larger and larger swings as it travels up the chain from store to distributor to factory to supplier. Each link over-reacts because it only sees the orders from the link next to it, not the actual shoppers, so it adds a safety cushion on top of a number that already had one, orders in big batches to save on shipping, and panic-orders when deliveries are slow. Those individually sensible choices, stacked on each other, manufacture wild swings — gluts of overflowing warehouses alternating with shortages of idle factories — even though the underlying demand barely moved. The whiplash is expensive because everyone holds extra 'just in case' inventory and lurches between too much and too little. It's tamed mostly by sharing real demand information up and down the chain so links stop guessing, ordering smaller amounts more often to smooth the lumps, and keeping prices steady so artificial stockpiling doesn't get triggered.",
+          "Price elasticity is how much demand bends when the price changes: elastic ('bendy') demand drops sharply when the price rises, while inelastic ('stiff') demand barely moves. What makes demand bendy comes down to escape routes — whether there are easy substitutes, whether it's a luxury rather than a necessity, whether it eats a big chunk of the budget, and whether buyers have time to react; the fewer escape routes, the stiffer the demand. Elasticity decides which way to push price because the two cases pull opposite ways: with stiff demand, raising the price earns more (you lose only a few sales but make more on every remaining one), while with bendy demand, raising the price backfires (you lose so many customers the higher price can't make up for it). So the very same action — a price increase — helps a stiff-demand business and wrecks a bendy-demand one. That's why elasticity isn't something to assume but something to measure: nudge a price, watch what happens to sales, and learn, because acting confidently on the wrong guess is one of the most expensive mistakes in pricing.",
         explanation:
-          "Full credit: defines the bullwhip effect (demand change amplified up the chain), explains the causes (each link sees only its neighbor's orders, adds cushions, batches, panic-orders), notes the costly glut/shortage swings despite steady real demand, and gives cures (share real demand info, smaller/more frequent orders, steady prices).",
+          "Full credit: defines elasticity (bendy vs stiff demand reaction), lists what drives it (substitutes, necessity vs luxury, share of budget, time to react), and explains it decides price direction (raise price on stiff demand to earn more, raising on bendy demand backfires), ideally noting it should be measured not assumed.",
       },
       {
-        topicSlug: "bottlenecks",
+        topicSlug: "price-discrimination-fences",
         prompt:
-          "Explain why a system can only go as fast as its slowest step, why improving a non-bottleneck step is wasted, how to find the bottleneck, and what it means that the bottleneck can move. (4–6 sentences.)",
+          "Explain price discrimination, why fences are necessary for it to work, and what makes a good fence versus a bad one. (4–6 sentences.)",
         correctAnswer:
-          "A chain of steps can only move as fast as its slowest step, the bottleneck, because everything has to pass through that step and it sets the pace for the whole system. Improving a non-bottleneck step is wasted effort because output stays capped at the bottleneck's speed — a faster non-bottleneck just produces more waiting, not more output. You find the bottleneck by looking for where work piles up: stuff stacks up in front of the slow step while the steps after it sit idle and starved, waiting to be fed. To relieve it you keep it from ever sitting idle (lost time there is output the whole system can never recover), protect it from running out of work, and offload tasks a non-bottleneck could do. And once you successfully speed up that step, the bottleneck moves to whatever is now slowest, so managing a system is an endless game of finding and relieving the current limit.",
+          "Price discrimination is charging different customers different prices for essentially the same thing — the seller's attempt to charge each buyer closer to their own hidden ceiling. It can't work on its own because the moment a low price exists, the high-paying customers would simply grab it too, collapsing every price into one low price; so you need a fence — a condition on the cheap price that the high payers won't or can't meet but bargain hunters happily will. Good examples are advance-purchase or Saturday-night-stay rules on cheap fares, coupons, bulk sizes, off-peak times, and basic-versus-premium versions; each is a hoop that sorts the price-sensitive from the price-blind without changing the product much. A good fence lines up with willingness to pay and feels like the customer chose the cheaper, less convenient option, so it doesn't breed resentment. A bad fence either leaks (the high payers slip through easily, destroying the high price) or feels unfair — singling someone out and charging them more for an identical item — which sparks anger and distrust.",
         explanation:
-          "Full credit: explains the slowest step sets the pace for the whole system, that improving a non-bottleneck does nothing for output, how to find it (work piles up in front, later steps idle), and that fixing it moves the bottleneck elsewhere (keep it busy, protect/offload it).",
+          "Full credit: defines price discrimination (different prices, same thing, to approach each ceiling), explains fences are needed so high payers can't grab the low price, gives valid fence types, and distinguishes good fences (align with WTP, feel like a customer choice) from bad ones (leaky or feel unfair/singling out).",
       },
       {
-        topicSlug: "waiting-lines-queues",
+        topicSlug: "dynamic-pricing",
         prompt:
-          "Explain why waiting lines form even when there's enough capacity on average, why pushing toward 100% busy makes the wait explode, and why a single shared line often beats several separate lines. (4–6 sentences.)",
+          "Explain what dynamic pricing is, why moving a price can earn more than a fixed one, how it also shapes demand, and the main risk it carries. (4–6 sentences.)",
         correctAnswer:
-          "Lines form mainly because of variability, not a shortage on average: customers arrive in random clumps and each takes a different amount of time to serve, so those bursts and slow jobs pile up faster than a server can clear them even when, on average, there's enough capacity. As you push a server toward 100% busy, the waiting time doesn't rise gently — it explodes — because there's no slack left to absorb the random bursts, so a system at 95–100% can have lines many times longer than one at 70%. The slack that looks 'wasted' is exactly what keeps lines short, which is why running flat-out makes customers wait longer, not move faster. A single shared line feeding several servers usually beats several separate lines because no one gets stuck behind one unusually slow customer while another server sits free — the moment any server opens, the next person goes. Pooling everyone into one queue smooths out the bad luck of picking the slow line, using the same number of servers in a smarter shape.",
+          "Dynamic pricing is letting the price rise and fall in real time as demand and supply shift, instead of fixing one number in advance. Moving the price earns more because demand surges and slumps — a fixed price perfect on a calm day is too low during a rush (you sell out and miss the money eager buyers would have paid) and too high during a lull (empty, unsold capacity), while a moving price captures the high willingness to pay of the peak and tempts buyers in the valley. It also shapes demand like a traffic signal: a high peak price nudges flexible customers to wait or shift to a quieter time, relieving the crush, while a low off-peak price pulls demand into the slow hours that would otherwise be wasted. The main risk is backlash over fairness — customers accept a price rising with genuine scarcity, but a spike during an emergency feels like gouging and breeds lasting distrust, and a price that seems to change because the system 'knows them' feels creepy. So the lesson is that the technically optimal price can be the wrong price if it shatters customers' sense of fairness.",
         explanation:
-          "Full credit: explains lines come from variability (clumped arrivals, varying service times) not just average shortage, that wait explodes as utilization nears 100% (slack absorbs bursts), and that one shared line beats separate lines by pooling/avoiding getting stuck behind a slow customer.",
+          "Full credit: defines dynamic pricing (price moves in real time with demand/supply), explains it earns more than a fixed price (too low at peak, too high off-peak), explains it also shapes/smooths demand (peak price defers demand, off-peak price fills valleys), and names the fairness/backlash (gouging) risk.",
       },
       {
-        topicSlug: "demand-forecasting",
+        topicSlug: "overbooking-capacity",
         prompt:
-          "Explain what demand forecasting is, why 'every forecast is wrong' is the rule good forecasters live by, what patterns a forecast can use, and why a single confident number is dangerous. (4–6 sentences.)",
+          "Explain why businesses overbook, why it's a gamble rather than a scam, the trade-off between its two opposite mistakes, and how a lost bet can be softened. (4–6 sentences.)",
         correctAnswer:
-          "Demand forecasting is making a disciplined, educated guess about future demand — using clues from the past like last year's sales, the season, and trends — so you can decide how much to make or stock before you know how much people will want. 'Every forecast is wrong' is the rule because the future never matches the number exactly; the only question is by how much and in which direction, so chasing a single perfect prediction is a fool's errand. A good forecast leans on real patterns — the trend (sales slowly rising or fading), the season (umbrellas in spring, toys in December), and known events (a holiday or planned sale) — while accepting the leftover surprise can't be removed. A single confident number is dangerous because once it's written down, plans harden around it and nobody prepares for selling much more or much less, so the inevitable miss becomes a crisis. The cure is to forecast a range, keep a safety-stock cushion for the miss, watch how wrong past forecasts were, and treat the forecast as odds rather than a promise.",
+          "Businesses overbook — selling more reservations than they have room for — because capacity is perishable and a predictable slice of bookings no-show, so booking exactly to capacity reliably flies with empty seats (or empty rooms) that are worth zero once the date passes. It's a calculated gamble, not a scam, because no-shows are surprisingly steady in the aggregate: if about 10 of 180 booked passengers usually don't appear, selling 190 likely fills the plane, even though you can't know which individuals will vanish. The trade-off is between two opposite mistakes, just like inventory: book too few extra and you eat empty seats (lost money), book too many and occasionally everyone shows up and you must bump someone (cash vouchers, hotels, furious customers, bad press). The right amount of overbooking balances those two costs and depends on the no-show rate and how expensive a bump is versus an empty seat. A lost bet can be softened by auctioning the inconvenience — offering rising vouchers until volunteers willingly give up their seats — which turns an angry forced bump into a trade someone chooses to take.",
         explanation:
-          "Full credit: defines forecasting as a disciplined estimate of future demand from past clues, explains 'every forecast is wrong' (plan a range, not a point), names usable patterns (trend/season/events), and explains why a single confident number is dangerous (plans harden, no cushion) and the cure (range, safety stock, track error).",
+          "Full credit: explains overbooking fights perishable empty capacity given predictable no-shows, that it's a gamble on a steady aggregate no-show pattern (not a scam), names the trade-off (too few extra = empty seats vs too many = costly bumps) and that the right amount balances them, and how to soften a lost bet (voluntary rising-voucher buyouts).",
       },
       {
-        topicSlug: "routing-optimization",
+        topicSlug: "discounts-bundles-anchors",
         prompt:
-          "Explain why the order of stops on a route matters, why finding the truly best route is hard, and why optimization always involves trade-offs between goals like fast, cheap, and reliable. (4–6 sentences.)",
+          "Explain why prices are 'felt, not calculated,' what an anchor does, how discounts and bundles work on buyers, and where this psychology crosses into deception. (4–6 sentences.)",
         correctAnswer:
-          "The order of stops matters because, even with the exact same packages and destinations, the path you choose decides the total distance, fuel, and time — a smart order loops efficiently around an area while a careless one zig-zags back and forth and doubles the miles for no reason. Finding the truly best route is hard because the number of possible orderings explodes as you add stops: a handful can be checked by hand, but a few dozen have more routes than you could ever try one by one, even with a fast computer. That's why real routing uses clever shortcuts that find a very good route quickly instead of proving the single perfect one, because perfect is often impossible to reach and good-and-fast wins. Optimization also involves trade-offs because the goals fight each other — the cheapest route may be slow, the fastest may burn extra fuel or need more trucks, and the most reliable keeps a costly time cushion. So 'best' only has meaning once you decide which goal matters most for the job, which is really what optimizing means: choosing what to trade.",
+          "Prices are felt, not calculated, because a number has no meaning on its own — our brains judge it against whatever comparison is nearby, so the context around a price shapes how it lands as much as the number itself. An anchor is the first or most prominent number you see, which sets the bar for everything after: show a $1,200 watch beside a $400 one and the $400 feels reasonable, and a crossed-out 'was $80, now $50' tag uses the $80 as an anchor to make $50 feel like a win. Discounts work by selling the thrill of a deal — a number to feel triumphant about — and double as a fence (the bargain hunter clips the coupon) and an anchor (the original props up the sale price). Bundles work by blurring the price of each piece so customers can't easily judge any single part, smoothing over different ceilings and carrying weak products along with a star item. It crosses into deception with a fake anchor (a 'was' price the item never sold at), a discount off an inflated number, or a bundle hiding something worthless — and customers who feel fooled won't come back, which costs more than the sale was worth.",
         explanation:
-          "Full credit: explains the order/path of stops sets cost (same packages, very different miles), that finding the perfect route is hard because options explode with stops (so fast shortcuts beat trying them all), and that optimization trades competing goals (fast vs cheap vs reliable) so 'best' depends on priorities.",
+          "Full credit: explains prices are judged against nearby comparisons (felt not calculated), defines an anchor (prominent first number sets the bar; crossed-out original), explains discounts (sell the feeling of winning; also fence/anchor) and bundles (blur per-item price, smooth ceilings), and where it becomes deceptive (fake anchors/inflated originals) and why that backfires.",
       },
       {
-        topicSlug: "resilience-capstone",
+        topicSlug: "pricing-strategy-capstone",
         prompt:
-          "Explain why 'efficient' and 'fragile' are often the same system seen two ways, what a single point of failure is, and why resilience is best understood as costly insurance that must be balanced against efficiency. (4–6 sentences.)",
+          "Explain why there is no single 'right' price, the three forces every price must answer to, and what it means to choose a pricing strategy rather than just a number. (4–6 sentences.)",
         correctAnswer:
-          "Efficiency removes waste — extra inventory, idle capacity, backup suppliers, slack — but those are exactly the buffers that absorb a surprise, so a bone-lean system has nothing left to cushion a shock and 'perfectly efficient' and 'dangerously fragile' end up being the same system seen from two angles. A single point of failure is one supplier, factory, route, or part that the entire flow depends on; it looks like clean, efficient focus while nothing goes wrong, but if it breaks, everything downstream stops with no plan B. Resilience is built from the things efficiency cuts — extra inventory, backup suppliers in different places, spare capacity, and flexibility — which act like insurance against disruption. That insurance costs money all the time and feels wasteful right up until the disaster it was for, which is why it has to be balanced, not maximized. The honest judgment is deciding how much protection is worth its cost for the risks you actually face, since too little leaves you fragile and too much bleeds money — the central trade-off the whole course builds toward.",
+          "There's no single right price because buyers hold a whole range of hidden ceilings, demand bends differently for different people, and cost, competitors, and goals all pull in different directions — so pricing is choosing among reasonable options with different winners and losers, not discovering one true number. Every price must answer to three forces at once: cost (the floor below which you lose money), customers (their willingness to pay and elasticity, which set the ceiling and your room to move), and competition (what rivals charge frames how your price feels). Leaning on only one — pricing purely off cost, or only chasing competitors, or only obsessing over customers — gives a lopsided price, so a real strategy holds all three in view. Choosing a strategy means picking a posture that fits your product and goal (skimming high then lowering, penetrating low to grab share, premium, or value) and then using the course's tools — fences, dynamic pricing, anchors, bundles — in concert to execute it. It also means weighing short-term money against long-term trust, since a price that feels fair earns repeat business a greedier price would destroy, so knowing when not to charge the maximum is part of the strategy.",
         explanation:
-          "Full credit: explains efficiency removes the buffers that absorb shocks (so efficient = fragile), defines a single point of failure (one link the whole flow depends on), and frames resilience as costly insurance (buffers/backups/spare capacity/flexibility) that must be balanced against efficiency rather than maximized.",
+          "Full credit: explains there's no single right price (range of ceilings + competing forces = a choice not a fact), names the three forces (cost, customers, competition) and that all must be held in view, and explains choosing a strategy = a posture (skimming/penetration/premium/value) plus using the tools in concert, ideally noting the short-term-money vs long-term-trust trade-off.",
       },
     ],
   },
   {
     kind: "final",
-    title: "Final — Operations & Supply Chain Analytics for Everyone",
+    title: "Final — Revenue Management & Pricing Analytics for Everyone",
     weekNumber: 1,
     isTimed: true,
     timeLimitMinutes: 45,
@@ -487,40 +512,40 @@ const ASSIGNMENTS: SeedAssignment[] = [
       "Timed cumulative final. 45 minutes. Covers the whole course (sections 1.1–1.8). Answer each question in a paragraph (about 5–7 sentences) in your own words. No math is required. Pasting is disabled; keystrokes are screened for AI use.",
     problems: [
       {
-        topicSlug: "resilience-capstone",
+        topicSlug: "pricing-strategy-capstone",
         prompt:
-          "Using ideas from across the whole course, argue that one habit of mind — 'a business is a flow, and managing it means handling uncertainty and trade-offs honestly' — runs through operations and supply chain analytics. Show how it applies to at least three different topics (for example: flow, inventory, the bullwhip effect, bottlenecks, queues, forecasting, routing, or resilience). (5–7 sentences.)",
+          "Using ideas from across the whole course, argue that one habit of mind — 'the right price is never a single number, but a set of honest trade-offs between different buyers, the moment, and the long game' — runs through revenue management and pricing analytics. Show how it applies to at least three different topics (for example: revenue management, willingness to pay, elasticity, fences, dynamic pricing, overbooking, the psychology of price, or strategy). (5–7 sentences.)",
         correctAnswer:
-          "The thread running through the whole course is that a business is a flow, and managing it well means facing uncertainty and trade-offs honestly instead of chasing a single comforting number. Seeing the business as a flow rather than a pile is the starting point: a full, busy place can be clogged and frozen, so what matters is how smoothly things actually move. Inventory is a pure trade-off — too much freezes cash and risks spoilage, too little risks stockouts — with no setting that removes both risks, so you size a safety cushion on purpose. Bottlenecks show that only the slowest step matters, so honest attention goes there instead of to whatever is easy to improve, and queues show that variability creates waits and that pushing to 100% busy backfires, so a little slack is worth its cost. Forecasting accepts that every forecast is wrong and plans a range rather than a false-confident point, and routing trades fast against cheap against reliable so 'best' depends on what you choose. Resilience is where all these trade-offs come due at once, balancing efficiency against the buffers that keep a chain from breaking — and that shared habit of handling flow, uncertainty, and trade-offs honestly is what makes the field both harder than a simple story and far more likely to keep a business running.",
+          "The thread running through the whole course is that the right price is never one true number but a set of honest trade-offs — between buyers with different hidden ceilings, the shifting moment, and short-term money versus long-term trust. It starts with revenue management's core idea that a single fixed price is simultaneously too high for some buyers and too low for others, so a flexible set of prices serves more people and fills perishable capacity. Willingness to pay explains why: every buyer carries a different invisible ceiling, so the seller is always estimating a hidden number rather than reading a fixed one, and elasticity tells you which way to push — raise on stiff demand, never on bendy. Price discrimination and fences turn that into action by sorting high and low ceilings without letting them trade places, while dynamic pricing matches the price to the moment and overbooking squeezes value from capacity that expires. The psychology of price reminds us a number is felt against an anchor, so presentation matters as much as the figure, and the capstone weaves it all into a strategy that balances cost, customers, and competition. Underneath every one of these is the same honest acceptance of trade-offs and hidden, varied buyers — which is what makes pricing harder than a single number and far more powerful than one.",
         explanation:
-          "Full credit: states the unifying habit (business as a flow; handle uncertainty and trade-offs honestly rather than chase a single number) and applies it correctly to at least three distinct course topics with accurate detail.",
+          "Full credit: states the unifying habit (no single right price; honest trade-offs across varied/hidden buyers, the moment, and short vs long term) and applies it correctly to at least three distinct course topics with accurate detail.",
       },
       {
-        topicSlug: "bullwhip-effect",
+        topicSlug: "price-elasticity",
         prompt:
-          "Someone insists, 'If a factory suddenly gets swamped with huge orders and then floods with cancellations, customer demand must be wildly unstable — blame the shoppers.' Using ideas from the course, argue why the chaos can come from the chain itself even when real demand is steady. Use at least one concrete example. (5–7 sentences.)",
+          "Someone insists, 'Raising prices always makes a business more money — if sales drop, just raise prices again until profits are huge.' Using ideas from the course, argue why this is wrong and when raising prices actually backfires. Use at least one concrete example. (5–7 sentences.)",
         correctAnswer:
-          "Blaming the shoppers assumes the wild swings at the factory mirror wild swings in real demand, but the bullwhip effect shows the chaos is often manufactured by the chain itself even when underlying demand is steady. Each link — store, distributor, factory — only sees the orders from the link next to it, not the actual shoppers, so it adds a safety cushion on top of a number that already had one, orders in big batches, and panic-orders when deliveries lag. Those individually sensible choices, stacked on each other, amplify a small ripple at the store into a towering wave of orders and then cancellations at the factory, swinging from glut to shortage. The classic example is Procter & Gamble's baby diapers: real demand is about as steady as it gets, since babies are predictable, yet store and supplier orders swung wildly — proof the instability lived in the chain's reaction, not the shoppers. The 2020 toilet-paper shortage was the same shape: a modest real bump got amplified by panic-buying and frantic restocking into nationwide empty shelves even though factories never stopped. So the fix isn't to blame customers but to share real demand information and order in smaller, steadier amounts, which shrinks the wave back toward the ripple that started it.",
+          "The claim ignores price elasticity — how much demand bends when the price moves — which decides whether a price increase helps or hurts. With stiff (inelastic) demand, raising the price does earn more, because you lose only a few sales and make more on every remaining one; but with bendy (elastic) demand, raising the price backfires, because so many customers leave that the higher price on the few who stay can't make up for it, and total revenue falls. So 'always' is exactly wrong: the same action helps a stiff-demand business and wrecks a bendy-demand one. What makes demand bendy is escape routes — easy substitutes, being a luxury rather than a necessity, eating a big share of the budget, and time to react. A coffee shop with three rivals next door faces bendy demand, so a price hike sends regulars across the street and revenue drops, while a pharmacy selling a near-necessity with no substitute faces stiff demand, so a similar hike earns more. Because elasticity is invisible until tested, the smart move is to measure it — nudge a price and watch sales — not to assume prices can rise forever, which is one of the most expensive mistakes in pricing.",
         explanation:
-          "Full credit: rejects the 'unstable demand' explanation, explains the bullwhip effect (each link sees only neighbor's orders, adds cushions, batches/panic-orders, amplifying steady demand into glut/shortage swings), and supports it with a concrete example (e.g. P&G diapers or the 2020 toilet-paper run).",
+          "Full credit: rejects 'raising prices always earns more,' explains elasticity (raising helps stiff demand but backfires on bendy demand because too many customers leave), names what makes demand bendy (substitutes/luxury/budget share/time), and supports it with a concrete example (e.g. coffee shop with rivals vs pharmacy), ideally noting elasticity must be measured.",
       },
       {
-        topicSlug: "waiting-lines-queues",
+        topicSlug: "price-discrimination-fences",
         prompt:
-          "A manager argues that the way to fix long lines is to push every server to be busy 100% of the time, since 'idle servers are wasted money.' Using the course, explain why this can make waits worse, and what would actually help. Use a concrete example. (5–7 sentences.)",
+          "A shopper fumes, 'Charging a student less than me for the exact same movie ticket is just unfair price-gouging — everyone should pay one identical price.' Using ideas from the course, argue why charging different buyers different prices can be reasonable rather than a rip-off. Use a concrete example. (5–7 sentences.)",
         correctAnswer:
-          "The 'no idle servers' view treats slack as pure waste, but in a system with variability that slack is exactly what keeps lines short. Lines form mainly because customers arrive in random clumps and take different amounts of time, so bursts pile up faster than a server can clear them even when there's enough capacity on average. As you push toward 100% busy, waiting time doesn't rise gently — it explodes — because there's no breathing room left to absorb those bursts, so a system at 95–100% can have lines many times longer than one at 70%. So driving servers to full does the opposite of what the manager wants, making customers wait longer rather than move faster. What actually helps is deliberately keeping some slack — adding an extra server at the busy hour even if they're sometimes idle — and pooling people into a single shared line so no one is stuck behind one slow customer while another server sits free. Call centers are the classic example: staffing agents to be busy nearly every second produces miserable hold times, while adding a few sometimes-idle agents dramatically shortens the wait, which is why well-run centers deliberately staff below 100% busy.",
+          "The 'one identical price' demand assumes a single price would be fairer, but a single price is actually too high for some buyers and too low for others, because every buyer has a different hidden willingness to pay. Charging different prices for essentially the same thing is price discrimination, and it works through fences — conditions on the low price that some buyers meet and others won't — which lets a seller serve the low-ceiling customers and the high-ceiling ones instead of pricing one group out. The student discount is a fence using an easy-to-check label for a lower ceiling, and the Tuesday matinee is a fence too: a retiree or student with a free afternoon happily comes cheap at 2 p.m. while the working adult who can only come at 8 p.m. pays full price, and neither feels singled out because each 'chose' their showtime. Far from a rip-off, this fills seats that would otherwise be empty and lets more people see the film, often keeping average prices lower than one high single price would. It does cross a line when a fence feels like unfair singling-out or leaks so the high payers slip through, but a well-built fence the customer effectively chooses is reasonable, not gouging.",
         explanation:
-          "Full credit: explains lines come from variability and that slack absorbs bursts, that pushing toward 100% busy makes waits explode (so it backfires), and what helps (planned slack/extra server at peak, single shared line/pooling), with a concrete example (e.g. call centers, bank single line).",
+          "Full credit: rejects 'one price is fairer,' explains buyers have different hidden ceilings so a single price is too high/low for different groups, defines price discrimination + fences (e.g. student discount, matinee) that sort buyers by a choice rather than singling out, and notes it serves more buyers/fills capacity, with the caveat about unfair or leaky fences.",
       },
       {
-        topicSlug: "resilience-capstone",
+        topicSlug: "pricing-strategy-capstone",
         prompt:
-          "A company says, 'We've optimized our supply chain to the bone — minimal inventory, one cheap overseas supplier, no spare capacity — so we're in great shape.' Using the course, explain why this can be a dangerous mistake and what they should weigh. Use a concrete example. (5–7 sentences.)",
+          "A company boasts, 'We squeeze the maximum possible price out of every customer on every sale — surge fees, sneaky add-ons, fake discounts — so our strategy is perfect.' Using the course, explain why always charging the maximum can be a mistake and what a real pricing strategy should weigh. Use a concrete example. (5–7 sentences.)",
         correctAnswer:
-          "The 'optimized to the bone' view confuses efficient with robust, but efficiency removes exactly the buffers — extra inventory, spare capacity, backup suppliers, slack — that absorb a shock, so a bone-lean chain has nothing left to cushion a surprise. Relying on one cheap overseas supplier and minimal inventory creates single points of failure: as long as nothing goes wrong it looks like clean, efficient focus, but if that supplier or its shipping route is disrupted, the whole flow stops with no plan B. Resilience is built from the things they've cut — buffer inventory, backup suppliers in different places, spare capacity, and flexibility — which act like insurance against disruption, and that insurance costs money all the time and feels wasteful right up until the disaster it was for. So what they should weigh is how much protection is worth its cost for the risks they actually face, since too little leaves them fragile and too much bleeds money — it's a balance, not a number to maximize. The COVID years showed this at global scale: decades of squeezing chains for efficiency — minimal inventory, single distant suppliers — produced shortages of everything from masks to cars the moment things went wrong, and a single ship wedged in the Suez Canal blocked a huge slice of world trade because so much depended on one route with no backup. None of those operators were foolish; they optimized exactly as efficiency teaches and discovered its limit, which is the trade-off this company is ignoring.",
+          "Squeezing the maximum from every sale confuses today's revenue with a real strategy, but pricing always trades short-term money against long-term trust, and goodwill is what brings customers back. You can almost always grab more right now — a surge fee, a hidden add-on, a fake 'was' price — but each squeeze spends down goodwill, and a buyer who feels fooled or gouged won't return, which costs more than the extra dollar was worth. A real strategy weighs three forces at once — cost (the floor), customers (their willingness to pay and elasticity), and competition (what rivals charge) — and then picks a coherent posture (skimming, penetration, premium, or value) rather than reaching for whatever extracts the most today. It also treats fairness as an investment, not charity, because a price that feels honest earns repeat business a greedier price destroys. Surge pricing during an emergency is the classic warning: ride-hailing fares that spiked in storms felt like gouging and triggered such backlash that companies had to cap them — proof the technically optimal price can be the wrong price. The deepest lesson of the course is that knowing when not to charge the maximum is as much a part of strategy as knowing how to charge more.",
         explanation:
-          "Full credit: explains efficiency removes the buffers that absorb shocks (efficient ≠ robust), identifies single points of failure (one supplier/route, minimal inventory), frames resilience as costly insurance (buffers/backups/spare capacity/flexibility) to be balanced not maximized, and supports it with a concrete example (e.g. COVID shortages or the Suez Canal blockage).",
+          "Full credit: rejects 'always charge the maximum,' explains the short-term-money vs long-term-trust trade-off (each squeeze spends goodwill; fooled customers don't return), describes what a real strategy weighs (cost/customers/competition + a coherent posture, fairness as investment), and supports it with a concrete example (e.g. surge-pricing backlash forcing price caps).",
       },
     ],
   },
@@ -531,24 +556,24 @@ type SeedPrimer = SeedTopic;
 const REASONING_PRIMERS: SeedPrimer[] = [
   {
     slug: "reasoning-primer-subject",
-    title: "How to reason about operations & supply chain cases",
+    title: "How to reason about revenue management and pricing cases",
     weekNumber: 1,
     blurb:
-      "Diagnostic primer: applying the course's ideas to concrete situations about how things move and get made.",
-    lectureTitle: "Primer: How to reason about operations & supply chain cases",
-    body: `# How to reason about operations & supply chain cases
+      "Diagnostic primer: applying the course's ideas to concrete situations about how prices are set and why.",
+    lectureTitle: "Primer: How to reason about revenue management and pricing cases",
+    body: `# How to reason about revenue management and pricing cases
 
-This short primer prepares you for the **Operations & Supply Chain Analytics** diagnostic. That check is *ungraded practice* — it never affects your course grade. It is drawn from the eight topics of this unit and asks you to *apply* what you have learned to a specific situation, not to recite a definition.
+This short primer prepares you for the **Revenue Management & Pricing Analytics** diagnostic. That check is *ungraded practice* — it never affects your course grade. It is drawn from the eight topics of this unit and asks you to *apply* what you have learned to a specific situation, not to recite a definition.
 
 ## It tests application, not memorization
 
-A diagnostic question gives you a small, concrete scene — a warehouse that's full but slow, a shop that overstocks after one stockout, a factory swamped by swings while real demand is steady, a line that's huge even with idle-looking staff — and asks what the course's ideas tell you about it. Knowing the words "bottleneck" or "bullwhip" is not enough; the question wants you to recognize *when* you are looking at one and *why* it matters here.
+A diagnostic question gives you a small, concrete scene — two travelers who paid different fares for the same seat, a product that sells too easily, a price hike that helps one shop and wrecks another, a parking garage jammed at rush hour and empty at noon — and asks what the course's ideas tell you about it. Knowing the words "elasticity" or "fence" is not enough; the question wants you to recognize *when* you are looking at one and *why* it matters here.
 
 ## What the questions reward
 
-- **Naming the right idea** — match the situation to the concept that fits it: why busy or full isn't the same as efficient, why too much and too little inventory both cost, how a small demand change gets amplified, why the slowest step rules the system, why lines explode near 100% busy, why every forecast is wrong, why route order changes the cost, and why efficient can mean fragile.
+- **Naming the right idea** — match the situation to the concept that fits it: why one fixed price leaves money on the table, why every buyer has a different hidden ceiling, whether demand is bendy or stiff, how a fence sorts buyers, why a moving price beats a frozen one, why overbooking is a gamble not a scam, how an anchor makes a price feel like a deal, and why there's no single right price.
 - **Using evidence from the scene** — point to the detail in the situation that supports your answer, rather than answering from a general impression.
-- **Avoiding the flattering reading** — the course measures what's really happening; it does not assume the most comforting explanation. The best answers stay grounded in how the flow actually moves, not in how busy or full a place feels.
+- **Avoiding the flattering reading** — the course looks at what's really happening; it does not assume the most comforting story. The best answers stay grounded in how buyers and prices actually behave, not in how fair or unfair a price first feels.
 
 ## How to do this activity well
 
@@ -567,7 +592,7 @@ Take it as often as you like; the questions are freshly generated every time, an
     lectureTitle: "Primer: Core reasoning skills",
     body: `# Core reasoning skills
 
-This short primer prepares you for the **General Reasoning** diagnostic — an *ungraded* check that tests five genuine reasoning skills. These are the same skills you use to decide what a set of facts really shows, so they matter directly for thinking clearly about what's happening in a business's flow.
+This short primer prepares you for the **General Reasoning** diagnostic — an *ungraded* check that tests five genuine reasoning skills. These are the same skills you use to decide what a set of facts really shows, so they matter directly for thinking clearly about why a price works the way it does.
 
 ## The five skills
 
@@ -579,7 +604,7 @@ This short primer prepares you for the **General Reasoning** diagnostic — an *
 
 ## A recurring trap: things that move together
 
-Most wrong answers are statements that *sound* reasonable but are **not actually backed up by what you were told**. The discipline this check rewards is the same one careful work with operations demands: keep apart what the facts **show**, what you're **assuming**, and what only *sounds* right. Two things happening together does not prove one causes the other.
+Most wrong answers are statements that *sound* reasonable but are **not actually backed up by what you were told**. The discipline this check rewards is the same one careful pricing demands: keep apart what the facts **show**, what you're **assuming**, and what only *sounds* right. Two things happening together does not prove one causes the other.
 
 ## How to do this activity well
 
@@ -648,7 +673,7 @@ export async function seedReasoningPrimersIfMissing(): Promise<void> {
 }
 
 export async function seedIfEmpty(): Promise<void> {
-  // The course was migrated to the Operations & Supply Chain Analytics for
+  // The course was migrated to the Revenue Management & Pricing Analytics for
   // Children syllabus. Detect the marker topic; if present and the content
   // version matches, the content is current and we skip. This makes the seed
   // self-healing across environments: a database that still holds older content
@@ -656,7 +681,7 @@ export async function seedIfEmpty(): Promise<void> {
   const markerTopic = await db
     .select({ id: topicsTable.id })
     .from(topicsTable)
-    .where(eq(topicsTable.slug, "what-operations-analytics-is"));
+    .where(eq(topicsTable.slug, "what-revenue-management-is"));
   // Read the stored content version. Tolerate the seed_meta table not yet
   // existing (e.g. a boot that races ahead of schema migration): treat that as
   // "no version recorded", which forces a reseed once the table is present.
@@ -697,7 +722,7 @@ export async function seedIfEmpty(): Promise<void> {
     const row = (existing.rows[0] ?? {}) as { n?: number };
     if ((row.n ?? 0) > 0) {
       logger.warn(
-        "Seed: stale course content detected — replacing with the Operations & Supply Chain Analytics for Children curriculum",
+        "Seed: stale course content detected — replacing with the Revenue Management & Pricing Analytics for Children curriculum",
       );
       await tx.execute(
         sql`TRUNCATE TABLE answers, attempts, practice_attempts, practice_problems, practice_sessions, problems, assignments, lectures, topics, diagnostic_responses, diagnostic_attempts, diagnostic_items, diagnostic_assessments RESTART IDENTITY CASCADE`,

@@ -26,7 +26,7 @@ export function Scene5() {
       >
         <div className="h-16 border-b border-slate-200 flex items-center px-8 justify-between bg-white z-20">
           <div className="font-medium text-slate-900 flex items-center gap-2">
-            <span className="text-slate-400">Practice</span> / 1.2 Inventory
+            <span className="text-slate-400">Practice</span> / 1.2 Willingness to Pay
           </div>
           
           <motion.div 
@@ -72,7 +72,7 @@ export function Scene5() {
             </div>
 
             <h3 className="text-2xl font-bold text-slate-900 mb-8 leading-snug">
-              A toy store buys 1,000 teddy bears for the holidays. By January, they have 400 left. What are the two main costs they are now facing?
+              A shop owner sets one price for a hoodie and is thrilled that almost everyone who looks at it buys it instantly. Why might this actually be a problem?
             </h3>
 
             <div className="space-y-4">
@@ -80,7 +80,7 @@ export function Scene5() {
                 className="p-5 border-2 border-slate-200 rounded-xl text-slate-600 bg-white"
                 animate={phase >= 2 ? { opacity: 0.5, borderColor: '#e2e8f0' } : {}}
               >
-                Manufacturing cost and shipping cost.
+                The hoodies are priced too high, so the owner should lower the price.
               </motion.div>
               
               <motion.div 
@@ -92,7 +92,7 @@ export function Scene5() {
                 }
               >
                 <div className="font-medium text-lg">
-                  Holding cost (storing the unsold bears) and opportunity cost (money tied up that could have bought different toys).
+                  If nearly everyone buys instantly, the price is likely below many buyers' willingness to pay — the owner is leaving money on the table and could charge more.
                 </div>
                 
                 <motion.div 
@@ -101,7 +101,7 @@ export function Scene5() {
                   animate={phase >= 3 ? { height: 'auto', opacity: 1 } : { height: 0, opacity: 0 }}
                 >
                   <div className="w-5 h-5 rounded-full bg-emerald-500 text-white flex items-center justify-center shrink-0 mt-0.5"><svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" /></svg></div>
-                  <p><strong>Correct!</strong> Holding cost is the physical price of storage. Opportunity cost is the invisible price of not being able to use that cash for something else.</p>
+                  <p><strong>Correct!</strong> Instant, easy sales signal the price sits below buyers' hidden ceilings. The owner is giving away surplus and has room to raise the price.</p>
                 </motion.div>
               </motion.div>
             </div>

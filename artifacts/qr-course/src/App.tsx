@@ -235,13 +235,13 @@ function ClerkProviderWithRoutes() {
         signIn: {
           start: {
             title: "Welcome back",
-            subtitle: "Sign in to continue your Operations & Supply Chain Analytics for Children course",
+            subtitle: "Sign in to continue your Revenue Management & Pricing Analytics for Children course",
           },
         },
         signUp: {
           start: {
             title: "Create your account",
-            subtitle: "Start your operations & supply chain analytics journey with Operations & Supply Chain Analytics for Children",
+            subtitle: "Start your revenue management & pricing analytics journey with Revenue Management & Pricing Analytics for Children",
           },
         },
       }}

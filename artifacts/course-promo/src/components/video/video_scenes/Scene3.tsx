@@ -25,7 +25,7 @@ export function Scene3() {
         className="w-[90vw] h-[85vh] bg-white rounded-2xl shadow-elevated flex flex-col overflow-hidden border border-slate-200"
       >
         <div className="h-16 border-b border-slate-200 flex items-center px-8 justify-between bg-white z-20">
-          <div className="font-medium text-slate-500">1.4 Bottlenecks</div>
+          <div className="font-medium text-slate-500">1.3 Price Elasticity</div>
           
           {/* Depth Toggle */}
           <motion.div
@@ -42,7 +42,7 @@ export function Scene3() {
         <div className="flex-1 overflow-hidden relative">
           <div className="absolute inset-0 p-16 overflow-y-auto bg-slate-50">
             <div className="max-w-3xl mx-auto">
-              <h1 className="text-4xl font-display font-bold text-slate-900 mb-8">Bottlenecks</h1>
+              <h1 className="text-4xl font-display font-bold text-slate-900 mb-8">Price Elasticity</h1>
               
               {/* Short Version */}
               <motion.div
@@ -51,7 +51,7 @@ export function Scene3() {
                 animate={{ opacity: phase === 1 ? 1 : 0, pointerEvents: phase === 1 ? 'auto' : 'none' }}
               >
                 <p className="text-2xl leading-relaxed text-slate-700">
-                  A bottleneck is the slowest step in a process. The whole system can only move as fast as that one step.
+                  Price elasticity is how much demand changes when you change the price. If a small rise sends customers running, demand is elastic; if they barely react, it's inelastic.
                 </p>
               </motion.div>
 
@@ -62,10 +62,10 @@ export function Scene3() {
                 animate={{ opacity: phase === 2 ? 1 : 0, pointerEvents: phase === 2 ? 'auto' : 'none' }}
               >
                 <p className="text-xl leading-relaxed text-slate-700 mb-6">
-                  A bottleneck is the slowest step in a process. Imagine a garden hose that is pinched in the middle. It doesn't matter how wide the hose is before or after the pinch; the water can only flow as fast as the pinched part allows.
+                  Price elasticity measures how sensitive buyers are to a change in price. Imagine a coffee shop with three rivals next door raising its price — many customers simply walk to a cheaper rival. That's elastic demand: bendy and quick to react.
                 </p>
                 <p className="text-xl leading-relaxed text-slate-700">
-                  In a business, the whole system can only move as fast as its slowest step. If you want to speed things up, you must fix the bottleneck first. Fixing any other step won't help.
+                  Now picture the only pharmacy in town raising the price of a prescription. Customers grumble but still pay, because there's nowhere else to go. That's inelastic demand. Whether a price rise earns more or backfires depends entirely on which one you're facing.
                 </p>
               </motion.div>
 
@@ -76,17 +76,17 @@ export function Scene3() {
                 animate={{ opacity: phase === 3 ? 1 : 0, pointerEvents: phase === 3 ? 'auto' : 'none' }}
               >
                 <p className="text-lg leading-relaxed text-slate-700 mb-4">
-                  A bottleneck is the slowest step in a process. Imagine a garden hose that is pinched in the middle. It doesn't matter how wide the hose is before or after the pinch; the water can only flow as fast as the pinched part allows.
+                  Price elasticity measures how sensitive buyers are to a change in price. Imagine a coffee shop with three rivals next door raising its price — many customers simply walk to a cheaper rival. That's elastic demand: bendy and quick to react.
                 </p>
                 <p className="text-lg leading-relaxed text-slate-700 mb-4">
-                  This concept was popularized by Eliyahu M. Goldratt in his book <em>The Goal</em>. He called it the "Theory of Constraints." Every system has at least one constraint (or bottleneck).
+                  Economists put a number on this, the price elasticity of demand: roughly, the percentage change in how much people buy divided by the percentage change in price. When that number is large, demand is elastic; when it's small, demand is inelastic.
                 </p>
                 <p className="text-lg leading-relaxed text-slate-700 mb-4">
-                  In a business, the whole system can only move as fast as its slowest step. If you want to speed things up, you must fix the bottleneck first. Fixing any other step — say, making the fastest step even faster — is a waste of time and money, because the work will just pile up in front of the bottleneck.
+                  Whether a price rise earns more or backfires depends entirely on which one you're facing. Raising prices on inelastic goods (few substitutes) usually earns more; raising prices on elastic goods (easy substitutes) can drive customers away and lose money.
                 </p>
                 <div className="p-6 bg-white border border-slate-200 rounded-xl mt-6 shadow-sm">
-                  <h4 className="font-bold text-slate-900 mb-2">Example: The Car Wash</h4>
-                  <p className="text-slate-600">A car wash can vacuum 20 cars an hour, but the drying station can only dry 10 cars an hour. The drying station is the bottleneck. The car wash can only finish 10 cars per hour total.</p>
+                  <h4 className="font-bold text-slate-900 mb-2">Example: Coffee vs. Medicine</h4>
+                  <p className="text-slate-600">A 10% price rise at a coffee shop surrounded by rivals can lose a third of its customers — elastic. The same 10% rise on a life-saving medicine barely changes how much is bought — inelastic.</p>
                 </div>
               </motion.div>
             </div>

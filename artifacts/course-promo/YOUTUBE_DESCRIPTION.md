@@ -1,26 +1,26 @@
-# YouTube Description — Operations & Supply Chain Analytics for Children
+# YouTube Description — Revenue Management & Pricing Analytics for Children
 
 > The canonical, maintained copy of this description lives at the repo root: `youtube-description.md`. This file is kept in sync as the promo artifact's local reference.
 
 ## Title options (pick one)
 
-- Operations & Supply Chain Analytics for Children — an AI course that teaches, tutors & grades itself
-- I built an AI Operations & Supply Chain course (it even catches AI cheating)
-- How Things Really Move Through a Business — a friendly AI course for curious students & adults
+- Revenue Management & Pricing Analytics for Children — an AI course that teaches, tutors & grades itself
+- I built an AI Revenue Management & Pricing course (it even catches AI cheating)
+- Why Two Seats Cost Different Prices — a friendly AI course for curious students & adults
 
 ## Short description (for the box, ~150 chars)
 
-A friendly, one-unit intro to operations & supply chain analytics — taught, tutored, drilled, and graded by AI. No math, no coding. For curious students and grown-ups alike.
+A friendly, one-unit intro to revenue management & pricing analytics — taught, tutored, drilled, and graded by AI. No math, no coding. For curious students and grown-ups alike.
 
 ## Full description
 
-How does a business actually move things from start to customer?
+Why does the seat next to you on a plane cost a different price than yours?
 
-Meet **Operations & Supply Chain Analytics for Children** — a friendly, one-unit intro to operations and supply chain analytics that teaches, tutors, drills, and grades itself, entirely with AI. No math, no coding, no jargon. Just plain-language lessons about how things really move through a business — seeing a business as a flow, inventory, the bullwhip effect, bottlenecks, waiting lines, demand forecasting, routing, and resilience — kept tasteful and age-appropriate from start to finish.
+Meet **Revenue Management & Pricing Analytics for Children** — a friendly, one-unit intro to revenue management and pricing analytics that teaches, tutors, drills, and grades itself, entirely with AI. No math, no coding, no jargon. Just plain-language lessons about how businesses decide what to charge — what revenue management is, willingness to pay, price elasticity, price discrimination and fences, dynamic pricing, overbooking, discounts and bundles, and setting a pricing strategy — kept tasteful and age-appropriate from start to finish.
 
 In this video you'll see the whole course in action:
 
-🔎 Eight plain-language topics — from "what operations & supply chain analytics really is" all the way to "building a chain that doesn't break"
+🔎 Eight plain-language topics — from "what revenue management really is" all the way to "setting a pricing strategy"
 📖 Three-depth lessons — read any topic Short, Medium, or Long, same ideas at your pace
 ✨ Examples on demand — turn any lesson into a version packed with vivid, real-to-life illustrations for every point
 💬 A section-scoped AI tutor that answers questions about the exact paragraph you're reading, streaming in real time
@@ -33,28 +33,28 @@ It's a self-paced course students can actually trust to be fair — and instruct
 👉 Try it / learn more: [add your link here]
 
 One unit, eight topics:
-• 1.1 What operations & supply chain analytics is: the business as a flow
-• 1.2 Inventory: the cost of too much and too little
-• 1.3 The bullwhip effect: why small ripples become big waves
-• 1.4 Bottlenecks: why the slowest step rules the whole system
-• 1.5 Waiting lines: the hidden math of queues
-• 1.6 Demand forecasting: stocking for a future you can't see
-• 1.7 Routing and optimization: moving things for less
-• 1.8 Resilience: building a chain that doesn't break
+• 1.1 What revenue management is: why two seats cost different prices
+• 1.2 Willingness to pay: the hidden ceiling in every buyer's head
+• 1.3 Price elasticity: how much demand bends when the price moves
+• 1.4 Price discrimination and fences: charging different people different prices
+• 1.5 Dynamic pricing: prices that change with demand
+• 1.6 Overbooking and capacity: selling a little more than you have
+• 1.7 Discounts, bundles, and anchors: nudging what people choose
+• 1.8 Setting a pricing strategy: putting it all together
 
 Perfect for middle schoolers, curious adults wanting a quick but meaningful intro, instructors exploring AI-taught coursework, and academic-integrity researchers.
 
 Start learning — no instructor, no textbook, no math.
 
-#OperationsManagement #SupplyChain #AIeducation #EdTech #OnlineLearning #DataLiteracy #StudyTok #LearnSomethingNew
+#RevenueManagement #PricingAnalytics #AIeducation #EdTech #OnlineLearning #DataLiteracy #StudyTok #LearnSomethingNew
 
 ## Chapters (adjust timestamps to the final cut)
 
-0:00 How things move through a business
+0:00 Why two seats cost different prices
 0:08 What you'll learn
 0:20 The AI tutor, lessons & adaptive practice
-0:35 Operations & Supply Chain Analytics for Children
+0:35 Revenue Management & Pricing Analytics for Children
 
 ## Tags (comma-separated, for the Tags field)
 
-operations analytics, supply chain analytics, operations management, business analytics, data literacy, AI tutor, AI education, edtech, online learning, adaptive learning, analytics for beginners, inventory, bullwhip effect, bottlenecks, demand forecasting, self-paced course, AI grading, academic integrity
+revenue management, pricing analytics, pricing strategy, price elasticity, willingness to pay, dynamic pricing, business analytics, data literacy, AI tutor, AI education, edtech, online learning, adaptive learning, analytics for beginners, price discrimination, overbooking, self-paced course, AI grading, academic integrity

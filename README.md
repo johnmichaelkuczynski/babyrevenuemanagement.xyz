@@ -1,20 +1,20 @@
-# 🔎 Operations & Supply Chain Analytics for Children
+# 🔎 Revenue Management & Pricing Analytics for Children
 
-**A friendly, one-unit intro to operations and supply chain analytics that teaches, tutors, drills, and grades itself — for curious students and adults alike.**
+**A friendly, one-unit intro to revenue management and pricing analytics that teaches, tutors, drills, and grades itself — for curious students and adults alike.**
 
-Operations & Supply Chain Analytics for Children is a self-paced, single-user web course that delivers a plain-language introduction to operations and supply chain analytics — taught, tutored, drilled, and graded entirely by AI, with built-in academic-integrity enforcement. No math, coding, or statistics required. The material is kept friendly and age-appropriate: it explains *how things really move through a business* and how managers read the flow to make better decisions, never technical or jargon-heavy.
+Revenue Management & Pricing Analytics for Children is a self-paced, single-user web course that delivers a plain-language introduction to revenue management and pricing analytics — taught, tutored, drilled, and graded entirely by AI, with built-in academic-integrity enforcement. No math, coding, or statistics required. The material is kept friendly and age-appropriate: it explains *how businesses decide what to charge* and how managers read demand to make better pricing decisions, never technical or jargon-heavy.
 
 ---
 
 ## ✨ Features
 
-- **One unit, 8 topics** — a complete plain-language syllabus: what operations & supply chain analytics is (the business as a flow) · inventory (the cost of too much and too little) · the bullwhip effect · bottlenecks · waiting lines (queues) · demand forecasting · routing and optimization · resilience (the capstone).
+- **One unit, 8 topics** — a complete plain-language syllabus: what revenue management is (why two seats cost different prices) · willingness to pay · price elasticity · price discrimination and fences · dynamic pricing · overbooking and capacity · discounts, bundles, and anchors · setting a pricing strategy (the capstone).
 - **Three-depth lessons** — every lesson reads at **Short / Medium / Long** length, AI-rewritten while keeping the same examples and learning objectives.
 - **Section-scoped AI tutor** — ask about the exact paragraph you're reading; answers stream back token-by-token, grounded in that lecture section.
 - **Adaptive practice** — generated problem sets that get harder on a streak and ease off after a miss; per-session difficulty persists.
 - **AI-graded assignments** — two homework sets, a timed unit test, and a cumulative final, each scored for semantic equivalence with a written rationale and a rolled-up percent score.
 - **Two-layer AI-authorship detection** — every submission is screened by a static text classifier (GPTZero) **and** a diachronic keystroke-pattern detector, each with a human-readable verdict.
-- **Diagnostic reasoning assessments** — two instruments (Operations & Supply Chain Analytics subject reasoning and general reasoning), each in three formats and three lengths, takeable at four points in the journey. Ungraded practice with freshly generated items every attempt; coursework is 100% of the grade.
+- **Diagnostic reasoning assessments** — two instruments (Revenue Management & Pricing Analytics subject reasoning and general reasoning), each in three formats and three lengths, takeable at four points in the journey. Ungraded practice with freshly generated items every attempt; coursework is 100% of the grade.
 - **Live analytics** — dashboard KPIs (attempts, accuracy, streak), per-topic mastery, and a recent-activity feed.
 - **Operator diagnostics** — one-click self-tests that verify the entire stack (database, OpenAI, GPTZero, detection, and the practice/grade loop) before you trust a session.
 
@@ -100,4 +100,4 @@ Open the **Diagnostics** page in the app (or hit the API directly) to run:
 
 ---
 
-*Operations & Supply Chain Analytics for Children — where the curriculum, the tutor, the grader, and the integrity check all live in one room.*
+*Revenue Management & Pricing Analytics for Children — where the curriculum, the tutor, the grader, and the integrity check all live in one room.*

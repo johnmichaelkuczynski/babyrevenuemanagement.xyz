@@ -51,13 +51,13 @@ export function Scene6() {
               <div className="flex justify-between items-start mb-6">
                 <div>
                   <div className="text-sm font-bold text-slate-500 uppercase tracking-wider mb-2">Question 4</div>
-                  <h3 className="text-xl text-white font-medium">Why can a warehouse be packed full yet still ship orders late?</h3>
+                  <h3 className="text-xl text-white font-medium">Why can charging every customer one single price leave money on the table?</h3>
                 </div>
                 <div className="bg-slate-700 text-slate-300 px-3 py-1 rounded font-medium text-sm">10 / 10 pts</div>
               </div>
 
               <div className="bg-slate-900/80 p-6 rounded-lg text-slate-300 font-serif italic mb-6 border border-slate-700/50 text-lg">
-                "Because 'full' isn't the same as 'flowing.' If things pile up at one slow step, orders sit waiting even though the shelves are stuffed. Being full can actually mean the work is stuck, not moving."
+                "Because buyers have different hidden ceilings — what each is willing to pay. One price is too high for some, who walk away, and too low for others, who'd happily pay more. So you lose sales at the bottom and extra money at the top."
               </div>
 
               <motion.div 
@@ -69,7 +69,7 @@ export function Scene6() {
                 <div>
                   <h4 className="text-blue-400 font-bold mb-2">AI Feedback</h4>
                   <p className="text-blue-100/80 leading-relaxed">
-                    Full credit. You correctly separated the concept of "full" (inventory volume) from "flowing" (throughput). You clearly explained that a stocked warehouse can still ship late if work piles up at a bottleneck, proving that smooth flow matters more than raw capacity. Excellent answer.
+                    Full credit. You correctly identified that a single price ignores the spread of buyers' willingness to pay. You explained that one price is simultaneously too high for bargain hunters and too low for eager buyers, losing money at both ends. Excellent answer.
                   </p>
                 </div>
               </motion.div>

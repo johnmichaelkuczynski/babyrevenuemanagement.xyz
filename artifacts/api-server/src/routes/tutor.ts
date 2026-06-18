@@ -22,11 +22,11 @@ router.get("/tutor/suggestions/:lectureId", async (req, res): Promise<void> => {
   }
 
   const SYSTEM_PROMPT =
-    'You are a rigorous introductory operations & supply chain analytics tutor writing study questions. Reply as strict JSON of the form {"questions": string[]} with NO other keys.';
+    'You are a rigorous introductory revenue management & pricing analytics tutor writing study questions. Reply as strict JSON of the form {"questions": string[]} with NO other keys.';
   const buildUserPrompt = (extra: string) =>
     extra +
     `From the lecture below, write 6 starter questions that make the student APPLY the lecture's ideas to a CONCRETE EXAMPLE. Every question must hang on a specific case and ask the student to reason about that case.\n\n` +
-    `THE SINGLE MOST IMPORTANT RULE: every question must contain an explicit, concrete, EVERYDAY example — a specific relatable situation (e.g. "a warehouse that's packed full yet keeps shipping orders late", "a shop that overstocks everything after one stockout and ends up dumping spoiled goods", "a factory swamped with huge orders then flooded with cancellations while real demand barely moved"). Keep examples plain-language and non-technical — no technical terms, study citations, or jargon. The question must ask the student to analyze, explain, judge, or predict something about THAT example. Reuse the lecture's own examples when it has them; otherwise invent a vivid, specific one.\n\n` +
+    `THE SINGLE MOST IMPORTANT RULE: every question must contain an explicit, concrete, EVERYDAY example — a specific relatable situation (e.g. "two travelers in identical seats on the same flight who paid very different prices", "a shop owner thrilled that almost everyone who looks at a hoodie buys it instantly", "a parking garage that charges one price all day and is jammed at rush hour but empty at midday"). Keep examples plain-language and non-technical — no technical terms, study citations, or jargon. The question must ask the student to analyze, explain, judge, or predict something about THAT example. Reuse the lecture's own examples when it has them; otherwise invent a vivid, specific one.\n\n` +
     `ABSOLUTELY FORBIDDEN — never produce any of these:\n` +
     `- Questions that ask for a definition ("What is X?", "What does X mean?", "Define X").\n` +
     `- Questions that ask to distinguish or compare concepts in the abstract ("How do X and Y differ?", "What is the difference between X and Y?", "How does X relate to Y?").\n` +
@@ -34,10 +34,10 @@ router.get("/tutor/suggestions/:lectureId", async (req, res): Promise<void> => {
     `- Any question that could be answered without referring to a specific case.\n\n` +
     `If a question does not name a concrete example and ask the student to reason about it, REWRITE it until it does.\n\n` +
     `GOOD vs BAD:\n` +
-    `- BAD: "What's the difference between operations and supply chain?"\n` +
-    `- GOOD: "A warehouse is packed full and everyone looks busy, yet orders keep shipping late — what does this suggest about whether 'full and busy' really means the operation is efficient?"\n` +
-    `- BAD: "What is a bottleneck?"\n` +
-    `- GOOD: "A sandwich shop speeds up its already-fast wrapping station and stays busy, yet the lunch line never shrinks — explain why making a step that wasn't the slowest faster can leave the line just as long."\n\n` +
+    `- BAD: "What's the difference between price and value?"\n` +
+    `- GOOD: "Two travelers in identical seats on the same flight paid very different prices — what does this suggest about whether a single fixed price is really the fairest or most profitable choice?"\n` +
+    `- BAD: "What is price elasticity?"\n` +
+    `- GOOD: "A coffee shop next to three rivals raises prices 10% and loses a third of its customers, while a pharmacy raising the same 10% barely loses anyone — explain why the same price increase helped one and hurt the other."\n\n` +
     `Cover several different major ideas from the reading across the 6 questions. One clear sentence each (roughly 12–28 words), in the student's own voice, no compound double-questions. Use $...$ for any inline math.\n\n` +
     `Return exactly 6 questions.\n\nLECTURE TITLE: ${lecture.title}\n\nLECTURE BODY:\n"""\n${lecture.body}\n"""`;
 
@@ -104,7 +104,7 @@ router.post("/tutor/ask", async (req, res): Promise<void> => {
   const { message, selectedLectureText } = parsed.data;
 
   const sys =
-    "You are an encouraging introductory operations & supply chain analytics tutor. Explain step by step, use clear examples and relatable cases, and define key terms (e.g. flow, throughput, flow time, inventory, safety stock, stockout, the bullwhip effect, bottleneck, queue, utilization, demand forecast, routing, optimization, resilience, single point of failure) when they come up. Keep replies short (3-6 sentences) unless the student asks for more detail. Never just give the answer — guide them.";
+    "You are an encouraging introductory revenue management & pricing analytics tutor. Explain step by step, use clear examples and relatable cases, and define key terms (e.g. revenue management, willingness to pay, consumer surplus, price elasticity, elastic/inelastic demand, price discrimination, fences, dynamic pricing, surge pricing, overbooking, no-show rate, capacity, anchoring, bundling, decoy pricing, skimming, penetration pricing) when they come up. Keep replies short (3-6 sentences) unless the student asks for more detail. Never just give the answer — guide them.";
   const user = selectedLectureText
     ? `Context from the lecture the student is reading:\n"""\n${selectedLectureText}\n"""\n\nStudent question: ${message}`
     : message;

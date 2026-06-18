@@ -21,9 +21,9 @@ const router: IRouter = Router();
 
 const WEEK_TITLES: Record<number, { title: string; summary: string }> = {
   1: {
-    title: "Operations & Supply Chain Analytics for Everyone",
+    title: "Revenue Management & Pricing Analytics for Everyone",
     summary:
-      "What operations & supply chain analytics really is (seeing a business as a flow, not a pile of stuff), how inventory balances the cost of too much against too little, why the bullwhip effect amplifies small demand changes into big swings up the chain, how bottlenecks let the slowest step rule the whole system, why waiting lines form from variability and explode near full capacity, why every demand forecast is wrong so you plan a range, how routing and optimization move things for less, and how resilience keeps a chain from breaking — all in plain language, no technical skills required.",
+      "What revenue management & pricing analytics really is (treating price as a flexible choice aimed at different buyers and moments, not one fixed number), how willingness to pay is a hidden ceiling that differs for every buyer, why price elasticity makes the same price change help one business and hurt another, how price discrimination and fences charge different people different prices for nearly the same thing, why dynamic pricing moves the price as demand shifts, how overbooking and capacity turn predictable no-shows into a calculated gamble, how discounts, bundles, and anchors shape what a price feels like, and how to set a whole pricing strategy that balances cost, customers, and competition — all in plain language, no technical skills required.",
   },
 };
 
@@ -112,7 +112,7 @@ router.get("/course/overview", async (_req, res) => {
 
   res.json(
     GetCourseOverviewResponse.parse({
-      title: "Operations & Supply Chain Analytics for Children",
+      title: "Revenue Management & Pricing Analytics for Children",
       weeks,
       totals: { assignmentsCompleted, assignmentsTotal, practiceCount },
     }),
@@ -203,13 +203,13 @@ router.post(
     const sourceBody = (base && base.trim().length > 0 ? base : lecture.body).trim();
 
     const sys =
-      "You are a introductory operations & supply chain analytics lecturer revising your own lecture at a student's request. " +
+      "You are a introductory revenue management & pricing analytics lecturer revising your own lecture at a student's request. " +
       "You are given the CURRENT lecture and ONE instruction from the student about how to revise it. " +
       "Apply the instruction faithfully. ABSOLUTE RULES, no exceptions:\n" +
       "1. KEEP every concept, claim, and learning objective from the current lecture. Never drop material or change what the lecture teaches — only adjust how it is presented per the instruction.\n" +
       "2. Preserve the existing examples; you may add to or clarify them, but do not silently replace them with different ones unless the instruction explicitly asks you to.\n" +
       "3. Keep headings and section order intact. You may add sub-sections (e.g. extra examples) when the instruction calls for it.\n" +
-      "4. Stay accurate to the source material and to operations & supply chain analytics as a discipline. Do not invent fake facts, citations, or quotations.\n" +
+      "4. Stay accurate to the source material and to revenue management & pricing analytics as a discipline. Do not invent fake facts, citations, or quotations.\n" +
       "5. Use clear Markdown. Use $...$ for any inline math.\n" +
       "6. Return ONLY the rewritten Markdown lecture body — no preface, no commentary, no surrounding code fences.";
     const user =
@@ -314,12 +314,12 @@ router.post(
     const sourceBody = (base && base.trim().length > 0 ? base : lecture.body).trim();
 
     const sys =
-      "You are an introductory operations & supply chain analytics lecturer adding illustrations to your own lecture. " +
+      "You are an introductory revenue management & pricing analytics lecturer adding illustrations to your own lecture. " +
       "You are given the CURRENT lecture. Return the SAME lecture, unchanged in what it teaches, but with vivid illustrations added. ABSOLUTE RULES, no exceptions:\n" +
       "1. KEEP every concept, claim, heading, section, and learning objective exactly as they are, in the same order. Do not remove, reorder, or rewrite the existing explanation — only ADD to it.\n" +
       "2. For EVERY distinct point the lecture makes, add AT LEAST ONE concrete, vivid illustration that makes the point easy to picture: a short scenario, a real-to-life case sketch, an everyday analogy, or a worked example. Keep illustrations tasteful and age-appropriate — never graphic or sensational.\n" +
       "3. Set off each illustration so it reads as an example (e.g. a short *Example:* sentence or a brief italicized vignette) rather than blending into the original text.\n" +
-      "4. Stay accurate to the source material and to operations & supply chain analytics as a discipline. Do not invent fake facts, statistics, citations, or quotations; keep examples plausibly illustrative, not presented as documented cases.\n" +
+      "4. Stay accurate to the source material and to revenue management & pricing analytics as a discipline. Do not invent fake facts, statistics, citations, or quotations; keep examples plausibly illustrative, not presented as documented cases.\n" +
       "5. Use clear Markdown. Use $...$ for any inline math.\n" +
       "6. Return ONLY the augmented Markdown lecture body — no preface, no commentary, no surrounding code fences.";
     const user =

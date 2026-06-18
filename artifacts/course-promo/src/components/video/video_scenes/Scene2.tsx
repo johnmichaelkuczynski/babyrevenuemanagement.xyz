@@ -15,10 +15,10 @@ export function Scene2() {
   }, []);
 
   const topics = [
-    { title: "What Operations & Supply Chain Analytics Is", progress: 100 },
-    { title: "Inventory", progress: 85 },
-    { title: "The Bullwhip Effect", progress: 60 },
-    { title: "Bottlenecks", progress: 20 },
+    { title: "What Revenue Management Is", progress: 100 },
+    { title: "Willingness to Pay", progress: 85 },
+    { title: "Price Elasticity", progress: 60 },
+    { title: "Price Discrimination & Fences", progress: 20 },
   ];
 
   const activities = [
@@ -37,7 +37,7 @@ export function Scene2() {
       ),
     },
     {
-      text: "Mastered: Inventory",
+      text: "Mastered: Willingness to Pay",
       time: "2 days ago",
       icon: (
         <svg className="w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.9 6.3L22 9l-5 4.7L18.2 21 12 17.4 5.8 21 7 13.7 2 9l7.1-.7z" /></svg>
@@ -64,7 +64,7 @@ export function Scene2() {
                 <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </div>
-            <span className="font-display font-bold text-slate-900">OSCA</span>
+            <span className="font-display font-bold text-slate-900">RMPA</span>
           </div>
           <div className="p-4 flex-1 space-y-1">
             <div className="px-3 py-2 text-sm font-medium text-slate-500 flex items-center gap-2">

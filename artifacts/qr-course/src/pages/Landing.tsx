@@ -38,19 +38,19 @@ const features = [
   {
     icon: BarChart3,
     title: "One Unit, 8 Topics",
-    body: "From seeing a business as a flow all the way to building a chain that doesn't break.",
+    body: "From why two seats cost different prices all the way to setting a whole pricing strategy.",
   },
 ];
 
 const topics = [
-  { n: "1.1", title: "What operations & supply chain analytics is: the business as a flow" },
-  { n: "1.2", title: "Inventory: the cost of too much and too little" },
-  { n: "1.3", title: "The bullwhip effect: why small ripples become big waves" },
-  { n: "1.4", title: "Bottlenecks: why the slowest step rules the whole system" },
-  { n: "1.5", title: "Waiting lines: the hidden math of queues" },
-  { n: "1.6", title: "Demand forecasting: stocking for a future you can't see" },
-  { n: "1.7", title: "Routing and optimization: moving things for less" },
-  { n: "1.8", title: "Resilience: building a chain that doesn't break" },
+  { n: "1.1", title: "What revenue management is: why two seats cost different prices" },
+  { n: "1.2", title: "Willingness to pay: the hidden ceiling in every buyer" },
+  { n: "1.3", title: "Price elasticity: when a price change helps or hurts" },
+  { n: "1.4", title: "Price discrimination and fences: charging each buyer differently" },
+  { n: "1.5", title: "Dynamic pricing: a price that moves with demand" },
+  { n: "1.6", title: "Overbooking and capacity: betting on no-shows" },
+  { n: "1.7", title: "Discounts, bundles, and anchors: the psychology of price" },
+  { n: "1.8", title: "Setting a pricing strategy: putting it all together" },
 ];
 
 export default function Landing() {
@@ -62,7 +62,7 @@ export default function Landing() {
             <Search className="w-4 h-4" />
           </div>
           <span className="font-serif font-semibold text-lg tracking-tight">
-            Operations & Supply Chain Analytics for Children
+            Revenue Management & Pricing Analytics for Children
           </span>
         </div>
         <div className="flex items-center gap-2">
@@ -89,14 +89,14 @@ export default function Landing() {
         <section className="max-w-4xl mx-auto px-6 pt-20 pb-16 text-center">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary text-secondary-foreground text-xs font-medium mb-6">
             <BarChart3 className="w-3.5 h-3.5" />
-            A friendly, one-unit intro to operations & supply chain analytics
+            A friendly, one-unit intro to revenue management & pricing analytics
           </div>
           <h1 className="text-4xl md:text-5xl font-serif font-bold text-primary leading-tight mb-5">
-            How things really move through a business. Let's figure it out together.
+            Why two seats cost different prices. Let's figure it out together.
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
             A self-paced course that teaches, tutors, drills, and grades you —
-            operations and supply chain analytics in plain language, no math or coding required.
+            revenue management and pricing analytics in plain language, no math or coding required.
             Perfect for curious students and grown-ups alike.
           </p>
           <div className="flex items-center justify-center gap-3">
@@ -162,7 +162,7 @@ export default function Landing() {
       </main>
 
       <footer className="border-t border-border px-6 py-6 text-center text-sm text-muted-foreground">
-        Operations & Supply Chain Analytics for Children — where the curriculum, the tutor, the grader, and the
+        Revenue Management & Pricing Analytics for Children — where the curriculum, the tutor, the grader, and the
         integrity check all live in one room.
       </footer>
     </div>

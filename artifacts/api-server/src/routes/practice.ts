@@ -155,20 +155,20 @@ router.post("/practice/sessions/:sessionId/next", async (req, res): Promise<void
       correctAnswer: string;
       explanation: string;
     }>(
-      `You generate a single introductory operations & supply chain analytics practice problem for a curious beginner. The problem MUST be on the topic "${topic.title}" and at difficulty "${difficultyLabel}" (${difficulty.toFixed(
+      `You generate a single introductory revenue management & pricing analytics practice problem for a curious beginner. The problem MUST be on the topic "${topic.title}" and at difficulty "${difficultyLabel}" (${difficulty.toFixed(
         1,
-      )}/5). Test general knowledge of the SUBJECT of operations and supply chain analytics, not recall of any particular book, lecture, or course. The question MUST be fully self-contained and answerable by anyone who knows the discipline: do NOT reference "the lecture", "the text", "the course", "the example", "the case", or any named character or example a student would only recognize from a specific reading.\n\nSTRICT QUESTION RULES (no exceptions):\n- Every question must present a SPECIFIC, concrete everyday scenario (e.g. a warehouse that's packed full yet keeps shipping orders late, a shop that overstocks everything after one stockout and ends up dumping spoiled goods, a manager whose confident forecast of a slow month is wrecked by a big unexpected order, a factory swamped with huge orders then flooded with cancellations while real demand barely moved, a company that trims its chain to one cheap supplier and calls it perfectly efficient) and ask the student to APPLY the topic's idea to THAT scenario — to judge, compare, explain, interpret, or decide.\n- NEVER ask for a definition, a term, or what something is "called"; NEVER ask the student to recite an abstract formulation from any reading.\n- NEVER write a question whose answer is a single word, a single term, or a bare "yes"/"no". The answer must require reasoning that is HARD TO SHARE: the student must explain their thinking about the specific scenario in 2-4 sentences.\n- The "correctAnswer" is the model answer (2-4 sentences) showing the operational reasoning a strong student would give for THIS scenario. The "explanation" briefly says what earns full credit.\n\nRespond as strict JSON: {"prompt": string, "correctAnswer": string, "explanation": string}. Avoid these recent prompts: ${JSON.stringify(
+      )}/5). Test general knowledge of the SUBJECT of revenue management and pricing analytics, not recall of any particular book, lecture, or course. The question MUST be fully self-contained and answerable by anyone who knows the discipline: do NOT reference "the lecture", "the text", "the course", "the example", "the case", or any named character or example a student would only recognize from a specific reading.\n\nSTRICT QUESTION RULES (no exceptions):\n- Every question must present a SPECIFIC, concrete everyday scenario (e.g. two travelers in identical seats on the same flight who paid very different prices, a shop owner thrilled that almost everyone who looks at a hoodie buys it instantly, a coffee shop next to three rivals that loses a third of its customers after a 10% price rise, a parking garage that charges one price all day and is jammed at rush hour but empty at midday, a mattress store with a permanent "$1,500, now $799!" sign on an item that always sold for about $799) and ask the student to APPLY the topic's idea to THAT scenario — to judge, compare, explain, interpret, or decide.\n- NEVER ask for a definition, a term, or what something is "called"; NEVER ask the student to recite an abstract formulation from any reading.\n- NEVER write a question whose answer is a single word, a single term, or a bare "yes"/"no". The answer must require reasoning that is HARD TO SHARE: the student must explain their thinking about the specific scenario in 2-4 sentences.\n- The "correctAnswer" is the model answer (2-4 sentences) showing the pricing reasoning a strong student would give for THIS scenario. The "explanation" briefly says what earns full credit.\n\nRespond as strict JSON: {"prompt": string, "correctAnswer": string, "explanation": string}. Avoid these recent prompts: ${JSON.stringify(
         lastProblems.map((p) => p.prompt),
       )}.`,
       userRequest || `Generate a new ${difficultyLabel} problem on ${topic.title}.`,
     );
   } catch {
     generated = {
-      prompt: `Practice (${topic.title}): A manager glances at how full and busy the operation looks and jumps to a quick conclusion about how well things are running. Using the idea behind "${topic.title}", walk through how you'd help them read the situation more carefully, and explain your reasoning in 2-4 sentences about that situation.`,
+      prompt: `Practice (${topic.title}): A shop owner glances at how busy the store looks and jumps to a quick conclusion about whether their prices are set right. Using the idea behind "${topic.title}", walk through how you'd help them read the situation more carefully, and explain your reasoning in 2-4 sentences about that situation.`,
       correctAnswer:
         "A strong answer applies the topic to the concrete situation step by step — saying what to look at, what it would mean, and what to do next — rather than just naming or defining the idea.",
       explanation:
-        "Full credit reasons about the specific situation and shows operational understanding; restating a definition does not earn credit.",
+        "Full credit reasons about the specific situation and shows pricing understanding; restating a definition does not earn credit.",
     };
   }
 
@@ -257,7 +257,7 @@ router.post("/practice/sessions/:sessionId/grade", async (req, res): Promise<voi
     try {
       tutorTip = (
         await chatJson<{ tip: string }>(
-          "You are a kind, concise operations & supply chain analytics tutor. Given a problem, the correct answer, and the student's wrong attempt, give ONE focused next-step tip (2 sentences max). Respond as strict JSON: {\"tip\": string}.",
+          "You are a kind, concise revenue management & pricing analytics tutor. Given a problem, the correct answer, and the student's wrong attempt, give ONE focused next-step tip (2 sentences max). Respond as strict JSON: {\"tip\": string}.",
           JSON.stringify({
             prompt: problem.prompt,
             correctAnswer: problem.correctAnswer,
