@@ -28,7 +28,7 @@ export function Scene1() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
         >
-          Financial & Managerial Analytics <br/><span className="text-blue-600">for Children</span>
+          Operations & Supply Chain Analytics <br/><span className="text-blue-600">for Children</span>
         </motion.h1>
         
         <motion.p 
@@ -37,7 +37,7 @@ export function Scene1() {
           animate={phase >= 1 ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
         >
-          A friendly intro to how a business really makes money — taught, tutored, and graded by AI.
+          A friendly intro to how things really move through a business — taught, tutored, and graded by AI.
         </motion.p>
       </div>
 

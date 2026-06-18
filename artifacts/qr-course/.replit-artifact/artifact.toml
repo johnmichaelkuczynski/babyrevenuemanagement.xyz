@@ -1,6 +1,6 @@
 kind = "web"
 previewPath = "/"
-title = "Restaurant & Hospitality Analytics for Children"
+title = "Operations & Supply Chain Analytics for Children"
 version = "1.0.0"
 id = "artifacts/qr-course"
 router = "path"

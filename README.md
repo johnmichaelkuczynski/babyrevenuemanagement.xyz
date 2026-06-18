@@ -1,20 +1,20 @@
-# 🔎 Financial & Managerial Analytics for Children
+# 🔎 Operations & Supply Chain Analytics for Children
 
-**A friendly, one-unit intro to financial and managerial analytics that teaches, tutors, drills, and grades itself — for curious students and adults alike.**
+**A friendly, one-unit intro to operations and supply chain analytics that teaches, tutors, drills, and grades itself — for curious students and adults alike.**
 
-Financial & Managerial Analytics for Children is a self-paced, single-user web course that delivers a plain-language introduction to financial and managerial analytics — taught, tutored, drilled, and graded entirely by AI, with built-in academic-integrity enforcement. No math, coding, or statistics required. The material is kept friendly and age-appropriate: it explains *how a business really makes money* and how owners read the numbers to make better decisions, never technical or jargon-heavy.
+Operations & Supply Chain Analytics for Children is a self-paced, single-user web course that delivers a plain-language introduction to operations and supply chain analytics — taught, tutored, drilled, and graded entirely by AI, with built-in academic-integrity enforcement. No math, coding, or statistics required. The material is kept friendly and age-appropriate: it explains *how things really move through a business* and how managers read the flow to make better decisions, never technical or jargon-heavy.
 
 ---
 
 ## ✨ Features
 
-- **One unit, 8 topics** — a complete plain-language syllabus: what financial & managerial analytics is · reading the score (the three financial statements) · where the money goes (fixed, variable, cost behavior) · break-even · budgets and variance · unit economics · forecasting and KPIs · from numbers to decisions.
+- **One unit, 8 topics** — a complete plain-language syllabus: what operations & supply chain analytics is (the business as a flow) · inventory (the cost of too much and too little) · the bullwhip effect · bottlenecks · waiting lines (queues) · demand forecasting · routing and optimization · resilience (the capstone).
 - **Three-depth lessons** — every lesson reads at **Short / Medium / Long** length, AI-rewritten while keeping the same examples and learning objectives.
 - **Section-scoped AI tutor** — ask about the exact paragraph you're reading; answers stream back token-by-token, grounded in that lecture section.
 - **Adaptive practice** — generated problem sets that get harder on a streak and ease off after a miss; per-session difficulty persists.
 - **AI-graded assignments** — two homework sets, a timed unit test, and a cumulative final, each scored for semantic equivalence with a written rationale and a rolled-up percent score.
 - **Two-layer AI-authorship detection** — every submission is screened by a static text classifier (GPTZero) **and** a diachronic keystroke-pattern detector, each with a human-readable verdict.
-- **Diagnostic reasoning assessments** — two instruments (Financial & Managerial Analytics subject reasoning and general reasoning), each in three formats and three lengths, takeable at four points in the journey. Ungraded practice with freshly generated items every attempt; coursework is 100% of the grade.
+- **Diagnostic reasoning assessments** — two instruments (Operations & Supply Chain Analytics subject reasoning and general reasoning), each in three formats and three lengths, takeable at four points in the journey. Ungraded practice with freshly generated items every attempt; coursework is 100% of the grade.
 - **Live analytics** — dashboard KPIs (attempts, accuracy, streak), per-topic mastery, and a recent-activity feed.
 - **Operator diagnostics** — one-click self-tests that verify the entire stack (database, OpenAI, GPTZero, detection, and the practice/grade loop) before you trust a session.
 
@@ -100,4 +100,4 @@ Open the **Diagnostics** page in the app (or hit the API directly) to run:
 
 ---
 
-*Financial & Managerial Analytics for Children — where the curriculum, the tutor, the grader, and the integrity check all live in one room.*
+*Operations & Supply Chain Analytics for Children — where the curriculum, the tutor, the grader, and the integrity check all live in one room.*

@@ -1,23 +1,23 @@
-# Financial & Managerial Analytics for Children — App Blueprint
+# Operations & Supply Chain Analytics for Children — App Blueprint
 
-A complete architectural blueprint for the Financial & Managerial Analytics for Children one-unit course. This document is the single reference for what the app does, how it's wired, and the contracts between pieces. For day-to-day commands and gotchas see `replit.md`.
+A complete architectural blueprint for the Operations & Supply Chain Analytics for Children one-unit course. This document is the single reference for what the app does, how it's wired, and the contracts between pieces. For day-to-day commands and gotchas see `replit.md`.
 
 ---
 
 ## 1. Product summary
 
-Financial & Managerial Analytics for Children is a self-paced, single-user web course (Clerk sign-in) covering a friendly, plain-language one-unit curriculum (8 topics) introducing how a business makes money and how owners read the numbers to decide. Students read AI-rewritten lecture notes at three lengths, ask an AI tutor scoped to the section they're reading, drill on adaptive practice problems, and submit homework / unit test / final that are AI-graded and AI-detection-screened.
+Operations & Supply Chain Analytics for Children is a self-paced, single-user web course (Clerk sign-in) covering a friendly, plain-language one-unit curriculum (8 topics) introducing how things move through a business and how managers read the flow to decide. Students read AI-rewritten lecture notes at three lengths, ask an AI tutor scoped to the section they're reading, drill on adaptive practice problems, and submit homework / unit test / final that are AI-graded and AI-detection-screened.
 
 The 8 topics (Unit 1):
 
-1. 1.1 What Financial & Managerial Analytics Is — The Business as a Story in Numbers
-2. 1.2 Reading the Score — The Three Financial Statements at a Glance
-3. 1.3 Where the Money Goes — Fixed, Variable, and the Cost Behavior Trick
-4. 1.4 Break-Even — The Single Most Useful Number in Business
-5. 1.5 Budgets and Variance — Plan vs. Reality
-6. 1.6 Unit Economics — Does Each Sale Actually Make Money?
-7. 1.7 Forecasting and KPIs — Steering by the Right Dials
-8. 1.8 From Numbers to Decisions (Capstone)
+1. 1.1 What Operations & Supply Chain Analytics Is — The Business as a Flow
+2. 1.2 Inventory — The Cost of Too Much and Too Little
+3. 1.3 The Bullwhip Effect — Why Small Ripples Become Big Waves
+4. 1.4 Bottlenecks — Why the Slowest Step Rules the Whole System
+5. 1.5 Waiting Lines — The Hidden Math of Queues
+6. 1.6 Demand Forecasting — Stocking for a Future You Can't See
+7. 1.7 Routing and Optimization — Moving Things for Less
+8. 1.8 Resilience — Building a Chain That Doesn't Break (Capstone)
 
 The product surface is three deployable artifacts in one pnpm monorepo:
 
@@ -267,8 +267,8 @@ artifacts/course-promo/src/components/video/
 └── video_scenes/
     ├── Scene1.tsx  (s1_intro, 4.5s)      Title + honest one-line pitch
     ├── Scene2.tsx  (s2_curriculum, 6s)   The real 8-topic Unit 1 curriculum list
-    ├── Scene3.tsx  (s3_depths, 6s)       A real lesson (1.4 Break-even) with the Short / Medium / Long depth toggle
-    ├── Scene4.tsx  (s4_tutor, 9s)        Section-scoped AI tutor answering a concrete break-even case, streaming in
+    ├── Scene3.tsx  (s3_depths, 6s)       A real lesson (1.4 Bottlenecks) with the Short / Medium / Long depth toggle
+    ├── Scene4.tsx  (s4_tutor, 9s)        Section-scoped AI tutor answering a concrete bottleneck case, streaming in
     ├── Scene5.tsx  (s5_practice, 7s)     Adaptive practice: correct answer → difficulty ticks up
     ├── Scene6.tsx  (s6_grading, 6.5s)    AI grading: score badge + written per-problem feedback
     ├── Scene7.tsx  (s7_detection, 8s)    Two-layer AI-authorship detection (GPTZero text scan + keystroke pattern) → "Authentic"
@@ -279,7 +279,7 @@ artifacts/course-promo/src/components/video/
 
 ### 8.2 Key rules
 
-- **Show real content, not placeholders.** On-screen copy is grounded in the real curriculum (`artifacts/api-server/src/lib/seed.ts`): the 8 topic titles, real break-even lesson text, a real graded-homework rationale, and the real two-layer detection verdicts. Do not swap in generic/abstract filler.
+- **Show real content, not placeholders.** On-screen copy is grounded in the real curriculum (`artifacts/api-server/src/lib/seed.ts`): the 8 topic titles, real bottleneck lesson text, a real graded-homework rationale, and the real two-layer detection verdicts. Do not swap in generic/abstract filler.
 - **The UI is rebuilt in JSX**, using the app's real fonts and colors — every pixel is JSX, not a screenshot.
 - Auto-plays and loops; no interactivity (it is recorded from the browser tab).
 - Do not modify `src/lib/video/hooks.ts`. After changing scenes, run `bash scripts/validate-recording.sh` and keep `index.html` `<title>` + OG/Twitter meta in sync with the course.

@@ -14,7 +14,7 @@ import { logger } from "./logger";
 // the value stored in seed_meta; a mismatch forces a full re-seed, so content
 // edits self-heal in every environment (including a republished production)
 // without a manual database wipe.
-const SEED_CONTENT_VERSION = "2026-06-16-financial-managerial-analytics-for-children-v1";
+const SEED_CONTENT_VERSION = "2026-06-18-operations-supply-chain-analytics-for-children-v1";
 
 type SeedTopic = {
   slug: string;
@@ -26,254 +26,258 @@ type SeedTopic = {
 };
 
 const TOPICS: SeedTopic[] = [
-  // Unit 1 — Financial & Managerial Analytics for Everyone
+  // Unit 1 — Operations & Supply Chain Analytics for Everyone
   {
-    slug: "what-financial-analytics-is",
-    title: "What financial & managerial analytics is",
+    slug: "what-operations-analytics-is",
+    title: "What operations & supply chain analytics is",
     weekNumber: 1,
-    blurb: "Financial analytics asks whether a business is really making money — and most of what gut instinct tells you about that is a myth.",
-    lectureTitle: "1.1 What financial & managerial analytics is (the business as a story in numbers)",
-    body: `# What financial & managerial analytics is
+    blurb: "Most people picture a business as a building full of stuff — but it's really a flow, and almost everything that goes wrong is a problem with how things move.",
+    lectureTitle: "1.1 What operations & supply chain analytics is (the business as a flow)",
+    body: `# What operations & supply chain analytics is
 
-Almost everything most people "know" about whether a business is doing well comes from gut feeling and a busy storefront. Those feelings are powerful, but they're often wrong. **Financial and managerial analytics** is the careful study of the question those instincts only pretend to answer: is this business actually making money, and how would we know — not by how it feels, but by what the numbers show?
+Ask most people to picture a business and they imagine a place — a store, a warehouse, a factory full of stuff. That picture is comforting, and it's also why so many businesses get stuck. **Operations and supply chain analytics** starts from a different picture: a business isn't a pile of things sitting still, it's a **flow** — materials, orders, and work moving through steps from the very start until they reach a customer. Learning to see and measure that flow is the whole game.
 
-## A business you can actually read
+## A business you can watch move
 
-Every business — a lemonade stand, a bakery, a giant company — tells a **story in numbers.** Financial and managerial analytics is the skill of reading that story instead of guessing at it. It turns a busy, confusing place full of sales, bills, and effort into things you can follow: how much money came in, how much went out, what's left over, and whether each thing the business does actually pays for itself. The goal isn't to make business cold; it's to see clearly what's really happening so you can keep the doors open.
+Think of how a pizza reaches your door: someone grows wheat and tomatoes, a mill and a cannery turn them into flour and sauce, a truck carries those to a shop, a cook assembles a pizza, an oven bakes it, and a driver delivers it. Every business is a chain of steps like that, and **operations analytics** is the skill of watching things move through those steps instead of just counting what's on the shelves. The question stops being "how much do we have?" and becomes "how smoothly is it moving, and where does it get stuck?"
 
-## Two readers of the same story
+## Operations vs. supply chain: inside vs. the whole chain
 
-There are really two audiences for this story, and that's the "financial *and* managerial" part. **Financial analytics** is the version told to outsiders — owners, lenders, the tax office — like an official scoreboard reporting how the team did. **Managerial analytics** is the version used inside the business by the people making decisions, like a dashboard a driver watches *while* steering. Same business, same numbers underneath, but one looks back to report and the other looks ahead to decide.
+The two halves of the name point at two views of the same flow. **Operations** is the flow *inside* one business — how an order travels through your own kitchen, factory, or office. **Supply chain** is the flow *across* many businesses linked together — the farmers, factories, trucks, and stores that hand things off to each other until a customer gets them. Same idea at two zoom levels: one looks at the steps you control directly, the other at the long chain of companies you depend on and can only nudge.
 
-## A number is a measurement, not the money
+## Flow, not a pile
 
-Here's something easy to forget: a "metric" isn't the same as the business itself. It's a **measurement** we choose to take. Profit, sales, cash on hand — each is one snapshot, not the whole story. There's even a saying that captures the biggest trap here: **profit is an opinion, but cash is a fact.** Profit depends on choices about *when* to count things; the actual cash in the drawer does not. Good analysts keep that difference in mind instead of trusting a single comforting number.
+Three plain measurements describe any flow. **Throughput** is how much actually comes out the far end in a given time — pizzas per hour, packages per day. **Flow time** is how long one item takes to travel the whole way through. And **inventory** is how much is sitting *inside* the system waiting at any moment. The surprising part is how tightly these are linked: a place can look busy and full of inventory yet still have low throughput, because being full is not the same as moving fast.
 
-## The myths the numbers tell you
+## The myths the flow exposes
 
-Business lore is full of confident myths: that high sales mean a healthy company, that "profit on paper" means money in the bank, that a low price always wins more customers, that growing fast is the same as doing well. None of these hold up on their own. A company can post record sales and quietly run out of cash; a fast-growing business can lose a little more on every single sale. A big part of this course is **un-learning** those myths and replacing them with a few honest numbers read together.
+Operations is full of confident myths. That a *busy* business is a productive one — but busy can just mean clogged. That a *full warehouse* is a safe one — but full often means cash frozen in stuff nobody's buying yet. That buying one *faster machine* makes everything faster — but if that machine wasn't the slow step, nothing speeds up. Much of this course is un-learning those myths and replacing them with a habit of asking where things actually move, wait, and pile up.
 
 ## Why this matters
 
-Getting this right isn't just for big companies with finance teams. The same ideas decide whether a small shop survives its first three years, whether a family can tell if a side business is worth the effort, and whether a good idea is also a workable one. When people run on myth instead of measurement, real harm follows — savings vanish, jobs are lost, the doors close. Reading a business honestly is a kind of fairness to everyone who depends on it.
+This isn't only for giant factories. The same ideas decide whether a food truck can serve the lunch rush without a thirty-minute line, whether a small online shop ships on time without drowning in unsold boxes, and whether a hospital can move patients through the emergency room before they're harmed by the wait. When a flow is badly managed, people feel it as long waits, empty shelves, late deliveries, and wasted money — so reading the flow honestly is a kind of fairness to everyone who depends on it.
 
 ## In the real world
 
-One of the most surprising facts in business is that **profitable companies go broke all the time.** A growing business can show a healthy profit on its reports and still fail, because it ran out of *cash* — its money was tied up in unsold inventory or in customers who hadn't paid yet, while the rent and payroll came due now. Studies of why small businesses fail keep pointing to running out of cash, not lack of profit, as a leading cause. That gap between looking profitable and actually having money is exactly the kind of thing analytics is meant to catch — and it's the warning that runs through this whole course.`,
+The most famous example is **Toyota.** For decades carmakers built huge piles of parts and pushed them through, assuming bigger batches meant efficiency. Toyota flipped the picture: treat the factory as a *flow*, make only what the next step actually needs, and relentlessly hunt for the places where things sit and wait. The result — often called "lean" production — let them build better cars with far less inventory and money tied up, and the rest of the world spent years trying to copy it. The lesson runs through this whole course: the win didn't come from a bigger pile, it came from seeing the business as something that moves.`,
   },
   {
-    slug: "three-financial-statements",
-    title: "The three financial statements",
+    slug: "inventory-costs",
+    title: "Inventory: too much and too little",
     weekNumber: 1,
-    blurb: "No single report tells you if a business is healthy — the income statement, balance sheet, and cash flow statement only make sense read together.",
-    lectureTitle: "1.2 Reading the score (the three financial statements at a glance)",
-    body: `# The three financial statements
+    blurb: "Keeping lots in stock feels safe and keeping little feels lean — but both have real costs, and the whole skill is balancing two opposite mistakes.",
+    lectureTitle: "1.2 Inventory (the cost of too much and too little)",
+    body: `# Inventory: too much and too little
 
-When someone asks "how's the business doing?", everyone wants one simple report. The honest answer is that the story is told by **three different reports**, and any one of them alone can mislead you. Together they're like reading several vital signs at once instead of trusting your pulse alone. This section is about what each one shows — and why you need all three.
+Inventory is just the stuff a business is holding — the boxes in the back, the parts in the bin, the food in the fridge. It feels like a simple thing to get right: keep enough so you never run out. But inventory is one of the trickiest decisions in all of business, because **both directions are expensive.** Holding too much costs you, and holding too little costs you, and the entire skill is finding the balance between two opposite mistakes.
 
-## The income statement: did we make a profit?
+## What inventory really is
 
-The **income statement** answers one question over a stretch of time: did we earn more than we spent? It starts with the money the business made from selling things (**revenue**), subtracts the costs of running the business, and ends with what's left over (**profit**, sometimes called the "bottom line" because it's literally the last line). It's the report people quote most. But it covers only *profit over a period* — it doesn't tell you what the business owns, owes, or whether it actually has cash right now.
+Inventory is anything sitting and waiting to be used or sold — raw materials, half-finished goods, and finished products on the shelf. It's tempting to see a full storeroom as pure wealth, but inventory is really **money frozen in the shape of stuff.** Every item back there is cash you've already spent that hasn't come back yet, parked until a customer finally buys it. That reframe — inventory as trapped money, not safety — is the key to thinking about it clearly.
 
-## The balance sheet: a snapshot of what we own and owe
+## The cost of too much
 
-The **balance sheet** is a photograph taken on a single day. It lists what the business **owns** (its *assets* — cash, equipment, inventory) and what it **owes** (its *liabilities* — loans, unpaid bills), and the difference between them is the owner's stake. It always "balances" because everything the business has was paid for either by borrowing or by the owners. Where the income statement is a movie of a whole period, the balance sheet is a still frame of one moment.
+Holding too much has a stack of hidden costs people forget. There's the **cash** tied up that you can't use for anything else. There's **space** — shelves, warehouses, refrigeration — that costs rent and power. There's **spoilage and obsolescence**: food rots, fashions change, the newer model arrives and last year's becomes worth little. A warehouse stuffed to the ceiling *looks* like strength, but it can quietly be a slow bleed of money, especially when it turns out customers wanted something else.
 
-## The cash flow statement: where the money actually went
+## The cost of too little
 
-The **cash flow statement** tracks the one thing that keeps the lights on: actual cash moving in and out. This matters because of that earlier saying — **profit is an opinion, cash is a fact.** A sale can count as profit the moment it's made, even if the customer won't pay for sixty days, so a business can show a profit while its bank account drains. The cash flow statement strips away the timing tricks and shows the plain truth of whether more money came in than went out.
+Holding too little has the opposite danger: the **stockout.** When a customer wants something and you don't have it, you lose that sale — and sometimes you lose the customer for good, because they go to a competitor and stay there. For a factory, running out of one small part can halt an entire production line, so a missing five-cent screw stops a thousand-dollar product. Too little inventory looks lean and disciplined right up until the moment it costs you far more than the savings.
 
-## Why you read all three together
+## Why "just keep lots in stock" is a trap
 
-Here's the key idea: **no single statement is the whole story.** The income statement can show a profit while the cash flow statement shows the business is bleeding money. The balance sheet can look strong while profits are sliding. Each report answers a different question — *Did we earn?*, *What do we have?*, *Did cash come in?* — and only by reading them side by side do you see whether a business is genuinely healthy or just looks that way from one angle.
+The instinct after a stockout is to overcorrect: never run out again, pile it high. But that just swaps one expensive mistake for another, turning lost sales into spoilage and frozen cash. The honest truth is there's **no setting that removes both risks** — more stock means less risk of running out but more holding cost, and less stock means the reverse. Good operators stop chasing a magic "enough" and instead decide which mistake is more affordable for *this* product.
+
+## The sweet spot and safety stock
+
+The goal is a sweet spot: enough to serve customers reliably without drowning in extra. Because demand is unpredictable, businesses keep a deliberate cushion called **safety stock** — a little extra to absorb a surprise busy day or a late delivery. How big that cushion should be depends on the item: a cheap, long-lasting, hard-to-replace part deserves a generous buffer, while an expensive item that spoils fast deserves a thin one. Sizing that cushion on purpose, instead of by panic, is the heart of inventory management.
 
 ## In the real world
 
-Plenty of companies have reported glowing profits right up until they collapsed, because the profit was on paper while the cash quietly ran out. It happens so often that the cash flow statement — now considered essential — wasn't even *required* of U.S. companies until 1987, after too many "profitable" businesses surprised everyone by failing. The lesson investors learned the hard way is this section's whole point: a single shiny report is a starting point, not the truth. You only see what's really happening when you read the score, the snapshot, and the cash all at once.`,
+Fashion retailers live this tension out loud. Order too many of a style that doesn't sell and you're stuck slashing prices on the clearance rack — those giant end-of-season markdowns are the visible cost of *too much.* Meanwhile, popular game consoles and the latest phones routinely **sell out** for months, sending buyers to resellers and rivals — the cost of *too little.* Neither company is foolish; they're both wrestling the same impossible balance, guessing an uncertain future and paying for whichever way they guessed wrong. That balancing act, repeated across every item a business stocks, is exactly what inventory analytics is for.`,
   },
   {
-    slug: "cost-behavior",
-    title: "Cost behavior: fixed and variable",
+    slug: "bullwhip-effect",
+    title: "The bullwhip effect",
     weekNumber: 1,
-    blurb: "\"What did it cost to make?\" has no single answer — costs behave differently, and the same item can cost very different amounts depending on how many you make.",
-    lectureTitle: "1.3 Where the money goes (fixed, variable, and the cost behavior trick)",
-    body: `# Cost behavior: fixed and variable
+    blurb: "A tiny wobble in what customers buy turns into wild swings of shortage and glut by the time it reaches the factory — and it happens even when everyone is being sensible.",
+    lectureTitle: "1.3 The bullwhip effect (why small ripples become big waves)",
+    body: `# The bullwhip effect
 
-Ask "how much does it cost to make one of these?" and most people expect a single, fixed number. One of the most useful — and most surprising — ideas in managerial analytics is that there often *isn't* one. Costs **behave** in different ways, and once you see how, a "trick" appears that explains why making more of something can quietly make each one cheaper.
+Here's one of the strangest and most important patterns in all of business: a *small* change in what shoppers buy turns into a *huge* swing in orders by the time it reaches the factory and the farms. A barely-noticeable wobble at the store becomes a flood, then a drought, further up the chain. It's called the **bullwhip effect** — a flick of the wrist at the handle becomes a giant crack at the tip — and the unsettling part is that it happens even when every single person is acting reasonably.
 
-## Two kinds of cost
+## A ripple becomes a wave
 
-Costs split into two families. **Fixed costs** stay roughly the same no matter how much you sell: the rent on the shop, the manager's salary, the insurance. Whether you serve one customer or a thousand, the rent is the rent. **Variable costs** rise and fall with how much you make: the flour in each loaf of bread, the box each order ships in, the electricity to run a machine longer. Sorting every cost into "stays the same" or "grows with each unit" is the first move of cost analysis.
+Picture a chain: shoppers → the store → the distributor → the factory → the raw-material supplier. Suppose customer demand ticks up just a little. The store, not wanting to run out, orders a bit *extra* to be safe. The distributor sees the store's bigger order, assumes demand is climbing, and orders even *more* extra from the factory. The factory, seeing that, ramps up the most of all. A tiny ripple at the shopper end has become a towering wave at the supplier end — and the same thing happens in reverse when demand dips, swinging from too much to too little.
 
-## The cost behavior trick
+## Why each link over-reacts
 
-Here's the trick that trips people up: because fixed costs stay put, the cost *per item* changes as you make more. Imagine rent is the only fixed cost. Make ten loaves and each loaf carries one-tenth of the rent; make a thousand and each carries one-thousandth. The fixed cost gets **spread thinner** over more units, so the average cost per loaf falls — even though nothing about the recipe changed. This is why bigger producers can often charge less: they're not magic, they're just spreading their fixed costs over more sales.
+The maddening thing is that no one is being foolish. Each link only sees the orders from the link right next to it, not the actual shoppers, so they're **guessing in the dark.** They add a safety cushion on top of a number that already had a cushion. They **order in big batches** to save on shipping, which turns a smooth trickle of demand into lumpy bursts. And when deliveries are slow, they panic-order more, then cancel when it all arrives at once. Sensible choices, stacked on top of each other, manufacture the chaos.
 
-## Why "what did it cost?" is a trap
+## The cost of the whiplash
 
-This is why "what did this product cost us to make?" is a trap question. The honest answer is "it depends on how many we made." If you treat a cost as one fixed number, you'll misprice things, misjudge which products are worth selling, and panic over the wrong numbers. Good managers always ask *which kind* of cost they're looking at and *at what volume*, instead of trusting a single cost tag.
+This whiplash is wildly expensive. The far end of the chain lurches between **gluts** (warehouses overflowing, money frozen, products going stale) and **shortages** (factories idle, customers unserved). Workers get hired in a frenzy and laid off in the bust. Everyone holds extra "just in case" inventory to survive the swings, which costs money all the time. A chain rocked by the bullwhip is more expensive *and* less reliable than the steady demand underneath it ever justified.
 
-## The most important cost is the next one
+## How to tame it
 
-For decisions, the cost that matters most is the **marginal cost** — what it costs to make just *one more.* Once the rent is paid and the machine is on, one extra unit might cost almost nothing. That's why a business will sometimes happily sell something cheaply that "cost a lot to make": the fixed part is already spent, so any price above the tiny extra cost adds money. Confusing the average cost with the cost of the next one leads to turning away good sales.
+The cure is mostly about **information and steadiness.** If every link can see the *real* shopper demand — not just the order from their neighbor — they stop guessing and amplifying. Ordering **smaller amounts more often** smooths the lumps out. Steadier prices stop the artificial stockpiling that big sales and discounts trigger. The pattern can't be erased completely, but sharing honest demand information up and down the chain shrinks the wave back toward the ripple that actually started it.
 
 ## In the real world
 
-Think of an airplane about to take off with ten empty seats. The flight's big costs — the plane, the crew, the fuel — are **fixed**: they're the same whether those seats are full or empty. The cost of letting one more passenger board an already-departing flight is tiny: a bit more fuel and a snack. That's why airlines sell last-minute empty seats cheap; almost any price beats flying them empty. It's a perfect picture of cost behavior: the seat didn't get cheaper to provide overall — but the cost of *one more* passenger was nearly nothing, and that's the number the decision turns on.`,
+The effect got its name at **Procter & Gamble**, who noticed that baby-diaper sales — about as steady as demand gets, since babies are wonderfully predictable — produced wildly swinging orders from stores and suppliers. Steady demand, chaotic ordering: the bullwhip in plain sight. A more recent example was the 2020 run on toilet paper: a modest, real bump in home use got amplified by panic-buying and frantic restocking into empty shelves nationwide, even though factories never actually stopped. In both cases the underlying need barely moved — the *chain's reaction* to it is what spun out of control, which is exactly what this pattern predicts.`,
   },
   {
-    slug: "break-even",
-    title: "Break-even",
+    slug: "bottlenecks",
+    title: "Bottlenecks",
     weekNumber: 1,
-    blurb: "Before you can know if a price or a plan works, you need one number: how much you must sell just to stop losing money.",
-    lectureTitle: "1.4 Break-even (the single most useful number in business)",
-    body: `# Break-even
+    blurb: "A whole system can only go as fast as its single slowest step — which means most efforts to speed things up are aimed at the wrong place and change nothing.",
+    lectureTitle: "1.4 Bottlenecks (why the slowest step rules the whole system)",
+    body: `# Bottlenecks
 
-If you could keep only one number about a business, many experts would keep this one: the **break-even point** — how much you have to sell before you stop losing money and start making it. It's the line between "this is draining money" and "this is finally paying for itself," and a shocking number of business decisions go wrong simply because nobody worked it out.
+If you remember one rule about getting things done faster, make it this one: **a chain of steps can only move as fast as its slowest step.** That slowest step is called the **bottleneck**, named for the narrow neck of a bottle that controls how fast anything pours out no matter how wide the rest is. It sounds obvious, yet ignoring it is the single most common reason that expensive attempts to "speed things up" accomplish absolutely nothing.
 
-## What break-even means
+## The slowest step sets the pace
 
-The break-even point is the amount of sales where **total money in exactly equals total money out** — no profit, no loss. Below it, every day you're a little in the hole; above it, you're finally ahead. It quietly answers the most important question before you start: *how much do we need to sell just to survive?* If that number is wildly higher than what you could realistically sell, the plan is broken before it begins, and break-even tells you that early.
+Imagine making sandwiches with friends: one person toasts bread, one adds fillings, one wraps them up. If the toaster can only finish 10 sandwiches an hour, then no matter how lightning-fast the filler and wrapper are, **only 10 sandwiches an hour come out.** The toaster is the bottleneck, and it alone sets the speed of the whole line. Everyone else just ends up waiting on it or piling up work in front of it. The slowest step quietly rules the entire system.
 
-## Contribution: what each sale chips in
+## Why speeding up the wrong step is wasted
 
-To find break-even you need one idea: each sale doesn't have to cover *everything*, just its own variable cost — and whatever is left over **contributes** to paying the fixed costs. If a drink sells for $3 and the cup, lid, and liquid cost $1, that drink contributes $2 toward the rent. Keep selling, and those $2 chunks stack up until the fixed costs are fully covered. The moment they are, you've broken even, and every sale after that is profit.
+This leads to the costly mistake. If you spend money making the *filler* twice as fast, your output stays at 10 an hour — the filler was never the limit, so the upgrade does nothing but make a faster worker wait more. Improving a non-bottleneck step is **wasted effort**, every time. Only improving the bottleneck — a second toaster, a faster oven — actually raises how much the whole system produces. Knowing this saves businesses from pouring money into upgrades that look productive and change nothing.
 
-## Why it's the most useful number
+## Finding the bottleneck
 
-Break-even is so useful because it turns vague hopes into a concrete target. Instead of "I hope this does well," you get "we need to sell 200 of these a month to cover our costs." That single number lets you sanity-check a price, a rent, or a whole business idea in minutes. It also reframes decisions: raising the price or trimming a fixed cost lowers the number you must hit, while a cheap price can push break-even so high you could never reach it.
+So how do you spot it? Look for where **work piles up.** Stuff stacks up *in front of* the bottleneck because that step can't keep up, while everything *after* it sits hungry and idle, waiting to be fed. The bottleneck is usually the busiest, most overwhelmed step with the longest line in front of it — the place where everyone is waiting. Once you learn to look for the pile-up and the wait, the slowest step tends to reveal itself.
 
-## The low-price trap
+## What to do about it
 
-This is where a common myth falls apart: "just lower the price and we'll sell enough to make it up." Cutting the price shrinks how much each sale contributes, which *raises* the number you must sell to break even — sometimes to impossible heights. A business can be busy, selling tons, and still lose money on every transaction because the price never covered the costs. Knowing your break-even point is what protects you from cheerfully selling your way into bankruptcy.
+Once you've found the bottleneck, the moves are clear: **never let it sit idle** (every minute it's stopped is output the whole system loses and can never recover), protect it from running out of work, and offload anything from it that a non-bottleneck step could do instead. And here's the twist: when you successfully speed up one bottleneck, the **bottleneck moves** — some other step is now the slowest, and your attention has to follow it. Managing a system is really an endless game of finding and relieving whatever step is currently the limit.
 
 ## In the real world
 
-Hollywood lives and dies by break-even. A movie doesn't break even at its production budget — a film that cost $100 million to make usually has to earn roughly **twice** that at the box office just to break even, because theaters keep about half the ticket money and marketing can cost nearly as much as the film itself. That's why a movie can gross "over $150 million" and still be called a flop: it never crossed its real break-even line. The number that decides a hit isn't the splashy gross — it's the quiet break-even point underneath it.`,
+Think of airport security. An airport can have huge parking, dozens of check-in desks, and a giant terminal, but if everyone funnels through a handful of slow screening lanes, **the whole airport moves at the speed of those lanes** — the long, snaking line forms right there, while the gates beyond sit half-empty waiting. Adding more parking or more shops does nothing for the wait; only opening more screening lanes (relieving the bottleneck) helps. The same shape shows up in a restaurant with one oven, a highway where four lanes merge into two, and a hospital with too few beds — the slowest step is where the line forms, and it's the only place worth fixing first.`,
   },
   {
-    slug: "budgets-and-variance",
-    title: "Budgets and variance",
+    slug: "waiting-lines-queues",
+    title: "Waiting lines and queues",
     weekNumber: 1,
-    blurb: "A budget isn't a prediction that's right or wrong — it's a plan, and the gap between plan and reality is where the real lessons hide.",
-    lectureTitle: "1.5 Budgets and variance (plan vs. reality)",
-    body: `# Budgets and variance
+    blurb: "Lines don't form because there isn't enough capacity on average — they form because of randomness, and the closer you run to full, the more the wait explodes.",
+    lectureTitle: "1.5 Waiting lines (the hidden math of queues)",
+    body: `# Waiting lines and queues
 
-People treat a **budget** like a fortune-teller's prediction — something that's either right or wrong by year's end. That's the wrong way to think about it. A budget is a **plan written in numbers**, and its real value shows up later, when you compare it against what actually happened. That gap between plan and reality has a name — **variance** — and learning to read it is one of the most practical skills in managerial analytics.
+Everyone hates waiting in line, and most people assume a line means one simple thing: not enough staff. Sometimes that's true. But one of the most surprising ideas in operations is that **lines form even when there's plenty of capacity on average** — and understanding *why* explains a huge amount about why the world makes you wait, and what can actually be done about it.
 
-## A budget is a plan, not a promise
+## Why lines form even with enough capacity
 
-A budget says, in advance, "here's what we expect to bring in and spend." It's how a business turns goals into something checkable: how much to sell, how much to spend on supplies, how many people to hire. It will never be exactly right — the future never is — and that's fine. A budget isn't a promise to hit every number; it's a baseline you can measure reality against so you notice, quickly, when things drift off course.
+Here's the key: the trouble isn't the average, it's the **variability.** Customers don't arrive in a tidy, evenly-spaced stream — three show up at once, then nobody for a while. And each one takes a different amount of time to serve — a quick question here, a complicated mess there. Even if a clerk could *on average* handle everyone who comes, those random clumps of arrivals and slow jobs pile up faster than the clerk can clear them, and a line forms. Randomness alone, with no shortage at all, creates the wait.
 
-## Variance: the gap that teaches you
+## The 100% trap
 
-**Variance** is simply the difference between what you planned and what actually happened. Planned to spend $1,000 on supplies but spent $1,300? That's a $300 variance. The point of measuring it isn't to assign blame — it's to ask *why.* A big surprise, good or bad, is a signal that the world didn't behave the way you assumed, and chasing down the reason is where the real understanding comes from.
+Now the counterintuitive part. You might think the goal is to keep your server (clerk, machine, doctor) busy nearly 100% of the time — that sounds maximally efficient. But as you push toward 100% busy, the **waiting time doesn't rise gently, it explodes.** A system running at 70% capacity has short, manageable lines; the same system at 95% can have lines many times longer, and at 100% the wait shoots toward infinity. The cushion of slack you "wasted" was actually what kept the line short. Running flat-out doesn't make customers move faster — it makes them wait forever.
 
-## Favorable isn't always good news
+## One line or many?
 
-Here's the subtle part: variances come in two flavors, and the labels can fool you. A **favorable** variance helped profit (you spent less, or earned more); an **unfavorable** one hurt it. But "favorable" doesn't always mean "good." Spending far less than budgeted on training looks favorable on paper yet might be quietly starving the business. And hitting your sales target can hide an ugly truth — like reaching it only by slashing prices, which is a favorable volume but an unfavorable price. The labels tell you the direction, not the wisdom.
+A simple, powerful fix is how you organize the line. Compare a bank with **one** line feeding several tellers against a supermarket with a **separate** line at each register. The single shared line is almost always faster on average, because no one gets stuck behind one unusually slow customer while another teller sits free — the moment any server opens up, the next person goes. Splitting into separate lines means you can be unlucky and picked the slow one. Pooling everyone into one queue smooths out the bad luck. It's the same number of servers; just a smarter shape.
 
-## Plans should bend, not break
+## Why this matters
 
-Because reality always differs from the plan, good managers treat a budget as a living guide, not a cage. When a big variance shows up, the question isn't "who broke the rule?" but "what changed, and should the plan change too?" A budget held too rigidly makes people hit numbers that no longer make sense; a budget ignored entirely leaves you flying blind. The skill is using the gaps to learn and adjust, not to punish or to panic.
+Waiting lines aren't only an annoyance; they're a real business cost. People abandon a too-long line and you lose the sale; a reputation for slowness drives customers away; in an emergency room or a 911 center, the wait can cause genuine harm. And because pushing for 100% efficiency *creates* the waits, managing queues is full of these honest trade-offs — a little planned slack, an extra server at the busy hour, or a single shared line can be worth far more than they cost. Even smart cues, like an accurate "your wait is about 10 minutes," make the same wait easier to bear.
 
 ## In the real world
 
-Big public projects are famous for enormous unfavorable variances: study after study finds that most large infrastructure projects — bridges, tunnels, rail lines — come in **over budget**, often dramatically so. Researchers who collected hundreds of these found cost overruns were the rule, not the exception. The valuable part isn't shaming the planners; it's what the variances *teach* — that early estimates are systematically too rosy, so future budgets should plan for the surprises that history says are coming. That's variance doing its real job: turning the gap between plan and reality into a lesson for next time.`,
+Call centers run headfirst into the 100% trap. A center staffed so its agents are busy nearly every second sounds maximally efficient — and produces miserable, ballooning hold times, because there's no slack to absorb the random bursts of calls. Adding a few "extra" agents who are sometimes idle dramatically shortens the wait, which is why well-run centers deliberately staff *below* 100% busy. The same math is why banks switched to a single snaking line, why amusement parks post wait times and add slack on busy days, and why a hospital that fills every bed grinds to a halt. The lesson is counterintuitive but reliable: a little breathing room is what keeps the line moving.`,
   },
   {
-    slug: "unit-economics",
-    title: "Unit economics",
+    slug: "demand-forecasting",
+    title: "Demand forecasting",
     weekNumber: 1,
-    blurb: "Growing sales feels like winning — but if each individual sale loses money, growing only digs the hole faster.",
-    lectureTitle: "1.6 Unit economics (does each sale actually make money?)",
-    body: `# Unit economics
+    blurb: "You have to decide how much to make before you know how much sells — so forecasting is guessing the future on purpose, and the first rule is that every forecast is wrong.",
+    lectureTitle: "1.6 Demand forecasting (stocking for a future you can't see)",
+    body: `# Demand forecasting
 
-A chart of sales climbing up and to the right feels like the very picture of success. But one of the most important questions in business is hiding underneath that chart, and it's almost embarrassingly simple: **does each single sale actually make money?** This is **unit economics** — zooming all the way in from the whole company to one transaction — and it's where a lot of impressive-looking businesses fall apart.
+Every business that makes or stocks anything faces the same impossible-sounding task: decide **how much to prepare before you know how much people will want.** The bakery has to bake before the customers arrive; the toy company has to order for the holidays months ahead. This is **demand forecasting** — making an educated guess about future demand so you can stock for it — and getting good at it starts with accepting one humbling rule.
 
-## One sale at a time
+## Guessing the future on purpose
 
-Unit economics asks you to look at a single "unit" — one product sold, one customer served, one subscription — and check whether it earns more than it costs. If selling one item brings in more than that item's own costs, the business has a chance; if each one loses money, no amount of selling will save it. It's the same idea as break-even, pointed at the smallest possible piece: get the single sale right, and the whole can work; get it wrong, and scale only makes it worse.
+A forecast turns clues from the past — last year's sales, the season, the weather, what's trending — into a likely number for the future, so you can act on it today. It's not fortune-telling and it's not a wild guess; it's a *disciplined* estimate built from evidence. The whole reason it matters is that the decisions can't wait: you must commit to an amount of inventory, staff, and supplies now, and the forecast is your best honest attempt to aim that commitment at a future you genuinely cannot see.
 
-## The "make it up in volume" trap
+## Every forecast is wrong
 
-There's an old joke: "we lose a little on every sale, but we make it up in volume." It's a joke because it's impossible — if every sale loses money, more sales mean *bigger* losses, not profit. Yet businesses fall for a fancier version of it all the time, especially fast-growing ones, telling themselves that growth now will somehow turn into profit later even though each customer costs more to serve than they bring in. Volume can only rescue you if the underlying unit already makes money.
+Here's the rule every good forecaster lives by: **every forecast is wrong** — the only question is by how much, and in which direction. The future never matches the number exactly, so chasing a single perfect prediction is a fool's errand. Instead, smart operators forecast a **range** ("probably between 80 and 120") rather than a single point, and they plan for the miss — that's exactly what safety stock from the inventory topic is for. A forecast you treat as certain sets you up to be caught out; a forecast you treat as odds lets you prepare for being wrong.
 
-## What it really costs to win a customer
+## Patterns you can actually use
 
-A fair unit-economics check counts *all* the costs of a sale, including the often-forgotten one: what you spent to win that customer in the first place — the ads, the discounts, the free trial. Smart operators compare what a customer is worth over their whole relationship (their **lifetime value**) against what it cost to acquire them. If you spend more to land a customer than they'll ever spend with you, every new customer quietly makes the hole deeper, no matter how exciting the growth chart looks.
+Even though the future is uncertain, it's not random — it has patterns worth leaning on. There's the **trend** (sales slowly climbing or fading over time), the **season** (umbrellas in spring, ice cream in summer, toys in December), and **known events** (a holiday, a big game, a planned sale). A good forecast blends these: take the baseline, lift it for the season, bump it for the event. Spotting the repeatable patterns is what separates a thoughtful forecast from a coin flip, even though the leftover surprise can never be fully removed.
 
-## Why this discipline is hard
+## The danger of one number
 
-Unit economics is unglamorous, and that's exactly why it gets skipped. Total revenue and user counts make for thrilling headlines and happy investors; "we lose $4 every time someone buys" does not. So the comforting big numbers get celebrated while the painful per-sale number goes unexamined. The discipline is to keep asking the small, honest question even when the big numbers are flattering — because the single sale, not the grand total, decides whether the business can ever stand on its own.
+The most dangerous forecast is a single confident number that everyone then treats as a fact. Once "we'll sell exactly 1,000" gets written down, plans harden around it, nobody prepares for selling 700 or 1,300, and the inevitable miss becomes a crisis. The cure is humility: state the uncertainty out loud, keep a cushion, and **watch the error** — track how wrong past forecasts were so the next one improves. A forecast is a starting point for planning, not a promise the world agreed to keep.
 
 ## In the real world
 
-A famous example is the movie-ticket subscription that, for a while, let people see almost unlimited movies for about ten dollars a month. Customers loved it and signups exploded — the growth chart was spectacular. But the company *paid theaters close to full price* for each ticket, so a single heavy user could cost far more than ten dollars in a single month. Every enthusiastic new subscriber made the losses worse, and the business burned through its money and collapsed. The sales were real and the growth was real; the unit economics never worked, and that's what decided it.`,
+The car industry learned this painfully in 2020–2021. When the pandemic hit, automakers **forecast that car sales would crash**, so they slashed their orders for the computer chips that modern cars need. But demand bounced back far faster than predicted — the forecast was badly wrong — and by then the chip factories had given those slots to other buyers. The result was a worldwide shortage where finished cars sat in lots waiting for tiny chips, costing the industry enormous sums. The demand was real and the recovery was real; a single confident forecast that turned out wrong is what caused the damage — exactly the trap this topic is about.`,
   },
   {
-    slug: "forecasting-and-kpis",
-    title: "Forecasting and KPIs",
+    slug: "routing-optimization",
+    title: "Routing and optimization",
     weekNumber: 1,
-    blurb: "A forecast is an educated guess about a future that hasn't happened, and the dials you choose to watch quietly decide what you'll do about it.",
-    lectureTitle: "1.7 Forecasting and KPIs (steering by the right dials)",
-    body: `# Forecasting and KPIs
+    blurb: "Moving things costs money, and the route you choose can change that cost dramatically — but the number of possible routes explodes so fast that finding the best one is genuinely hard.",
+    lectureTitle: "1.7 Routing and optimization (moving things for less)",
+    body: `# Routing and optimization
 
-Running a business by looking only at last month's reports is like driving while staring in the rear-view mirror. The forward-looking half of managerial analytics has two parts: **forecasting** (an educated guess about what's coming) and **KPIs** (the handful of dials you watch to steer). Both are powerful, and both are easy to get dangerously wrong.
+Almost everything you buy had to *travel* to reach you, and travel costs money — fuel, time, drivers, wear on the trucks. Because so much of business is moving things from where they are to where they're needed, a quiet but enormous question is: **what's the cheapest way to move it all?** This is **routing and optimization** — choosing the best path and order among a dizzying number of options — and it saves (or wastes) staggering amounts of money.
 
-## Forecasting: an educated guess, not a crystal ball
+## Every trip has a cost
 
-A **forecast** turns clues from the past — last year's sales, the season, the trend — into a likely number for the future, so you can plan: how much to order, how many people to hire, whether you can afford something. The crucial word is *likely.* A forecast is a set of odds, not a promise, because it's about a future that hasn't decided to happen yet. Used humbly, it helps you prepare; treated as fact, it sets you up to be caught out when reality disagrees.
+Start with the simple truth that movement isn't free. Every mile a truck drives burns fuel, pays a driver, and ages the vehicle; every extra stop adds time. So the way you *arrange* the moving — which truck carries what, in what order it visits its stops, which warehouse serves which customer — directly sets the cost. Two delivery plans that drop off the exact same packages can cost wildly different amounts depending only on how cleverly the trips are arranged.
 
-## KPIs: the few dials that matter
+## The order you visit matters
 
-A business can measure thousands of things, but a driver doesn't watch a hundred gauges. **KPIs** — Key Performance Indicators — are the few numbers a business decides are most important to watch, the ones that actually tell you whether you're on course. The skill isn't collecting more numbers; it's choosing the *right* few. Pick the dials that genuinely signal health, and a quick glance tells you what to do; drown in dials, and the important warning light gets lost in the clutter.
+Picture a driver with twenty stops to make. The packages are fixed, but the **order** they're visited in decides the total distance — a smart order loops efficiently around the city, while a careless one zig-zags back and forth, doubling the miles for no reason. Finding the shortest order to visit a set of stops is such a classic problem it has a name (the "traveling salesman" problem). The same idea scales up: which warehouse should ship to which region, how to combine many small loads into one full truck — all of it is choosing a smart order and grouping over a wasteful one.
 
-## Leading vs. lagging dials
+## The explosion of options
 
-Not all dials are equal. A **lagging** indicator tells you what already happened — last month's profit, like a final score you can't change. A **leading** indicator hints at what's coming — like how many people asked for a quote this week, which signals next month's sales. Both matter, but leading indicators are what let you steer *before* you hit trouble, instead of just reading about it afterward. A good dashboard mixes the two so you can both keep score and see around the corner.
+Here's what makes this genuinely hard, not just fiddly: the number of possible routes **explodes** as you add stops. A handful of stops has a few orderings you could check by hand; a few dozen stops has more possible routes than you could check in a lifetime, even with a fast computer trying one at a time. This is why "just try them all" fails. Real routing uses clever shortcuts — smart rules that find a *very good* route quickly without proving it's the single perfect one — because perfect is often impossible to reach, and very-good-and-fast wins.
 
-## The vanity-metric trap
+## Trade-offs: fast, cheap, reliable
 
-The biggest danger is choosing flattering dials instead of useful ones. A **vanity metric** is a number that looks great and feels good — total followers, total signups, all-time sales — but doesn't actually tell you what to do. It only ever goes up, so it always seems like good news, even while the business quietly struggles. The cure is to ask of every dial: *if this number moved, would I do anything differently?* If the answer is no, it's decoration, not a KPI.
+Optimization is never only about distance, because the goals fight each other. The **cheapest** route may be slow; the **fastest** may burn extra fuel or need more trucks; the **most reliable** keeps a time cushion that costs efficiency. You usually can't max out all three at once, so optimizing really means *deciding what to trade* — a delivery business promising same-day speed will happily pay for routes that a cost-first business would reject. The "best" route only has meaning once you've said which of these matters most for this job.
 
 ## In the real world
 
-Many fast-growing apps have proudly watched their **total registered users** climb — a number that can only rise — while a deadlier dial went ignored: how many of those users actually *stayed.* If new people sign up but quietly leave just as fast, the impressive "total users" hides a leaking bucket, and the company is shocked when growth suddenly stalls. The fix is choosing a KPI that can deliver bad news, like active users or the rate people leave, instead of a vanity metric that only ever flatters you. Steering by the right dial is the whole point.`,
+The delivery company **UPS** turned routing into famous savings with a system that, among other things, plans routes to **avoid left turns** wherever possible. It sounds trivial, but in many places a left turn means idling across oncoming traffic — wasting fuel and time and risking accidents — so routes that loop right instead save millions of gallons of fuel a year across millions of stops. No human could hand-plan that for every driver every day; it takes optimization crunching the explosion of options. It's a perfect picture of the topic: the packages don't change, but choosing a smarter *order and path* to move them quietly saves a fortune.`,
   },
   {
-    slug: "numbers-to-decisions",
-    title: "From numbers to decisions (capstone)",
+    slug: "resilience-capstone",
+    title: "Resilience (capstone)",
     weekNumber: 1,
-    blurb: "Can a page full of numbers actually run a business? Only with judgment — and the whole course comes together in how data turns into a decision.",
-    lectureTitle: "1.8 From numbers to decisions, and what comes next (Capstone)",
-    body: `# From numbers to decisions (capstone)
+    blurb: "The leaner and more optimized a supply chain gets, the more fragile it becomes — and the whole course comes together in the trade-off between running efficient and not breaking.",
+    lectureTitle: "1.8 Resilience: building a chain that doesn't break (Capstone)",
+    body: `# Resilience (capstone)
 
-We end on the hardest, highest-stakes skill in the whole field: **turning numbers into an actual decision.** An owner deciding whether to raise prices, a manager choosing what to cut, a founder deciding whether the business can survive — all of them have to move from *measuring* to *acting.* Everything in this course comes together here, including its deepest limits.
+We end on the deepest tension in the whole field. Everything in this course pushes toward **efficiency** — less inventory, less slack, smarter routes, no waste. But there's a catch that ties it all together: the leaner and more perfectly optimized a supply chain becomes, the more **fragile** it gets. A chain squeezed for every drop of efficiency can shatter the moment anything unexpected happens. **Resilience** is the skill of building a flow that bends under shock instead of breaking — and balancing it against efficiency is the highest-stakes judgment an operator makes.
 
-## The hardest step: numbers to action
+## Efficient isn't the same as robust
 
-A spreadsheet doesn't decide anything; **people do.** It's tempting to think that once you have the data, the answer is automatic — but two managers can read the same numbers and choose opposite things. The real skill isn't collecting figures; it's asking the right question of them: *what is this number telling me to do, and how sure am I?* Data informs the decision; it never makes it for you.
+It's tempting to think a well-run business is one with no waste — no extra inventory, no idle capacity, no backup suppliers, everything trimmed to the bone. But that bone-lean system has **nothing left to absorb a surprise.** A factory with zero spare parts stops the instant one delivery is late; a chain with one supplier collapses if that supplier does. Efficiency removes the very buffers and slack that protect you, so "perfectly efficient" and "dangerously fragile" are often the same system seen from two angles. Robustness is not the absence of waste — it's having something held in reserve.
 
-## Vanity metrics vs. metrics that matter
+## Single points of failure
 
-For a long time, businesses chased whatever number felt flattering — total sales, total followers, a busy storefront — and quietly mistook those for health. The improvement comes from separating **vanity metrics** (numbers that look good but don't change a decision) from the **metrics that matter** (the ones that actually tell you to raise a price, cut a product, or fix the cash problem). Picking the right few numbers to watch beats drowning in a dashboard of pretty ones — just as a careful checklist beats a flattering gut feeling.
+The most dangerous fragility is the **single point of failure** — one supplier, one factory, one route, one part that the entire flow depends on. As long as nothing goes wrong, that single point looks like clean, efficient focus. But it's a hidden trap: if that one link breaks, *everything* downstream stops, and there's no plan B. Resilient operators hunt for these single points on purpose and ask the uncomfortable question the efficient plan never asks: "what happens if this one thing fails?"
 
-## The cost of acting wrong (both ways)
+## Buffers and backups (the cost of insurance)
 
-Every decision from data can fail in two directions, and both hurt. **Overreact** to a number that was just noise — one slow week, one scary-looking variance — and you cut staff or kill a product you needed. **Ignore** a number that was a real signal — cash quietly draining, each sale losing money — and the problem grows until it's fatal. There's no setting that removes both risks at once, so an operator has to judge, openly and honestly, which mistake is more dangerous right now.
+Resilience is built from the very things efficiency wants to cut: **extra inventory** to ride out a disruption, **backup suppliers** in different places, **spare capacity** to surge when needed, and **flexible** setups that can switch products or routes. The honest part is that all of this **costs money all the time** — it's insurance, and insurance feels wasteful right up until the disaster it was for. So resilience is never "max it out"; it's deciding how much protection is worth its cost for the risks you actually face, knowing too little leaves you fragile and too much bleeds money.
 
 ## Tying the course together
 
-Look back and you'll see one thread through all eight topics: **resist the simple, flattering story.** Profit on paper isn't cash in the bank, one report isn't the whole picture, a single cost tag hides how costs really behave, a low price can sell you into bankruptcy, a budget isn't a promise, growing sales can lose money on every unit, and a flattering dial isn't a useful one. Financial and managerial analytics replaces tidy assumptions with careful, honest, measured thinking — which is harder, but it's the only kind that actually keeps a business alive.
+Look back and one thread runs through all eight topics: **a business is a flow, and managing it means handling uncertainty and trade-offs honestly.** A flow can clog; inventory balances too-much against too-little; the bullwhip shows small surprises amplifying into big ones; bottlenecks reveal that only the slowest step matters; queues show variability creating waits and the 100% trap; forecasts are always wrong so you plan a range; routing trades fast against cheap. Resilience is where every one of those trade-offs comes due at once — because the efficient choices from every earlier topic are exactly what a shock tests.
 
 ## The biggest questions stay open
 
-And plenty stays unsettled. How do you weigh what the numbers say against the vision and judgment that build great companies? How much should a leader trust a spreadsheet over their read of the situation? How do you keep your metrics from quietly steering you toward short-term tricks that look good on a report but hurt the business? Analytics gives a business better questions and more honest answers — not final ones. The most useful habit to carry out of this course is simple: whenever a number tells a clean, comforting story, ask, "Is that real, or is it a myth?"
+And plenty stays unsettled. How much efficiency should you give up for protection you might never need? How do you prepare for a disruption you can't predict the shape of? When does a sensible buffer become wasteful hoarding? There's no formula that answers these — they take judgment, weighing a cost you pay for sure against a disaster that only might come. The most useful habit to carry out of this course is to keep asking, whenever a flow looks beautifully efficient: "and what happens when something goes wrong?"
 
 ## In the real world
 
-When struggling companies are turned around, the story is rarely a single magic number — it's someone finally reading the numbers honestly *and* having the judgment to act. A classic turnaround move is discovering, through unit economics, that a beloved product or customer actually loses money on every sale, and making the painful decision to cut it — which feels like shrinking but restores the company to health. The numbers revealed the truth, but a person still had to choose to believe them and act. That marriage of honest numbers and human judgment is where this whole course has been heading.`,
+The COVID years were a global lesson in this trade-off. Decades of squeezing supply chains for maximum efficiency — minimal inventory, single low-cost suppliers far away, no slack — produced chains that worked beautifully until they suddenly didn't, leaving the world short of everything from masks to cars. A single ship, the *Ever Given*, wedged sideways in the Suez Canal and blocked a huge slice of world trade for days, because so much depended on that one route with no easy backup. None of the operators were foolish; they had optimized exactly as this course teaches — and discovered the limit this final topic is about. The hard, honest balance between running efficient and not breaking is where the whole field, and this course, has been heading.`,
   },
 ];
 
@@ -296,7 +300,7 @@ type SeedAssignment = {
 const ASSIGNMENTS: SeedAssignment[] = [
   {
     kind: "homework",
-    title: "Homework 1.1 — Statements, costs, and break-even",
+    title: "Homework 1.1 — Flow, inventory, bullwhip, and bottlenecks",
     weekNumber: 1,
     isTimed: false,
     timeLimitMinutes: null,
@@ -304,47 +308,47 @@ const ASSIGNMENTS: SeedAssignment[] = [
       "Untimed practice covering sections 1.1–1.4. Answer each question in a few sentences (about 3–5) in your own words. There's no need for any math — just explain your thinking clearly. One-word answers won't receive credit.",
     problems: [
       {
-        topicSlug: "what-financial-analytics-is",
+        topicSlug: "what-operations-analytics-is",
         prompt:
-          "A friend says, 'You can tell a business is doing great just by seeing lots of customers and big sales — high sales means it's winning.' Use what financial analytics actually shows to explain why 'big sales means healthy' is a myth. (3–5 sentences.)",
+          "A friend says, 'You can tell a warehouse is well run just by walking in and seeing it packed full and everyone busy — full and busy means efficient.' Using the idea of a business as a flow, explain why 'full and busy means efficient' is a myth. (3–5 sentences.)",
         correctAnswer:
-          "Big sales only tell you money is coming in, not whether the business is actually healthy. A company can post record sales and still run out of cash or even lose money on each sale, because what matters is what's left after costs and whether real cash is in the bank — not the size of the sales number. There's a reason people say profit is an opinion but cash is a fact: a sale can be counted before the customer has actually paid. So my friend is mistaking a busy, high-sales feeling for proof of health, which is exactly the trap analytics is meant to catch.",
+          "Operations analytics sees a business as a flow — things moving through steps to a customer — not a pile of stuff sitting still. A full warehouse can mean cash is frozen in inventory nobody has bought yet, and 'busy' can mean clogged and stuck rather than productive, because being full is not the same as moving fast. What actually matters is throughput (how much comes out the end), flow time (how long something takes to get through), and where things pile up and wait. So my friend is reading a busy, full feeling as proof of efficiency, when a smoothly moving but emptier-looking operation could easily be doing better.",
         explanation:
-          "Full credit: explains that high sales is money in, not proof of health/profit; notes costs and cash matter (a busy business can still lose money or run out of cash); and that real health shows up in measured numbers read together, not a single flattering figure.",
+          "Full credit: frames the business as a flow (not a static pile), explains that 'full' can mean frozen cash and 'busy' can mean clogged, and that what matters is how smoothly things move (throughput/flow time, where things pile up), not how full or busy it looks.",
       },
       {
-        topicSlug: "three-financial-statements",
+        topicSlug: "inventory-costs",
         prompt:
-          "A bakery shows a healthy profit on its income statement, but the owner can't make this month's rent. Using the idea that you must read the three statements together, explain how both things can be true at once. (3–5 sentences.)",
+          "After running out of a popular item once, a shop owner decides to never run out again by ordering huge quantities of everything. Explain why this 'just keep lots in stock' plan can backfire. (3–5 sentences.)",
         correctAnswer:
-          "The income statement shows profit over a period, but profit isn't the same as cash in the bank — that's the saying 'profit is an opinion, cash is a fact.' The bakery may have counted sales as profit even though customers haven't paid yet, or tied its cash up in unsold inventory, so the cash flow statement would reveal money draining out even while the income statement looks good. That's why no single report tells the story: each one answers a different question (did we earn? what do we have? did cash come in?). Reading them together shows a profitable-looking bakery can still be unable to pay the rent right now.",
+          "Inventory is really money frozen in the shape of stuff, so holding huge quantities ties up cash, eats storage space, and risks spoilage or items going out of date before they sell. The owner has only swapped one expensive mistake (running out) for the opposite one (too much), because there's no setting that removes both risks at once — more stock cuts stockouts but raises holding costs. The honest goal is a sweet spot with a deliberate safety-stock cushion sized to each item, not 'pile everything high.' For a cheap, long-lasting item a big cushion is fine, but for an expensive or perishable item, overstocking can cost far more than the occasional stockout it prevents.",
         explanation:
-          "Full credit: distinguishes profit (income statement) from cash (cash flow statement), gives a reason profit can outrun cash (unpaid customers, inventory, timing), and explains the statements must be read together because each answers a different question.",
-        hint: "Think about whether a profit on paper is the same as money in the bank, and which statement would reveal the difference.",
+          "Full credit: explains inventory as frozen cash with holding/space/spoilage costs, that overstocking just trades stockouts for the opposite costly mistake (no setting removes both risks), and that the goal is a balanced sweet spot / safety stock sized to the item.",
+        hint: "Think about what holding lots of stock actually costs, and whether 'never run out' removes risk or just swaps one expensive mistake for another.",
       },
       {
-        topicSlug: "cost-behavior",
+        topicSlug: "bullwhip-effect",
         prompt:
-          "Someone asks, 'What does it cost us to make one of these mugs?' and expects a single fixed number. Using cost behavior, explain two things this question gets wrong. (3–5 sentences.)",
+          "Shoppers buy only slightly more bottled water than usual, but a few weeks later the bottling factory is scrambling with enormous orders, then suddenly drowning in cancelled ones. Using the bullwhip effect, explain how a small change at the store became a huge swing at the factory. (3–5 sentences.)",
         correctAnswer:
-          "First, costs come in two kinds — fixed costs like rent that stay the same no matter how many mugs you make, and variable costs like clay that grow with each mug — so there isn't one single 'cost to make a mug.' Second, because fixed costs get spread over however many mugs you produce, the cost per mug actually changes with volume: make ten and each carries a tenth of the rent, make a thousand and each carries far less. So the honest answer is 'it depends on how many we make.' For most decisions, what matters is the marginal cost — what it costs to make just one more — which can be much smaller than the average cost once the fixed costs are already paid.",
+          "The bullwhip effect is when a small change in real customer demand gets amplified into big swings as it travels up the chain from store to distributor to factory. Each link only sees the order from the link next to it, not the actual shoppers, so they add a safety cushion on top of a number that already had one, and they order in big batches — so a slight bump at the store becomes a flood by the factory. When demand settles, the same thing happens in reverse and the over-ordering turns into cancellations and gluts. Nobody is being foolish; sensible 'order extra to be safe' choices stacked on each other manufacture the wild swing, even though the real demand barely moved.",
         explanation:
-          "Full credit: distinguishes fixed vs variable costs, explains that fixed costs spread over volume so per-unit cost changes with how many are made (no single fixed number), and/or notes marginal cost (the next unit) is what matters for decisions.",
+          "Full credit: defines the bullwhip effect (small demand change amplified up the chain), explains the cause (each link sees only its neighbor's orders, adds safety cushions, batches orders), and notes the swing goes both ways (glut then shortage/cancellations) even though real demand barely changed.",
       },
       {
-        topicSlug: "break-even",
+        topicSlug: "bottlenecks",
         prompt:
-          "A new juice stand owner says, 'I'll just lower my prices way down — that way I'll sell tons and definitely make money.' Explain what break-even is and why this plan could backfire. (3–5 sentences.)",
+          "A sandwich shop is slow at lunch, so the owner spends money to make the fast wrapping station even faster — but the line of customers doesn't get any shorter. Using the idea of a bottleneck, explain what went wrong and what the owner should have done. (3–5 sentences.)",
         correctAnswer:
-          "The break-even point is how much you have to sell before total money in equals total money out — the line where you stop losing money and start making it. Each sale only contributes what's left after its own variable cost toward covering the fixed costs like rent, so a much lower price shrinks that contribution and actually raises the number of sales you need to break even, sometimes to an impossible level. That means the owner could be busy, selling tons of juice, and still lose money on every cup because the price never covered the costs. Lowering the price doesn't 'definitely make money' unless they first check whether they could ever realistically sell enough to reach the new, higher break-even point.",
+          "A system can only go as fast as its slowest step, the bottleneck, so improving any other step does nothing for overall output. The wrapping station clearly wasn't the bottleneck — speeding it up just makes it wait more while the real slow step (maybe the grill or the register) still sets the pace. To spot the bottleneck the owner should look for where work piles up: stuff stacks up in front of the slow step while later steps sit idle. The fix is to relieve that slowest step — a second grill, an extra cook, offloading some of its work — and to remember that once it's fixed, the bottleneck will move to whatever is now slowest.",
         explanation:
-          "Full credit: defines break-even as the sales level where revenue equals total cost, explains a lower price shrinks each sale's contribution and raises the break-even point, and warns that high volume at too low a price can still lose money on every sale.",
+          "Full credit: states that the slowest step (bottleneck) sets the pace so improving a non-bottleneck does nothing, explains how to find it (where work piles up / later steps sit idle), and that the fix is to relieve the actual bottleneck (and that it then moves).",
       },
     ],
   },
   {
     kind: "homework",
-    title: "Homework 1.2 — Budgets, unit economics, KPIs, and decisions",
+    title: "Homework 1.2 — Queues, forecasting, routing, and resilience",
     weekNumber: 1,
     isTimed: false,
     timeLimitMinutes: null,
@@ -352,47 +356,47 @@ const ASSIGNMENTS: SeedAssignment[] = [
       "Untimed practice covering sections 1.5–1.8. Answer each question in a few sentences (about 3–5) in your own words. No math is required — explain your reasoning. One-word answers won't receive credit.",
     problems: [
       {
-        topicSlug: "budgets-and-variance",
+        topicSlug: "waiting-lines-queues",
         prompt:
-          "A manager is furious that the team spent $300 more on supplies than the budget said, and wants to punish whoever's responsible. Explain a better way to think about a budget and this variance. (3–5 sentences.)",
+          "A manager proudly keeps every cashier busy nearly 100% of the time to be 'maximally efficient,' but customers complain the lines are enormous. Explain why running at nearly 100% busy can create huge waits, and what a small change could do. (3–5 sentences.)",
         correctAnswer:
-          "A budget isn't a promise that must be hit exactly; it's a plan written in numbers that you compare against reality so you can spot when things drift. The $300 gap is a variance, and the useful response is to ask why it happened rather than to assign blame — maybe supply prices rose, or the team made more product than planned, which would actually be good news. Variances are signals that the world didn't behave as assumed, and chasing the reason is where the learning is. A budget held too rigidly forces people to hit numbers that may no longer make sense, so the manager should use the gap to understand and adjust, not to punish.",
+          "Lines form mainly because of variability — customers arrive in clumps and take different amounts of time — not just because of a shortage on average. As you push a server toward 100% busy, the waiting time doesn't rise gently, it explodes, because there's no slack left to absorb the random bursts, so a system at 95–100% can have lines many times longer than one at 70%. The slack the manager 'wasted' was exactly what kept lines short. Adding a little breathing room — an extra cashier at the busy hour, or pooling everyone into one shared line instead of separate ones — can shorten the wait dramatically even though it looks less 'efficient.'",
         explanation:
-          "Full credit: explains a budget is a plan/baseline not a promise, that variance is the plan-vs-actual gap whose value is asking 'why' (not blame), and that some variances reflect changed circumstances and should inform adjusting the plan.",
-        hint: "Is a budget a prediction that's right or wrong, or a plan you measure reality against? What is the gap actually telling you?",
+          "Full credit: explains lines come from variability not just average shortage, that wait time explodes as utilization nears 100% (slack absorbs bursts), and that a small change (extra server at peak, single shared line / pooling) shortens waits despite looking less efficient.",
+        hint: "Is the goal really to keep servers busy every second? Think about what happens to the wait as you approach 100%, and why some slack helps.",
       },
       {
-        topicSlug: "unit-economics",
+        topicSlug: "demand-forecasting",
         prompt:
-          "A startup brags that it's growing fast — signups are doubling every month — but it spends more to win and serve each customer than that customer ever pays. Explain why fast growth here is a problem, not a victory. (3–5 sentences.)",
+          "A toy company forecasts it will sell 'exactly 50,000 units' this holiday season, writes that number into all its plans, and treats it as a fact. Explain what's risky about this and how they should handle the forecast instead. (3–5 sentences.)",
         correctAnswer:
-          "Unit economics asks whether a single sale or customer actually makes money, and here each customer costs more than they bring in, so every one is sold at a loss. When the unit loses money, growth makes things worse, not better — doubling signups doubles the losses, which is the real version of the old joke about 'losing money on every sale but making it up in volume.' Volume can only help if the underlying customer is already profitable once you count everything, including what was spent to acquire them. So the exciting growth chart is actually digging the hole faster, and the startup needs to fix the per-customer math before scaling.",
+          "Every forecast is wrong — the only question is by how much and in which direction — so treating a single confident number as a fact is dangerous because plans harden around it and nobody prepares for selling far more or far less. A better approach is to forecast a range rather than one point, keep a safety-stock cushion for the miss, and use patterns like trend, season, and known events to inform the estimate while staying humble about the leftover uncertainty. They should also watch the error — track how wrong past forecasts were so the next one improves. The forecast should be a starting point for planning, treated as odds, not a promise the world agreed to keep.",
         explanation:
-          "Full credit: explains unit economics (does one sale/customer make money), that growth multiplies losses when each unit loses money, and that acquisition/serving costs must be counted; volume only helps if the unit is already profitable.",
+          "Full credit: states every forecast is wrong so a single confident number is risky (plans harden, no cushion for the miss), and recommends forecasting a range, keeping safety stock, using patterns (trend/season/events) and tracking error, treating the forecast as odds not fact.",
       },
       {
-        topicSlug: "forecasting-and-kpis",
+        topicSlug: "routing-optimization",
         prompt:
-          "A founder proudly points to a chart of 'total users, all time' that keeps climbing as proof the app is thriving. Explain why this might be a vanity metric and what dial would be more useful. (3–5 sentences.)",
+          "Two delivery drivers carry the exact same packages to the exact same houses, but one finishes using far less fuel and time than the other. Using routing and optimization, explain how that's possible and why finding the truly best route is hard. (3–5 sentences.)",
         correctAnswer:
-          "A 'total users, all time' count can only ever go up, so it always looks like good news and never tells the founder to do anything — that's what makes it a vanity metric. It can hide a leaking bucket: lots of people sign up while just as many quietly leave, so the business looks healthy right until growth stalls. A more useful KPI is one that can deliver bad news, like active users, how many people stay (retention), or the rate at which they leave (churn). The test for any dial is simple: if this number moved, would I do anything differently? If not, it's decoration, not a real KPI.",
+          "Even with identical packages and stops, the order and path you visit them in decides the total distance, fuel, and time — a smart route loops efficiently while a careless one zig-zags back and forth and doubles the miles. So the difference between the two drivers is almost entirely how cleverly their trips are arranged, which is exactly what routing optimization tries to improve. Finding the truly best route is genuinely hard because the number of possible orderings explodes as you add stops — a few dozen stops have more routes than you could ever check one by one. That's why real routing uses smart shortcuts to find a very good route quickly instead of proving the single perfect one, which is often impossible to reach.",
         explanation:
-          "Full credit: explains a vanity metric looks good but doesn't change a decision (a number that only rises), that 'total users' can hide churn, and names a more actionable KPI (active users, retention, churn); may cite the 'would I act differently?' test.",
+          "Full credit: explains the order/path of stops sets the cost (same packages, very different miles), that this is what optimization improves, and that finding the perfect route is hard because options explode with the number of stops (so good-and-fast shortcuts beat checking them all).",
       },
       {
-        topicSlug: "numbers-to-decisions",
+        topicSlug: "resilience-capstone",
         prompt:
-          "A new manager is proud that the business now has a dashboard showing dozens of numbers. Explain why having all that data isn't the same as making a good decision, and what separates a 'metric that matters' from a 'vanity metric.' (3–5 sentences.)",
+          "A company brags that it has trimmed its supply chain to the bone — minimal inventory, one cheap supplier, no spare capacity — and calls it 'perfectly efficient.' Explain why this could be dangerous and what resilience would add. (3–5 sentences.)",
         correctAnswer:
-          "A dashboard measures things, but it doesn't decide anything — people do, and two managers can read the same numbers and choose opposite actions. The real skill is asking the right question of the data: what is this number telling me to do, and how sure am I? A 'metric that matters' is one that actually changes a decision — raise a price, cut a product, fix the cash problem — while a 'vanity metric' just looks flattering (total sales, follower counts) without telling you to act. So watching a few decision-driving numbers beats drowning in a dashboard of pretty ones, and the data still needs human judgment to become a good decision.",
+          "A bone-lean chain has nothing left to absorb a surprise, so 'perfectly efficient' and 'dangerously fragile' are often the same system seen two ways. Relying on one cheap supplier and minimal inventory creates single points of failure — if that supplier or a key delivery is disrupted, the whole flow stops with no plan B. Resilience adds the buffers efficiency cuts: some extra inventory, backup suppliers in different places, spare capacity, and flexibility, which act like insurance against disruption. That protection costs money all the time, so the honest goal isn't to maximize it but to decide how much is worth its cost for the risks they actually face — because too little leaves them fragile and too much bleeds money.",
         explanation:
-          "Full credit: explains that data informs but doesn't make decisions (people do), and distinguishes metrics that drive action from flattering vanity metrics that don't change what you do.",
+          "Full credit: explains a maximally lean chain has no slack to absorb shocks (efficient = fragile), identifies single points of failure (one supplier/minimal inventory), and that resilience adds buffers/backups/spare capacity/flexibility as costly insurance that must be balanced against efficiency.",
       },
     ],
   },
   {
     kind: "test",
-    title: "Unit Test — Financial & Managerial Analytics for Everyone",
+    title: "Unit Test — Operations & Supply Chain Analytics for Everyone",
     weekNumber: 1,
     isTimed: true,
     timeLimitMinutes: 30,
@@ -400,82 +404,82 @@ const ASSIGNMENTS: SeedAssignment[] = [
       "Timed. 30 minutes. Covers sections 1.1–1.8. Answer each question in a few sentences (about 4–6) in your own words. No math is required. Pasting is disabled; keystrokes are screened for AI use.",
     problems: [
       {
-        topicSlug: "what-financial-analytics-is",
+        topicSlug: "what-operations-analytics-is",
         prompt:
-          "Explain what financial and managerial analytics is, including the difference between the 'financial' and 'managerial' sides, and why it insists that 'a number is a measurement, not the money.' Why does keeping that distinction matter? (4–6 sentences.)",
+          "Explain what operations and supply chain analytics is, including the difference between the 'operations' and 'supply chain' sides, and why it insists on seeing a business as a flow rather than a pile of stuff. Why does that view matter? (4–6 sentences.)",
         correctAnswer:
-          "Financial and managerial analytics is the practice of reading a business through its numbers instead of guessing — turning sales, bills, and effort into things you can follow to tell whether it's really making money. The 'financial' side reports the story to outsiders like owners and lenders, a kind of official scoreboard looking back; the 'managerial' side is used inside the business to make decisions, like a dashboard you watch while steering ahead. Saying 'a number is a measurement, not the money' means a metric like profit is just one chosen snapshot, not the actual cash or the whole business — captured by the saying 'profit is an opinion, cash is a fact.' That distinction matters because confusing a flattering measurement for reality leads to bad calls: you might celebrate a profit while the cash runs out, or trust one number while the real story hides behind it. Keeping measurement and reality apart is the first habit of clear thinking about a business.",
+          "Operations and supply chain analytics is the practice of seeing a business as a flow — materials, orders, and work moving through steps to a customer — and measuring how smoothly it moves instead of just counting what's on the shelves. The 'operations' side is the flow inside one business (how an order moves through your own kitchen or factory), while the 'supply chain' side is the flow across many linked businesses (farmers, factories, trucks, stores handing things off until a customer gets them) — the same idea at two zoom levels. Seeing a business as a flow matters because the useful questions become 'how fast is it moving and where does it get stuck?' rather than 'how much do we have?' This view exposes myths like 'busy means productive' or 'a full warehouse is safe,' since busy can mean clogged and full can mean frozen cash. Measuring the flow — throughput, flow time, and where things pile up — is what reveals what's really happening instead of how it feels.",
         explanation:
-          "Full credit: defines the field as evidence-based reading of a business, distinguishes financial (outward report) from managerial (internal decisions), explains a metric as a chosen snapshot (profit is an opinion, cash is a fact), and why separating measurement from reality supports clear decisions.",
+          "Full credit: defines the field as seeing/measuring a business as a flow, distinguishes operations (flow inside one business) from supply chain (flow across linked businesses), and explains why the flow view matters (right questions, exposes 'busy/full = good' myths, focuses on throughput/flow time/pile-ups).",
       },
       {
-        topicSlug: "three-financial-statements",
+        topicSlug: "inventory-costs",
         prompt:
-          "Describe the three financial statements and the different question each one answers, and explain why a business's health can only be read by looking at all three together. (4–6 sentences.)",
+          "Explain the cost of holding too much inventory and the cost of holding too little, why 'just keep lots in stock' is a trap, and what safety stock is for. (4–6 sentences.)",
         correctAnswer:
-          "The income statement answers 'did we make a profit?' over a period — revenue minus costs down to the bottom line. The balance sheet is a snapshot on one day answering 'what do we own and owe?' — assets versus liabilities, with the difference being the owner's stake. The cash flow statement answers 'did cash actually come in?' by tracking real money moving in and out, which matters because profit is an opinion while cash is a fact. You need all three because each can mislead alone: the income statement can show a profit while the cash flow statement shows the business bleeding money, or the balance sheet can look strong while profits slide. Only reading them side by side — earnings, what's owned, and actual cash — reveals whether a business is genuinely healthy or just looks that way from one angle.",
+          "Inventory is really money frozen in the shape of stuff, so holding too much ties up cash, eats storage space, and risks spoilage or items going out of date before they sell. Holding too little risks the stockout — losing the sale, sometimes losing the customer for good, or even halting a whole production line over one missing part. 'Just keep lots in stock' is a trap because it only swaps one expensive mistake for the opposite one: there's no setting that removes both risks at once, since more stock cuts stockouts but raises holding costs and less stock does the reverse. The honest goal is a sweet spot that serves customers reliably without drowning in extra. Safety stock is a deliberate cushion of extra inventory kept to absorb surprises like a busy day or a late delivery, and it should be sized to each item — generous for a cheap, durable, hard-to-replace part, thin for an expensive or perishable one.",
         explanation:
-          "Full credit: names the three statements and the distinct question each answers (profit over a period; owns/owes snapshot; actual cash flow), and explains health requires all three together because any one alone (e.g. profit without cash) can mislead.",
+          "Full credit: explains holding costs of too much (frozen cash, space, spoilage/obsolescence) and costs of too little (lost sales/customers, halted line), that overstocking just trades one mistake for the other (no setting removes both risks), and that safety stock is a deliberate cushion sized per item.",
       },
       {
-        topicSlug: "cost-behavior",
+        topicSlug: "bullwhip-effect",
         prompt:
-          "Explain the difference between fixed and variable costs, the 'cost behavior trick' that makes per-unit cost change with volume, and why marginal cost is what matters for many decisions. (4–6 sentences.)",
+          "Explain the bullwhip effect, why each link in the chain over-reacts even when everyone is being sensible, and how the effect can be tamed. (4–6 sentences.)",
         correctAnswer:
-          "Fixed costs stay roughly the same no matter how much you make — rent, salaries, insurance — while variable costs rise and fall with each unit, like the materials in each item. The 'cost behavior trick' is that because fixed costs stay put, the cost per unit changes with volume: make ten items and each carries a tenth of the rent, make a thousand and each carries far less, so the average cost per unit falls as you spread fixed costs thinner. That's why 'what did it cost to make one?' is a trap question — the honest answer is 'it depends how many we made.' For decisions, the most useful figure is often the marginal cost, what it costs to make just one more, which can be tiny once the fixed costs are already paid. That's why a business will sometimes sell something cheaply that seemed expensive to make: any price above the small extra cost still adds money.",
+          "The bullwhip effect is when a small change in real customer demand gets amplified into larger and larger swings as it travels up the chain from store to distributor to factory to supplier. Each link over-reacts because it only sees the orders from the link next to it, not the actual shoppers, so it adds a safety cushion on top of a number that already had one, orders in big batches to save on shipping, and panic-orders when deliveries are slow. Those individually sensible choices, stacked on each other, manufacture wild swings — gluts of overflowing warehouses alternating with shortages of idle factories — even though the underlying demand barely moved. The whiplash is expensive because everyone holds extra 'just in case' inventory and lurches between too much and too little. It's tamed mostly by sharing real demand information up and down the chain so links stop guessing, ordering smaller amounts more often to smooth the lumps, and keeping prices steady so artificial stockpiling doesn't get triggered.",
         explanation:
-          "Full credit: distinguishes fixed vs variable costs, explains fixed costs spread over volume so per-unit cost drops as output rises (no single cost), and explains marginal cost (the next unit) drives decisions and can be far below average cost.",
+          "Full credit: defines the bullwhip effect (demand change amplified up the chain), explains the causes (each link sees only its neighbor's orders, adds cushions, batches, panic-orders), notes the costly glut/shortage swings despite steady real demand, and gives cures (share real demand info, smaller/more frequent orders, steady prices).",
       },
       {
-        topicSlug: "break-even",
+        topicSlug: "bottlenecks",
         prompt:
-          "Explain what the break-even point is, how 'contribution' from each sale builds toward it, and why a lower price doesn't automatically make a plan work. (4–6 sentences.)",
+          "Explain why a system can only go as fast as its slowest step, why improving a non-bottleneck step is wasted, how to find the bottleneck, and what it means that the bottleneck can move. (4–6 sentences.)",
         correctAnswer:
-          "The break-even point is the level of sales where total money in exactly equals total money out — no profit, no loss — and below it the business loses money while above it every sale is profit. Each sale doesn't have to cover everything, only its own variable cost; what's left over contributes toward the fixed costs, and those contributions stack up until the fixed costs are fully covered, which is the break-even point. This makes break-even the most useful single number because it turns 'I hope this works' into a concrete target, like 'we must sell 200 a month.' A lower price doesn't automatically help because cutting the price shrinks each sale's contribution, which raises the number you must sell to break even, sometimes to impossible heights. So a busy business selling at too low a price can still lose money on every transaction, which is why you check break-even before assuming volume will save you.",
+          "A chain of steps can only move as fast as its slowest step, the bottleneck, because everything has to pass through that step and it sets the pace for the whole system. Improving a non-bottleneck step is wasted effort because output stays capped at the bottleneck's speed — a faster non-bottleneck just produces more waiting, not more output. You find the bottleneck by looking for where work piles up: stuff stacks up in front of the slow step while the steps after it sit idle and starved, waiting to be fed. To relieve it you keep it from ever sitting idle (lost time there is output the whole system can never recover), protect it from running out of work, and offload tasks a non-bottleneck could do. And once you successfully speed up that step, the bottleneck moves to whatever is now slowest, so managing a system is an endless game of finding and relieving the current limit.",
         explanation:
-          "Full credit: defines break-even (revenue = total cost), explains contribution (price minus variable cost) accumulating to cover fixed costs, frames it as a concrete target, and explains a lower price raises break-even so high volume at a low price can still lose money.",
+          "Full credit: explains the slowest step sets the pace for the whole system, that improving a non-bottleneck does nothing for output, how to find it (work piles up in front, later steps idle), and that fixing it moves the bottleneck elsewhere (keep it busy, protect/offload it).",
       },
       {
-        topicSlug: "budgets-and-variance",
+        topicSlug: "waiting-lines-queues",
         prompt:
-          "Explain why a budget is better understood as a plan than a prediction, what variance is, and why a 'favorable' variance isn't always good news. (4–6 sentences.)",
+          "Explain why waiting lines form even when there's enough capacity on average, why pushing toward 100% busy makes the wait explode, and why a single shared line often beats several separate lines. (4–6 sentences.)",
         correctAnswer:
-          "A budget is a plan written in numbers — what you expect to bring in and spend — not a fortune-teller's prediction that's simply right or wrong; its value is as a baseline you measure reality against so you notice when things drift. Variance is the gap between what you planned and what actually happened, and the point of measuring it isn't blame but asking why, since a surprise signals the world didn't behave as assumed. Variances are labeled favorable (helped profit) or unfavorable (hurt it), but the labels show direction, not wisdom. A favorable variance isn't always good: spending far less than budgeted on training looks favorable yet might be starving the business, and hitting a sales target can hide that you only reached it by slashing prices (favorable volume but unfavorable price). So good managers treat the budget as a living guide and use variances to learn and adjust rather than to punish or panic.",
+          "Lines form mainly because of variability, not a shortage on average: customers arrive in random clumps and each takes a different amount of time to serve, so those bursts and slow jobs pile up faster than a server can clear them even when, on average, there's enough capacity. As you push a server toward 100% busy, the waiting time doesn't rise gently — it explodes — because there's no slack left to absorb the random bursts, so a system at 95–100% can have lines many times longer than one at 70%. The slack that looks 'wasted' is exactly what keeps lines short, which is why running flat-out makes customers wait longer, not move faster. A single shared line feeding several servers usually beats several separate lines because no one gets stuck behind one unusually slow customer while another server sits free — the moment any server opens, the next person goes. Pooling everyone into one queue smooths out the bad luck of picking the slow line, using the same number of servers in a smarter shape.",
         explanation:
-          "Full credit: explains a budget is a plan/baseline not a prediction, defines variance as plan-vs-actual whose purpose is asking 'why', and explains a favorable variance can still be bad (e.g. under-spending on something needed, hitting sales only via discounts).",
+          "Full credit: explains lines come from variability (clumped arrivals, varying service times) not just average shortage, that wait explodes as utilization nears 100% (slack absorbs bursts), and that one shared line beats separate lines by pooling/avoiding getting stuck behind a slow customer.",
       },
       {
-        topicSlug: "unit-economics",
+        topicSlug: "demand-forecasting",
         prompt:
-          "Explain what unit economics is, why 'we'll make it up in volume' fails when each sale loses money, and what costs an honest unit-economics check must include. (4–6 sentences.)",
+          "Explain what demand forecasting is, why 'every forecast is wrong' is the rule good forecasters live by, what patterns a forecast can use, and why a single confident number is dangerous. (4–6 sentences.)",
         correctAnswer:
-          "Unit economics zooms in from the whole company to a single unit — one product sold, one customer — and checks whether that one sale earns more than it costs. If each unit makes money the business has a chance, but if each one loses money, selling more only grows the losses, which is why 'we lose a little on every sale but make it up in volume' is impossible — more volume means bigger losses. An honest check counts all the costs of a sale, including the easily forgotten one: what you spent to win that customer (ads, discounts, free trials), compared against what the customer is worth over their whole relationship (lifetime value). If acquiring a customer costs more than they'll ever spend, every new customer deepens the hole no matter how exciting the growth chart looks. The discipline is to keep asking the small per-sale question even when total revenue and signups look flattering, because the single sale, not the grand total, decides whether the business can stand on its own.",
+          "Demand forecasting is making a disciplined, educated guess about future demand — using clues from the past like last year's sales, the season, and trends — so you can decide how much to make or stock before you know how much people will want. 'Every forecast is wrong' is the rule because the future never matches the number exactly; the only question is by how much and in which direction, so chasing a single perfect prediction is a fool's errand. A good forecast leans on real patterns — the trend (sales slowly rising or fading), the season (umbrellas in spring, toys in December), and known events (a holiday or planned sale) — while accepting the leftover surprise can't be removed. A single confident number is dangerous because once it's written down, plans harden around it and nobody prepares for selling much more or much less, so the inevitable miss becomes a crisis. The cure is to forecast a range, keep a safety-stock cushion for the miss, watch how wrong past forecasts were, and treat the forecast as odds rather than a promise.",
         explanation:
-          "Full credit: defines unit economics (does one sale/customer make money), explains volume multiplies losses when the unit is unprofitable, and that all costs including customer acquisition must be counted (CAC vs lifetime value); notes the discipline is unglamorous but decisive.",
+          "Full credit: defines forecasting as a disciplined estimate of future demand from past clues, explains 'every forecast is wrong' (plan a range, not a point), names usable patterns (trend/season/events), and explains why a single confident number is dangerous (plans harden, no cushion) and the cure (range, safety stock, track error).",
       },
       {
-        topicSlug: "forecasting-and-kpis",
+        topicSlug: "routing-optimization",
         prompt:
-          "Explain what a forecast is and why it should be treated as odds rather than a fact, what makes a good KPI, and the difference between a leading and a lagging indicator. (4–6 sentences.)",
+          "Explain why the order of stops on a route matters, why finding the truly best route is hard, and why optimization always involves trade-offs between goals like fast, cheap, and reliable. (4–6 sentences.)",
         correctAnswer:
-          "A forecast turns clues from the past — last year's sales, the season, the trend — into a likely number for the future so you can plan ordering, hiring, and spending; the key word is 'likely,' so it's a set of odds, not a promise, because it's about a future that hasn't happened yet. Treating it as fact is dangerous because plans get locked around one number and a confidently wrong forecast catches you out, so it should be used humbly and adjusted as reality disagrees. A good KPI is one of the few dials that genuinely signals health and tells you what to do — the test is 'if this number moved, would I act differently?' A lagging indicator reports what already happened, like last month's profit (a final score you can't change), while a leading indicator hints at what's coming, like how many people asked for a quote this week. Leading indicators let you steer before you hit trouble, so a good dashboard mixes both to keep score and see around the corner.",
+          "The order of stops matters because, even with the exact same packages and destinations, the path you choose decides the total distance, fuel, and time — a smart order loops efficiently around an area while a careless one zig-zags back and forth and doubles the miles for no reason. Finding the truly best route is hard because the number of possible orderings explodes as you add stops: a handful can be checked by hand, but a few dozen have more routes than you could ever try one by one, even with a fast computer. That's why real routing uses clever shortcuts that find a very good route quickly instead of proving the single perfect one, because perfect is often impossible to reach and good-and-fast wins. Optimization also involves trade-offs because the goals fight each other — the cheapest route may be slow, the fastest may burn extra fuel or need more trucks, and the most reliable keeps a costly time cushion. So 'best' only has meaning once you decide which goal matters most for the job, which is really what optimizing means: choosing what to trade.",
         explanation:
-          "Full credit: explains a forecast as a probabilistic estimate from past patterns (odds not certainty) and the danger of over-trusting it, defines a good KPI as a few action-driving dials (vs vanity), and distinguishes leading (predictive) from lagging (after-the-fact) indicators.",
+          "Full credit: explains the order/path of stops sets cost (same packages, very different miles), that finding the perfect route is hard because options explode with stops (so fast shortcuts beat trying them all), and that optimization trades competing goals (fast vs cheap vs reliable) so 'best' depends on priorities.",
       },
       {
-        topicSlug: "numbers-to-decisions",
+        topicSlug: "resilience-capstone",
         prompt:
-          "Explain why turning a dashboard into a decision is hard, why 'metrics that matter' beat 'vanity metrics,' and what it means that acting on data can fail in two different directions. (4–6 sentences.)",
+          "Explain why 'efficient' and 'fragile' are often the same system seen two ways, what a single point of failure is, and why resilience is best understood as costly insurance that must be balanced against efficiency. (4–6 sentences.)",
         correctAnswer:
-          "Turning a dashboard into a decision is hard because a dashboard only measures; it doesn't decide, and two managers can read the same numbers and choose opposite actions. The real skill is asking the right question of the data — what is this telling me to do, and how sure am I — because data informs a decision but never makes it for you. 'Metrics that matter' beat 'vanity metrics' because some numbers look flattering (total sales, followers) without changing any decision, while the ones worth watching actually tell you to raise a price, cut a product, or fix a cash problem; picking a few decision-driving numbers beats drowning in pretty ones. Acting on data can fail two ways: overreacting to noise (one slow week, one scary variance) tears up things you needed, while ignoring a real signal (cash draining, each sale losing money) lets a problem grow until it's fatal. No setting removes both risks at once, so an operator has to judge honestly which mistake is more dangerous right now.",
+          "Efficiency removes waste — extra inventory, idle capacity, backup suppliers, slack — but those are exactly the buffers that absorb a surprise, so a bone-lean system has nothing left to cushion a shock and 'perfectly efficient' and 'dangerously fragile' end up being the same system seen from two angles. A single point of failure is one supplier, factory, route, or part that the entire flow depends on; it looks like clean, efficient focus while nothing goes wrong, but if it breaks, everything downstream stops with no plan B. Resilience is built from the things efficiency cuts — extra inventory, backup suppliers in different places, spare capacity, and flexibility — which act like insurance against disruption. That insurance costs money all the time and feels wasteful right up until the disaster it was for, which is why it has to be balanced, not maximized. The honest judgment is deciding how much protection is worth its cost for the risks you actually face, since too little leaves you fragile and too much bleeds money — the central trade-off the whole course builds toward.",
         explanation:
-          "Full credit: explains data informs but people decide, distinguishes decision-driving metrics from flattering vanity metrics, and that errors split into overreacting to noise vs. ignoring real signal — a judgment trade-off.",
+          "Full credit: explains efficiency removes the buffers that absorb shocks (so efficient = fragile), defines a single point of failure (one link the whole flow depends on), and frames resilience as costly insurance (buffers/backups/spare capacity/flexibility) that must be balanced against efficiency rather than maximized.",
       },
     ],
   },
   {
     kind: "final",
-    title: "Final — Financial & Managerial Analytics for Everyone",
+    title: "Final — Operations & Supply Chain Analytics for Everyone",
     weekNumber: 1,
     isTimed: true,
     timeLimitMinutes: 45,
@@ -483,40 +487,40 @@ const ASSIGNMENTS: SeedAssignment[] = [
       "Timed cumulative final. 45 minutes. Covers the whole course (sections 1.1–1.8). Answer each question in a paragraph (about 5–7 sentences) in your own words. No math is required. Pasting is disabled; keystrokes are screened for AI use.",
     problems: [
       {
-        topicSlug: "numbers-to-decisions",
+        topicSlug: "resilience-capstone",
         prompt:
-          "Using ideas from across the whole course, argue that one habit of mind — 'resist the simple, flattering story' — runs through financial and managerial analytics. Show how it applies to at least three different topics (for example: high sales, profit on paper, a single cost tag, a low price, a budget, growing sales, or a flattering dial). (5–7 sentences.)",
+          "Using ideas from across the whole course, argue that one habit of mind — 'a business is a flow, and managing it means handling uncertainty and trade-offs honestly' — runs through operations and supply chain analytics. Show how it applies to at least three different topics (for example: flow, inventory, the bullwhip effect, bottlenecks, queues, forecasting, routing, or resilience). (5–7 sentences.)",
         correctAnswer:
-          "The thread running through the whole course is to resist the simple, flattering story and replace it with careful, measured thinking. High sales feel like success, but a business with record sales can still run out of cash, so 'big sales' has to be checked against profit and actual cash. Profit on paper isn't money in the bank either — profit is an opinion while cash is a fact — so you read the income statement, balance sheet, and cash flow together rather than trusting one. A single cost tag is misleading too, because costs behave differently and the per-unit cost depends on volume, so 'what did it cost?' really means 'it depends how many we made.' The same caution undoes the low price that quietly raises break-even past what you could ever sell, the budget mistaken for a promise, the fast growth that loses money on every unit, and the flattering dial like 'total users' that hides who actually stayed. That shared habit — harder than believing a neat, comforting story — is what makes financial and managerial analytics both more honest and more likely to keep a business alive.",
+          "The thread running through the whole course is that a business is a flow, and managing it well means facing uncertainty and trade-offs honestly instead of chasing a single comforting number. Seeing the business as a flow rather than a pile is the starting point: a full, busy place can be clogged and frozen, so what matters is how smoothly things actually move. Inventory is a pure trade-off — too much freezes cash and risks spoilage, too little risks stockouts — with no setting that removes both risks, so you size a safety cushion on purpose. Bottlenecks show that only the slowest step matters, so honest attention goes there instead of to whatever is easy to improve, and queues show that variability creates waits and that pushing to 100% busy backfires, so a little slack is worth its cost. Forecasting accepts that every forecast is wrong and plans a range rather than a false-confident point, and routing trades fast against cheap against reliable so 'best' depends on what you choose. Resilience is where all these trade-offs come due at once, balancing efficiency against the buffers that keep a chain from breaking — and that shared habit of handling flow, uncertainty, and trade-offs honestly is what makes the field both harder than a simple story and far more likely to keep a business running.",
         explanation:
-          "Full credit: states the unifying habit (reject simple/flattering stories for measured thinking) and applies it correctly to at least three distinct course topics with accurate detail.",
+          "Full credit: states the unifying habit (business as a flow; handle uncertainty and trade-offs honestly rather than chase a single number) and applies it correctly to at least three distinct course topics with accurate detail.",
       },
       {
-        topicSlug: "three-financial-statements",
+        topicSlug: "bullwhip-effect",
         prompt:
-          "Someone insists, 'If a company reports a big profit, it's obviously doing fine — profit is all that matters.' Using ideas from the course, argue why a business's health is better understood by reading the three statements together. Use at least one concrete example. (5–7 sentences.)",
+          "Someone insists, 'If a factory suddenly gets swamped with huge orders and then floods with cancellations, customer demand must be wildly unstable — blame the shoppers.' Using ideas from the course, argue why the chaos can come from the chain itself even when real demand is steady. Use at least one concrete example. (5–7 sentences.)",
         correctAnswer:
-          "The 'profit is all that matters' view assumes one number proves health, but a business's health actually shows up across three reports that each answer a different question. The income statement shows profit over a period, the balance sheet shows what's owned and owed on a given day, and the cash flow statement shows whether real cash came in — and that last one matters because profit is an opinion while cash is a fact. A company can count a sale as profit before the customer has paid, so its income statement glows while the cash flow statement reveals money draining out and bills it can't cover. For example, profitable companies have collapsed because their cash was tied up in unsold inventory or unpaid invoices — a problem that's invisible on the income statement but obvious on the cash flow statement. So a big reported profit is a starting point, not proof of fine; only reading the three together — earnings, what's owned and owed, and actual cash — reveals whether a business is genuinely healthy.",
+          "Blaming the shoppers assumes the wild swings at the factory mirror wild swings in real demand, but the bullwhip effect shows the chaos is often manufactured by the chain itself even when underlying demand is steady. Each link — store, distributor, factory — only sees the orders from the link next to it, not the actual shoppers, so it adds a safety cushion on top of a number that already had one, orders in big batches, and panic-orders when deliveries lag. Those individually sensible choices, stacked on each other, amplify a small ripple at the store into a towering wave of orders and then cancellations at the factory, swinging from glut to shortage. The classic example is Procter & Gamble's baby diapers: real demand is about as steady as it gets, since babies are predictable, yet store and supplier orders swung wildly — proof the instability lived in the chain's reaction, not the shoppers. The 2020 toilet-paper shortage was the same shape: a modest real bump got amplified by panic-buying and frantic restocking into nationwide empty shelves even though factories never stopped. So the fix isn't to blame customers but to share real demand information and order in smaller, steadier amounts, which shrinks the wave back toward the ripple that started it.",
         explanation:
-          "Full credit: rejects the single-number 'profit = fine' view, explains the three statements answer different questions and that profit isn't cash, and supports it with a concrete example (e.g. a profitable company failing from a cash crunch / unpaid customers).",
+          "Full credit: rejects the 'unstable demand' explanation, explains the bullwhip effect (each link sees only neighbor's orders, adds cushions, batches/panic-orders, amplifying steady demand into glut/shortage swings), and supports it with a concrete example (e.g. P&G diapers or the 2020 toilet-paper run).",
       },
       {
-        topicSlug: "break-even",
+        topicSlug: "waiting-lines-queues",
         prompt:
-          "Explain why break-even is often called the single most useful number in business, why a lower price can make a plan harder rather than easier, and how an owner should use break-even before launching. Use a concrete example. (5–7 sentences.)",
+          "A manager argues that the way to fix long lines is to push every server to be busy 100% of the time, since 'idle servers are wasted money.' Using the course, explain why this can make waits worse, and what would actually help. Use a concrete example. (5–7 sentences.)",
         correctAnswer:
-          "Break-even is the level of sales where total money in equals total money out, the line between losing money and making it, and it's so useful because it turns a vague hope into a concrete survival target. It works through contribution: each sale only needs to cover its own variable cost, and what's left over stacks up to pay the fixed costs until they're covered, after which every sale is profit. A lower price can make a plan harder because cutting the price shrinks each sale's contribution, which raises the number you must sell to break even — sometimes so high you could never realistically reach it, so a busy business can still lose money on every sale. Before launching, an owner should work out the break-even point and ask honestly whether that many sales is achievable; if not, the idea, the price, or the costs need to change first. For example, a movie that cost $100 million usually has to earn roughly twice that to break even, because theaters keep about half the ticket money and marketing adds huge costs — which is why a film can gross over $150 million and still be a flop. That quiet break-even line, not the splashy sales figure, is what decides whether the plan actually works.",
+          "The 'no idle servers' view treats slack as pure waste, but in a system with variability that slack is exactly what keeps lines short. Lines form mainly because customers arrive in random clumps and take different amounts of time, so bursts pile up faster than a server can clear them even when there's enough capacity on average. As you push toward 100% busy, waiting time doesn't rise gently — it explodes — because there's no breathing room left to absorb those bursts, so a system at 95–100% can have lines many times longer than one at 70%. So driving servers to full does the opposite of what the manager wants, making customers wait longer rather than move faster. What actually helps is deliberately keeping some slack — adding an extra server at the busy hour even if they're sometimes idle — and pooling people into a single shared line so no one is stuck behind one slow customer while another server sits free. Call centers are the classic example: staffing agents to be busy nearly every second produces miserable hold times, while adding a few sometimes-idle agents dramatically shortens the wait, which is why well-run centers deliberately staff below 100% busy.",
         explanation:
-          "Full credit: defines break-even and contribution, explains a lower price raises the break-even point (so volume at a low price can still lose money), says an owner should check whether break-even sales are achievable before launching, and supports it with a concrete example (e.g. a film needing ~2x its budget).",
+          "Full credit: explains lines come from variability and that slack absorbs bursts, that pushing toward 100% busy makes waits explode (so it backfires), and what helps (planned slack/extra server at peak, single shared line/pooling), with a concrete example (e.g. call centers, bank single line).",
       },
       {
-        topicSlug: "unit-economics",
+        topicSlug: "resilience-capstone",
         prompt:
-          "A founder says, 'We're losing money now, but we're growing so fast that scale will fix everything.' Using the course, explain why this can be a dangerous mistake and what the founder should check first. Use a concrete example. (5–7 sentences.)",
+          "A company says, 'We've optimized our supply chain to the bone — minimal inventory, one cheap overseas supplier, no spare capacity — so we're in great shape.' Using the course, explain why this can be a dangerous mistake and what they should weigh. Use a concrete example. (5–7 sentences.)",
         correctAnswer:
-          "The 'scale will fix everything' view ignores unit economics — whether a single sale or customer actually makes money once you count all its costs. If each customer costs more to win and serve than they ever pay, then growth multiplies the losses instead of curing them, which is the real version of the joke about losing money on every sale but making it up in volume. So before scaling, the founder should check the per-unit math: does one customer bring in more than their full cost, including what was spent to acquire them (their lifetime value versus their acquisition cost)? Only if that single unit is already profitable can volume turn into profit; if it isn't, every exciting new signup digs the hole deeper. A famous example is the movie-ticket subscription that charged about ten dollars a month for nearly unlimited movies while paying theaters close to full price per ticket, so heavy users cost far more than they paid; signups exploded, the losses grew with them, and the company collapsed. The growth and the sales were real, but the unit economics never worked, and that's what decided it.",
+          "The 'optimized to the bone' view confuses efficient with robust, but efficiency removes exactly the buffers — extra inventory, spare capacity, backup suppliers, slack — that absorb a shock, so a bone-lean chain has nothing left to cushion a surprise. Relying on one cheap overseas supplier and minimal inventory creates single points of failure: as long as nothing goes wrong it looks like clean, efficient focus, but if that supplier or its shipping route is disrupted, the whole flow stops with no plan B. Resilience is built from the things they've cut — buffer inventory, backup suppliers in different places, spare capacity, and flexibility — which act like insurance against disruption, and that insurance costs money all the time and feels wasteful right up until the disaster it was for. So what they should weigh is how much protection is worth its cost for the risks they actually face, since too little leaves them fragile and too much bleeds money — it's a balance, not a number to maximize. The COVID years showed this at global scale: decades of squeezing chains for efficiency — minimal inventory, single distant suppliers — produced shortages of everything from masks to cars the moment things went wrong, and a single ship wedged in the Suez Canal blocked a huge slice of world trade because so much depended on one route with no backup. None of those operators were foolish; they optimized exactly as efficiency teaches and discovered its limit, which is the trade-off this company is ignoring.",
         explanation:
-          "Full credit: explains unit economics (does one sale make money), that growth multiplies losses when the unit is unprofitable, what to check first (per-unit profit including acquisition cost vs lifetime value), and supports it with a concrete example (e.g. the unlimited-movie subscription).",
+          "Full credit: explains efficiency removes the buffers that absorb shocks (efficient ≠ robust), identifies single points of failure (one supplier/route, minimal inventory), frames resilience as costly insurance (buffers/backups/spare capacity/flexibility) to be balanced not maximized, and supports it with a concrete example (e.g. COVID shortages or the Suez Canal blockage).",
       },
     ],
   },
@@ -527,24 +531,24 @@ type SeedPrimer = SeedTopic;
 const REASONING_PRIMERS: SeedPrimer[] = [
   {
     slug: "reasoning-primer-subject",
-    title: "How to reason about financial & managerial analytics cases",
+    title: "How to reason about operations & supply chain cases",
     weekNumber: 1,
     blurb:
-      "Diagnostic primer: applying the course's ideas to concrete business and money situations.",
-    lectureTitle: "Primer: How to reason about financial & managerial analytics cases",
-    body: `# How to reason about financial & managerial analytics cases
+      "Diagnostic primer: applying the course's ideas to concrete situations about how things move and get made.",
+    lectureTitle: "Primer: How to reason about operations & supply chain cases",
+    body: `# How to reason about operations & supply chain cases
 
-This short primer prepares you for the **Financial & Managerial Analytics** diagnostic. That check is *ungraded practice* — it never affects your course grade. It is drawn from the eight topics of this unit and asks you to *apply* what you have learned to a specific situation, not to recite a definition.
+This short primer prepares you for the **Operations & Supply Chain Analytics** diagnostic. That check is *ungraded practice* — it never affects your course grade. It is drawn from the eight topics of this unit and asks you to *apply* what you have learned to a specific situation, not to recite a definition.
 
 ## It tests application, not memorization
 
-A diagnostic question gives you a small, concrete scene — a profitable business short on cash, a low price that won't break even, a product that loses money on every sale, a flattering "total users" chart — and asks what the course's ideas tell you about it. Knowing the words "break-even" or "unit economics" is not enough; the question wants you to recognize *when* you are looking at one and *why* it matters here.
+A diagnostic question gives you a small, concrete scene — a warehouse that's full but slow, a shop that overstocks after one stockout, a factory swamped by swings while real demand is steady, a line that's huge even with idle-looking staff — and asks what the course's ideas tell you about it. Knowing the words "bottleneck" or "bullwhip" is not enough; the question wants you to recognize *when* you are looking at one and *why* it matters here.
 
 ## What the questions reward
 
-- **Naming the right idea** — match the situation to the concept that fits it: why high sales isn't proof of health, why profit isn't cash, how costs behave with volume, what break-even really demands, why a budget is a plan not a promise, whether a single sale makes money, and which dial is worth watching.
+- **Naming the right idea** — match the situation to the concept that fits it: why busy or full isn't the same as efficient, why too much and too little inventory both cost, how a small demand change gets amplified, why the slowest step rules the system, why lines explode near 100% busy, why every forecast is wrong, why route order changes the cost, and why efficient can mean fragile.
 - **Using evidence from the scene** — point to the detail in the situation that supports your answer, rather than answering from a general impression.
-- **Avoiding the flattering reading** — the course measures what's really happening; it does not assume the most comforting explanation. The best answers stay grounded in the numbers, not in how a business feels.
+- **Avoiding the flattering reading** — the course measures what's really happening; it does not assume the most comforting explanation. The best answers stay grounded in how the flow actually moves, not in how busy or full a place feels.
 
 ## How to do this activity well
 
@@ -563,7 +567,7 @@ Take it as often as you like; the questions are freshly generated every time, an
     lectureTitle: "Primer: Core reasoning skills",
     body: `# Core reasoning skills
 
-This short primer prepares you for the **General Reasoning** diagnostic — an *ungraded* check that tests five genuine reasoning skills. These are the same skills you use to decide what a set of facts really shows, so they matter directly for thinking clearly about what the numbers are telling you.
+This short primer prepares you for the **General Reasoning** diagnostic — an *ungraded* check that tests five genuine reasoning skills. These are the same skills you use to decide what a set of facts really shows, so they matter directly for thinking clearly about what's happening in a business's flow.
 
 ## The five skills
 
@@ -575,7 +579,7 @@ This short primer prepares you for the **General Reasoning** diagnostic — an *
 
 ## A recurring trap: things that move together
 
-Most wrong answers are statements that *sound* reasonable but are **not actually backed up by what you were told**. The discipline this check rewards is the same one careful work with data demands: keep apart what the facts **show**, what you're **assuming**, and what only *sounds* right. Two things happening together does not prove one causes the other.
+Most wrong answers are statements that *sound* reasonable but are **not actually backed up by what you were told**. The discipline this check rewards is the same one careful work with operations demands: keep apart what the facts **show**, what you're **assuming**, and what only *sounds* right. Two things happening together does not prove one causes the other.
 
 ## How to do this activity well
 
@@ -644,7 +648,7 @@ export async function seedReasoningPrimersIfMissing(): Promise<void> {
 }
 
 export async function seedIfEmpty(): Promise<void> {
-  // The course was migrated to the Financial & Managerial Analytics for
+  // The course was migrated to the Operations & Supply Chain Analytics for
   // Children syllabus. Detect the marker topic; if present and the content
   // version matches, the content is current and we skip. This makes the seed
   // self-healing across environments: a database that still holds older content
@@ -652,7 +656,7 @@ export async function seedIfEmpty(): Promise<void> {
   const markerTopic = await db
     .select({ id: topicsTable.id })
     .from(topicsTable)
-    .where(eq(topicsTable.slug, "what-financial-analytics-is"));
+    .where(eq(topicsTable.slug, "what-operations-analytics-is"));
   // Read the stored content version. Tolerate the seed_meta table not yet
   // existing (e.g. a boot that races ahead of schema migration): treat that as
   // "no version recorded", which forces a reseed once the table is present.
@@ -693,7 +697,7 @@ export async function seedIfEmpty(): Promise<void> {
     const row = (existing.rows[0] ?? {}) as { n?: number };
     if ((row.n ?? 0) > 0) {
       logger.warn(
-        "Seed: stale course content detected — replacing with the Financial & Managerial Analytics for Children curriculum",
+        "Seed: stale course content detected — replacing with the Operations & Supply Chain Analytics for Children curriculum",
       );
       await tx.execute(
         sql`TRUNCATE TABLE answers, attempts, practice_attempts, practice_problems, practice_sessions, problems, assignments, lectures, topics, diagnostic_responses, diagnostic_attempts, diagnostic_items, diagnostic_assessments RESTART IDENTITY CASCADE`,

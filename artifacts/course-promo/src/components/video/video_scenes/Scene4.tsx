@@ -13,8 +13,8 @@ export function Scene4() {
     return () => timers.forEach(t => clearTimeout(t));
   }, []);
 
-  const question = "A food truck pays $1,200 a month in rent and makes $4 from each bowl after ingredients. How many bowls until it stops losing money?";
-  const answer = "Each bowl chips in $4 toward the $1,200 of fixed rent, so it takes 1,200 ÷ 4 = 300 bowls a month to break even — and every bowl after that is profit.";
+  const question = "A car wash can vacuum 20 cars an hour but can only dry 10. They buy a faster vacuum. Why won't more cars get washed?";
+  const answer = "Drying is the bottleneck at 10 cars an hour, so the whole line can only finish 10 — a faster vacuum just makes cars pile up waiting to dry. To wash more, you have to speed up drying, the slowest step.";
 
   return (
     <motion.div 
@@ -29,9 +29,9 @@ export function Scene4() {
       >
         <div className="flex-1 p-12 bg-slate-50 border-r border-slate-200 relative overflow-hidden">
           <div className="max-w-2xl blur-sm opacity-30 pointer-events-none">
-            <h1 className="text-4xl font-bold text-slate-900 mb-8">Break-even</h1>
+            <h1 className="text-4xl font-bold text-slate-900 mb-8">Bottlenecks</h1>
             <p className="text-xl leading-relaxed text-slate-700 mb-6">
-              The break-even point is the amount of sales where total money in exactly equals total money out — no profit, no loss.
+              A bottleneck is the slowest step in a process — and the whole system can only move as fast as that one step.
             </p>
           </div>
         </div>

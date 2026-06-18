@@ -3,7 +3,7 @@
 //
 // Two instruments, each offered at FOUR time-points (phases) so a student can
 // gauge themselves before, during, and after the course:
-//   - subject  — Financial & Managerial Analytics subject-specific reasoning.
+//   - subject  — Operations & Supply Chain Analytics subject-specific reasoning.
 //     Realistic short cases about the course material; the best-supported answer
 //     is keyed first.
 //   - general  — General Reasoning. Genuine reasoning items spanning analysis,
@@ -88,25 +88,25 @@ const SUBJECT_SPECS: Record<Phase, GenSpec> = {
     level:
       "Intro level: answerable by a thoughtful newcomer reasoning carefully, BEFORE any lessons. Do not assume prior course knowledge or technical terms.",
     topicFocus:
-      "What financial & managerial analytics is and how it thinks about a business: that a business's health has multiple interacting parts (how much money comes in, how much goes out, what's left over, and whether there's actually cash) rather than a single number like 'high sales', and that the field measures what's really happening rather than trusting gut feeling or how busy a business looks.",
+      "What operations & supply chain analytics is and how it thinks about a business: that a business is a flow of things moving through steps to a customer (not a static pile of stuff), so what matters is how smoothly things move rather than how full or busy a place looks, and that the field measures what's really happening (where things move, wait, and pile up) rather than trusting gut feeling.",
   },
   third: {
     level:
       "Early course level: covers roughly the first third of the unit. Plain language, short realistic cases.",
     topicFocus:
-      "Topics 1.1-1.3: what financial & managerial analytics is; the three financial statements (income statement, balance sheet, and cash flow statement, and that profit is not the same as cash); and cost behavior (fixed vs variable costs, and that the cost per unit changes with volume so there is no single 'cost to make one').",
+      "Topics 1.1-1.3: what operations & supply chain analytics is (a business as a flow, not a pile, so busy/full is not the same as efficient); inventory (holding too much freezes cash and risks spoilage while too little risks stockouts, so there's a balance and safety stock); and the bullwhip effect (a small change in real demand gets amplified into big swings up the chain because each link only sees its neighbor's orders).",
   },
   twothirds: {
     level:
       "Mid course level: covers roughly the first two-thirds of the unit. Realistic short cases requiring a step of reasoning.",
     topicFocus:
-      "Topics 1.1-1.6: what the field is, the three financial statements, and cost behavior, PLUS break-even (the sales needed to cover total costs, and that a lower price shrinks each sale's contribution and raises the break-even point), budgets and variance (a budget is a plan, not a promise, and variance is the plan-vs-reality gap to learn from), and unit economics (whether each single sale actually makes money, since growth multiplies losses if it does not).",
+      "Topics 1.1-1.6: a business as a flow, inventory, and the bullwhip effect, PLUS bottlenecks (a system can only go as fast as its slowest step, so improving a non-bottleneck does nothing and the bottleneck is where work piles up), waiting lines (lines form from variability and the wait explodes as you push toward 100% busy, so a little slack and a single shared line help), and demand forecasting (every forecast is wrong so you plan a range and keep a cushion rather than trusting one confident number).",
   },
   after: {
     level:
       "End-of-course level: covers the whole unit. Integrative short cases that apply more than one idea.",
     topicFocus:
-      "The full unit, topics 1.1-1.8: the field, the three statements, cost behavior, break-even, budgets/variance, and unit economics, PLUS forecasting and KPIs (a forecast is an estimate from past patterns, not a certainty, and you choose the few dials that matter over flattering vanity metrics) and from numbers to decisions (data informs a decision but does not make it, and you must separate the metrics that matter from vanity metrics).",
+      "The full unit, topics 1.1-1.8: flow, inventory, the bullwhip effect, bottlenecks, queues, and forecasting, PLUS routing and optimization (the order of stops sets the cost, finding the perfect route is hard because options explode, and optimization trades fast vs cheap vs reliable) and resilience (efficiency removes the buffers that absorb shocks, so a bone-lean chain with single points of failure is fragile, and resilience is costly insurance to be balanced not maximized).",
   },
 };
 
@@ -152,7 +152,7 @@ const FORMAT_LABEL: Record<DiagFormat, string> = {
 function instructionsFor(instrument: Instrument, format: DiagFormat): string {
   const subject =
     instrument === "subject"
-      ? "Answer each question about financial & managerial analytics — these reward careful reasoning about realistic business situations, not memorized facts"
+      ? "Answer each question about operations & supply chain analytics — these reward careful reasoning about realistic business situations, not memorized facts"
       : "Answer each reasoning question — these measure how you think, not what you recall";
   const body =
     format === "mcq"
@@ -164,86 +164,86 @@ function instructionsFor(instrument: Instrument, format: DiagFormat): string {
 }
 
 // ===========================================================================
-// SUBJECT — Financial & Managerial Analytics blueprint cases (best answer keyed FIRST)
+// SUBJECT — Operations & Supply Chain Analytics blueprint cases (best answer keyed FIRST)
 // ===========================================================================
 
 const SUBJECT_BEFORE: DiagItem[] = [
   {
     prompt:
-      "A reporter asks a financial analyst why a particular business struggled even though it always had lots of customers and big sales. The analyst would most likely explain it in terms of:",
+      "A reporter asks an operations analyst why a particular warehouse struggled even though it was always packed full and everyone looked busy. The analyst would most likely explain it in terms of:",
     options: [
-      "a mix of how much money came in, how much went out, and whether cash was actually there",
-      "whether the owner is a naturally lucky person",
+      "how smoothly things actually moved through the steps, not how full or busy it looked",
+      "whether the manager is a naturally lucky person",
       "the color of the company's logo",
       "the reporter's personal opinion of the products",
     ],
     modelAnswer:
-      "Financial analytics explains a business's results through interacting measures — money in, money out, and actual cash — not luck or a single impression like how busy it looks.",
+      "Operations analytics explains results by how smoothly things flow through the steps — where they move, wait, and pile up — not by luck or a single impression like how full or busy a place looks.",
   },
   {
     prompt:
-      "A headline claims 'a business with high sales is always a successful one.' How would a financial analyst most likely treat this claim?",
+      "A headline claims 'a warehouse that is full and busy is always an efficient one.' How would an operations analyst most likely treat this claim?",
     options: [
-      "As an oversimplification, since profit and cash depend on costs and timing, not just sales",
+      "As an oversimplification, since 'full' can mean frozen cash and 'busy' can mean clogged, not moving fast",
       "As obviously true and needing no evidence",
       "As something that can never be measured",
       "As true only for large companies",
     ],
     modelAnswer:
-      "It is an oversimplification; a business with high sales can still lose money or run out of cash, so the field looks at costs and cash together, not just the sales number.",
+      "It is an oversimplification; a full warehouse can mean cash frozen in unsold stock and 'busy' can mean clogged, so what matters is how smoothly things actually move, not how full or busy it looks.",
   },
   {
     prompt:
-      "Which question is most central to what financial & managerial analytics actually studies?",
+      "Which question is most central to what operations & supply chain analytics actually studies?",
     options: [
-      "Whether a business is really making money, measured by what comes in, goes out, and what's left",
+      "Whether things move smoothly through the steps to the customer, and where they get stuck",
       "Which company has the friendliest-looking logo",
       "How to design the fanciest office lobby",
       "Which company would make the best movie set",
     ],
     modelAnswer:
-      "Financial & managerial analytics studies whether a business is actually making money, using measurements of money in, money out, and cash rather than impressions.",
+      "Operations & supply chain analytics studies how a business flows — how smoothly things move through the steps to a customer and where they get stuck — rather than impressions of how full or busy it looks.",
   },
 ];
 
 const SUBJECT_THIRD: DiagItem[] = [
   {
     prompt:
-      "A company reports a healthy profit on its income statement but cannot pay this month's bills. Understanding how both can be true at once depends most on:",
+      "After running out of a popular item once, a shop owner starts ordering huge quantities of everything. Understanding why this can backfire depends most on:",
     options: [
-      "reading the cash flow statement too, because profit is not the same as cash",
+      "seeing that inventory is frozen cash, so too much costs nearly as much as too little",
       "guessing based on the owner's personal mood",
       "the day's weather",
       "the alphabetical order of the products",
     ],
     modelAnswer:
-      "Profit on the income statement isn't cash in the bank; the cash flow statement can show money draining out even while profit looks good, so you read the statements together.",
+      "Inventory is money frozen in stuff, so overstocking ties up cash, space, and risks spoilage; the owner only swapped stockouts for the opposite costly mistake, since no setting removes both risks.",
     skillArea: "analysis",
   },
   {
     prompt:
-      "Asked 'what did it cost to make one mug?', a manager answers 'it depends on how many we made.' This best illustrates that costs are shaped by:",
+      "Asked 'how full should we keep the stockroom?', a manager answers 'it depends — too much and too little both cost us.' This best illustrates that inventory is about:",
     options: [
-      "cost behavior — fixed costs spread over volume, so the per-unit cost changes with how many you make",
+      "a balance, since holding too much freezes cash and risks spoilage while too little risks stockouts",
       "nothing but luck",
       "the number of shelves alone",
       "pure random chance",
     ],
     modelAnswer:
-      "Because fixed costs like rent spread over however many units are made, the cost per unit changes with volume, so there is no single 'cost to make one.'",
+      "There is no magic 'enough'; more stock cuts stockouts but raises holding costs and spoilage, so the goal is a balanced sweet spot with a safety-stock cushion sized to the item.",
     skillArea: "inference",
   },
   {
     prompt:
-      "A student says 'one number — total sales — tells you everything about a business.' Why would a financial analyst push back?",
+      "Shoppers buy only slightly more of an item, but weeks later the factory swings between huge orders and cancellations. Why would an operations analyst say the chaos came from the chain, not the shoppers?",
     options: [
-      "Because health depends on several measures together, since sales is not profit and profit is not cash",
-      "Because sales never matter at all",
-      "Because only large businesses have sales",
-      "Because a business cannot be measured in any way",
+      "Because the bullwhip effect amplifies a small demand change as each link, seeing only its neighbor's orders, adds cushions and batches",
+      "Because shoppers are always unpredictable",
+      "Because only large factories have orders",
+      "Because demand cannot be measured in any way",
     ],
     modelAnswer:
-      "A single number is too simple; sales isn't profit and profit isn't cash, so you must read the three statements together.",
+      "The bullwhip effect: each link sees only its neighbor's orders, adds a safety cushion on a number that already had one, and batches, so a small real change becomes wild swings even though demand barely moved.",
     skillArea: "evaluation",
   },
 ];
@@ -251,41 +251,41 @@ const SUBJECT_THIRD: DiagItem[] = [
 const SUBJECT_TWOTHIRDS: DiagItem[] = [
   {
     prompt:
-      "An owner slashes prices to sell more, stays busy all day, yet still loses money on every sale. What does this best illustrate about break-even?",
+      "A sandwich shop is slow at lunch, so the owner speeds up the already-fast wrapping station, but the customer line doesn't shrink. What does this best illustrate about bottlenecks?",
     options: [
-      "A lower price shrinks each sale's contribution and raises the break-even point, so high volume can still lose money",
-      "A lower price always guarantees a profit",
-      "Break-even has nothing to do with price",
-      "Selling more always means making money",
+      "A system can only go as fast as its slowest step, so improving a non-bottleneck does nothing for output",
+      "Speeding up any step always speeds up the whole system",
+      "Bottlenecks have nothing to do with where the line forms",
+      "Making one worker faster always means more output",
     ],
     modelAnswer:
-      "Cutting the price lowers what each sale contributes toward fixed costs, raising the break-even point, so a busy business at too low a price can still lose money on every sale.",
+      "The slowest step (the bottleneck) sets the pace; wrapping wasn't it, so the upgrade just makes it wait more. The fix is to relieve the actual slow step where work piles up.",
     skillArea: "evaluation",
   },
   {
     prompt:
-      "A team spent more than its budget on supplies, and the manager wants to punish whoever's responsible. What's the better way to read this?",
+      "A manager keeps every cashier busy nearly 100% of the time to be 'maximally efficient,' yet the lines are enormous. What's the better way to read this?",
     options: [
-      "A budget is a plan and the variance is a signal to ask why, not a rule broken to punish",
-      "The budget was a promise that someone failed to keep",
-      "Variances never carry any useful information",
-      "Going over budget always means someone cheated",
+      "Pushing toward 100% busy makes the wait explode, so a little slack is what keeps lines short",
+      "Lines are always caused by too few cashiers on average",
+      "Keeping servers fully busy always shortens lines",
+      "Waiting time has nothing to do with how busy servers are",
     ],
     modelAnswer:
-      "A budget is a plan you measure reality against; the variance is a signal to ask why (prices rose? more was made?), used to learn and adjust rather than to assign blame.",
+      "Lines come from variability, and as utilization nears 100% the wait explodes because there's no slack to absorb bursts; an extra server at peak or a single shared line helps despite looking less efficient.",
     skillArea: "analysis",
   },
   {
     prompt:
-      "A startup's signups double every month, but each customer costs more to win and serve than they ever pay. What does this best demonstrate?",
+      "A toy company writes 'we'll sell exactly 50,000 units' into all its holiday plans and treats it as a fact. What does this best demonstrate about forecasting?",
     options: [
-      "Unit economics — if each sale loses money, faster growth multiplies the losses",
-      "That growth always fixes a money problem",
-      "That signups are the only number that matters",
-      "That costs can never be measured per customer",
+      "Every forecast is wrong, so a single confident number is dangerous — you plan a range and keep a cushion",
+      "A confident forecast guarantees the outcome",
+      "Forecasts should always be a single exact number",
+      "Demand can never be estimated at all",
     ],
     modelAnswer:
-      "If a single sale loses money, growing only grows the losses; you can't 'make it up in volume' until each unit is profitable once all its costs are counted.",
+      "Every forecast is wrong; once one number hardens into plans, nobody prepares for the miss, so you forecast a range, keep safety stock, and track the error rather than trusting a single figure.",
     skillArea: "inference",
   },
 ];
@@ -293,41 +293,41 @@ const SUBJECT_TWOTHIRDS: DiagItem[] = [
 const SUBJECT_AFTER: DiagItem[] = [
   {
     prompt:
-      "A founder points to a chart of 'total users, all time' that keeps climbing as proof the business is thriving. Which consideration matters most?",
+      "Two drivers carry the exact same packages to the same houses, but one uses far less fuel and time. Which consideration matters most?",
     options: [
-      "Whether users actually stay, since a number that only ever rises can hide people quietly leaving",
-      "Only whether the chart exists at all",
-      "How the founder happens to feel that morning",
+      "The order and path of the stops, since the same packages can mean very different miles",
+      "Only whether the trucks are the same color",
+      "How the driver happens to feel that morning",
       "Whether the company has a nice logo",
     ],
     modelAnswer:
-      "'Total users, all time' is a vanity metric that can only rise and may hide churn; a useful KPI like active users or retention can deliver the bad news it conceals.",
+      "Routing: even with identical packages, the order and path of stops sets the distance, fuel, and time, so a smart route loops efficiently while a careless one zig-zags and doubles the miles.",
     skillArea: "evaluation",
   },
   {
     prompt:
-      "A manager confidently forecasts a slow month and cuts inventory, but a large unexpected order arrives. How should that one result be understood?",
+      "A company brags it has trimmed its chain to the bone — minimal inventory, one cheap supplier, no spare capacity — and calls it 'perfectly efficient.' How should that be understood?",
     options: [
-      "A forecast is an estimate from past patterns and can be wrong, so it shouldn't be treated as a certainty",
-      "As proof the business is failing",
-      "As a guarantee forecasts are useless",
-      "As a fixed fact that can never change",
+      "As fragile, since efficiency removes the buffers that absorb shocks and creates single points of failure",
+      "As proof the company is perfectly safe",
+      "As a guarantee nothing can ever disrupt it",
+      "As something that can never be evaluated",
     ],
     modelAnswer:
-      "A forecast is a likely estimate built from past clues, not a promise; a missed factor can make even a confident forecast wrong, so it informs planning rather than dictating it.",
+      "Efficiency cuts the very buffers that absorb a shock, so 'perfectly efficient' and 'dangerously fragile' are the same system; one cheap supplier and minimal inventory are single points of failure with no plan B.",
     skillArea: "inference",
   },
   {
     prompt:
-      "Reviewing results, an analyst declares a business a clear success based only on big sales and a high social-media follower count. Drawing on the unit, the strongest criticism is that:",
+      "Reviewing the chain, an analyst declares it excellent based only on its low costs and full trucks. Drawing on the unit, the strongest criticism is that:",
     options: [
-      "Both big sales and follower counts can mislead, so neither proves the business is profitable or has cash",
-      "High sales always prove profit, so the conclusion is fine",
-      "Follower counts are exact measures of profit, so the conclusion is fine",
-      "Results can never be reviewed after the fact",
+      "Low cost and full trucks can hide fragility, so neither proves the chain can survive a disruption",
+      "Low costs always prove a chain is robust, so the conclusion is fine",
+      "Full trucks are an exact measure of resilience, so the conclusion is fine",
+      "A chain can never be reviewed after the fact",
     ],
     modelAnswer:
-      "High sales can still lose money and followers are a vanity metric; neither proves profitability or cash, which need the three statements read together.",
+      "Squeezing for low cost and full trucks removes the buffers that absorb shocks, so neither proves resilience; surviving disruption needs slack, backups, and no single points of failure, which efficiency hides.",
     skillArea: "evaluation",
   },
 ];
@@ -440,7 +440,7 @@ const BASE_CONTENT: BaseContent[] = PHASE_ORDER.flatMap((phase) => {
     {
       instrument: "subject" as const,
       phase,
-      baseTitle: `Financial & Managerial Analytics Check — ${PHASE_LABEL[phase]}`,
+      baseTitle: `Operations & Supply Chain Analytics Check — ${PHASE_LABEL[phase]}`,
       items: subjectItems[phase],
     },
     {

@@ -41,11 +41,11 @@ export function Scene6() {
           <div className="flex-1 bg-slate-900/50 rounded-xl p-8 border border-slate-700/50 relative">
             <div className="mb-4">
               <span className="text-slate-400 font-medium text-sm">Question 3</span>
-              <p className="text-slate-200 mt-2">Why can a profitable company go bankrupt?</p>
+              <p className="text-slate-200 mt-2">Why can a warehouse be packed full yet still ship orders late?</p>
             </div>
             
             <div className="bg-slate-800 p-4 rounded-lg text-slate-300 border border-slate-700 font-serif italic mb-6">
-              "Because profit is counted when a sale is made, but cash might not arrive until later. If they run out of cash to pay rent before customers pay them, they go broke even if they're profitable on paper."
+              "Because 'full' isn't the same as 'flowing.' If things pile up at one slow step, orders sit waiting even though the shelves are stuffed — being full can actually mean the work is stuck, not moving."
             </div>
 
             <motion.div 
@@ -57,7 +57,7 @@ export function Scene6() {
               <div>
                 <h4 className="text-blue-400 font-bold mb-1">Feedback</h4>
                 <p className="text-blue-100/80 leading-relaxed text-sm">
-                  Full credit — you separated profit from cash, gave a clear reason profit can outrun cash (unpaid customers, inventory), and explained why all three statements must be read together.
+                  Full credit — you separated "full" from "flowing," gave a clear reason a stocked warehouse can still ship late (work piling up at a slow step), and explained why smooth flow matters more than how full it looks.
                 </p>
               </div>
             </motion.div>

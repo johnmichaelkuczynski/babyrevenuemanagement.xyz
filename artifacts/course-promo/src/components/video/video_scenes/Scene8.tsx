@@ -39,7 +39,7 @@ export function Scene8() {
           animate={phase >= 6 ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
         >
-          Financial & Managerial Analytics <br/><span className="text-blue-500">for Children</span>
+          Operations & Supply Chain Analytics <br/><span className="text-blue-500">for Children</span>
         </motion.h1>
       </div>
       

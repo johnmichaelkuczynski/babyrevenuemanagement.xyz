@@ -14,14 +14,14 @@ export function Scene2() {
   }, []);
 
   const topics = [
-    "1.1 What financial & managerial analytics is",
-    "1.2 Reading the score — the three financial statements",
-    "1.3 Where the money goes — fixed, variable & cost behavior",
-    "1.4 Break-even — the single most useful number in business",
-    "1.5 Budgets and variance — plan vs. reality",
-    "1.6 Unit economics — does each sale actually make money?",
-    "1.7 Forecasting and KPIs — steering by the right dials",
-    "1.8 From numbers to decisions"
+    "1.1 What operations & supply chain analytics is",
+    "1.2 Inventory — the cost of too much and too little",
+    "1.3 The bullwhip effect — small ripples, big waves",
+    "1.4 Bottlenecks — why the slowest step rules",
+    "1.5 Waiting lines — the hidden math of queues",
+    "1.6 Demand forecasting — stocking for a future you can't see",
+    "1.7 Routing and optimization — moving things for less",
+    "1.8 Resilience — building a chain that doesn't break"
   ];
 
   return (
@@ -72,7 +72,7 @@ export function Scene2() {
               Real concepts.<br />No jargon.
             </h2>
             <p className="text-xl text-slate-500 max-w-lg">
-              The curriculum covers exactly what you need to know about how businesses make money, told in plain language.
+              The curriculum covers exactly what you need to know about how things move through a business, told in plain language.
             </p>
           </motion.div>
         </div>
