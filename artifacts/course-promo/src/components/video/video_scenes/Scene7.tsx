@@ -7,79 +7,96 @@ export function Scene7() {
   useEffect(() => {
     const timers = [
       setTimeout(() => setPhase(1), 500),
-      setTimeout(() => setPhase(2), 2000), // Check 1
-      setTimeout(() => setPhase(3), 3500), // Check 2
-      setTimeout(() => setPhase(4), 5000), // Final verdict
+      setTimeout(() => setPhase(2), 2000), // Layer 1 scan
+      setTimeout(() => setPhase(3), 4000), // Layer 2 scan
+      setTimeout(() => setPhase(4), 5500), // Verdict
     ];
     return () => timers.forEach(t => clearTimeout(t));
   }, []);
 
   return (
     <motion.div 
-      className="absolute inset-0 flex bg-slate-900"
+      className="absolute inset-0 flex items-center justify-center bg-slate-50"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
+      exit={{ opacity: 0, x: '-10vw' }}
       transition={{ duration: 0.8 }}
     >
       <motion.div 
-        className="w-[85vw] h-[80vh] m-auto bg-slate-800 rounded-xl shadow-2xl flex overflow-hidden border border-slate-700"
+        className="w-[90vw] h-[85vh] bg-white rounded-2xl shadow-elevated flex overflow-hidden border border-slate-200"
       >
-        <div className="flex-1 p-16 flex flex-col justify-center max-w-4xl mx-auto">
-          
-          <h2 className="text-4xl font-bold text-white mb-2">Integrity Scan</h2>
-          <p className="text-slate-400 text-xl mb-12">Checking submission authenticity...</p>
+        <div className="w-1/3 bg-slate-900 p-12 text-white flex flex-col justify-center border-r border-slate-800">
+          <div className="w-16 h-16 bg-primary/20 text-primary rounded-2xl flex items-center justify-center mb-8 border border-primary/30">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 22S19 18 19 12V5L12 2L5 5V12C5 18 12 22 12 22Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </div>
+          <h2 className="text-4xl font-display font-bold mb-4">Integrity Scan</h2>
+          <p className="text-slate-400 text-lg leading-relaxed">
+            Two-layer AI-authorship detection checks every submission to ensure the work is actually theirs.
+          </p>
+        </div>
 
-          <div className="space-y-6">
+        <div className="flex-1 p-16 flex flex-col justify-center bg-slate-50">
+          <div className="max-w-2xl w-full mx-auto space-y-6">
             
-            {/* Layer 1 */}
+            {/* Layer 1: GPTZero */}
             <motion.div 
-              className="bg-slate-900/50 p-6 rounded-xl border border-slate-700 flex items-center justify-between"
-              initial={{ opacity: 0, y: 20 }}
-              animate={phase >= 2 ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm flex items-center justify-between"
+              initial={{ opacity: 0, x: 20 }}
+              animate={phase >= 2 ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
             >
               <div className="flex items-center gap-4">
-                <div className="w-10 h-10 rounded bg-slate-800 flex items-center justify-center text-slate-400">1</div>
+                <div className="w-12 h-12 rounded-lg bg-slate-100 flex items-center justify-center text-slate-500 font-bold">1</div>
                 <div>
-                  <h4 className="text-white font-bold">GPTZero Text Scan</h4>
-                  <p className="text-slate-400 text-sm">Semantic analysis for AI patterns</p>
+                  <h4 className="text-slate-900 font-bold text-lg">Static Text Classifier</h4>
+                  <p className="text-slate-500 text-sm">GPTZero API • Semantic pattern analysis</p>
                 </div>
               </div>
-              <div className="text-emerald-400 font-medium">4% AI — looks human-written</div>
+              <div className="text-right">
+                <div className="text-emerald-600 font-bold text-xl">2% AI</div>
+                <div className="text-slate-400 text-xs uppercase tracking-wide font-semibold mt-1">Human Written</div>
+              </div>
             </motion.div>
 
-            {/* Layer 2 */}
+            {/* Layer 2: Keystroke */}
             <motion.div 
-              className="bg-slate-900/50 p-6 rounded-xl border border-slate-700 flex items-center justify-between"
-              initial={{ opacity: 0, y: 20 }}
-              animate={phase >= 3 ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm flex items-center justify-between"
+              initial={{ opacity: 0, x: 20 }}
+              animate={phase >= 3 ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
             >
               <div className="flex items-center gap-4">
-                <div className="w-10 h-10 rounded bg-slate-800 flex items-center justify-center text-slate-400">2</div>
+                <div className="w-12 h-12 rounded-lg bg-slate-100 flex items-center justify-center text-slate-500 font-bold">2</div>
                 <div>
-                  <h4 className="text-white font-bold">Keystroke Pattern</h4>
-                  <p className="text-slate-400 text-sm">Behavioral pacing & paste detection</p>
+                  <h4 className="text-slate-900 font-bold text-lg">Diachronic Keystroke Trace</h4>
+                  <p className="text-slate-500 text-sm">Behavioral pacing & bulk paste detection</p>
                 </div>
               </div>
-              <div className="text-emerald-400 font-medium">Human — steady pace, no bulk paste</div>
+              <div className="text-right">
+                <div className="text-emerald-600 font-bold text-xl">Valid</div>
+                <div className="text-slate-400 text-xs uppercase tracking-wide font-semibold mt-1">Steady pace</div>
+              </div>
+            </motion.div>
+
+            {/* Verdict */}
+            <motion.div 
+              className="mt-12 bg-emerald-50 border border-emerald-200 p-8 rounded-2xl flex items-center gap-6"
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={phase >= 4 ? { opacity: 1, scale: 1, y: 0 } : { opacity: 0, scale: 0.95, y: 20 }}
+              transition={{ type: "spring", bounce: 0.4 }}
+            >
+              <div className="w-16 h-16 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M20 6L9 17L4 12" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
+              <div>
+                <div className="text-emerald-800 text-sm font-bold uppercase tracking-wider mb-1">Final Verdict</div>
+                <div className="text-emerald-600 text-3xl font-display font-bold">Authentic Work</div>
+              </div>
             </motion.div>
 
           </div>
-
-          {/* Final Verdict */}
-          <motion.div 
-            className="mt-12 self-start flex items-center gap-4 bg-emerald-500/10 border border-emerald-500/20 px-8 py-4 rounded-2xl"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={phase >= 4 ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
-            transition={{ type: 'spring', bounce: 0.5 }}
-          >
-            <div className="w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 text-2xl">✓</div>
-            <div>
-              <div className="text-slate-300 text-sm font-medium uppercase tracking-wider">Final Verdict</div>
-              <div className="text-emerald-400 text-3xl font-bold">Authentic</div>
-            </div>
-          </motion.div>
-
         </div>
       </motion.div>
     </motion.div>

@@ -7,83 +7,105 @@ export function Scene5() {
   useEffect(() => {
     const timers = [
       setTimeout(() => setPhase(1), 500),
-      setTimeout(() => setPhase(2), 2000), // Answer selected
-      setTimeout(() => setPhase(3), 3500), // Correct state & difficulty up
+      setTimeout(() => setPhase(2), 2500), // Select answer
+      setTimeout(() => setPhase(3), 4000), // Correct + difficulty goes up
     ];
     return () => timers.forEach(t => clearTimeout(t));
   }, []);
 
   return (
     <motion.div 
-      className="absolute inset-0 flex bg-slate-100"
+      className="absolute inset-0 flex items-center justify-center bg-slate-50"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
+      exit={{ opacity: 0, x: '-10vw' }}
       transition={{ duration: 0.8 }}
     >
       <motion.div 
-        className="w-[85vw] h-[80vh] m-auto bg-white rounded-xl shadow-soft flex overflow-hidden border border-slate-200"
+        className="w-[90vw] h-[85vh] bg-white rounded-2xl shadow-elevated flex flex-col overflow-hidden border border-slate-200"
       >
-        <div className="flex-1 flex items-center justify-center p-12 bg-slate-50 relative">
+        <div className="h-16 border-b border-slate-200 flex items-center px-8 justify-between bg-white z-20">
+          <div className="font-medium text-slate-900 flex items-center gap-2">
+            <span className="text-slate-400">Practice</span> / 1.2 Inventory
+          </div>
           
-          {/* Difficulty Meter */}
           <motion.div 
-            className="absolute top-8 right-8 flex items-center gap-3 bg-white px-4 py-2 rounded-lg shadow-sm border border-slate-100"
+            className="flex items-center gap-4 bg-slate-50 px-4 py-1.5 rounded-full border border-slate-200"
             initial={{ opacity: 0 }}
-            animate={phase >= 1 ? { opacity: 1 } : { opacity: 0 }}
+            animate={{ opacity: 1 }}
           >
-            <span className="text-sm font-semibold text-slate-500 uppercase">Difficulty</span>
+            <span className="text-sm font-semibold text-slate-500">DIFFICULTY</span>
             <div className="flex gap-1">
-              <div className="w-6 h-2 bg-blue-600 rounded-sm" />
-              <div className="w-6 h-2 bg-blue-600 rounded-sm" />
+              <div className="w-8 h-2 bg-primary rounded-sm" />
+              <div className="w-8 h-2 bg-primary rounded-sm" />
               <motion.div 
-                className="w-6 h-2 rounded-sm bg-slate-200"
-                animate={phase >= 3 ? { backgroundColor: '#2563eb' } : {}}
+                className="w-8 h-2 rounded-sm"
+                animate={{ backgroundColor: phase >= 3 ? '#4f46e5' : '#e2e8f0' }}
+                transition={{ duration: 0.4 }}
               />
-              <div className="w-6 h-2 bg-slate-200 rounded-sm" />
+              <div className="w-8 h-2 bg-slate-200 rounded-sm" />
             </div>
-            <motion.div 
-              className="text-blue-600 font-bold ml-2 text-xl"
-              initial={{ opacity: 0, y: 10 }}
-              animate={phase >= 3 ? { opacity: 1, y: 0 } : { opacity: 0 }}
-            >
-              ↑
-            </motion.div>
+            {phase >= 3 && (
+              <motion.div 
+                initial={{ opacity: 0, y: 10, scale: 0.5 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                className="text-primary font-bold ml-1 text-lg leading-none"
+              >
+                ↑
+              </motion.div>
+            )}
           </motion.div>
+        </div>
 
-          <div className="w-full max-w-3xl bg-white p-10 rounded-2xl shadow-sm border border-slate-200">
-            <h3 className="text-2xl font-semibold text-slate-800 mb-8 leading-snug">
-              Someone asks, 'What does it cost us to make one of these mugs?' and expects one fixed number. Name two things that question gets wrong.
+        <div className="flex-1 bg-slate-50 p-12 flex items-center justify-center relative">
+          <motion.div 
+            className="w-full max-w-2xl bg-white p-10 rounded-2xl shadow-card border border-slate-200"
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+          >
+            <div className="flex items-center justify-between mb-6">
+              <div className="text-sm font-bold text-primary tracking-widest uppercase">Question 3 of 5</div>
+              <div className="flex gap-1 text-orange-500">
+                <span className="text-lg leading-none">🔥</span>
+                <span className="font-bold">2 Streak</span>
+              </div>
+            </div>
+
+            <h3 className="text-2xl font-bold text-slate-900 mb-8 leading-snug">
+              A toy store buys 1,000 teddy bears for the holidays. By January, they have 400 left. What are the two main costs they are now facing?
             </h3>
 
             <div className="space-y-4">
-              <div className="p-4 border border-slate-200 rounded-xl text-slate-500 bg-slate-50 opacity-50">
-                It assumes all mugs cost the same.
-              </div>
               <motion.div 
-                className="p-4 border-2 rounded-xl text-slate-800 relative overflow-hidden"
+                className="p-5 border-2 border-slate-200 rounded-xl text-slate-600 bg-white"
+                animate={phase >= 2 ? { opacity: 0.5, borderColor: '#e2e8f0' } : {}}
+              >
+                Manufacturing cost and shipping cost.
+              </motion.div>
+              
+              <motion.div 
+                className="p-5 border-2 rounded-xl text-slate-900 relative overflow-hidden"
                 animate={
                   phase === 1 ? { borderColor: '#e2e8f0', backgroundColor: '#ffffff' } :
-                  phase === 2 ? { borderColor: '#2563eb', backgroundColor: '#eff6ff' } :
+                  phase === 2 ? { borderColor: '#4f46e5', backgroundColor: '#eef2ff' } :
                   { borderColor: '#10b981', backgroundColor: '#ecfdf5' }
                 }
               >
-                <div className="font-medium">
-                  It ignores that fixed costs are spread over volume, and that marginal cost is different from average cost.
+                <div className="font-medium text-lg">
+                  Holding cost (storing the unsold bears) and opportunity cost (money tied up that could have bought different toys).
                 </div>
                 
                 <motion.div 
-                  className="mt-4 text-emerald-700 font-medium text-sm flex items-center gap-2"
+                  className="mt-4 pt-4 border-t border-emerald-200/50 text-emerald-800 text-sm flex items-start gap-3"
                   initial={{ height: 0, opacity: 0 }}
-                  animate={phase >= 3 ? { height: 'auto', opacity: 1, marginTop: '1rem' } : { height: 0, opacity: 0, marginTop: 0 }}
+                  animate={phase >= 3 ? { height: 'auto', opacity: 1 } : { height: 0, opacity: 0 }}
                 >
-                  <div className="w-5 h-5 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs">✓</div>
-                  Correct. Volume changes the average, and the next unit costs less.
+                  <div className="w-5 h-5 rounded-full bg-emerald-500 text-white flex items-center justify-center shrink-0 mt-0.5">✓</div>
+                  <p><strong>Correct!</strong> Holding cost is the physical price of storage. Opportunity cost is the invisible price of not being able to use that cash for something else.</p>
                 </motion.div>
               </motion.div>
             </div>
-          </div>
-
+          </motion.div>
         </div>
       </motion.div>
     </motion.div>
