@@ -34,13 +34,21 @@ export default function LectureView() {
 
   // Adjacent lectures within the unit, so the reader can move straight to the
   // next/previous lecture without going back to the dashboard.
-  const { prevLecture, nextLecture } = useMemo(() => {
+  const { prevLecture, nextLecture, currentNumber, totalLectures } = useMemo(() => {
     const list = week?.lectures ?? [];
     const idx = list.findIndex((l) => l.id === lectureId);
-    if (idx === -1) return { prevLecture: null, nextLecture: null };
+    if (idx === -1)
+      return {
+        prevLecture: null,
+        nextLecture: null,
+        currentNumber: 0,
+        totalLectures: list.length,
+      };
     return {
       prevLecture: idx > 0 ? list[idx - 1]! : null,
       nextLecture: idx < list.length - 1 ? list[idx + 1]! : null,
+      currentNumber: idx + 1,
+      totalLectures: list.length,
     };
   }, [week?.lectures, lectureId]);
 
@@ -269,6 +277,11 @@ export default function LectureView() {
                 <div className="flex items-center justify-between flex-wrap gap-2">
                   <div className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
                     Unit {lecture.weekNumber}
+                    {currentNumber > 0 && totalLectures > 0 && (
+                      <span className="ml-2 text-muted-foreground/80">
+                        · Lecture {currentNumber} of {totalLectures}
+                      </span>
+                    )}
                   </div>
                   <div className="flex items-center gap-2">
                     <div className="inline-flex rounded-md border border-border overflow-hidden text-xs">
@@ -532,14 +545,17 @@ export default function LectureView() {
               {(prevLecture || nextLecture) && (
                 <nav className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {prevLecture ? (
-                    <Link href={`/lectures/${prevLecture.id}`} className="min-w-0">
+                    <Link href={`/lectures/${prevLecture.id}`} className="block w-full min-w-0">
                       <button
-                        className="group w-full h-full text-left rounded-lg border border-border bg-card hover:border-primary/50 transition-colors p-4 flex items-center gap-3"
+                        className="group w-full h-full overflow-hidden text-left rounded-lg border border-border bg-card hover:border-primary/50 transition-colors p-4 flex items-center gap-3"
                         data-testid="button-prev-lecture"
                       >
                         <ArrowLeft className="w-4 h-4 text-muted-foreground group-hover:text-primary shrink-0" />
-                        <span className="text-xs uppercase tracking-wider text-muted-foreground">
-                          Previous
+                        <span className="flex flex-col min-w-0">
+                          <span className="text-xs uppercase tracking-wider text-muted-foreground">
+                            Previous
+                          </span>
+                          <span className="font-medium truncate">{prevLecture.title}</span>
                         </span>
                       </button>
                     </Link>
@@ -547,13 +563,21 @@ export default function LectureView() {
                     <span className="hidden sm:block" />
                   )}
                   {nextLecture && (
-                    <Link href={`/lectures/${nextLecture.id}`} className="min-w-0 sm:col-start-2">
+                    <Link
+                      href={`/lectures/${nextLecture.id}`}
+                      className="block w-full min-w-0 sm:col-start-2"
+                    >
                       <button
-                        className="group w-full h-full text-right rounded-lg border border-primary/40 bg-primary/5 hover:border-primary transition-colors p-4 flex items-center justify-end gap-3"
+                        className="group w-full h-full overflow-hidden text-right rounded-lg border border-primary/40 bg-primary/5 hover:border-primary transition-colors p-4 flex items-center justify-end gap-3"
                         data-testid="button-next-lecture"
                       >
-                        <span className="text-xs uppercase tracking-wider text-primary/80">
-                          Next lecture
+                        <span className="flex flex-col min-w-0 items-end">
+                          <span className="text-xs uppercase tracking-wider text-primary/80">
+                            Next lecture
+                          </span>
+                          <span className="font-medium truncate max-w-full">
+                            {nextLecture.title}
+                          </span>
                         </span>
                         <ArrowRight className="w-4 h-4 text-primary shrink-0" />
                       </button>
