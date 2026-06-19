@@ -1,18 +1,18 @@
-# 🔎 Revenue Management & Pricing Analytics for Children
+# 🔎 Basic Revenue Management & Pricing Analytics
 
-**A Friendly, One-Unit Intro to Revenue Management & Pricing Analytics That Teaches, Tutors, and Proofs Itself — for Curious Students and Adults Alike**
+**A Complete, Self-Paced Introduction to Revenue Management & Pricing Analytics That Teaches, Tutors, Drills, Grades, and Proofs Itself — Built for Adults Learning the Subject from the Ground Up**
 
 ---
 
 ## 🧩 Overview
 
-Revenue Management & Pricing Analytics for Children is a self-paced, single-user web course that delivers a friendly, plain-language introduction to revenue management and pricing analytics — taught, tutored, drilled, and graded entirely by AI, with built-in academic-integrity enforcement. No math, coding, statistics, or other technical skills required.
+Basic Revenue Management & Pricing Analytics is a self-paced, single-user web course that delivers a clear, plain-language introduction to revenue management and pricing analytics — taught, tutored, drilled, and graded entirely by AI, with built-in academic-integrity enforcement. It assumes no prior background in the subject and builds every concept from the ground up.
 
-It turns the everyday human habit of *wondering why things cost what they cost* into one product: read each lesson at the depth you want, ask a tutor scoped to the exact section you're on, drill questions whose difficulty adapts to you in real time, and submit homework, a unit test, and a final that are AI-graded with feedback and screened for AI-generated answers. The material is kept friendly and age-appropriate — it explains how businesses decide what to charge and how managers read demand to make better pricing decisions, never technical or jargon-heavy.
+It turns the everyday human habit of *wondering why things cost what they cost* into one product: read each lesson at the depth you want, ask a tutor scoped to the exact section you're on, drill questions whose difficulty adapts to you in real time, and submit homework, a unit test, and a final that are AI-graded with feedback and screened for AI-generated answers. The material is kept clear and plain-language — it explains how businesses decide what to charge and how managers read demand to make better pricing decisions, never jargon-heavy.
 
 The curriculum is organized into **one unit and 8 topics**: 1.1 what revenue management is — why two seats cost different prices; 1.2 willingness to pay — the hidden ceiling in every buyer's head; 1.3 price elasticity — how much demand bends when the price moves; 1.4 price discrimination and fences — charging different people different prices; 1.5 dynamic pricing — prices that change with demand; 1.6 overbooking and capacity — selling a little more than you have; 1.7 discounts, bundles, and anchors — nudging what people choose; and 1.8 setting a pricing strategy — putting it all together.
 
-Designed for **middle schoolers, curious adults wanting brief but meaningful exposure, instructors evaluating AI-taught coursework, and researchers studying AI academic integrity**, Revenue Management & Pricing Analytics for Children pairs a real curriculum with two layers of AI-authorship detection — surfacing not just *whether* the writing looks AI-generated, but whether the *act of producing it* did.
+Designed for **adults beginning a new discipline — graduate students, researchers, and professionals new to pricing — plus instructors evaluating AI-taught coursework and researchers studying AI academic integrity**, Basic Revenue Management & Pricing Analytics pairs a real curriculum with two layers of AI-authorship detection — surfacing not just *whether* the writing looks AI-generated, but whether the *act of producing it* did.
 
 ---
 
@@ -50,7 +50,7 @@ Designed for **middle schoolers, curious adults wanting brief but meaningful exp
 
 ## 📊 Designed For
 
-- **Middle Schoolers & Curious Adults:** A complete, plain-language intro to revenue management and pricing analytics delivered with on-demand tutoring and adaptive practice — no instructor, math, or coding required.
+- **Adults Beginning a New Discipline:** A complete, plain-language introduction to revenue management and pricing analytics delivered with on-demand tutoring and adaptive practice — no instructor required, and no prior background assumed.
 - **Instructors & Curriculum Designers:** A working reference for what AI-taught, AI-graded, AI-detection-screened coursework actually looks like end-to-end.
 - **Academic-Integrity Researchers:** A live testbed for layered AI-authorship detection that combines text-based classification with behavioral keystroke evidence.
 - **Product & Engineering Teams:** A reference implementation of contract-first full-stack architecture, streaming AI UX, and self-diagnostic operator tooling in a Replit pnpm monorepo.
@@ -59,11 +59,11 @@ Designed for **middle schoolers, curious adults wanting brief but meaningful exp
 
 ## 💡 Core Idea
 
-Revenue Management & Pricing Analytics for Children reframes an AI-taught course as a *closed accountability loop*.
+Basic Revenue Management & Pricing Analytics reframes an AI-taught course as a *closed accountability loop*.
 
 It doesn't just teach the material and grade the homework — it **teaches**, **tutors**, **drills**, **grades**, **detects misuse**, and **proves the whole pipeline still works** with a single click. The result is a self-paced course that students can actually trust to be fair, and that instructors can actually trust to be honest.
 
-**Revenue Management & Pricing Analytics for Children — where the curriculum, the tutor, the grader, and the integrity check all live in one room.**
+**Basic Revenue Management & Pricing Analytics — where the curriculum, the tutor, the grader, and the integrity check all live in one room.**
 
 ---
 

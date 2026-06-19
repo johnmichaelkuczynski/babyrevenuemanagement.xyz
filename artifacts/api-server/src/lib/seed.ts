@@ -14,7 +14,7 @@ import { logger } from "./logger";
 // the value stored in seed_meta; a mismatch forces a full re-seed, so content
 // edits self-heal in every environment (including a republished production)
 // without a manual database wipe.
-const SEED_CONTENT_VERSION = "2026-06-18-revenue-management-pricing-analytics-for-children-v1";
+const SEED_CONTENT_VERSION = "2026-06-18-basic-revenue-management-pricing-analytics-v2";
 
 type SeedTopic = {
   slug: string;
@@ -674,7 +674,7 @@ export async function seedReasoningPrimersIfMissing(): Promise<void> {
 
 export async function seedIfEmpty(): Promise<void> {
   // The course was migrated to the Revenue Management & Pricing Analytics for
-  // Children syllabus. Detect the marker topic; if present and the content
+  // Pricing syllabus. Detect the marker topic; if present and the content
   // version matches, the content is current and we skip. This makes the seed
   // self-healing across environments: a database that still holds older content
   // (e.g. a previous curriculum) is detected and replaced on boot.
@@ -722,7 +722,7 @@ export async function seedIfEmpty(): Promise<void> {
     const row = (existing.rows[0] ?? {}) as { n?: number };
     if ((row.n ?? 0) > 0) {
       logger.warn(
-        "Seed: stale course content detected — replacing with the Revenue Management & Pricing Analytics for Children curriculum",
+        "Seed: stale course content detected — replacing with the Basic Revenue Management & Pricing Analytics curriculum",
       );
       await tx.execute(
         sql`TRUNCATE TABLE answers, attempts, practice_attempts, practice_problems, practice_sessions, problems, assignments, lectures, topics, diagnostic_responses, diagnostic_attempts, diagnostic_items, diagnostic_assessments RESTART IDENTITY CASCADE`,

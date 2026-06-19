@@ -32,4 +32,12 @@ Repo-root + asset blind spots (found only by a true whole-repo grep, not artifac
 - **`BLUEPRINT.md` can be staler than the prior subject entirely** — it described a long-dead "Ethics 101" 4-unit/27-topic version (never updated in the hospitality conversion). For a subject swap, fix the identity + topic list + the directly-conflicting structural facts (topic count, midterm→unit test, artifact list, no-login→Clerk); do NOT undertake a full architectural re-doc (out of scope).
 - **`artifacts/qr-course/public/logo.svg`** carried a hard-coded `aria-label` + visible text from a much older brand ("Ethics 101"). It's referenced by Clerk's sign-in appearance (`logoImageUrl` in `App.tsx`), so it shows on the login screen. Grep svg assets for stale brand text.
 
+Tone/audience rebrand blind spots (separate from a subject swap — e.g. "de-children-ify" / strip dumbed-down marketing framing):
+
+- Banned framing words ("friendly", "no math/no coding required", "no technical skills required", "age-appropriate", "middle schoolers", "curious students and grown-ups") hide in **backend prompt template literals**, not just docs/UI: the per-week course summary in `routes/course.ts` `WEEK_TITLES`, and internal LLM tone instructions in `routes/diagnostics.ts` / `lib/reasoning.ts` (e.g. "Friendly, plain English").
+- **Keep functional vs. marketing uses distinct:** in-app assignment instructions "No math is required — explain your reasoning" are answer-format guidance and should STAY; only strip the *marketing/audience* framing. Likewise "...for Everyone" unit titles are acceptable (not child/baby).
+- **Video wordmarks split across JSX** (`Analytics<br/><span>for Children</span>`) survive a literal-string sed of the full old name — fix scene `.tsx` wordmarks manually.
+
+**Why:** a docs/UI grep misses prompt literals; a full-name sed misses JSX-split wordmarks. **How to apply:** after edits, run a narrow scan for the banned words across docs + `src/routes/*` + `src/lib/*`, and run an architect review with `includeGitDiff:true` (it reliably catches the residual prompt-string framing).
+
 DB reseed prerequisite: the seed self-heal runs on api-server boot but **requires the schema to already exist**. On a fresh/wiped DB the boot log shows `relation "topics" does not exist` and seeding aborts. Run `pnpm --filter @workspace/db run push` first, then restart api-server — the reseed then succeeds.

@@ -55,8 +55,8 @@ export function Scene1() {
           animate={phase >= 2 ? { y: 0, opacity: 1 } : { y: 50, opacity: 0 }}
           transition={{ type: "spring", stiffness: 300, damping: 25 }}
         >
-          Revenue Management & Pricing <br/>
-          <span className="text-accent">Analytics for Children</span>
+          Basic Revenue Management & Pricing <br/>
+          <span className="text-accent">Analytics</span>
         </motion.h1>
 
         <motion.p 
@@ -65,8 +65,8 @@ export function Scene1() {
           animate={phase >= 3 ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          A friendly intro to why two seats cost different prices.<br/>
-          Taught, tutored, and graded by AI.
+          A complete, plain-language course on why prices are what they are.<br/>
+          Taught, tutored, drilled, and graded by AI.
         </motion.p>
       </div>
     </motion.div>

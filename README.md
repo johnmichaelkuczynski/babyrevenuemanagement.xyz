@@ -1,8 +1,8 @@
-# 🔎 Revenue Management & Pricing Analytics for Children
+# 🔎 Basic Revenue Management & Pricing Analytics
 
-**A friendly, one-unit intro to revenue management and pricing analytics that teaches, tutors, drills, and grades itself — for curious students and adults alike.**
+**A complete, self-paced introduction to revenue management and pricing analytics that teaches, tutors, drills, and grades itself — built for adults learning the subject from the ground up.**
 
-Revenue Management & Pricing Analytics for Children is a self-paced, single-user web course that delivers a plain-language introduction to revenue management and pricing analytics — taught, tutored, drilled, and graded entirely by AI, with built-in academic-integrity enforcement. No math, coding, or statistics required. The material is kept friendly and age-appropriate: it explains *how businesses decide what to charge* and how managers read demand to make better pricing decisions, never technical or jargon-heavy.
+Basic Revenue Management & Pricing Analytics is a self-paced, single-user web course that delivers a plain-language introduction to revenue management and pricing analytics — taught, tutored, drilled, and graded entirely by AI, with built-in academic-integrity enforcement. It assumes no prior background in pricing or economics and builds every concept in plain language: it explains *how businesses decide what to charge* and how managers read demand to make better pricing decisions, never technical or jargon-heavy.
 
 ---
 
@@ -93,11 +93,11 @@ Open the **Diagnostics** page in the app (or hit the API directly) to run:
 
 ## 📚 Who it's for
 
-- **Middle schoolers & curious adults** — a complete, plain-language intro with on-demand tutoring and adaptive practice.
+- **Adults beginning a new discipline** — graduate students, researchers, and professionals new to pricing, with on-demand tutoring and adaptive practice.
 - **Instructors & curriculum designers** — a working reference for AI-taught, AI-graded, AI-detection-screened coursework.
 - **Academic-integrity researchers** — a live testbed for layered AI-authorship detection (text classification + keystroke behavior).
 - **Product & engineering teams** — a reference implementation of contract-first full-stack architecture, streaming AI UX, and self-diagnostic tooling.
 
 ---
 
-*Revenue Management & Pricing Analytics for Children — where the curriculum, the tutor, the grader, and the integrity check all live in one room.*
+*Basic Revenue Management & Pricing Analytics — where the curriculum, the tutor, the grader, and the integrity check all live in one room.*

@@ -1,12 +1,12 @@
-# Revenue Management & Pricing Analytics for Children — App Blueprint
+# Basic Revenue Management & Pricing Analytics — App Blueprint
 
-A complete architectural blueprint for the Revenue Management & Pricing Analytics for Children one-unit course. This document is the single reference for what the app does, how it's wired, and the contracts between pieces. For day-to-day commands and gotchas see `replit.md`.
+A complete architectural blueprint for the Basic Revenue Management & Pricing Analytics one-unit course. This document is the single reference for what the app does, how it's wired, and the contracts between pieces. For day-to-day commands and gotchas see `replit.md`.
 
 ---
 
 ## 1. Product summary
 
-Revenue Management & Pricing Analytics for Children is a self-paced, single-user web course (Clerk sign-in) covering a friendly, plain-language one-unit curriculum (8 topics) introducing how businesses decide what to charge and how managers read demand to set prices. Students read AI-rewritten lecture notes at three lengths, ask an AI tutor scoped to the section they're reading, drill on adaptive practice problems, and submit homework / unit test / final that are AI-graded and AI-detection-screened.
+Basic Revenue Management & Pricing Analytics is a self-paced, single-user web course (Clerk sign-in) covering a plain-language one-unit curriculum (8 topics) introducing how businesses decide what to charge and how managers read demand to set prices. Students read AI-rewritten lecture notes at three lengths, ask an AI tutor scoped to the section they're reading, drill on adaptive practice problems, and submit homework / unit test / final that are AI-graded and AI-detection-screened.
 
 The 8 topics (Unit 1):
 

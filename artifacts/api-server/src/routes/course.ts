@@ -23,7 +23,7 @@ const WEEK_TITLES: Record<number, { title: string; summary: string }> = {
   1: {
     title: "Revenue Management & Pricing Analytics for Everyone",
     summary:
-      "What revenue management & pricing analytics really is (treating price as a flexible choice aimed at different buyers and moments, not one fixed number), how willingness to pay is a hidden ceiling that differs for every buyer, why price elasticity makes the same price change help one business and hurt another, how price discrimination and fences charge different people different prices for nearly the same thing, why dynamic pricing moves the price as demand shifts, how overbooking and capacity turn predictable no-shows into a calculated gamble, how discounts, bundles, and anchors shape what a price feels like, and how to set a whole pricing strategy that balances cost, customers, and competition — all in plain language, no technical skills required.",
+      "What revenue management & pricing analytics really is (treating price as a flexible choice aimed at different buyers and moments, not one fixed number), how willingness to pay is a hidden ceiling that differs for every buyer, why price elasticity makes the same price change help one business and hurt another, how price discrimination and fences charge different people different prices for nearly the same thing, why dynamic pricing moves the price as demand shifts, how overbooking and capacity turn predictable no-shows into a calculated gamble, how discounts, bundles, and anchors shape what a price feels like, and how to set a whole pricing strategy that balances cost, customers, and competition — all in plain language, built up from first principles.",
   },
 };
 
@@ -112,7 +112,7 @@ router.get("/course/overview", async (_req, res) => {
 
   res.json(
     GetCourseOverviewResponse.parse({
-      title: "Revenue Management & Pricing Analytics for Children",
+      title: "Basic Revenue Management & Pricing Analytics",
       weeks,
       totals: { assignmentsCompleted, assignmentsTotal, practiceCount },
     }),
@@ -317,7 +317,7 @@ router.post(
       "You are an introductory revenue management & pricing analytics lecturer adding illustrations to your own lecture. " +
       "You are given the CURRENT lecture. Return the SAME lecture, unchanged in what it teaches, but with vivid illustrations added. ABSOLUTE RULES, no exceptions:\n" +
       "1. KEEP every concept, claim, heading, section, and learning objective exactly as they are, in the same order. Do not remove, reorder, or rewrite the existing explanation — only ADD to it.\n" +
-      "2. For EVERY distinct point the lecture makes, add AT LEAST ONE concrete, vivid illustration that makes the point easy to picture: a short scenario, a real-to-life case sketch, an everyday analogy, or a worked example. Keep illustrations tasteful and age-appropriate — never graphic or sensational.\n" +
+      "2. For EVERY distinct point the lecture makes, add AT LEAST ONE concrete, vivid illustration that makes the point easy to picture: a short scenario, a real-to-life case sketch, an everyday analogy, or a worked example. Keep illustrations tasteful and professional — never graphic or sensational.\n" +
       "3. Set off each illustration so it reads as an example (e.g. a short *Example:* sentence or a brief italicized vignette) rather than blending into the original text.\n" +
       "4. Stay accurate to the source material and to revenue management & pricing analytics as a discipline. Do not invent fake facts, statistics, citations, or quotations; keep examples plausibly illustrative, not presented as documented cases.\n" +
       "5. Use clear Markdown. Use $...$ for any inline math.\n" +
