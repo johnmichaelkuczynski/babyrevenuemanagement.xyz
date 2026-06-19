@@ -29,6 +29,7 @@ In this video you'll see the whole course in action:
 🎯 Adaptive practice that gets harder when you're on a streak and eases off when you're stuck
 ✅ AI-graded homework, a unit test, and a final — each with written feedback
 🛡️ Two-layer AI-cheating detection: a text classifier (GPTZero) PLUS a keystroke-pattern detector that catches AI use even when the words are reworded
+📊 Live analytics — KPIs, per-topic mastery, and a recent-activity feed so progress and weak spots are visible at a glance
 
 It's a self-paced course students can actually trust to be fair — and instructors can trust to be honest.
 
@@ -36,9 +37,8 @@ It's a self-paced course students can actually trust to be fair — and instruct
 
 ⏱️ Chapters
 0:00 Why two seats cost different prices
-0:08 What you'll learn
-0:20 The AI tutor, lessons & adaptive practice
-0:35 Revenue Management & Pricing Analytics for Children
+0:13 Lessons, reading depths & the AI tutor
+0:26 Adaptive practice, AI grading & integrity checks
 
 🧠 Topics covered
 1.1 What revenue management is: why two seats cost different prices
