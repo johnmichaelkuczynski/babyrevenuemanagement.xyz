@@ -532,7 +532,7 @@ export default function LectureView() {
               {(prevLecture || nextLecture) && (
                 <nav className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {prevLecture ? (
-                    <Link href={`/lectures/${prevLecture.id}`}>
+                    <Link href={`/lectures/${prevLecture.id}`} className="min-w-0">
                       <button
                         className="group w-full h-full text-left rounded-lg border border-border bg-card hover:border-primary/50 transition-colors p-4 flex items-center gap-3"
                         data-testid="button-prev-lecture"
@@ -550,7 +550,7 @@ export default function LectureView() {
                     <span className="hidden sm:block" />
                   )}
                   {nextLecture && (
-                    <Link href={`/lectures/${nextLecture.id}`} className="sm:col-start-2">
+                    <Link href={`/lectures/${nextLecture.id}`} className="min-w-0 sm:col-start-2">
                       <button
                         className="group w-full h-full text-right rounded-lg border border-primary/40 bg-primary/5 hover:border-primary transition-colors p-4 flex items-center justify-end gap-3"
                         data-testid="button-next-lecture"
