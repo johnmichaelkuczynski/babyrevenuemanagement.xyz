@@ -249,7 +249,6 @@ export function setupAuth(app: Express): void {
       store: new PgSession({
         pool: sessionPool,
         tableName: "user_sessions",
-        createTableIfMissing: true,
       }),
       secret: sessionSecret ?? "basic-revenue-mgmt-dev-secret",
       resave: false,

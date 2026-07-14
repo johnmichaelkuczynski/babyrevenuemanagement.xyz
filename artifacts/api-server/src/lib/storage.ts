@@ -30,6 +30,13 @@ async function initAuthTables(): Promise<void> {
       email TEXT,
       visited_at TIMESTAMPTZ DEFAULT NOW()
     );
+    CREATE TABLE IF NOT EXISTS "user_sessions" (
+      "sid" varchar NOT NULL,
+      "sess" json NOT NULL,
+      "expire" timestamp(6) NOT NULL,
+      PRIMARY KEY ("sid") NOT DEFERRABLE INITIALLY IMMEDIATE
+    );
+    CREATE INDEX IF NOT EXISTS "IDX_session_expire" ON "user_sessions" ("expire");
   `);
 }
 
