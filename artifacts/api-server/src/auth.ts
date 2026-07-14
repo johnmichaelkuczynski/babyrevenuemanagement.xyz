@@ -94,6 +94,8 @@ const trustedHosts = new Set([
   "localhost",
   "localhost:5000",
   "ae3f4c24-07f1-45ff-bcc4-f6f111237c96-00-xhao3bv8l86f.picard.replit.dev",
+  "babyrevenuemanagement.xyz",
+  "www.babyrevenuemanagement.xyz",
 ]);
 
 function isTrustedHost(req: Request): boolean {
@@ -167,12 +169,12 @@ passport.deserializeUser(async (id: number, done) => {
   }
 });
 
-const clientID = process.env.GOOGLE_LOGIN_CLIENT_ID ?? "";
-const clientSecret = process.env.GOOGLE_LOGIN_CLIENT_SECRET ?? "";
+const clientID = process.env.GOOGLE_CLIENT_ID ?? "";
+const clientSecret = process.env.GOOGLE_CLIENT_SECRET ?? "";
 
 if (!clientID || !clientSecret) {
   console.warn(
-    "[auth] GOOGLE_LOGIN_CLIENT_ID or GOOGLE_LOGIN_CLIENT_SECRET not set — " +
+    "[auth] GOOGLE_CLIENT_ID or GOOGLE_CLIENT_SECRET not set — " +
       "Google OAuth will be unavailable until both secrets are configured.",
   );
 }
